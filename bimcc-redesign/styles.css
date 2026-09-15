@@ -1142,85 +1142,237 @@ img, svg {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+/* ==========================================================================
+   4. 解决方案与案例 4 列网格 (高保真四周边距与呼吸感)
+   ========================================================================== */
+.cases-grid-4cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1200px) {
+  .cases-grid-4cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cases-grid-4cols {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .case-card, .case-card-redesign {
   position: relative;
-  border-radius: var(--radius-lg);
-  background: rgba(13, 20, 36, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  border-radius: 18px;
+  background: rgba(13, 22, 44, 0.72);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.4s var(--ease-spring);
-  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
 }
 
 .case-card:hover, .case-card-redesign:hover {
-  transform: translateY(-6px);
-  border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.75), 0 0 30px rgba(56, 189, 248, 0.16);
+  transform: translateY(-8px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.18);
+  background: rgba(18, 30, 60, 0.85);
 }
 
-.case-thumb {
+.case-card-thumb, .case-thumb {
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #060914;
+  background: #040814;
 }
 
-.case-thumb img {
+.case-card-thumb img, .case-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 0.6s var(--ease-spring);
 }
 
-.case-card:hover .case-thumb img, .case-card-redesign:hover .case-thumb img {
-  transform: scale(1.06);
+.case-card:hover .case-card-thumb img, .case-card:hover .case-thumb img, .case-card-redesign:hover .case-thumb img {
+  transform: scale(1.08);
 }
 
-.case-thumb-overlay {
+.case-card-thumb .case-tag {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(11, 17, 33, 0.95) 100%);
-  pointer-events: none;
+  bottom: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.case-content {
-  padding: 24px;
+.tag-cyan {
+  background: rgba(6, 182, 212, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tag-purple {
+  background: rgba(168, 85, 247, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tag-blue {
+  background: rgba(59, 130, 246, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tag-emerald {
+  background: rgba(16, 185, 129, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tag-amber {
+  background: rgba(245, 158, 11, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.tag-rose {
+  background: rgba(244, 63, 94, 0.85);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 核心：为卡片内容区注入舒适合理的四周边距与层级呼吸感 */
+.case-card-body, .case-content {
+  padding: 24px 20px 22px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
 }
 
-.case-badge-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.case-title {
-  font-size: 1.125rem;
+.case-card-body .case-title, .case-title {
+  font-size: 1.0625rem;
   font-weight: 700;
+  line-height: 1.45;
   color: #ffffff;
-  margin-bottom: 8px;
-  line-height: 1.4;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
-.case-desc {
-  font-size: 0.875rem;
-  color: var(--text-secondary);
+.case-card-body .case-meta-desc, .case-desc {
+  font-size: 0.8125rem;
   line-height: 1.65;
-  margin-bottom: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.case-card-footer {
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cyan-400);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.case-link:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   CTA 转化面板 (极具现代质感的全屏深空玻璃横幅与高阶呼吸感)
+   ========================================================================== */
+.cta-banner {
+  position: relative;
+  margin-top: 5rem;
+  padding: clamp(3.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(135deg, rgba(14, 28, 56, 0.85) 0%, rgba(6, 14, 30, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 28px;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), 0 0 50px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-glow {
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 75%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-title {
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.cta-desc {
+  font-size: 1.0625rem;
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 580px;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-actions .button {
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.3s var(--ease-spring);
 }
 
 .case-metrics-grid {
