@@ -1,0 +1,75 @@
+{
+  "strategy": "replace-content-preserve-core-urls",
+  "canonicalHome": "https://www.bimcc.cn/",
+  "notes": [
+    "新版官网可以替换旧官网前台内容，但核心旧 URL 建议保留或做 301 跳转。",
+    "正式迁移前需要导出现站栏目、案例详情、产品服务页和新闻页地址清单。",
+    "本文件是原型阶段 URL 迁移草案，生产环境需结合 CMS 实际路由确认。"
+  ],
+  "coreRoutes": [
+    {
+      "current": "/",
+      "newTarget": "/",
+      "handling": "preserve",
+      "purpose": "首页"
+    },
+    {
+      "current": "/products-and-services/",
+      "newTarget": "/products/",
+      "handling": "preserve-or-redirect",
+      "purpose": "产品与服务"
+    },
+    {
+      "current": "/customer-case/",
+      "newTarget": "/cases/",
+      "handling": "preserve-or-redirect",
+      "purpose": "客户案例"
+    },
+    {
+      "current": "/contact-us/",
+      "newTarget": "/contact-us/",
+      "handling": "preserve-or-redirect",
+      "purpose": "联系我们"
+    },
+    {
+      "current": "/fyra-development-platform/",
+      "newTarget": "/products/#fyra",
+      "handling": "preserve-or-redirect",
+      "purpose": "飞椽 Fyra 智能开发平台"
+    },
+    {
+      "current": "/bim-consulting-services/",
+      "newTarget": "/products/#bim-consulting",
+      "handling": "preserve-or-redirect",
+      "purpose": "BIM 咨询服务"
+    }
+  ],
+  "plannedRoutes": [
+    {
+      "target": "/solutions/",
+      "purpose": "解决方案",
+      "sourceFile": "solutions.html"
+    },
+    {
+      "target": "/technology/",
+      "purpose": "技术研发",
+      "sourceFile": "technology.html"
+    },
+    {
+      "target": "/resources/",
+      "purpose": "资源中心",
+      "sourceFile": "resources.html"
+    },
+    {
+      "target": "/about/",
+      "purpose": "关于筑云",
+      "sourceFile": "about.html"
+    }
+  ],
+  "futureWork": [
+    "导出现站完整 URL。",
+    "给没有独立新版页面的旧栏目设置 301 跳转。",
+    "为案例详情页决定保留详情页还是合并到案例列表。",
+    "上线后提交 sitemap 并检查 404。"
+  ]
+}

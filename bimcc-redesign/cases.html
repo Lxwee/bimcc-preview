@@ -1,0 +1,4415 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客户案例与标杆工程实践 | 筑云科技 (BIMCC)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"PingFang SC"', "Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                300: "#7dd3fc",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                900: "#0c4a6e",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #0b1121;
+        color: #cbd5e1;
+      }
+
+      .global-aurora {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: #0b1121;
+        overflow: hidden;
+      }
+      .global-aurora::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(
+          circle,
+          rgba(14, 165, 233, 0.35) 0%,
+          rgba(2, 132, 199, 0) 70%
+        );
+        filter: blur(140px);
+        animation: float 20s ease-in-out infinite alternate;
+      }
+      .global-aurora::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        right: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(
+          circle,
+          rgba(139, 92, 246, 0.25) 0%,
+          rgba(59, 130, 246, 0.15) 40%,
+          rgba(0, 0, 0, 0) 75%
+        );
+        filter: blur(150px);
+        animation: float-reverse 25s ease-in-out infinite alternate;
+      }
+
+      .glass-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow:
+          0 8px 32px 0 rgba(0, 0, 0, 0.37),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow:
+          0 20px 40px 0 rgba(0, 0, 0, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(6%, 12%) scale(1.1);
+        }
+      }
+      @keyframes float-reverse {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(-6%, -12%) scale(1.1);
+        }
+      }
+    </style>
+  <link rel="stylesheet" href="styles.css?v=13">
+</head>
+  <body
+    class="bg-[#0b1121] text-slate-300 font-sans antialiased flex flex-col min-h-screen"
+  >
+    <div class="global-aurora"></div>
+
+    <!-- ================= 导航 Header ================= -->
+        <!-- ======================================================================
+         1. 顶部吸顶磨砂导航栏 (Header from index_v8)
+         ====================================================================== -->
+    <!-- 顶部吸顶导航栏 -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link" href="solutions.html">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link active" href="cases.html" aria-current="page">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link active" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ================= 客户案例大厅 Hero & 战报 ================= -->
+    <main class="pt-[140px] pb-10 flex-1 flex flex-col items-center">
+      <section class="site-container flex flex-col items-center">
+        <!-- 页面 Title Banner (严格遵循原型文案) -->
+        <div class="text-center mb-12 flex flex-col items-center">
+          <div
+            class="eyebrow-badge mb-4"
+          >
+            <span class="status-pulse"></span>
+            PROVEN BENCHMARKS · 标杆实践
+          </div>
+          <h1
+            style="font-size: clamp(2.25rem, 3.2vw, 48px); line-height: 1.35; color: rgba(255, 255, 255, 0.9); font-weight: 800;"
+            class="drop-shadow-lg mb-4 text-center"
+          >
+            1000+ 重点建设项目中的<br>
+            <span class="text-gradient-aurora">数字化实践</span>
+          </h1>
+          <p
+            style="font-size: 0.95rem; line-height: 1.75; color: var(--text-secondary); max-width: 720px;"
+            class="mx-auto text-center"
+          >
+            筑云科技服务建设单位、施工单位、政府监管、集团企业、院校和运营单位，覆盖房建、民航、轨道、市政、水利水电、文体教育、科研办公等多类型工程场景。
+          </p>
+        </div>
+
+        <!-- 4 大战报数据卡片矩阵 (严格对照原型第 3 节) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 w-full mb-16">
+          <!-- 卡片 1: 1000+ 重点服务建设项目 -->
+          <div
+            class="glass-card rounded-[24px] py-7 px-5 flex flex-col items-center text-center group cursor-default border border-white/12 hover:border-brand-400/40 transition-all duration-500 hover:-translate-y-1 shadow-xl"
+          >
+            <div
+              class="w-12 h-12 rounded-full border border-brand-400/30 bg-brand-500/10 flex items-center justify-center text-brand-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.2)] group-hover:bg-brand-500 group-hover:text-white group-hover:scale-105 transition-all duration-500"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+            </div>
+            <div
+              class="text-[30px] md:text-[34px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-brand-300 tracking-tight leading-none mb-2.5"
+            >
+              1000<span class="text-brand-400">+</span>
+            </div>
+            <div class="text-[14px] font-semibold text-white mb-1">
+              重点服务建设项目
+            </div>
+            <div class="text-[12px] text-slate-400">服务合作企业</div>
+          </div>
+
+          <!-- 卡片 2: 80% 大型国央企/监管客户 -->
+          <div
+            class="glass-card rounded-[24px] py-7 px-5 flex flex-col items-center text-center group cursor-default border border-white/12 hover:border-purple-400/40 transition-all duration-500 hover:-translate-y-1 shadow-xl"
+          >
+            <div
+              class="w-12 h-12 rounded-full border border-purple-400/30 bg-purple-500/10 flex items-center justify-center text-purple-400 mb-4 shadow-[0_0_15px_rgba(168,85,247,0.2)] group-hover:bg-purple-500 group-hover:text-white group-hover:scale-105 transition-all duration-500"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                />
+              </svg>
+            </div>
+            <div
+              class="text-[30px] md:text-[34px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-purple-300 tracking-tight leading-none mb-2.5"
+            >
+              80<span class="text-purple-400">%</span>
+            </div>
+            <div class="text-[14px] font-semibold text-white mb-1">
+              大型国央企/监管客户
+            </div>
+            <div class="text-[12px] text-slate-400">国央企及重点项目</div>
+          </div>
+
+          <!-- 卡片 3: 80+ 产品专利与软著 -->
+          <div
+            class="glass-card rounded-[24px] py-7 px-5 flex flex-col items-center text-center group cursor-default border border-white/12 hover:border-emerald-400/40 transition-all duration-500 hover:-translate-y-1 shadow-xl"
+          >
+            <div
+              class="w-12 h-12 rounded-full border border-emerald-400/30 bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4 shadow-[0_0_15px_rgba(52,211,153,0.2)] group-hover:bg-emerald-500 group-hover:text-white group-hover:scale-105 transition-all duration-500"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <div
+              class="text-[30px] md:text-[34px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-emerald-300 tracking-tight leading-none mb-2.5"
+            >
+              80<span class="text-emerald-400">+</span>
+            </div>
+            <div class="text-[14px] font-semibold text-white mb-1">
+              产品专利与软著
+            </div>
+            <div class="text-[12px] text-slate-400">自主知识产权认证</div>
+          </div>
+
+          <!-- 卡片 4: 100+ 国家级省部级奖项 -->
+          <div
+            class="glass-card rounded-[24px] py-7 px-5 flex flex-col items-center text-center group cursor-default border border-white/12 hover:border-amber-400/40 transition-all duration-500 hover:-translate-y-1 shadow-xl"
+          >
+            <div
+              class="w-12 h-12 rounded-full border border-amber-400/30 bg-amber-500/10 flex items-center justify-center text-amber-400 mb-4 shadow-[0_0_15px_rgba(251,191,36,0.2)] group-hover:bg-amber-500 group-hover:text-white group-hover:scale-105 transition-all duration-500"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <div
+              class="text-[30px] md:text-[34px] font-bold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-amber-300 tracking-tight leading-none mb-2.5"
+            >
+              100<span class="text-amber-400">+</span>
+            </div>
+            <div class="text-[14px] font-semibold text-white mb-1">
+              国家级省部级奖项
+            </div>
+            <div class="text-[12px] text-slate-400">标杆成功荣誉</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= 2. 案例展示大厅 (Tab 通栏带 100% 顶格紧贴 section 顶端, 零像素缝隙) ================= -->
+    <section
+      class="w-full bg-[#0b1121] border-t border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] pt-0 pb-24 flex flex-col items-center relative z-20"
+    >
+      <!-- 极光弥散科技发光背景光晕 -->
+      <div
+        class="absolute top-[-100px] left-1/4 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-[-100px] right-1/4 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[140px] pointer-events-none"
+      ></div>
+
+      <!-- 纯粹极简 Sticky 胶囊浮岛 (彻底取消突兀背景色块, 增加 Tab 上方留白, 极佳呼吸感) -->
+      <div
+        class="sticky top-[64px] z-40 w-full pt-8 pb-0 mb-10 flex justify-center pointer-events-none"
+      >
+        <div
+          class="site-container flex justify-center pointer-events-auto"
+        >
+          <div
+            class="glass-card rounded-full p-1.5 border border-white/15 flex flex-wrap justify-center gap-1.5 max-w-full backdrop-blur-xl bg-[#0b1121]/90 shadow-2xl"
+          >
+            <button
+              onclick="filterCases('all')"
+              data-tab="all"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 bg-brand-500/20 border border-brand-400/40 text-white shadow-sm flex items-center gap-2"
+            >
+              <span>全部案例</span>
+              <span class="px-2 py-0.5 rounded-full bg-brand-400/20 text-brand-300 text-[11px] font-semibold">61</span>
+            </button>
+            <button
+              onclick="filterCases('smart-build')"
+              data-tab="smart-build"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 bg-brand-500/20 border border-brand-400/40 text-white shadow-sm flex items-center gap-2"
+            >
+              <span>智能建造平台</span>
+              <span
+                class="px-2 py-0.5 rounded-full bg-brand-400/20 text-brand-300 text-[11px] font-semibold"
+                >16</span
+              >
+            </button>
+            <button
+              onclick="filterCases('smart-site')"
+              data-tab="smart-site"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent flex items-center gap-2"
+            >
+              <span>智慧工地建设</span>
+              <span
+                class="px-2 py-0.5 rounded-full bg-white/10 text-slate-300 text-[11px] font-semibold"
+                >11</span
+              >
+            </button>
+            <button
+              onclick="filterCases('bim-consulting')"
+              data-tab="bim-consulting"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent flex items-center gap-2"
+            >
+              <span>BIM咨询服务</span>
+              <span
+                class="px-2 py-0.5 rounded-full bg-white/10 text-slate-300 text-[11px] font-semibold"
+                >16</span
+              >
+            </button>
+            <button
+              onclick="filterCases('digital-twin')"
+              data-tab="digital-twin"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent flex items-center gap-2"
+            >
+              <span>数字孪生/智慧运维</span>
+              <span
+                class="px-2 py-0.5 rounded-full bg-white/10 text-slate-300 text-[11px] font-semibold"
+                >6</span
+              >
+            </button>
+            <button
+              onclick="filterCases('bimvr-exhibition')"
+              data-tab="bimvr-exhibition"
+              class="case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent flex items-center gap-2"
+            >
+              <span>BIMVR/智慧展厅观摩</span>
+              <span
+                class="px-2 py-0.5 rounded-full bg-white/10 text-slate-300 text-[11px] font-semibold"
+                >12</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 全局顺畅视口区 (取消内层 overflow-y-auto, 彻底消灭右侧双重粗丑白色滚动条) -->
+      <div class="site-container flex flex-col items-center">
+        <!-- 案例卡片网格矩阵 (全量 61 个原官网真实案例) -->
+        <div
+          id="cases-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full relative z-10"
+        >
+          <!-- 1: 葛洲坝集团智能项管平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_1')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/03/葛洲坝集团智能项管平台-1024x497.jpg"
+                alt="葛洲坝集团智能项管平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                葛洲坝集团智能项管平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-sky-500/25 border-sky-400/50 text-sky-200 shadow-[0_0_12px_rgba(14,165,233,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  企业级SaaS
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2: 中水电十四局华南事业部“hn+智慧建管”平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_2')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/中水电十四局华南事业部HN智慧建管平台-1024x497.jpg"
+                alt="中水电十四局华南事业部“hn+智慧建管”平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                中水电十四局华南事业部“hn+智慧建管”平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3: 重庆机电控股集团企业级 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_3')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆机电控股集团企业级-1024x497.jpg"
+                alt="重庆机电控股集团企业级"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆机电控股集团企业级
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-sky-500/25 border-sky-400/50 text-sky-200 shadow-[0_0_12px_rgba(14,165,233,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  企业级SaaS
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4: 广州南华bim+项目管理平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_4')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/广州南华BIM项目管理平台-1024x497.jpg"
+                alt="广州南华bim+项目管理平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                广州南华bim+项目管理平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: 海南交投数智建管平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_5')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/海南交投数智建管平台-1024x497.jpg"
+                alt="海南交投数智建管平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                海南交投数智建管平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6: 成都环境ai+智能建造平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_6')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/成都环境AI智能建造平台-1024x497.jpg"
+                alt="成都环境ai+智能建造平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                成都环境ai+智能建造平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7: 重庆工商职业学院 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_7')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆工商职业学院-1024x497.jpg"
+                alt="重庆工商职业学院"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆工商职业学院
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 8: 绿发数字建造平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_8')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/绿发数字建造平台-1024x497.jpg"
+                alt="绿发数字建造平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                绿发数字建造平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9: 重庆市渝北区中医院 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_9')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆市渝北区中医院-1024x576.jpg"
+                alt="重庆市渝北区中医院"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆市渝北区中医院
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10: 重庆轨道15号线管控平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_10')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆轨道15号线管控平台-1-1024x576.jpg"
+                alt="重庆轨道15号线管控平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆轨道15号线管控平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11: 锦屏大设施工程建设智能管理系统 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_11')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/锦屏大设施工程建设智能管理系统-1024x576.jpg"
+                alt="锦屏大设施工程建设智能管理系统"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                锦屏大设施工程建设智能管理系统
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12: 沙特吉达市中心综合开发基础设施 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_12')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/沙特吉达市中心综合开发基础设施-1024x576.jpg"
+                alt="沙特吉达市中心综合开发基础设施"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                沙特吉达市中心综合开发基础设施
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 13: 智能建造平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_13')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/智能建造平台-1-1024x576.jpg"
+                alt="智能建造平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                智能建造平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 14: 深圳罗田水库 铁岗水库输水隧洞工程智慧管理平台 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_14')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/深圳罗田水库-铁岗水库输水隧洞工程智慧管理平台-1024x576.jpg"
+                alt="深圳罗田水库 铁岗水库输水隧洞工程智慧管理平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                深圳罗田水库 铁岗水库输水隧洞工程智慧管理平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 15: 渝湘复线高速 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_15')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/渝湘复线高速-1024x576.jpg"
+                alt="渝湘复线高速"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                渝湘复线高速
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 16: 四川美术学院悦来校区 -->
+          <div
+            data-category="smart-build"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_16')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/四川美术学院悦来校区-1024x576.jpg"
+                alt="四川美术学院悦来校区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                四川美术学院悦来校区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智能建造平台</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-indigo-500/25 border-indigo-400/50 text-indigo-200 shadow-[0_0_12px_rgba(99,102,241,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  项目级管控
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 17: 北京城市副中心行政办公区二期启动区 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_17')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/北京城市副中心行政办公区二期启动区-1024x576.jpg"
+                alt="北京城市副中心行政办公区二期启动区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                北京城市副中心行政办公区二期启动区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 18: 濮阳职业技术学院本科部新校区 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_18')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/濮阳职业技术学院本科部新校区-1024x576.jpg"
+                alt="濮阳职业技术学院本科部新校区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                濮阳职业技术学院本科部新校区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 19: 重庆市劳动人民文化宫保护提升改建项目 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_19')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆市劳动人民文化宫保护提升改建项目-1024x576.jpg"
+                alt="重庆市劳动人民文化宫保护提升改建项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆市劳动人民文化宫保护提升改建项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 20: 礼嘉儿童医院三星级智慧工地项目 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_20')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/礼嘉儿童医院三星级智慧工地项目-1024x576.jpg"
+                alt="礼嘉儿童医院三星级智慧工地项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                礼嘉儿童医院三星级智慧工地项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  三星智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 21: 鹿角隧道东延伸段三星智慧工地项目 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_21')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/鹿角隧道东延伸段三星智慧工地项目-1024x576.jpg"
+                alt="鹿角隧道东延伸段三星智慧工地项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                鹿角隧道东延伸段三星智慧工地项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  三星智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 22: 雄安新区起步区1#供水厂工程 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_22')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/雄安新区起步区1供水厂工程-1-1024x576.jpg"
+                alt="雄安新区起步区1#供水厂工程"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                雄安新区起步区1#供水厂工程
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 23: 石家庄北站bim+智慧工地 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_23')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/石家庄北站BIM智慧工地-1024x576.jpg"
+                alt="石家庄北站bim+智慧工地"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                石家庄北站bim+智慧工地
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 24: 重庆轨道交通重庆东站站后工程 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_24')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆轨道交通重庆东站站后工程-1024x576.jpg"
+                alt="重庆轨道交通重庆东站站后工程"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆轨道交通重庆东站站后工程
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 25: 重庆华电潼南一期2x500mw级 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_25')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆华电潼南一期2x500MW级-1024x576.jpg"
+                alt="重庆华电潼南一期2x500mw级"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆华电潼南一期2x500mw级
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  BIM+智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 26: 三纵线立交三星级智慧工地项目 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_26')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/三纵线立交三星级智慧工地项目-1024x576.jpg"
+                alt="三纵线立交三星级智慧工地项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                三纵线立交三星级智慧工地项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  三星智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 27: 花沟打捆路三星级智慧工地项目 -->
+          <div
+            data-category="smart-site"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_27')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/花沟打捆路三星级智慧工地项目-1024x576.jpg"
+                alt="花沟打捆路三星级智慧工地项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                花沟打捆路三星级智慧工地项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">智慧工地建设</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-emerald-500/25 border-emerald-400/50 text-emerald-200 shadow-[0_0_12px_rgba(16,185,129,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  三星智慧工地
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 28: 重庆来福士 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_28')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆来福士-1024x576.jpg"
+                alt="重庆来福士"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆来福士
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  地标超高层
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 29: 重庆江北机场t3a航站楼 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_29')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆江北机场T3A航站楼-1024x576.jpg"
+                alt="重庆江北机场t3a航站楼"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆江北机场t3a航站楼
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-orange-500/25 border-orange-400/50 text-orange-200 shadow-[0_0_12px_rgba(249,115,22,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  机场/枢纽BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 30: 重庆约克北郡三期项目 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_30')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆约克北郡三期项目-1024x576.jpg"
+                alt="重庆约克北郡三期项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆约克北郡三期项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 31: 重庆东站综合交通枢纽轨道交通工程 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_31')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆东站综合交通枢纽轨道交通工程-1024x576.jpg"
+                alt="重庆东站综合交通枢纽轨道交通工程"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆东站综合交通枢纽轨道交通工程
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-orange-500/25 border-orange-400/50 text-orange-200 shadow-[0_0_12px_rgba(249,115,22,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  机场/枢纽BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 32: 中国人民大学通州新校区 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_32')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/中国人民大学通州新校区-1024x576.jpg"
+                alt="中国人民大学通州新校区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                中国人民大学通州新校区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-blue-500/25 border-blue-400/50 text-blue-200 shadow-[0_0_12px_rgba(59,130,246,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  公共建筑BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 33: 重庆市云阳体育公园 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_33')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆市云阳体育公园-1024x576.jpg"
+                alt="重庆市云阳体育公园"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆市云阳体育公园
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 34: 罗田水库 铁岗水库输水隧洞工程 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_34')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/罗田水库-铁岗水库输水隧洞工程-1024x576.jpg"
+                alt="罗田水库 铁岗水库输水隧洞工程"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                罗田水库 铁岗水库输水隧洞工程
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 35: 开州至云阳高速(江口 云阳 龙缸段)ppp项目 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_35')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/开州至云阳高速江口-云阳-龙缸段PPP项目-1024x576.jpg"
+                alt="开州至云阳高速(江口 云阳 龙缸段)ppp项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                开州至云阳高速(江口 云阳 龙缸段)ppp项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 36: 塔吉克斯坦塞布佐水电站 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_36')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/塔吉克斯坦塞布佐水电站-1024x576.jpg"
+                alt="塔吉克斯坦塞布佐水电站"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                塔吉克斯坦塞布佐水电站
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  地标超高层
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 37: 澜沧江gs水电站项目 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_37')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/澜沧江GS水电站项目-1024x576.jpg"
+                alt="澜沧江gs水电站项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                澜沧江gs水电站项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 38: 重庆市第四人民医院科学城院区 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_38')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆市第四人民医院科学城院区-1024x576.jpg"
+                alt="重庆市第四人民医院科学城院区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆市第四人民医院科学城院区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-blue-500/25 border-blue-400/50 text-blue-200 shadow-[0_0_12px_rgba(59,130,246,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  公共建筑BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 39: 北京协和医院东院区&西院区 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_39')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/北京协和医院东院区西院区-1024x576.jpg"
+                alt="北京协和医院东院区&西院区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                北京协和医院东院区&西院区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-blue-500/25 border-blue-400/50 text-blue-200 shadow-[0_0_12px_rgba(59,130,246,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  公共建筑BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 40: 河北航大兴机场运营基地项目 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_40')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/河北航大兴机场运营基地项目-1024x576.jpg"
+                alt="河北航大兴机场运营基地项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                河北航大兴机场运营基地项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-orange-500/25 border-orange-400/50 text-orange-200 shadow-[0_0_12px_rgba(249,115,22,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  机场/枢纽BIM
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 41: 极深地下极低辐射本底前沿物理实验设施项目(锦屏大设施ii标) -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_41')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/极深地下极低辐射本底前沿物理实验设施项目锦屏大设施II标-1024x576.jpg"
+                alt="极深地下极低辐射本底前沿物理实验设施项目(锦屏大设施ii标)"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                极深地下极低辐射本底前沿物理实验设施项目(锦屏大设施ii标)
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 42: 重庆快速路二横线西段ppp项跨渭井、蔡哥铁路主线桥（五桥同转） -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_42')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆快速路二横线西段PPP项跨渭井、蔡哥铁路主线桥（五桥同转）-1024x576.jpg"
+                alt="重庆快速路二横线西段ppp项跨渭井、蔡哥铁路主线桥（五桥同转）"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆快速路二横线西段ppp项跨渭井、蔡哥铁路主线桥（五桥同转）
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 43: 京东方（成都）创新中心项目 -->
+          <div
+            data-category="bim-consulting"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_43')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/京东方（成都）创新中心项目-1024x576.jpg"
+                alt="京东方（成都）创新中心项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                京东方（成都）创新中心项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10 text-[13px] text-slate-400">
+                <div>
+                  <span>核心产品：</span>
+                  <strong class="text-slate-200 font-medium">BIM咨询服务</strong>
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full bg-amber-500/25 border-amber-400/50 text-amber-200 shadow-[0_0_12px_rgba(245,158,11,0.3)] border text-[12px] font-bold tracking-wide backdrop-blur-md transition-all duration-300"
+                >
+                  工程大奖背书
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 44: 呈贡文体活动中心智慧运维平台 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_44')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/呈贡文体活动中心智慧运维平台-1024x576.jpg"
+                alt="呈贡文体活动中心智慧运维平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                呈贡文体活动中心智慧运维平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 45: 重庆18号线运维平台 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_45')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/重庆18号线运维平台-1024x576.jpg"
+                alt="重庆18号线运维平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                重庆18号线运维平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 46: 数字孪生智慧运维建设服务 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_46')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/数字孪生智慧运维建设服务-1024x576.jpg"
+                alt="数字孪生智慧运维建设服务"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                数字孪生智慧运维建设服务
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 47: 汕尾新港区白沙湖作业区公用码头建设项目智慧运维平台 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_47')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/汕尾新港区白沙湖作业区公用码头建设项目智慧运维平台-1024x576.jpg"
+                alt="汕尾新港区白沙湖作业区公用码头建设项目智慧运维平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                汕尾新港区白沙湖作业区公用码头建设项目智慧运维平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 48: 市郊铁路跳蹬至江津线 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_48')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/市郊铁路跳蹬至江津线-1024x576.jpg"
+                alt="市郊铁路跳蹬至江津线"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                市郊铁路跳蹬至江津线
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 49: g98大三亚环线高速数字孪生平台 -->
+          <div
+            data-category="digital-twin"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_49')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/G98大三亚环线高速数字孪生平台-1024x576.jpg"
+                alt="g98大三亚环线高速数字孪生平台"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                g98大三亚环线高速数字孪生平台
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >数字孪生/智慧运维</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 50: 菲律宾马尼拉国际滨海艺术社区 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_50')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/菲律宾马尼拉国际滨海艺术社区-1-1024x576.jpg"
+                alt="菲律宾马尼拉国际滨海艺术社区"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                菲律宾马尼拉国际滨海艺术社区
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 51: 以色列特拉维夫绿线项目bimvr施工模拟 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_51')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/以色列特拉维夫绿线项目BIMVR施工模拟-1024x576.jpg"
+                alt="以色列特拉维夫绿线项目bimvr施工模拟"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                以色列特拉维夫绿线项目bimvr施工模拟
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 52: 岳阳市中心城区污水系统综合治理 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_52')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/岳阳市中心城区污水系统综合治理-1024x576.jpg"
+                alt="岳阳市中心城区污水系统综合治理"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                岳阳市中心城区污水系统综合治理
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 53: 雄安雄商公司金融岛站周边一体化 展厅 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_53')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/雄安雄商公司金融岛站周边一体化-展厅-1024x576.jpg"
+                alt="雄安雄商公司金融岛站周边一体化 展厅"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                雄安雄商公司金融岛站周边一体化 展厅
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 54: 深圳罗田水库 铁岗水库输水隧洞工程智慧展厅 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_54')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/深圳罗田水库-铁岗水库输水隧洞工程智慧展厅-1024x576.jpg"
+                alt="深圳罗田水库 铁岗水库输水隧洞工程智慧展厅"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                深圳罗田水库 铁岗水库输水隧洞工程智慧展厅
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 55: 云南省昆明市呈贡区文体活动中心 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_55')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/云南省昆明市呈贡区文体活动中心-1024x576.jpg"
+                alt="云南省昆明市呈贡区文体活动中心"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                云南省昆明市呈贡区文体活动中心
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 56: 广州南沙新区明珠湾区起步区二期—智慧展厅 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_56')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/广州南沙新区明珠湾区起步区二期—智慧展厅-1024x576.jpg"
+                alt="广州南沙新区明珠湾区起步区二期—智慧展厅"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                广州南沙新区明珠湾区起步区二期—智慧展厅
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 57: 濮阳医专附属医院智慧展厅项目 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_57')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/濮阳医专附属医院智慧展厅项目-1024x576.jpg"
+                alt="濮阳医专附属医院智慧展厅项目"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                濮阳医专附属医院智慧展厅项目
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 58: 快速路三纵线双山隧道至金家湾智慧展厅 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_58')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/快速路三纵线双山隧道至金家湾智慧展厅-1024x576.jpg"
+                alt="快速路三纵线双山隧道至金家湾智慧展厅"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                快速路三纵线双山隧道至金家湾智慧展厅
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 59: 中山大学肿瘤医学科学中心 观摩会展 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_59')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/中山大学肿瘤医学科学中心-观摩会展-1024x576.jpg"
+                alt="中山大学肿瘤医学科学中心 观摩会展"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                中山大学肿瘤医学科学中心 观摩会展
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 60: 新桥东片区重点城市更新项目 观摩 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_60')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/新桥东片区重点城市更新项目-观摩-1024x576.jpg"
+                alt="新桥东片区重点城市更新项目 观摩"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                新桥东片区重点城市更新项目 观摩
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 61: 长江北岸（塔子山至金科太阳海岸线） 观摩 -->
+          <div
+            data-category="bimvr-exhibition"
+            class="case-card glass-card rounded-[24px] flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+            onclick="openCaseModal('case_real_61')"
+          >
+            <div class="h-[210px] w-full overflow-hidden relative">
+              <img
+                src="https://www.bimcc.cn/wp-content/uploads/2026/01/长江北岸（塔子山至金科太阳海岸线）-观摩-1024x576.jpg"
+                alt="长江北岸（塔子山至金科太阳海岸线） 观摩"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] via-transparent to-transparent opacity-85"
+              ></div>
+              
+            </div>
+
+            <div class="p-6 pb-[18px] flex flex-col flex-1">
+              <h3
+                class="text-[17px] font-bold text-white mb-2.5 group-hover:text-brand-300 transition-colors line-clamp-1"
+              >
+                长江北岸（塔子山至金科太阳海岸线） 观摩
+              </h3>
+
+              <div class="grid grid-cols-2 gap-2 my-2 py-1">
+                <div>
+                  <div class="text-[11px] text-slate-400">服务模式</div>
+                  <div
+                    class="text-[13px] font-bold text-slate-200 line-clamp-1"
+                  >
+                    全周期数字建管
+                  </div>
+                </div>
+                <div>
+                  <div class="text-[11px] text-slate-400">建设成效</div>
+                  <div
+                    class="text-[13px] font-bold text-emerald-400 line-clamp-1"
+                  >
+                    100% 数字化落位
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="mt-auto pt-4 flex items-center border-t border-white/10 text-[13px] text-slate-400"
+              >
+                <span>核心产品：</span>
+                <strong class="text-slate-200 font-medium"
+                  >BIMVR/智慧展厅观摩</strong
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部联系与 CTA 交互 -->
+        <div
+          class="mt-24 text-center flex flex-col items-center border-t border-white/5 pt-16 w-full"
+        >
+          <p class="text-[16px] text-slate-300 mb-6">
+            已有超过
+            <span class="text-white font-bold">1,000+</span>
+            标杆建设项目验证了筑云科技数字建造平台的卓越价值
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <button
+              onclick="openContactModal()"
+              class="px-8 py-3.5 bg-gradient-to-r from-brand-500 to-indigo-600 hover:from-brand-400 hover:to-indigo-500 text-white rounded-full font-semibold text-[15px] shadow-[0_0_25px_rgba(14,165,233,0.4)] transition-all hover:scale-105"
+            >
+              获取您所在行业的专属案例全案与演示
+            </button>
+            <button
+              onclick="alert('正在生成全量案例白皮书PDF下载链接...')"
+              class="px-8 py-3.5 glass-card border border-white/20 hover:border-white/40 text-slate-200 hover:text-white rounded-full font-medium text-[15px] transition-all"
+            >
+              下载《2026智能建造标杆案例白皮书》
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 客户案例深度解析 MODAL 弹窗 ================= -->
+    <div
+      id="case-detail-modal"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 opacity-0 pointer-events-none transition-all duration-300"
+    >
+      <!-- Backdrop 高斯模糊暗黑背景 -->
+      <div
+        class="absolute inset-0 bg-[#0b1121]/80 backdrop-blur-xl transition-opacity duration-300"
+        onclick="closeCaseModal()"
+      ></div>
+
+      <!-- Modal Card 弹窗面板 -->
+      <div
+        class="glass-card relative z-10 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] border border-white/20 p-6 md:p-10 shadow-[0_25px_60px_rgba(0,0,0,0.7)] text-slate-200 transform scale-95 transition-all duration-300"
+      >
+        <!-- 关闭按钮 -->
+        <button
+          onclick="closeCaseModal()"
+          class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white flex items-center justify-center transition-colors"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- 动态 Modal 内容区域 -->
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- ================= 核心底盘 Footer (全站统一设计系统) ================= -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div class="footer-brand-pane">
+            <a class="brand" href="index.html" style="margin-bottom: 1.25rem;">
+              <span class="brand-mark">
+                <img src="assets/brand/logo.png?v=3" alt="BIMCC 筑云科技 Logo" width="32" height="32" />
+              </span>
+              <div class="brand-text">
+                <span class="brand-title">筑云科技</span>
+              </div>
+            </a>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; max-width: 320px; margin-top: 1rem;">
+              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、智慧工地、数字孪生运维、BIM 咨询和数字化教育服务。
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">产品与平台</div>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
+              <li><a href="product-detail.html?slug=enterprise">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=site">智慧工地建设服务</a></li>
+              <li><a href="products.html">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">BIM 咨询服务</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">行业解决方案</div>
+            <ul class="footer-nav-list">
+              <li><a href="solutions.html">建设单位数字建管</a></li>
+              <li><a href="solutions.html">施工单位智能建造</a></li>
+              <li><a href="solutions.html">全咨 / 监理数字化协同</a></li>
+              <li><a href="solutions.html">政府 / 集团监管指挥</a></li>
+              <li><a href="solutions.html">教育 / 医疗基建数字化</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">走进筑云</div>
+            <ul class="footer-nav-list">
+              <li><a href="cases.html">客户案例库 (60+ 案例)</a></li>
+              <li><a href="technology.html">技术与研发体系</a></li>
+              <li><a href="about.html">企业资质与荣誉</a></li>
+              <li><a href="contact.html">联系筑云与网点</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 重庆筑云科技有限公司 BIMCC. All Rights Reserved.</div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="about.html">资质与荣誉</a>
+            <a href="contact.html">服务网络</a>
+            <a href="index.html#home">返回顶部 ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // 真实客户案例深度解析全量数据数据结构
+      const caseDataMap = {
+        gzb: {
+          title: "葛洲坝集团智能项管平台",
+          subtitle: "央企特级资质 | 企业级智能建造 SaaS 平台赋能",
+          category: "企业级数字平台",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/03/葛洲坝集团智能项管平台.jpg",
+          tags: ["央企集团级", "数据中枢", "资金进度穿透"],
+          metrics: [
+            { label: "管控工程项目", value: "200+ 个" },
+            { label: "数据穿透率", value: "99.8%" },
+            { label: "资金安全风险防范", value: "100%" },
+            { label: "审批周期缩短", value: "45%" },
+          ],
+          productName: "筑云企业级智能建造SaaS平台 (BIMCC Enterprise Hub)",
+          painPoint:
+            "葛洲坝集团旗下承建项目分布于全国数十个省市，包含水电、轨道、桥梁等多种复杂业态。总部面临跨区域沟通成本高、进度资金穿透难、现场安全质量盲区等管理瓶颈。",
+          solution:
+            "筑云科技为其打造专属“智能项管平台”，打通项目现场物联网设备、BIM模型与总部ERP。实现单项目到集团总部的多级纵向穿透与横向协同，搭建了涵盖进度预警、资金监控、安全风险自动打分的全局指挥驾驶舱。",
+          quote:
+            "“筑云智能项管平台帮助葛洲坝集团真正实现了全国数百个在建工程的‘一屏统览、实时穿透’，大幅提升了管控效率与风险响应速度。”",
+        },
+        sd14: {
+          title: "中水电十四局华南事业部“HN+智慧建管”平台",
+          subtitle: "水利水电与轨道交通 | 多项目云端协同管理体系",
+          category: "企业级数字平台",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/中水电十四局华南事业部HN智慧建管平台.jpg",
+          tags: ["国企标杆", "移动巡检", "智慧建管"],
+          metrics: [
+            { label: "跨项目协同效率", value: "+ 60%" },
+            { label: "隐患整改闭环率", value: "99.5%" },
+            { label: "现场安监人力节省", value: "35%" },
+            { label: "材料损耗率降低", value: "15%" },
+          ],
+          productName: "BIMCC 智慧建管协同系统 & 移动巡检 App",
+          painPoint:
+            "华南事业部涵盖水利、水环境整治及市政工程，现场地理分散且环境复杂，传统人工纸质巡检存在数据滞后、隐患闭环慢、管理留痕难等挑战。",
+          solution:
+            "筑云科技构建了“HN+智慧建管平台”，结合 AI 视觉智能识别与移动 App 现场拍照即时派单功能，形成“发现-派发-整改-复查”的闭环机制。配合 BIM 4D 进度模拟，全面提升了华南事业部基建工程品控。",
+          quote:
+            "“通过 HN+ 平台，我们的安监人员和项目经理在手机端即可完成全流程穿透，极大地保障了多项目并行施工的安全与质量。”",
+        },
+        jeddah: {
+          title: "沙特吉达市中心综合开发基础设施项目",
+          subtitle: "一带一路重点跨国工程 | 国际工程信息管理系统",
+          category: "交通与大基建",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/沙特吉达市中心综合开发基础设施.jpg",
+          tags: ["一带一路", "国际化SaaS", "多语种协同"],
+          metrics: [
+            { label: "跨国节点流转延误", value: "0 延误" },
+            { label: "三维管线碰撞避险", value: "2,400+ 处" },
+            { label: "审核流程提速", value: "50%" },
+            { label: "合同索赔风险降低", value: "40%" },
+          ],
+          productName: "BIMCC 国际工程协同平台 (Global AEC Hub)",
+          painPoint:
+            "该项目位于中东吉达市，涵盖市政道路、综合管廊、水电力网等极度复杂的地下基础设施。工程涉及中、英、阿等多国规范与多语种团队，传统沟通极易导致信息断层与误解。",
+          solution:
+            "筑云科技部署了全英文/中文双语支持的国际工程信息管理系统。基于云端三维 BIM 引擎，将海量管网设计节点进行实时在线碰撞检查与协同签批，确保跨国管控无缝连接。",
+          quote:
+            "“筑云平台在沙特吉达项目的落地，展现了中国智能建造软件在应对超大型海外复杂基建项目中的国际化硬实力。”",
+        },
+        jinping: {
+          title: "锦屏大设施工程建设智能管理系统",
+          subtitle: "地下2400米前沿大科学装置 | 极端环境高精度三维孪生",
+          category: "水利与新能源",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/锦屏大设施工程建设智能管理系统.jpg",
+          tags: ["大国重器", "地下2400米", "毫米级孪生"],
+          metrics: [
+            { label: "数字孪生精度", value: "1 mm 级" },
+            { label: "环境监测盲区", value: "0 盲区" },
+            { label: "岩爆/渗水预警", value: "提前 30 分钟" },
+            { label: "施工安全事故率", value: "0 事故" },
+          ],
+          productName: "深地三维数字孪生引擎 & 环境物联监测网",
+          painPoint:
+            "锦屏大设施位于四川雅砻江锦屏山地下 2400 米，是全球垂直覆盖最深的极深地下暗室大科学装置。极高的岩体应力、复杂洞室群与地下水文环境对施工安全和施工精度提出了极致苛刻的要求。",
+          solution:
+            "筑云科技攻克深地通信与高密度三维建模难题，为其研发了“深地智能管理系统”。通过数千个物联网微型传感器将暗室温度、湿度、岩体微震与位移数据实时映射至 3D 虚拟洞室中，实现毫米级沉降与爆破感知。",
+          quote:
+            "“在地下 2400 米的极深空间，筑云科技为大国重器打造了一双‘数字天眼’，为这项国家级科研大设施的建设保驾护航。”",
+        },
+        cq15: {
+          title: "重庆轨道 15 号线管控平台",
+          subtitle: "城轨交通标杆 | 盾构掘进姿态感知与智慧工地",
+          category: "交通与大基建",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆轨道15号线管控平台-1.jpg",
+          tags: ["轨道交通", "盾构孪生", "智慧安监"],
+          metrics: [
+            { label: "整体工期优化", value: "提前 20 天" },
+            { label: "地面沉降预警", value: "100% 自动推送" },
+            { label: "管片拼装错台控制", value: "< 2 mm" },
+            { label: "安监达标率", value: "100%" },
+          ],
+          productName: "BIMCC 城轨交通智能管控平台 & 盾构实时监控模块",
+          painPoint:
+            "重庆轨道 15 号线横贯多个城区，包含多段超长隧道与盾构区间。隧道穿越既有建筑物与复杂地质，盾构姿态偏差或地表沉降若不能及时预警将引发严重城市安全风险。",
+          solution:
+            "筑云平台无缝对接盾构机 PLC 系统与地面监测点，构建盾构三维姿态虚拟仿真模型。一旦盾构偏离轴线或沉降数据超标，系统在 3 秒内向现场工程师及管控中心发送告警，有效指导盾构精准纠偏。",
+          quote:
+            "“基于筑云轨道交通管控平台，我们实现了从地下盾构姿态到地面环境安全的全程可视化防范，保证了 15 号线高质高效推进。”",
+        },
+        raffles: {
+          title: "重庆来福士超级地标数字建造",
+          subtitle: "250米高空水晶连廊 | 复杂曲面异形件拼装模拟",
+          category: "标杆公建与地标",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆来福士.jpg",
+          tags: ["超级地标", "250米高空", "BIM预拼装"],
+          metrics: [
+            { label: "高空拼装碰撞事故", value: "0 事故" },
+            { label: "直接返工成本节约", value: "1200 万+" },
+            { label: "异形节点深化设计", value: "提效 70%" },
+            { label: "鲁班奖资质", value: "已荣获" },
+          ],
+          productName: "BIM 异形件预拼装模拟系统 & 钢结构云协同平台",
+          painPoint:
+            "重庆来福士“水晶连廊”悬挂于 250 米高空，重达数万吨，包含海量非标异形钢结构件。若在地面加工阶段存在尺寸误差，高空吊装拼装时极易发生无法对齐与碰撞，造成灾难性延误。",
+          solution:
+            "筑云科技应用自主研发的“三维预拼装系统”，在构件加工完成后即通过三维激光扫描生成点云，与数字模型进行虚拟比对与预拼装，在地面消化了 99% 的加工误差，确保高空一举吊装成功。",
+          quote:
+            "“筑云科技的 BIM 预拼装与三维对比技术，极大降低了来福士空中连廊这一世界级难题的施工风险，是科技赋能地标建筑的典范。”",
+        },
+        cqjd: {
+          title: "重庆机电控股集团企业级数字建造",
+          subtitle: "高端装备与厂房建管 | 投资-建造-资产全生命周期大脑",
+          category: "企业级数字平台",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆机电控股集团企业级.jpg",
+          tags: ["大型集团", "投资管控", "资产数字化"],
+          metrics: [
+            { label: "资金周转效率", value: "+ 22%" },
+            { label: "集团资产数字化率", value: "100%" },
+            { label: "项目变更造价核减", value: "15%" },
+            { label: "决策响应速度", value: "提升 3 倍" },
+          ],
+          productName: "筑云企业资产与工程建管 ERP 系统",
+          painPoint:
+            "作为大型国有装备制造业集团，机电控股每年拥有大量工业厂房与产线技改投资。旧有的建管模式导致资金流与现场工程进度脱节，项目竣工决算拖延严重。",
+          solution:
+            "筑云科技为其构建了企业级工程投资与建管平台，实现“预算-合同-进度-支付-决算”链条的全面数字化，动态直观展示资金沉淀与资产形成过程。",
+          quote:
+            "“筑云平台让集团层面对所有固定资产投资项目的进展与资金流向一目了然，为集团高质量决策提供了强有力的数字依据。”",
+        },
+        lujiao: {
+          title: "鹿角隧道东延伸段三星级智慧工地",
+          subtitle: "市政隧道工程 | 边缘 AI 算力一体机与全自动安监",
+          category: "智慧工地与AI",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/鹿角隧道东延伸段三星智慧工地项目.jpg",
+          tags: ["三星级智慧工地", "AI边缘算力", "安全风险零遗漏"],
+          metrics: [
+            { label: "违规行为识别率", value: "99.2%" },
+            { label: "风险警报闭环", value: "< 15 分钟" },
+            { label: "安全隐患下发数", value: "2,100+ 项" },
+            { label: "智慧工地评级", value: "最高三星级" },
+          ],
+          productName: "筑云 AI 边缘算力盒子 (Edge AI Box) & 智慧工地看板",
+          painPoint:
+            "隧道施工现场粉尘大、光线暗、人员流动频繁，安全员无法 24 小时死守所有施工作业面，未戴安全帽、高空违规作业等隐患极易被遗漏。",
+          solution:
+            "现场部署筑云边缘 AI 算力一体机，直接接入既有监控摄像头。通过内置的 20+ 种建筑安监视觉算法，自动捕捉违章操作并联动现场扬声器语音提醒，同时生成工单下发责任人。",
+          quote:
+            "“鹿角隧道项目荣获三星级智慧工地，筑云科技的 AI 智能安监模块功不可没，实现了安全事故的关口前移。”",
+        },
+        luotian: {
+          title: "深圳罗田水库输水隧洞工程智慧平台",
+          subtitle: "大湾区重大水利工程 | 水力仿真与全生命周期质量溯源",
+          category: "水利与新能源",
+          img: "https://www.bimcc.cn/wp-content/uploads/2026/01/深圳罗田水库-铁岗水库输水隧洞工程智慧管理平台.jpg",
+          tags: ["民生水利", "长距离隧洞", "水力仿真"],
+          metrics: [
+            { label: "渗漏风险监测响应", value: "< 3 秒" },
+            { label: "构件全生命周期溯源", value: "100%" },
+            { label: "质量合格率", value: "99.9%" },
+            { label: "运维期检修效率", value: "+ 50%" },
+          ],
+          productName: "BIMCC 智慧水利数字平台 & 衬砌质量感知系统",
+          painPoint:
+            "输水隧洞隐蔽工程多、运行期位于水下数十米，一旦发生衬砌开裂或渗漏将危及整个城市供水安全，传统人工定期巡检难度极大。",
+          solution:
+            "筑云科技运用 BIM 结合数字孪生与物联网传感器，为每个隧洞管片赋予专属二维码数字身份。在施工及运维期对压力、应变与水质进行全天候监控与数字孪生演练。",
+          quote:
+            "“筑云平台让长距离地下输水隧洞变得透明可控，为深圳市水资源配置工程构建了长效数字保障。”",
+        },
+      };
+
+      // Tab 过滤筛选
+      function filterCases(category) {
+        const tabs = document.querySelectorAll(".case-tab-btn");
+        tabs.forEach((tab) => {
+          if (tab.dataset.tab === category) {
+            tab.className =
+              "case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 bg-brand-500/20 border border-brand-400/40 text-white shadow-sm flex items-center gap-2";
+          } else {
+            tab.className =
+              "case-tab-btn px-5 py-2.5 rounded-full text-[14px] font-medium transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 border border-transparent flex items-center gap-2";
+          }
+        });
+
+        const cards = document.querySelectorAll("#cases-grid .case-card");
+        cards.forEach((card) => {
+          const cardCat = card.dataset.category;
+          if (category === "all" || cardCat === category) {
+            card.style.display = "flex";
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0) scale(1)";
+            }, 50);
+          } else {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(10px) scale(0.98)";
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 300);
+          }
+        });
+
+        // 核心交互体验优化：Tab 切换后平滑自动滚动回到卡片网格顶部
+        const gridContainer = document.getElementById("cases-grid");
+        if (gridContainer) {
+          const gridTop = gridContainer.getBoundingClientRect().top + window.pageYOffset;
+          // 减去 Header 与 Tab 吸附留白空间，精准对齐卡片顶部
+          const targetScrollY = Math.max(0, gridTop - 206);
+          window.scrollTo({
+            top: targetScrollY,
+            behavior: "smooth"
+          });
+        }
+      }
+
+      // 打开案例 Modal 弹窗
+      function openCaseModal(caseId) {
+        const data = caseDataMap[caseId];
+        if (!data) return;
+
+        const modal = document.getElementById("case-detail-modal");
+        const modalContent = document.getElementById("modal-content");
+
+        const metricsHtml = data.metrics
+          .map(
+            (m) => `
+        <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-center">
+          <div class="text-[12px] text-slate-400 mb-1">${m.label}</div>
+          <div class="text-[20px] md:text-[24px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-brand-300">${m.value}</div>
+        </div>
+      `,
+          )
+          .join("");
+
+        const tagsHtml = data.tags
+          .map(
+            (t) => `
+        <span class="px-3 py-1 rounded-full bg-brand-500/20 border border-brand-400/30 text-brand-300 text-[12px] font-medium">
+          ${t}
+        </span>
+      `,
+          )
+          .join("");
+
+        modalContent.innerHTML = `
+        <div class="flex flex-col">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="px-3 py-1 rounded-md bg-white/10 text-white text-[12px] font-semibold tracking-wide">
+              ${data.category}
+            </span>
+            ${tagsHtml}
+          </div>
+
+          <h2 class="text-[26px] md:text-[32px] font-bold text-white mb-2 leading-tight">
+            ${data.title}
+          </h2>
+          <p class="text-[15px] text-brand-400 font-medium mb-6">
+            ${data.subtitle}
+          </p>
+
+          <div class="w-full h-[260px] md:h-[340px] rounded-2xl overflow-hidden mb-8 border border-white/15 relative">
+            <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover" />
+            <div class="absolute bottom-4 left-4 px-4 py-2 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 text-[13px] text-slate-200 flex items-center">
+              <svg class="w-4 h-4 text-emerald-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              核心赋能: ${data.productName}
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="text-[14px] font-bold text-slate-400 uppercase tracking-wider mb-4">关键数字化成果与 ROI 指标</h4>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              ${metricsHtml}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 rounded-2xl bg-red-500/[0.04] border border-red-500/20">
+              <div class="flex items-center text-red-400 font-bold text-[16px] mb-3">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                工程业务痛点 & 挑战
+              </div>
+              <p class="text-[14px] text-slate-300 leading-relaxed">
+                ${data.painPoint}
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-emerald-500/[0.04] border border-emerald-500/20">
+              <div class="flex items-center text-emerald-400 font-bold text-[16px] mb-3">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                筑云科技解决方案 & 赋能
+              </div>
+              <p class="text-[14px] text-slate-300 leading-relaxed">
+                ${data.solution}
+              </p>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-brand-500/10 border border-brand-400/20 mb-8 relative">
+            <div class="text-[15px] italic text-slate-200 leading-relaxed">
+              ${data.quote}
+            </div>
+            <div class="text-[13px] text-brand-300 font-semibold mt-3 text-right">
+              —— ${data.title} 负责人
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 justify-end pt-4 border-t border-white/10">
+            <button
+              onclick="closeCaseModal()"
+              class="px-6 py-2.5 rounded-full border border-white/20 text-slate-300 hover:text-white hover:bg-white/10 text-[14px] font-medium transition-colors"
+            >
+              关闭
+            </button>
+            <button
+              onclick="closeCaseModal(); openContactModal();"
+              class="px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-500 to-indigo-600 hover:from-brand-400 hover:to-indigo-500 text-white text-[14px] font-medium shadow-md transition-all"
+            >
+              预约了解同款平台方案 &rarr;
+            </button>
+          </div>
+        </div>
+      `;
+
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modal.classList.add("opacity-100");
+        const modalContainer = modal.querySelector(".glass-card");
+        if (modalContainer) {
+          modalContainer.classList.remove("scale-95");
+          modalContainer.classList.add("scale-100");
+        }
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeCaseModal() {
+        const modal = document.getElementById("case-detail-modal");
+        if (!modal) return;
+        modal.classList.remove("opacity-100");
+        modal.classList.add("opacity-0", "pointer-events-none");
+        const modalContainer = modal.querySelector(".glass-card");
+        if (modalContainer) {
+          modalContainer.classList.remove("scale-100");
+          modalContainer.classList.add("scale-95");
+        }
+        document.body.style.overflow = "";
+      }
+
+      function openContactModal() {
+        alert(
+          "感谢您的关注！筑云科技高级资深解决方案专家将在 10 分钟内与您联系，提供专属产品演示与白皮书。服务热线: 023-68682379 / 18584713100",
+        );
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeCaseModal();
+        }
+      });
+
+      // 默认加载【智能建造平台】Tab 案例
+      window.addEventListener("DOMContentLoaded", () => {
+        filterCases("smart-build");
+        const hash = window.location.hash.replace("#", "");
+        if (hash && caseDataMap[hash]) {
+          openCaseModal(hash);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>核心技术与研发｜筑云科技 BIMCC 自研多引擎与工业底座</title>
+    <meta name="description" content="筑云科技围绕建设工程行业数字化需求，持续沉淀飞椽 Fyra 智能开发平台、BIMCC 智能建造平台、BIM+GIS+UE+3DGS 多引擎融合、数据中台、物联网中台、AI 能力和工程应用模板，支撑企业级、项目级、行业级场景快速落地。">
+    <meta name="keywords" content="筑云科技,BIMCC,核心技术,飞椽Fyra,多引擎融合,BIM+GIS,数据中台,物联网中台,工程AI,信创国产化">
+    <meta name="theme-color" content="#03060c">
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- 顶部吸顶导航栏 -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link" href="solutions.html">解决方案</a>
+            <a class="nav-link active" href="technology.html" aria-current="page">核心技术</a>
+            <a class="nav-link" href="cases.html">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link active" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 1. 首屏 Hero: 用自研技术底座，支撑工程数字化长期演进 -->
+      <section class="hero-wrapper">
+        <div class="hero-spotlight"></div>
+        <div class="site-container">
+          <div class="hero-grid">
+            <div class="hero-copy reveal">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                <span>R&D ARCHITECTURE & CORE TECH</span>
+              </div>
+              <h1 class="hero-title">
+                用自研技术底座<br>
+                <span class="text-gradient-aurora text-glow">支撑工程数字化长期演进</span>
+              </h1>
+              <p class="hero-lead">
+                不是外包堆砌功能，而是具备自主研发底座与行业沉淀。
+              </p>
+              <p class="hero-body">
+                筑云科技围绕建设工程行业数字化需求，持续沉淀飞椽 Fyra 智能开发平台、BIMCC 智能建造平台、BIM+GIS+UE+3DGS 多引擎融合、数据中台、物联网中台、AI 能力和工程应用模板，支撑企业级、项目级、行业级场景快速落地。
+              </p>
+              <div class="hero-cta-group">
+                <a class="button button-primary" href="products.html">
+                  <span>了解产品平台</span>
+                </a>
+                <a class="button button-secondary" href="cases.html">
+                  <span>查看技术落地案例</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 右侧技术引擎主控台 (Raycast / Wope / ScaleWithTeddy 风格实时工程渲染工作台) -->
+            <div class="cockpit-container reveal delay-150" style="max-width: 620px; width: 100%;">
+              <div class="engine-studio-workbench">
+                <!-- Titlebar -->
+                <div class="engine-studio-titlebar">
+                  <div class="studio-traffic-lights" style="display: flex; align-items: center; gap: 6px;">
+                    <span class="light-dot red"></span>
+                    <span class="light-dot yellow"></span>
+                    <span class="light-dot green"></span>
+                    <span style="margin-left: 6px; font-size: 0.75rem; color: #94a3b8; font-weight: 600; font-family: monospace;">Multi-Engine Studio</span>
+                  </div>
+                  <div class="studio-live-badge" style="font-size: 0.6875rem;">
+                    <span class="status-pulse"></span>
+                    <span id="engineStateBadge">WebGPU 60FPS</span>
+                  </div>
+                </div>
+
+                <!-- Engine Tabs Switcher -->
+                <div class="engine-engine-tabs" role="tablist">
+                  <button class="engine-engine-tab active" data-engine-tab="bim" onclick="switchEngineTab('bim')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <span>01 BIM 轻量化</span>
+                  </button>
+                  <button class="engine-engine-tab" data-engine-tab="gis" onclick="switchEngineTab('gis')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <span>02 GIS 宏观地球</span>
+                  </button>
+                  <button class="engine-engine-tab" data-engine-tab="ue5" onclick="switchEngineTab('ue5')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l10 6.5v7L12 22 2 15.5v-7L12 2z"/></svg>
+                    <span>03 UE5 拟真孪生</span>
+                  </button>
+                  <button class="engine-engine-tab" data-engine-tab="3dgs" onclick="switchEngineTab('3dgs')">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    <span>04 3DGS 实景辐射</span>
+                  </button>
+                </div>
+
+                <!-- Engine Viewport Grid -->
+                <div class="engine-viewport-grid">
+                  <!-- Left: Spatial Hierarchy Tree -->
+                  <div class="engine-sidebar-left" id="engineTreeContainer">
+                    <div style="font-size: 0.6875rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">构件拓扑树</div>
+                    <div class="engine-tree-item active">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                      <span>标段主体结构</span>
+                    </div>
+                    <div class="engine-tree-item" style="padding-left: 18px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      <span>承台与立柱 #04</span>
+                    </div>
+                    <div class="engine-tree-item" style="padding-left: 18px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                      <span>机电综合管综 #12</span>
+                    </div>
+                    <div class="engine-tree-item" style="padding-left: 18px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                      <span>消防水泵机组 #01</span>
+                    </div>
+                    <div class="engine-tree-item" style="margin-top: auto; font-size: 0.6875rem; color: #38bdf8; display: flex; align-items: center; gap: 4px;">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      <span>构件属性: 82 项已挂接</span>
+                    </div>
+                  </div>
+
+                  <!-- Center: Interactive Spatial HUD Canvas -->
+                  <div class="engine-main-canvas" id="engineCanvas">
+                    <div class="engine-spatial-hud">
+                      <div class="engine-spatial-crosshair"></div>
+                      <div class="engine-radar-ring"></div>
+                      <div style="font-size: 0.6875rem; color: #38bdf8; font-family: monospace; z-index: 2; margin-bottom: 4px;" id="engineCanvasTitle">
+                        [WebGL2 / WebGPU Native Core]
+                      </div>
+                      <div style="font-size: 1.125rem; font-weight: 700; color: #fff; z-index: 2;" id="engineModelName">
+                        1,420,000 实体构件
+                      </div>
+                      <div style="font-size: 0.75rem; color: #94a3b8; z-index: 2; margin-top: 4px;" id="engineShaderDesc">
+                        LOD 自动逐级退化 · 毫秒级空间检索
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right: Telemetry & GPU Metrics -->
+                  <div class="engine-sidebar-right" id="engineMetrics">
+                    <div class="engine-telemetry-item">
+                      <span class="engine-telemetry-label">渲染帧率 FPS</span>
+                      <span class="engine-telemetry-val" style="color: #34d399;" id="mMetricFPS">60.0 fps (锁定)</span>
+                    </div>
+                    <div class="engine-telemetry-item">
+                      <span class="engine-telemetry-label">渲染批次 DrawCalls</span>
+                      <span class="engine-telemetry-val" id="mMetricDrawCalls">48 次/帧</span>
+                    </div>
+                    <div class="engine-telemetry-item">
+                      <span class="engine-telemetry-label">三角面体 Triangles</span>
+                      <span class="engine-telemetry-val" style="color: #38bdf8;" id="mMetricTriangles">14.28 M</span>
+                    </div>
+                    <div class="engine-telemetry-item">
+                      <span class="engine-telemetry-label">显存占用 VRAM</span>
+                      <span class="engine-telemetry-val" id="mMetricVRAM">184 MB</span>
+                    </div>
+                    <div class="engine-telemetry-item">
+                      <span class="engine-telemetry-label">信创适配状态</span>
+                      <span class="engine-telemetry-val" style="color: #a78bfa; font-size: 0.8125rem;" id="mMetricOS">麒麟OS / 统信 100%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer Hotkeys Bar -->
+                <div class="engine-studio-footer">
+                  <div class="engine-hotkey-pill">
+                    <kbd>⌘</kbd><kbd>K</kbd>
+                    <span>快速构件定位</span>
+                  </div>
+                  <div class="engine-hotkey-pill">
+                    <kbd>Shift</kbd><kbd>P</kbd>
+                    <span>任意剖切</span>
+                  </div>
+                  <div style="color: #38bdf8; font-family: monospace; font-size: 0.6875rem;">
+                    BIMCC-ENGINE-ACCELERATION: ON
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 技术定位: 自主研发 + 深度行业适配 + 全生命周期服务 -->
+      <section class="site-section" style="padding-top: 3.5rem; padding-bottom: 3.5rem; background: rgba(13, 20, 36, 0.5); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">RESEARCH POSITIONING</div>
+            <h2 class="section-title">自主研发 + 深度行业适配 + 全生命周期服务</h2>
+            <p class="section-desc">
+              筑云的技术研发不是围绕通用软件能力展开，而是围绕工程项目管理、现场感知、BIM 数据、GIS 空间、设备接入、数字交付和企业级运营持续沉淀，服务真实业务闭环。
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="products-grid-3cols">
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);" class="reveal">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(56,189,248,0.12); color: var(--cyan-400); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">自研平台底座</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">
+                以飞椽 Fyra 和 BIMCC 智能建造平台为核心，沉淀工程行业应用快速构建、项目精益管理和数字建造底层能力。
+              </p>
+            </div>
+
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);" class="reveal delay-100">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(129,140,248,0.12); color: var(--indigo-400); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">深度行业适配</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">
+                围绕房建、轨道、市政、水利、民航、文体教育、医疗和综合体等场景，沉淀成熟的专业业务模板与交付方法论。
+              </p>
+            </div>
+
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);" class="reveal delay-150">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(52,211,153,0.12); color: var(--emerald-400); display: flex; align-items: center; justify-content: center; margin-bottom: 16px;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">持续演进扩展</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7;">
+                通过低 / 零代码开发、数据中台、物联网中台和工程 AI 智能体，让平台能够随客户业务发展持续低成本迭代。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 多引擎融合能力: BIM, GIS, UE, 3DGS 不是展示素材，而是业务数据的空间载体 -->
+      <section class="site-section" id="engines">
+        <div class="site-container">
+          <div class="tech-cockpit-wrapper reveal">
+            <div class="tech-flowing-stripes"></div>
+
+            <div class="tech-cockpit-grid">
+              <div>
+                <div class="eyebrow-badge" style="margin-bottom: 16px;">Spatial Data Carrier</div>
+                <h2 style="font-size: clamp(1.75rem, 2.6vw, 2.25rem); font-weight: 700; color: #fff; margin-bottom: 1rem; line-height: 1.35;">
+                  BIM、GIS、UE、3DGS 不是展示素材，而是业务数据的空间载体
+                </h2>
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1.5rem;">
+                  将进度、质量、安全、成本、设备、资料、工单、风险和预警数据深度挂接到空间载体中，形成真正可管理的一张图。
+                </p>
+
+                <div class="tech-kpi-row">
+                  <div class="tech-kpi-card">
+                    <div style="font-size: 2rem; font-weight: 700; color: #fff; font-family: var(--font-sans); margin-bottom: 4px;">
+                      100<span style="color: var(--cyan-400); font-size: 1.25rem;"> 万级</span>
+                    </div>
+                    <div style="font-size: 0.8125rem; color: var(--text-secondary);">超大体量构件秒级轻量化解析</div>
+                  </div>
+                  <div class="tech-kpi-card">
+                    <div style="font-size: 2rem; font-weight: 700; color: #fff; font-family: var(--font-sans); margin-bottom: 4px;">
+                      毫秒<span style="color: var(--cyan-400); font-size: 1.25rem;"> 级</span>
+                    </div>
+                    <div style="font-size: 0.8125rem; color: var(--text-secondary);">模型构件与业务台账联动响应</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4 大空间引擎能力 -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="glass-card" style="padding: 20px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.875rem; font-weight: 700; color: var(--cyan-400); margin-bottom: 4px;">BIM 引擎</div>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">承载构件模型、施工深化、质量验评、设备台账与数字资产交付信息。</p>
+                </div>
+
+                <div class="glass-card" style="padding: 20px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.875rem; font-weight: 700; color: var(--indigo-400); margin-bottom: 4px;">GIS 空间底座</div>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">承载区域、线路、标段、工点分布与多项目全域宏观空间监管关系。</p>
+                </div>
+
+                <div class="glass-card" style="padding: 20px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.875rem; font-weight: 700; color: var(--purple-400); margin-bottom: 4px;">UE 高表现力</div>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">支撑高保真三维场景渲染、复杂工法仿真演示与智慧指挥中心大屏。</p>
+                </div>
+
+                <div class="glass-card" style="padding: 20px; border-radius: var(--radius-sm);">
+                  <div style="font-size: 0.875rem; font-weight: 700; color: var(--emerald-400); margin-bottom: 4px;">3DGS 实景比对</div>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">结合无人机扫描，实现实景模型时序对比、实模一致性核验与问题标记。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 工程 AI 与三大中台体系 (数据中台 / 物联网中台 / AI 算法中台) -->
+      <section class="site-section" id="ai-platforms">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">MIDDLE PLATFORM</div>
+            <h2 class="section-title">工程 AI 与三大中台体系</h2>
+            <p class="section-desc">AI 能力深度融入工程业务流程，依托数据与物联网中台形成强劲中枢支持。</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="products-grid-3cols">
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 12px;">数据中台</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                统一工程主数据标准、数据建模、元数据治理与数据资产服务，消除各系统数据壁垒。
+              </p>
+              <div style="font-size: 0.75rem; color: var(--cyan-400);">能力：主数据治理 · 指标对齐 · 报表服务</div>
+            </div>
+
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 12px;">物联网中台</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                支持智能安全帽、塔吊黑匣子、深基坑自动化传感器、视频流等海量多协议设备快速接入与联动。
+              </p>
+              <div style="font-size: 0.75rem; color: var(--indigo-400);">能力：多协议网关 · 规则引擎 · 秒级报警</div>
+            </div>
+
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 12px;">工程 AI 智能体</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                面向现场违章抓拍、规范文档智能问答、工程进度多维预测与风险研判提供 AI 辅助。
+              </p>
+              <div style="font-size: 0.75rem; color: var(--purple-400);">能力：CV 风险识别 · 行业大模型 · 智能助手</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 底部 CTA -->
+      <section class="site-section" id="contact" style="padding-top: 2rem;">
+        <div class="site-container">
+          <div class="double-bezel reveal">
+            <div class="double-bezel-inner" style="padding: clamp(3rem, 6vw, 4.5rem) 2rem; text-align: center; max-width: 780px; margin: 0 auto;">
+              <div class="eyebrow-badge" style="margin-bottom: 16px;">
+                <span>Tech Consultation</span>
+              </div>
+              <h2 class="section-title" style="font-size: clamp(1.85rem, 3.2vw, 2.5rem); margin-bottom: 1rem;">
+                了解技术落地与系统集成方案？
+              </h2>
+              <p class="section-desc" style="margin-left: auto; margin-right: auto; margin-bottom: 2.25rem;">
+                无论你是评估飞椽零代码底座、BIM+GIS 引擎集成，还是推进国产化信创适配，筑云技术架构专家随时为你提供专业支持。
+              </p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px;">
+                <a class="button button-primary" href="contact.html">
+                  <span>预约技术交流</span>
+                </a>
+                <a class="button button-secondary" href="tel:02368682379">
+                  <span>致电咨询：023-68682379</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div>
+            <a class="brand" href="index.html#home" style="margin-bottom: 1rem;">
+              <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+              <div class="brand-text">
+                <span class="brand-title">筑云科技</span>
+              </div>
+            </a>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; max-width: 320px; margin-top: 1rem;">
+              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、智慧工地、数字孪生运维、BIM 咨询和数字化教育服务。
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">产品与平台</div>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
+              <li><a href="product-detail.html?slug=enterprise">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=site">智慧工地建设服务</a></li>
+              <li><a href="products.html">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">BIM 咨询服务</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">行业解决方案</div>
+            <ul class="footer-nav-list">
+              <li><a href="solutions.html">建设单位数字建管</a></li>
+              <li><a href="solutions.html">施工单位智能建造</a></li>
+              <li><a href="solutions.html">全咨 / 监理数字化协同</a></li>
+              <li><a href="solutions.html">政府 / 集团监管指挥</a></li>
+              <li><a href="solutions.html">教育 / 医疗基建数字化</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">走进筑云</div>
+            <ul class="footer-nav-list">
+              <li><a href="cases.html">客户案例库 (60+ 案例)</a></li>
+              <li><a href="technology.html">技术与研发体系</a></li>
+              <li><a href="about.html">企业资质与荣誉</a></li>
+              <li><a href="contact.html">联系筑云与网点</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 重庆筑云科技有限公司 BIMCC. All Rights Reserved.</div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="about.html">资质与荣誉</a>
+            <a href="contact.html">服务网络</a>
+            <a href="index.html#home">返回顶部 ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>

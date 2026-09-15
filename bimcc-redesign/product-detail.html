@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>产品详情 - 筑云科技 BIMCC</title>
+    <meta name="description" content="筑云科技 BIMCC 产品详情页，展示飞椽 Fyra、BIMCC 智能建造平台、智慧工地、BIM 咨询、数字孪生等核心能力。">
+    <meta name="theme-color" content="#03060d">
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- ======================================================================
+         1. 顶部吸顶磨砂导航栏 (Header from index_v8)
+         ====================================================================== -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link active" href="products.html" aria-current="page">产品平台</a>
+            <a class="nav-link" href="solutions.html">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link" href="cases.html">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link active" href="products.html">产品平台</a>
+          <a class="mobile-nav-link" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 详情页头部区 -->
+      <section class="detail-hero">
+        <div class="site-container">
+          <!-- 面包屑 -->
+          <div class="breadcrumb">
+            <a href="products.html">产品矩阵</a>
+            <span>/</span>
+            <span class="current" data-product-field="title">飞椽 Fyra 智能开发平台</span>
+          </div>
+
+          <!-- 产品快速切换胶囊轨 (Reflect 风格) -->
+          <div class="filter-tabs" style="margin-bottom: 32px; overflow-x: auto; max-width: 100%;" aria-label="切换产品详情">
+            <a class="filter-tab" href="products.html">全部产品</a>
+            <a class="filter-tab" href="product-detail.html?slug=fyra" data-product-link="fyra">飞椽 Fyra</a>
+            <a class="filter-tab" href="product-detail.html?slug=bimcc-platform" data-product-link="bimcc-platform">BIMCC 平台</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-site" data-product-link="smart-site">智慧工地</a>
+            <a class="filter-tab" href="product-detail.html?slug=bim-consulting" data-product-link="bim-consulting">BIM 咨询</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-twin" data-product-link="digital-twin">数字孪生</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-command" data-product-link="smart-command">智慧展厅</a>
+            <a class="filter-tab" href="product-detail.html?slug=engineering-tech" data-product-link="engineering-tech">数字技术</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-education" data-product-link="digital-education">数智教育</a>
+          </div>
+
+          <!-- 动态产品 Hero 容器 (支持 4 种差异化排版架构) -->
+          <div id="productHeroContainer" class="reveal">
+            <!-- 默认初始骨架 / 由 JS 根据 slug 动态生成对应的定制化排版 -->
+            <div class="product-hero-center">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                PRODUCT SPECIFICATION
+              </div>
+              <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 3.2rem); margin-bottom: 16px;" data-product-field="title">
+                飞椽 Fyra 智能开发平台
+              </h1>
+              <p class="hero-description" style="max-width: 760px; margin: 0 auto 28px;" data-product-field="summary">
+                面向工程行业的 AI + 零代码应用开发底座。
+              </p>
+              <div class="hero-actions" style="justify-content: center; margin-bottom: 36px;">
+                <a class="button button-primary header-cta-btn" href="contact.html" data-product-field="primaryCta">
+                  预约演示
+                </a>
+              </div>
+              <div class="wide-canvas-board">
+                <div class="canvas-header-bar">
+                  <span class="canvas-tag">FYRA VISUAL COMPOSER</span>
+                  <div class="canvas-metrics-inline">
+                    <span>DSL 实时渲染: &lt;8ms</span>
+                    <span>工程专属控件: 120+</span>
+                    <span>多端统一发布: 100%</span>
+                  </div>
+                </div>
+                <div class="canvas-flow-track" id="heroDynamicTrack">
+                  <div class="canvas-node-card">
+                    <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">COMPONENT LIBRARY</div>
+                    <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">120+ 工程专属控件</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">表单 / 流程 / 复杂报表 / 大屏</div>
+                  </div>
+                  <div class="canvas-node-card active-engine">
+                    <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">ZERO-CODE ENGINE</div>
+                    <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">飞椽可视化编排</div>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">DSL 实时解析渲染 &lt; 8ms</div>
+                  </div>
+                  <div class="canvas-node-card">
+                    <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">MULTI-TERMINAL</div>
+                    <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">全端即时发布</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Web / 移动端 / 企微 / 钉钉</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 核心业务价值 -->
+      <section class="site-section" id="value">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">ENTERPRISE VALUE</div>
+            <h2 class="section-title" data-product-field="valueTitle">为工程数字化提供持续演进的技术底座</h2>
+            <p class="section-description" data-product-field="valueIntro">产品能力围绕工程业务流程、现场数据和长期运营展开。</p>
+          </div>
+          <div class="bento-values-grid reveal" data-product-list="values"></div>
+        </div>
+      </section>
+
+      <!-- 核心功能与能力模块 -->
+      <section class="site-section" id="capabilities" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">FUNCTIONAL MODULES</div>
+            <h2 class="section-title" data-product-field="capabilityTitle">核心能力模块</h2>
+            <p class="section-description" data-product-field="capabilityIntro">按工程业务实际落地场景深度解耦设计。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-product-list="capabilities"></div>
+        </div>
+      </section>
+
+      <!-- 典型落地场景 -->
+      <section class="site-section" id="scenarios">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">USE CASES & SCENARIOS</div>
+            <h2 class="section-title" data-product-field="scenarioTitle">典型应用场景</h2>
+            <p class="section-description" data-product-field="scenarioIntro">精准适配组织角色、工程类型和建设阶段。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-product-list="scenarios"></div>
+        </div>
+      </section>
+
+      <!-- 规格参数对照表 (AuthKit 风格交互式配置切换) -->
+      <section class="site-section" id="specs" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">SPECIFICATIONS & DELIVERABLES</div>
+            <h2 class="section-title">规格参数与交付方式</h2>
+            <p class="section-description">支持全栈信创私有化部署、行业专网与敏捷 SaaS 模式。</p>
+          </div>
+
+          <div style="max-width: 900px; margin: 0 auto 24px;">
+            <div class="deployment-switcher">
+              <button class="deploy-option-btn active" data-deploy-mode="private" onclick="selectDeployMode('private')">
+                <span class="deploy-btn-title">
+                  <span>信创私有化部署</span>
+                  <span style="font-size: 0.6875rem; color: var(--cyan-400);">ENTERPRISE</span>
+                </span>
+                <span class="deploy-btn-desc">独占资源 · 物理隔离 · 适配国产数据库与芯片</span>
+              </button>
+              <button class="deploy-option-btn" data-deploy-mode="hybrid" onclick="selectDeployMode('hybrid')">
+                <span class="deploy-btn-title">
+                  <span>行业专网 / 混合云</span>
+                  <span style="font-size: 0.6875rem; color: #a78bfa;">HYBRID</span>
+                </span>
+                <span class="deploy-btn-desc">国央企统管 · 专线穿透 · 弹性算力协同</span>
+              </button>
+              <button class="deploy-option-btn" data-deploy-mode="saas" onclick="selectDeployMode('saas')">
+                <span class="deploy-btn-title">
+                  <span>标准云端 SaaS</span>
+                  <span style="font-size: 0.6875rem; color: #22c55e;">FAST PASS</span>
+                </span>
+                <span class="deploy-btn-desc">开箱即用 · 1天快速上线 · 自动版本迭代</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="double-bezel reveal" style="max-width: 900px; margin: 0 auto;">
+            <div class="double-bezel-inner" style="padding: 0;">
+              <dl class="spec-table-row">
+                <dt>部署方式</dt>
+                <dd id="specDeployText" data-product-field="specDeploy">私有化部署 / 行业专网部署 / 混合云 / 纯公有云 SaaS</dd>
+              </dl>
+              <dl class="spec-table-row">
+                <dt>支持终端</dt>
+                <dd id="specClientsText" data-product-field="specClients">PC Web 端 / iOS & Android 移动端 / 微信企微集成 / 数字展厅大屏</dd>
+              </dl>
+              <dl class="spec-table-row">
+                <dt>国产化兼容</dt>
+                <dd id="specCompatibilityText" data-product-field="specCompatibility">已全面适配鲲鹏、昇腾、东方通、达梦数据库等信创环境</dd>
+              </dl>
+              <dl class="spec-table-row">
+                <dt>交付周期</dt>
+                <dd id="specCycleText" data-product-field="specCycle">标准化模块 1~3 天上线，复杂企业级定制 2~4 周交付</dd>
+              </dl>
+              <dl class="spec-table-row">
+                <dt>售后保障</dt>
+                <dd id="specServiceText" data-product-field="specService">全国 5 大服务网络，7×24 小时技术保障与现场实施顾问支持</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 底部 CTA -->
+      <section class="site-section" style="padding-bottom: 6rem;">
+        <div class="site-container">
+          <div class="footer-cta-card reveal">
+            <div class="footer-cta-content">
+              <div class="eyebrow-badge" style="background: rgba(255,255,255,0.06);">GET STARTED</div>
+              <h2 class="footer-cta-title">准备好体验该产品了吗？</h2>
+              <p class="footer-cta-desc">
+                联系我们的产品专家，获取专属实机演示账号与同类标杆案例资料。
+              </p>
+              <div class="footer-cta-actions">
+                <a class="button button-primary" href="contact.html">
+                  <span>预约实机演示</span>
+                </a>
+                <a class="button button-secondary" href="products.html">
+                  <span>返回产品矩阵</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div class="footer-brand-column">
+            <div class="brand">
+              <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+              <div class="brand-text">
+                <span class="brand-title">BIMCC 筑云科技</span>
+                <span class="brand-subtitle">Digital Engineering Platform</span>
+              </div>
+            </div>
+            <p class="footer-summary">
+              国家高新技术企业 · 自研飞椽 Fyra 智能底座，专注建设工程全生命周期数字化与智慧管理。
+            </p>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">产品与平台</h4>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能底座</a></li>
+              <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
+              <li><a href="product-detail.html?slug=digital-twin">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">全部产品矩阵</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">解决方案</h4>
+            <ul class="footer-nav-list">
+              <li><a href="solution-detail.html?slug=enterprise">企业级数字化运营</a></li>
+              <li><a href="solution-detail.html?slug=build-contractor">施工单位智能建造</a></li>
+              <li><a href="solution-detail.html?slug=build-client">建设单位数字建管</a></li>
+              <li><a href="solution-detail.html?slug=build-supervision">全咨监理数字化协同</a></li>
+              <li><a href="solutions.html">全量行业解决方案</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">关于与服务</h4>
+            <ul class="footer-nav-list">
+              <li><a href="about.html">关于筑云</a></li>
+              <li><a href="cases.html">标杆客户案例</a></li>
+              <li><a href="technology.html">核心技术研发</a></li>
+              <li><a href="resources.html">资源与白皮书</a></li>
+              <li><a href="contact.html">联系与咨询</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 筑云科技 BIMCC. 保留所有权利。</div>
+          <div>渝ICP备XXXXXXXX号-1 · 公安网安备5001900250XXXX号</div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#main" class="back-to-top" id="backToTop" aria-label="返回顶部">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>

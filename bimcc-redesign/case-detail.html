@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>案例详情 - 筑云科技 BIMCC</title>
+    <meta name="description" content="筑云科技 BIMCC 重大工程案例详情，展示真实落地成效、技术架构与建设经验。">
+    <meta name="theme-color" content="#03060d">
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- ======================================================================
+         1. 顶部吸顶磨砂导航栏 (Header from index_v8)
+         ====================================================================== -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link" href="solutions.html">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link active" href="cases.html" aria-current="page">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link active" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 案例详情 Hero -->
+      <section class="detail-hero">
+        <div class="site-container">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+            <div class="breadcrumb" style="margin-bottom: 0;">
+              <a href="cases.html">客户案例</a>
+              <span>/</span>
+              <span class="current" data-case-field="title">葛洲坝集团智能项管平台</span>
+            </div>
+            <a class="button button-secondary" href="cases.html" style="font-size: 0.8125rem; padding: 6px 14px;">
+              <span>← 返回案例大厅</span>
+            </a>
+          </div>
+
+          <div class="hero-grid">
+            <div class="hero-content reveal">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                MAJOR ENGINEERING BENCHMARK
+              </div>
+              <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 16px;" data-case-field="title">
+                葛洲坝集团智能项管平台
+              </h1>
+              <p class="hero-description" data-case-field="summary">
+                集团级项目管理、资金进度穿透与工程数据协同。
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary header-cta-btn" href="contact.html">
+                  预约演示
+                </a>
+              </div>
+            </div>
+
+            <div class="cockpit-container reveal delay-150">
+              <div class="cockpit-stage">
+                <div class="cockpit-screen">
+                  <img data-case-field="image" src="https://www.bimcc.cn/wp-content/uploads/2026/03/葛洲坝集团智能项管平台.jpg" alt="筑云科技客户案例项目图">
+                  <div class="telemetry-chip telemetry-chip-top">
+                    <span class="status-pulse"></span>
+                    <span data-case-field="signalA">Major Project</span>
+                  </div>
+                  <div class="telemetry-chip telemetry-chip-bottom">
+                    <span style="color: var(--cyan-400); font-weight: 700;">标杆实践</span>
+                    <span data-case-field="signalB">BIMCC Ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. 工程概况与客户诉求 -->
+      <section class="site-section" id="overview">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">PROJECT PROFILE</div>
+            <h2 class="section-title">工程概况与客户诉求</h2>
+            <p class="section-description">了解该项目在管理复杂度、工期压力与业务规模上的核心挑战。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-case-list="profile"></div>
+        </div>
+      </section>
+
+      <!-- 2. 应用重点与系统部署 -->
+      <section class="site-section" id="focus" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">KEY IMPLEMENTATIONS</div>
+            <h2 class="section-title">应用重点与系统部署</h2>
+            <p class="section-description">围绕现场实操与企业级管控的关键落地功能与模块集成。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-case-list="focus"></div>
+        </div>
+      </section>
+
+      <!-- 3. 落地成效与业务价值 -->
+      <section class="site-section" id="impact">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">VERIFIED IMPACT</div>
+            <h2 class="section-title">落地成效与业务价值</h2>
+            <p class="section-description">以真实数据与可量化指标呈现数字化带来的管理收益。</p>
+          </div>
+          <div class="lifecycle-grid reveal" style="grid-template-columns: repeat(4, 1fr);" data-case-list="capabilities"></div>
+        </div>
+      </section>
+
+      <!-- 4. 同类解决方案路径 -->
+      <section class="site-section" id="solution-path" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">REPLICABLE SOLUTION PATH</div>
+            <h2 class="section-title">该案例采用的同类解决方案路径</h2>
+            <p class="section-description">支持将成熟经验快速复用到同类型工程项目中。</p>
+          </div>
+
+          <div class="double-bezel reveal" style="max-width: 900px; margin: 0 auto;">
+            <div class="double-bezel-inner" style="padding: 32px; display: flex; flex-direction: column; gap: 20px;">
+              <div>
+                <span class="eyebrow-badge" style="margin-bottom: 12px;">RECOMMENDED BLUEPRINT</span>
+                <h3 style="font-size: 1.35rem; color: #ffffff; font-weight: 700; margin-bottom: 8px;" data-case-field="recommendedSolution">
+                  企业级数字化运营与转型方案
+                </h3>
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7;">
+                  该项目采用的标准架构组合包含飞椽 Fyra 智能底座、BIMCC 智能建造平台、数据中台与现场物联网设备集成。
+                </p>
+              </div>
+              <div style="display: flex; gap: 16px; align-items: center; padding-top: 16px; border-top: 1px solid var(--border-subtle);">
+                <a class="button button-primary" href="solutions.html">
+                  <span>查看该解决方案详情</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 底部 CTA -->
+      <section class="site-section" style="padding-bottom: 6rem;">
+        <div class="site-container">
+          <div class="footer-cta-card reveal">
+            <div class="footer-cta-content">
+              <div class="eyebrow-badge" style="background: rgba(255,255,255,0.06);">EXPERIENCE SHARING</div>
+              <h2 class="footer-cta-title">获取该工程的同类方案建议与复盘报告</h2>
+              <p class="footer-cta-desc">
+                联系我们的资深顾问，获取针对您项目类型的完整落地方案与架构建议。
+              </p>
+              <div class="footer-cta-actions">
+                <a class="button button-primary" href="contact.html">
+                  <span>获取同类方案</span>
+                </a>
+                <a class="button button-secondary" href="cases.html">
+                  <span>返回案例大厅</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div class="footer-brand-column">
+            <div class="brand">
+              <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+              <div class="brand-text">
+                <span class="brand-title">BIMCC 筑云科技</span>
+                <span class="brand-subtitle">Digital Engineering Platform</span>
+              </div>
+            </div>
+            <p class="footer-summary">
+              国家高新技术企业 · 自研飞椽 Fyra 智能底座，专注建设工程全生命周期数字化与智慧管理。
+            </p>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">产品与平台</h4>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能底座</a></li>
+              <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
+              <li><a href="product-detail.html?slug=digital-twin">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">全部产品矩阵</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">解决方案</h4>
+            <ul class="footer-nav-list">
+              <li><a href="solution-detail.html?slug=enterprise">企业级数字化运营</a></li>
+              <li><a href="solution-detail.html?slug=build-contractor">施工单位智能建造</a></li>
+              <li><a href="solution-detail.html?slug=build-client">建设单位数字建管</a></li>
+              <li><a href="solution-detail.html?slug=build-supervision">全咨监理数字化协同</a></li>
+              <li><a href="solutions.html">全量行业解决方案</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">关于与服务</h4>
+            <ul class="footer-nav-list">
+              <li><a href="about.html">关于筑云</a></li>
+              <li><a href="cases.html">标杆客户案例</a></li>
+              <li><a href="technology.html">核心技术研发</a></li>
+              <li><a href="resources.html">资源与白皮书</a></li>
+              <li><a href="contact.html">联系与咨询</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 筑云科技 BIMCC. 保留所有权利。</div>
+          <div>渝ICP备XXXXXXXX号-1 · 公安网安备5001900250XXXX号</div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#main" class="back-to-top" id="backToTop" aria-label="返回顶部">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>

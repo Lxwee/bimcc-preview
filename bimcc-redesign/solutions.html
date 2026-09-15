@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>解决方案｜筑云科技 BIMCC 工程数字化与智能建造方案</title>
+    <meta name="description" content="筑云科技面向建设单位、施工企业、全咨监理、政府监管、企业数字化转型与教育医疗客户，提供从前期策划、施工协同到数字运维的工程全生命周期数字化解决方案。">
+    <meta name="keywords" content="筑云科技,BIMCC,解决方案,建设单位数字建管,智能建造,智慧工地,全咨监理,数字孪生运维,轨道交通BIM,水利水电BIM">
+    <meta name="theme-color" content="#03060c">
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- 顶部吸顶导航栏 -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link active" href="solutions.html" aria-current="page">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link" href="cases.html">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link active" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 1. 首屏 Hero: 面向不同客户角色与工程场景的数字建设解决方案 -->
+      <!-- 1. 首屏 Hero: Reflect / ScaleWithTeddy 风格场景矩阵中心 -->
+      <section class="hero-wrapper" style="padding-top: calc(var(--header-height) + 3.5rem); padding-bottom: 4rem;">
+        <div class="hero-spotlight"></div>
+        <div class="site-container">
+          <div class="hero-grid" style="align-items: center;">
+            <div class="hero-copy reveal">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                <span>TAILORED INDUSTRY SOLUTIONS</span>
+              </div>
+              <h1 class="hero-title" style="font-size: clamp(2.25rem, 3.8vw, 3.25rem); line-height: 1.15; margin-bottom: 1.25rem;">
+                面向不同角色与场景的<br>
+                <span class="text-gradient-aurora text-glow">工程建设数字化落地全案</span>
+              </h1>
+              <p class="hero-lead" style="color: var(--text-main); font-size: 1.125rem; font-weight: 500; margin-bottom: 0.75rem;">
+                把自研平台、工程技术与项目经验组合为可落地的行业解决方案。
+              </p>
+              <p class="hero-body" style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.7; margin-bottom: 2rem;">
+                从建设单位、施工企业到全咨监理、政府监管与医院水利客户，筑云科技按真实管理痛点量身定制方案，助力企业降本增效、穿透管理与资产数字化留痕。
+              </p>
+              <div class="hero-cta-group">
+                <a class="button button-primary" href="contact.html">
+                  <span>获取定制方案建议</span>
+                </a>
+                <a class="button button-secondary" href="cases.html">
+                  <span>查看 30+ 标杆落地案例</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- 右侧解决方案交互式全景舱 (取代假素材图) -->
+            <div class="cockpit-container reveal delay-150">
+              <div class="studio-workbench">
+                <div class="studio-titlebar">
+                  <div class="studio-traffic-lights">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--text-muted);">ROI_VALUE_BENCHMARK.json</span>
+                  <div class="studio-telemetry-badge">
+                    <span class="status-pulse"></span>
+                    <span>1000+ PROJECTS</span>
+                  </div>
+                </div>
+
+                <div class="studio-viewport" style="padding: 24px; gap: 14px;">
+                  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 14px;">
+                      <div style="font-size: 0.6875rem; color: var(--text-muted); font-family: var(--font-mono);">DESIGN COORDINATION</div>
+                      <div style="font-size: 1.5rem; font-weight: 800; color: var(--cyan-400); margin: 4px 0;">100%</div>
+                      <div style="font-size: 0.75rem; color: var(--text-secondary);">全专业管综碰撞提前消除</div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px; padding: 14px;">
+                      <div style="font-size: 0.6875rem; color: var(--text-muted); font-family: var(--font-mono);">SCHEDULE VARIANCE</div>
+                      <div style="font-size: 1.5rem; font-weight: 800; color: #22c55e; margin: 4px 0;">-35%</div>
+                      <div style="font-size: 0.75rem; color: var(--text-secondary);">施工关键节点延期风险降低</div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 8px; padding: 14px;">
+                      <div style="font-size: 0.6875rem; color: var(--text-muted); font-family: var(--font-mono);">SAFETY & RISK</div>
+                      <div style="font-size: 1.5rem; font-weight: 800; color: #a78bfa; margin: 4px 0;">24h</div>
+                      <div style="font-size: 0.75rem; color: var(--text-secondary);">现场安全隐患派发复核闭环</div>
+                    </div>
+                    <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 8px; padding: 14px;">
+                      <div style="font-size: 0.6875rem; color: var(--text-muted); font-family: var(--font-mono);">DIGITAL ARCHIVES</div>
+                      <div style="font-size: 1.5rem; font-weight: 800; color: #f59e0b; margin: 4px 0;">99.2%</div>
+                      <div style="font-size: 0.75rem; color: var(--text-secondary);">竣工档案与构件数据挂接率</div>
+                    </div>
+                  </div>
+
+                  <div style="padding: 10px 14px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 6px; font-size: 0.75rem; color: var(--cyan-400); display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: flex; align-items: center; gap: 6px;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                      已适配建设单位、施工总包、全咨监理等全生态
+                    </span>
+                    <a href="#role-solutions" style="color: #fff; text-decoration: underline;">查看细分方案 &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 按客户角色分流 (6 大官方角色解决方案) -->
+      <section class="site-section" id="role-solutions">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">BY STAKEHOLDER ROLE</div>
+            <h2 class="section-title">按你的组织角色，找到适合的建设路径</h2>
+            <p class="section-desc">
+              不同组织在工程数字化中的目标不同。筑云从管理视角、业务流程、系统集成和项目落地出发，为不同客户角色配置对应的平台能力和服务组合。
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="products-grid-3cols">
+            <!-- 2.1 建设单位数字建管 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag accent">业主侧全过程</span>
+                  <span style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 700;">ROLE 01</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">建设单位数字建管解决方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向建设单位、业主单位和城投平台，构建项目全过程监管、投资进度质量安全协同、数字化交付和运维衔接能力。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(56,189,248,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: var(--cyan-400); margin-bottom: 20px;">
+                  推荐组合：BIMCC 智能建造平台 + 数字孪生运维 + BIM 咨询服务
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=build-client">
+                <span>查看建设单位方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- 2.2 施工单位智能建造 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal delay-100">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag" style="color: #fb923c; border-color: rgba(251,146,60,0.3); background: rgba(251,146,60,0.08);">施工履约精益</span>
+                  <span style="font-size: 0.75rem; color: #fb923c; font-weight: 700;">ROLE 02</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">施工单位智能建造解决方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向施工总包、工程局、分公司和项目部，围绕项目履约、质量安全、进度成本、物资设备与现场监管，提升精益建造水平。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(251,146,60,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: #fb923c; margin-bottom: 20px;">
+                  推荐组合：BIMCC 智能建造平台 + 智慧工地 + 飞椽 Fyra + BIM 咨询
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=build-contractor" style="color: #fb923c;">
+                <span>查看施工单位方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- 2.3 全咨 / 监理数字化协同 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal delay-150">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag" style="color: var(--emerald-400); border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08);">多方协同留痕</span>
+                  <span style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 700;">ROLE 03</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">全咨 / 监理数字化协同解决方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向全过程咨询、监理和项目管理单位，支撑多方在线协同、问题销项闭环、过程巡查留痕与数字档案证据链沉淀。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(52,211,153,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: var(--emerald-400); margin-bottom: 20px;">
+                  推荐组合：项目级智能建造平台 + BIM 咨询 + 数字档案 + 协同管理
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=build-supervision" style="color: var(--emerald-400);">
+                <span>查看全咨监理方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- 2.4 政府 / 集团监管指挥 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag" style="color: var(--purple-400); border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.08);">全域一张图监管</span>
+                  <span style="font-size: 0.75rem; color: var(--purple-400); font-weight: 700;">ROLE 04</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">政府 / 集团监管指挥解决方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向政府监管部门、集团总部和区域平台，建设项目一张图全域监管、风险预警、数据驾驶舱和智慧工地平台无缝对接。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(192,132,252,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: var(--purple-400); margin-bottom: 20px;">
+                  推荐组合：监管驾驶舱 + 数据中台 + 智慧工地接入 + BIM+GIS
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=build-regulation" style="color: var(--purple-400);">
+                <span>查看监管指挥方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- 2.5 企业级数字化运营与转型 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal delay-100">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag" style="color: var(--indigo-400); border-color: rgba(129,140,248,0.3); background: rgba(129,140,248,0.08);">集团运营转型</span>
+                  <span style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 700;">ROLE 05</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">企业级数字化运营与转型方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向工程企业数字化部门和管理层，打通多项目、多组织、多系统和多源数据，构建统一的企业级数字化运营平台。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(129,140,248,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: var(--indigo-400); margin-bottom: 20px;">
+                  推荐组合：飞椽 Fyra + BIMCC 智能建造平台 + 数据中台 + 系统集成
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=enterprise" style="color: var(--indigo-400);">
+                <span>查看企业级方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <!-- 2.6 教育 / 医疗基建数字化 -->
+            <div class="glass-card" style="padding: 32px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;" class="reveal delay-150">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <span class="card-tag" style="color: var(--amber-400); border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.08);">行业场景模板</span>
+                  <span style="font-size: 0.75rem; color: var(--amber-400); font-weight: 700;">ROLE 06</span>
+                </div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">行业级智能建造一体化解决方案</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  面向房建、民航、水利水务、隧洞、市政公路和轨道交通等工程，提供可复用的专业场景模板与智能建造实施蓝图。
+                </p>
+                <div style="padding: 10px 12px; background: rgba(251,191,36,0.06); border-radius: var(--radius-xs); font-size: 0.75rem; color: var(--amber-400); margin-bottom: 20px;">
+                  推荐组合：行业模板库 + BIM+GIS 一张图 + 智慧工地 + 数字档案
+                </div>
+              </div>
+              <a class="card-action-link" href="solution-detail.html?slug=industry" style="color: var(--amber-400);">
+                <span>查看行业级方案详情</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 按建设层级选择落地方式 (4 大层级阶梯) -->
+      <section class="site-section" style="background: rgba(13, 20, 36, 0.5); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">DEPLOYMENT LEVEL</div>
+            <h2 class="section-title">按平台建设层级，选择落地方式</h2>
+            <p class="section-desc">
+              工程数字化不一定从“大平台”开始。筑云建议根据组织成熟度、项目数量、系统基础和推广目标，选择企业级、项目级、行业级或专项服务切入。
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;" class="credentials-grid">
+            <div class="glass-card" style="padding: 24px; border-radius: var(--radius-md);">
+              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 700; margin-bottom: 6px;">LEVEL 01</div>
+              <h4 style="font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 8px;">企业级运营转型</h4>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">统一标准、打通系统、沉淀数据资产，支撑多项目高效复制推广。</p>
+              <div style="font-size: 0.75rem; color: var(--text-secondary);">重点能力：运营驾驶舱 / 项企联动 / 数据中台 / 零代码应用</div>
+            </div>
+
+            <div class="glass-card" style="padding: 24px; border-radius: var(--radius-md);">
+              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 700; margin-bottom: 6px;">LEVEL 02</div>
+              <h4 style="font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 8px;">项目级智能建造</h4>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">单项目快速上线，形成进度、质量、安全和档案的业务闭环。</p>
+              <div style="font-size: 0.75rem; color: var(--text-secondary);">重点能力：项目驾驶舱 / BIM+GIS 一张图 / 智慧工地 / 风险销项</div>
+            </div>
+
+            <div class="glass-card" style="padding: 24px; border-radius: var(--radius-md);">
+              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 700; margin-bottom: 6px;">LEVEL 03</div>
+              <h4 style="font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 8px;">行业级一体化方案</h4>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">结合民航、轨交、水利等行业工法与监管要求定制行业模板。</p>
+              <div style="font-size: 0.75rem; color: var(--text-secondary);">重点能力：行业模板 / 多标段协同 / 工点监管 / 专业设备接入</div>
+            </div>
+
+            <div class="glass-card" style="padding: 24px; border-radius: var(--radius-md);">
+              <div style="font-size: 0.75rem; color: var(--amber-400); font-weight: 700; margin-bottom: 6px;">LEVEL 04</div>
+              <h4 style="font-size: 1.0625rem; font-weight: 700; color: #fff; margin-bottom: 8px;">专项能力解决方案</h4>
+              <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">补齐智慧工地、数字孪生、BIM 咨询或展厅指挥中心等专项模块。</p>
+              <div style="font-size: 0.75rem; color: var(--text-secondary);">重点能力：智慧工地 / 数字孪生 / BIM 咨询 / 工程 XR / 教育实训</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 覆盖多类型工程建设行业场景 (6 大行业矩阵) -->
+      <section class="site-section" id="industry-scenarios">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">INDUSTRY VERTICALS</div>
+            <h2 class="section-title">覆盖多类型工程建设行业场景</h2>
+            <p class="section-desc">筑云科技长期服务大型基础设施与公共建筑，将真实项目经验沉淀为行业模板。</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="pain-solution-grid">
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">房建数字建造</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">覆盖设计协调、施工深化、进度计划、质量安全、成本物资、数字档案和竣工交付等全流程。</p>
+            </div>
+
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">民航机场数字化施工</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">面向航站楼、飞行区和配套设施建设，支撑超大异形钢结构、复杂管综与数字化施工管控。</p>
+            </div>
+
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">轨道交通 / 铁路工程</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">长线路、多标段线性工程 BIM+GIS 一张图，盾构掘进姿态监测、区间沉降分析与工点联动。</p>
+            </div>
+
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">市政道路 / 高速公路</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">融合土石方算量、路基边坡监测、桥隧施工协同、征拆台账与现场智慧工地视频一体化监管。</p>
+            </div>
+
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">水利水务 / 抽水蓄能</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">复杂地下厂房洞室开挖、大坝浇筑仿真、水工安全监测与全工区水力学数字化协同管控。</p>
+            </div>
+
+            <div class="glass-card" style="padding: 28px; border-radius: var(--radius-lg);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">医院 / 文体教育 / 科研办公</h4>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.65;">针对复杂公共建筑的机电净化管网、大型场馆空间仿真与运营期数字孪生智慧运维底盘交付。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. 底部 CTA: 准备启动项目数字化建设？ -->
+      <section class="site-section" id="contact" style="padding-top: 2rem;">
+        <div class="site-container">
+          <div class="double-bezel reveal">
+            <div class="double-bezel-inner" style="padding: clamp(3rem, 6vw, 4.5rem) 2rem; text-align: center; max-width: 780px; margin: 0 auto;">
+              <div class="eyebrow-badge" style="margin-bottom: 16px;">
+                <span>Start Your Solution</span>
+              </div>
+              <h2 class="section-title" style="font-size: clamp(1.85rem, 3.2vw, 2.5rem); margin-bottom: 1rem;">
+                不知道适合哪类方案？
+              </h2>
+              <p class="section-desc" style="margin-left: auto; margin-right: auto; margin-bottom: 2.25rem;">
+                告诉我们你的项目类型和组织角色，筑云团队将为你推荐产品组合与实施路径。
+              </p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px;">
+                <a class="button button-primary" href="contact.html">
+                  <span>获取方案建议</span>
+                </a>
+                <a class="button button-secondary" href="tel:02368682379">
+                  <span>致电咨询：023-68682379</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div>
+            <a class="brand" href="index.html#home" style="margin-bottom: 1rem;">
+              <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+              <div class="brand-text">
+                <span class="brand-title">筑云科技</span>
+              </div>
+            </a>
+            <p style="font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; max-width: 320px; margin-top: 1rem;">
+              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、智慧工地、数字孪生运维、BIM 咨询和数字化教育服务。
+            </p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">产品与平台</div>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
+              <li><a href="product-detail.html?slug=enterprise">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=site">智慧工地建设服务</a></li>
+              <li><a href="products.html">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">BIM 咨询服务</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">行业解决方案</div>
+            <ul class="footer-nav-list">
+              <li><a href="solutions.html">建设单位数字建管</a></li>
+              <li><a href="solutions.html">施工单位智能建造</a></li>
+              <li><a href="solutions.html">全咨 / 监理数字化协同</a></li>
+              <li><a href="solutions.html">政府 / 集团监管指挥</a></li>
+              <li><a href="solutions.html">教育 / 医疗基建数字化</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="footer-col-title">走进筑云</div>
+            <ul class="footer-nav-list">
+              <li><a href="cases.html">客户案例库 (60+ 案例)</a></li>
+              <li><a href="technology.html">技术与研发体系</a></li>
+              <li><a href="about.html">企业资质与荣誉</a></li>
+              <li><a href="contact.html">联系筑云与网点</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 重庆筑云科技有限公司 BIMCC. All Rights Reserved.</div>
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <a href="about.html">资质与荣誉</a>
+            <a href="contact.html">服务网络</a>
+            <a href="index.html#home">返回顶部 ↑</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>

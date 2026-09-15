@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>解决方案详情 - 筑云科技 BIMCC</title>
+    <meta name="description" content="筑云科技 BIMCC 解决方案详情页，提供企业级运营、施工单位、建设单位、全咨监理、政府监管与项目级智能建造落地蓝图。">
+    <meta name="theme-color" content="#03060d">
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- ======================================================================
+         1. 顶部吸顶磨砂导航栏 (Header from index_v8)
+         ====================================================================== -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link" href="index.html">首页</a>
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link active" href="solutions.html" aria-current="page">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link" href="cases.html">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约演示</span>
+          </a>
+          <button class="menu-button" id="mobileMenuToggle" aria-label="打开移动端菜单" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link active" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html">预约演示</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 方案详情头部 -->
+      <section class="detail-hero">
+        <div class="site-container">
+          <div class="breadcrumb">
+            <a href="solutions.html">解决方案</a>
+            <span>/</span>
+            <span class="current" data-solution-field="title">企业级数字化运营与转型方案</span>
+          </div>
+
+          <!-- 方案快速切换轨 -->
+          <div class="filter-tabs" style="margin-bottom: 32px; overflow-x: auto; max-width: 100%;" aria-label="切换方案详情">
+            <a class="filter-tab" href="solutions.html">方案总览</a>
+            <a class="filter-tab" href="solution-detail.html?slug=enterprise" data-solution-link="enterprise">企业级统管</a>
+            <a class="filter-tab" href="solution-detail.html?slug=industry" data-solution-link="industry">行业级模板</a>
+            <a class="filter-tab" href="solution-detail.html?slug=project" data-solution-link="project">项目级中控</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-client" data-solution-link="build-client">建设单位</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-contractor" data-solution-link="build-contractor">施工单位</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-supervision" data-solution-link="build-supervision">全咨监理</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-regulation" data-solution-link="build-regulation">政府监管</a>
+          </div>
+
+          <div class="hero-grid" id="solutionHeroGrid">
+            <div class="hero-content reveal">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                <span id="solutionEyebrowBadge">SOLUTION ARCHITECTURE</span>
+              </div>
+              <h1 class="hero-title" style="font-size: clamp(1.85rem, 3.2vw, 2.65rem); margin-bottom: 16px; text-wrap: balance; max-width: 620px;" data-solution-field="title">
+                企业级数字化运营与转型方案
+              </h1>
+              <p class="hero-description" data-solution-field="summary" style="max-width: 560px;">
+                面向施工单位、建设单位、全咨监理和企业运营管理场景，解决多项目统管、组织协同、数据汇聚和经营决策问题。
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary header-cta-btn" href="contact.html">
+                  预约演示
+                </a>
+              </div>
+            </div>
+
+            <!-- 右侧解决方案专属架构工作台 (动态渲染) -->
+            <div class="cockpit-container reveal delay-150" style="max-width: 620px; width: 100%;" id="solutionStudioContainer">
+              <!-- Dynamic Solution Studio Injected Here by script.js?v=2 -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. 行业痛点分析 -->
+      <section class="site-section" id="pain">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">PAIN POINTS DIAGNOSIS</div>
+            <h2 class="section-title" data-solution-field="painTitle">客户为什么迫切需要这套方案</h2>
+            <p class="section-description" data-solution-field="painIntro">深入业务肌理，剖析现场与管理瓶颈。</p>
+          </div>
+          <div class="paradigm-grid reveal" data-solution-list="pain"></div>
+        </div>
+      </section>
+
+      <!-- 2. 筑云如何破局 -->
+      <section class="site-section" id="plan" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">STRATEGIC BLUEPRINT</div>
+            <h2 class="section-title" data-solution-field="planTitle">筑云如何体系化破局</h2>
+            <p class="section-description" data-solution-field="planIntro">以技术底座、业务流程、数据资产与多角色协同四轮驱动。</p>
+          </div>
+          <div class="lifecycle-grid reveal" style="grid-template-columns: repeat(4, 1fr);" data-solution-list="plan"></div>
+        </div>
+      </section>
+
+      <!-- 3. 核心功能与模块 -->
+      <section class="site-section" id="modules">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">FUNCTIONAL MODULES</div>
+            <h2 class="section-title" data-solution-field="moduleTitle">解决方案核心模块</h2>
+            <p class="section-description" data-solution-field="moduleIntro">标准模块开箱即用，按需柔性组合扩展。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-solution-list="modules"></div>
+        </div>
+      </section>
+
+      <!-- 4. 关键交付成果 -->
+      <section class="site-section" id="deliverables" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="site-container">
+          <div class="section-header reveal">
+            <div class="eyebrow-badge">MEASURABLE OUTCOMES</div>
+            <h2 class="section-title" data-solution-field="deliverableTitle">落地核心成效与交付清单</h2>
+            <p class="section-description" data-solution-field="deliverableIntro">让投入转化为清晰可见的管理指标与数据资产。</p>
+          </div>
+          <div class="three-cols-grid reveal" data-solution-list="deliverables"></div>
+        </div>
+      </section>
+
+      <!-- 底部 CTA -->
+      <section class="site-section" style="padding-bottom: 6rem;">
+        <div class="site-container">
+          <div class="footer-cta-card reveal">
+            <div class="footer-cta-content">
+              <div class="eyebrow-badge" style="background: rgba(255,255,255,0.06);">GET IN TOUCH</div>
+              <h2 class="footer-cta-title">获取该方案的完整白皮书与架构建议</h2>
+              <p class="footer-cta-desc">
+                筑云方案专家团队将在 24 小时内与您联系，提供针对您项目类型的专属架构图与落地建议。
+              </p>
+              <div class="footer-cta-actions">
+                <a class="button button-primary" href="contact.html">
+                  <span>预约专家咨询</span>
+                </a>
+                <a class="button button-secondary" href="solutions.html">
+                  <span>返回解决方案矩阵</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-columns">
+          <div class="footer-brand-column">
+            <div class="brand">
+              <div class="brand-mark">
+              <img src="assets/brand/logo.png?v=3" alt="筑云科技 Logo" width="32" height="32">
+            </div>
+              <div class="brand-text">
+                <span class="brand-title">BIMCC 筑云科技</span>
+                <span class="brand-subtitle">Digital Engineering Platform</span>
+              </div>
+            </div>
+            <p class="footer-summary">
+              国家高新技术企业 · 自研飞椽 Fyra 智能底座，专注建设工程全生命周期数字化与智慧管理。
+            </p>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">产品与平台</h4>
+            <ul class="footer-nav-list">
+              <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能底座</a></li>
+              <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
+              <li><a href="product-detail.html?slug=digital-twin">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">全部产品矩阵</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">解决方案</h4>
+            <ul class="footer-nav-list">
+              <li><a href="solution-detail.html?slug=enterprise">企业级数字化运营</a></li>
+              <li><a href="solution-detail.html?slug=build-contractor">施工单位智能建造</a></li>
+              <li><a href="solution-detail.html?slug=build-client">建设单位数字建管</a></li>
+              <li><a href="solution-detail.html?slug=build-supervision">全咨监理数字化协同</a></li>
+              <li><a href="solutions.html">全量行业解决方案</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-group">
+            <h4 class="footer-group-title">关于与服务</h4>
+            <ul class="footer-nav-list">
+              <li><a href="about.html">关于筑云</a></li>
+              <li><a href="cases.html">标杆客户案例</a></li>
+              <li><a href="technology.html">核心技术研发</a></li>
+              <li><a href="resources.html">资源与白皮书</a></li>
+              <li><a href="contact.html">联系与咨询</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <div>© 2026 筑云科技 BIMCC. 保留所有权利。</div>
+          <div>渝ICP备XXXXXXXX号-1 · 公安网安备5001900250XXXX号</div>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#main" class="back-to-top" id="backToTop" aria-label="返回顶部">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>
