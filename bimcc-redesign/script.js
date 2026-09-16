@@ -30,6 +30,29 @@ document.addEventListener("keydown", (event) => {
 const solutionTabs = document.querySelectorAll("[data-solution-tab]");
 const solutionPanels = document.querySelectorAll("[data-solution-panel]");
 
+// 支持 .sol-tab-btn 分段控制器切换
+document.querySelectorAll(".sol-tab-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".sol-tab-btn").forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+    });
+    btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+
+    const targetId = btn.getAttribute("data-target");
+    document.querySelectorAll(".solution-panel-card").forEach((p) => {
+      if (p.id === targetId) {
+        p.style.display = "block";
+        p.classList.add("active");
+      } else {
+        p.style.display = "none";
+        p.classList.remove("active");
+      }
+    });
+  });
+});
+
 function activateSolutionTab(tab) {
   const target = tab.dataset.solutionTab;
 

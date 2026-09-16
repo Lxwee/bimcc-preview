@@ -1142,6 +1142,8 @@ img, svg {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
 /* ==========================================================================
    4. 解决方案与案例 4 列网格 (高保真四周边距与呼吸感)
    ========================================================================== */
@@ -1781,34 +1783,51 @@ img, svg {
    11. Rich Layout Form Components (V8 Aesthetic Diversity)
    -------------------------------------------------------------------------- */
 
-/* 1. 全景产品 8 大产品线卡片网格 (8-Card Panorama Grid) */
-.product-panorama-grid {
+/* --------------------------------------------------------------------------
+   11. Rich Layout Form Components (V8 Aesthetic Diversity)
+   -------------------------------------------------------------------------- */
+
+/* 1. 核心产品平台 6/8 大产品线卡片网格 (Products Grid) */
+.products-grid-3cols, .product-panorama-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .products-grid-3cols, .product-panorama-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-grid-3cols, .product-panorama-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 }
 
 .panorama-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  background: rgba(13, 22, 44, 0.72);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all 0.4s var(--ease-spring);
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .panorama-card:hover {
-  transform: translateY(-6px);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 20px 45px -8px rgba(0, 0, 0, 0.5), 0 0 30px rgba(56, 189, 248, 0.15);
+  transform: translateY(-8px);
+  background: rgba(18, 30, 60, 0.88);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.2);
 }
 
 .panorama-icon-box {
@@ -1838,33 +1857,33 @@ img, svg {
 .icon-amber-yellow { background: linear-gradient(135deg, #fbbf24 0%, #eab308 100%); }
 
 .panorama-title {
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 8px;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   line-height: 1.4;
 }
 
 .panorama-desc {
   font-size: 0.875rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   line-height: 1.75;
-  letter-spacing: 0.02em;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .panorama-link {
   margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--cyan-400);
-  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .panorama-link:hover {
@@ -1875,147 +1894,249 @@ img, svg {
   transition: transform 0.2s ease;
 }
 
-.panorama-link:hover span {
+.panorama-link:hover span:last-child {
   transform: translateX(4px);
 }
 
-/* 2. 交互式场景赋能舞台 (Interactive Scenario Split Stage) */
-.scenario-stage-grid {
+/* 2. 解决方案 Segmented Control 与高保真交互卡片 */
+.solution-tabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.solution-segmented-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(13, 20, 38, 0.7);
+  backdrop-filter: blur(20px);
+  padding: 8px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 860px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.sol-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+}
+
+.sol-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.sol-tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.9) 0%, rgba(59, 130, 246, 0.9) 100%);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.35);
+}
+
+.solution-panel-card {
+  background: linear-gradient(135deg, rgba(14, 26, 52, 0.75) 0%, rgba(6, 14, 30, 0.88) 100%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 28px;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: opacity 0.3s ease;
+}
+
+.sol-panel-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
-.scenario-3d-wrapper {
-  position: relative;
-  min-height: 480px;
-  width: 100%;
+@media (max-width: 992px) {
+  .sol-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
 }
 
-.scenario-3d-card-back {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  transform: rotate(-3deg);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-  pointer-events: none;
+.sol-badge-pill {
+  display: inline-flex;
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cyan-400);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 9999px;
+  margin-bottom: 16px;
 }
 
-.scenario-3d-card-front {
-  position: absolute;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 28px;
-  padding: 40px;
+.sol-panel-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.sol-panel-desc {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.sol-combo-box {
+  margin-bottom: 28px;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sol-combo-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+
+.sol-combo-tags {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.scenario-orbit-circle {
-  position: absolute;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 50%;
-  pointer-events: none;
+.combo-tag {
+  display: inline-flex;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.scenario-orbit-1 {
-  width: 380px;
-  height: 380px;
-  right: -80px;
-  top: -80px;
+.sol-action-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.scenario-orbit-2 {
-  width: 260px;
-  height: 260px;
-  right: -20px;
-  top: -20px;
-  border-color: rgba(56, 189, 248, 0.15);
-}
-
-.scenario-tab-list {
+.sol-feature-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.scenario-tab-item {
-  position: relative;
-  border-radius: var(--radius-md);
-  padding: 24px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.3s var(--ease-spring);
-  overflow: hidden;
-  background: transparent;
-}
-
-.scenario-tab-item.active {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  border-left: 4px solid var(--cyan-400);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.1);
-}
-
-.scenario-tab-item:not(.active):hover {
+.sol-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
 }
 
-.scenario-tab-title {
-  font-size: 1.15rem;
+.sol-feature-item:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateX(4px);
+}
+
+.sol-feature-item .feat-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.sol-feature-item strong {
+  display: block;
+  font-size: 0.9375rem;
   font-weight: 700;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  transition: color 0.2s ease;
+  color: #fff;
+  margin-bottom: 4px;
 }
 
-.scenario-tab-item.active .scenario-tab-title {
-  color: #ffffff;
-}
-
-.scenario-tab-item:hover .scenario-tab-title {
-  color: #ffffff;
-}
-
-.scenario-tab-desc {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-  transition: color 0.2s ease;
-}
-
-.scenario-tab-item.active .scenario-tab-desc {
+.sol-feature-item p {
+  font-size: 0.8125rem;
   color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
 }
 
-.scenario-tab-item:hover .scenario-tab-desc {
-  color: var(--text-secondary);
-}
-
-/* 3. 技术与服务优势 (Tech & Service Advantages Cockpit) */
-@keyframes pan-lines {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
-}
-
+/* 3. 自研技术底座科技驾驶舱 (Tech Cockpit) */
 .tech-cockpit-wrapper {
   position: relative;
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(30px);
-  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(14, 26, 52, 0.8) 0%, rgba(6, 14, 30, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 28px;
+  padding: clamp(2.5rem, 5vw, 4rem);
+  box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.tech-cockpit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 992px) {
+  .tech-cockpit-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.tech-kpi-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.tech-kpi-card {
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.tech-matrix-cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 18px 16px;
+  transition: all 0.3s ease;
+}
+
+.tech-matrix-cell:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-3px);
+}
   padding: clamp(2.5rem, 5vw, 4rem);
   overflow: hidden;
 }
