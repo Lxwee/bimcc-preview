@@ -30,7 +30,28 @@ document.addEventListener("keydown", (event) => {
 const solutionTabs = document.querySelectorAll("[data-solution-tab]");
 const solutionPanels = document.querySelectorAll("[data-solution-panel]");
 
-// 支持 .sol-tab-btn 分段控制器切换
+// 支持大分类方案 Tab 切换（按客户角色 vs 按行业场景）
+document.querySelectorAll(".solution-macro-btn").forEach((macroBtn) => {
+  macroBtn.addEventListener("click", () => {
+    document.querySelectorAll(".solution-macro-btn").forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+    });
+    macroBtn.classList.add("active");
+    macroBtn.setAttribute("aria-selected", "true");
+
+    const targetMode = macroBtn.getAttribute("data-macro-target");
+    if (targetMode === "roles") {
+      document.getElementById("solutionRolesSection").style.display = "block";
+      document.getElementById("solutionIndustrySection").style.display = "none";
+    } else {
+      document.getElementById("solutionRolesSection").style.display = "none";
+      document.getElementById("solutionIndustrySection").style.display = "block";
+    }
+  });
+});
+
+// 支持 .sol-tab-btn 角色分段控制器切换
 document.querySelectorAll(".sol-tab-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".sol-tab-btn").forEach((b) => {
@@ -52,6 +73,7 @@ document.querySelectorAll(".sol-tab-btn").forEach((btn) => {
     });
   });
 });
+
 
 function activateSolutionTab(tab) {
   const target = tab.dataset.solutionTab;
