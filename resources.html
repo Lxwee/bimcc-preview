@@ -116,7 +116,7 @@
           </div>
 
           <div class="three-cols-grid reveal">
-            <div class="double-bezel">
+            <div class="double-bezel" style="cursor: pointer;" onclick="openArticleModal(1)">
               <div class="double-bezel-inner" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                 <div>
                   <span class="eyebrow-badge" style="margin-bottom: 12px;">数据架构</span>
@@ -132,7 +132,7 @@
               </div>
             </div>
 
-            <div class="double-bezel">
+            <div class="double-bezel" style="cursor: pointer;" onclick="openArticleModal(2)">
               <div class="double-bezel-inner" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                 <div>
                   <span class="eyebrow-badge" style="margin-bottom: 12px;">空间融合</span>
@@ -148,7 +148,7 @@
               </div>
             </div>
 
-            <div class="double-bezel">
+            <div class="double-bezel" style="cursor: pointer;" onclick="openArticleModal(3)">
               <div class="double-bezel-inner" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
                 <div>
                   <span class="eyebrow-badge" style="margin-bottom: 12px;">物联实战</span>
@@ -397,8 +397,8 @@
             <h4 class="footer-title">产品平台</h4>
             <ul class="footer-links">
               <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
-              <li><a href="product-detail.html?slug=enterprise">BIMCC 智能建造平台</a></li>
-              <li><a href="product-detail.html?slug=site">智慧工地建设</a></li>
+              <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
+              <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
               <li><a href="products.html">数字孪生与智慧运维</a></li>
               <li><a href="products.html">BIM 咨询服务</a></li>
               <li><a href="products.html">数字化教育体系</a></li>
@@ -445,6 +445,159 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </a>
 
+    <!-- 行业洞察全文阅读 Modal -->
+    <div id="article-modal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(4,8,18,0.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); overflow-y:auto; padding:32px 16px;">
+      <div style="max-width:860px; margin:40px auto; background:#0b1120; border:1px solid rgba(255,255,255,0.14); border-radius:24px; box-shadow:0 28px 70px rgba(0,0,0,0.7); overflow:hidden; position:relative;">
+        <button onclick="closeArticleModal()" aria-label="关闭" style="position:absolute; top:20px; right:20px; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:#ffffff; font-size:22px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.2s; z-index:20;">&times;</button>
+        <div id="article-modal-content" style="padding:48px 40px; color:var(--text-secondary); font-size:0.95rem; line-height:1.8;">
+          <!-- 动态渲染全文 -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const articlesData = {
+        1: {
+          tag: "数据架构与数字化转型",
+          date: "2026-08-28",
+          author: "筑云科技数字工程研究院",
+          title: "工程企业为什么需要从项目系统走向数据中台？",
+          subtitle: "打破单标段数据孤岛，解析企业级指标统一、多源物模型沉淀与项企联动的核心技术路径",
+          content: `
+            <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle);">
+              <p style="font-size: 1.05rem; color: #f1f5f9; font-weight: 500; line-height: 1.8;">
+                过去十年间，国内建筑施工与投资企业大面积采购了协同办公、BIM、智慧工地、材料过磅、劳务实名制等单点系统。然而，随着企业业务版图扩展至数十个甚至上百个项目，管理层发现：系统越多，数据越乱；报表越厚，真相越远。
+              </p>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">一、深水区痛点：从“缺系统”到“系统孤岛成灾”</h3>
+            <p style="margin-bottom: 16px;">
+              多数建筑企业的数字化痛点不再是“没有软件”，而是各系统各自为政：
+            </p>
+            <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+              <li><strong>主数据口径不一：</strong>同一个项目在财务系统叫 A 编码，在材料系统叫 B 编码，在智慧工地又叫 C 简称，集团合并报表需要耗费数十人天手工核对。</li>
+              <li><strong>业务协同断层：</strong>进度计划在 P6 或 Excel 里，现场实际完成产值在劳务分包单据里，二者无法自动核销，导致超付与窝工风险难以及时预警。</li>
+              <li><strong>一次性建设难以资产化：</strong>项目竣工交付后，服务器一关或账号注销，数年积累的模型构件与施工过程数据沦为沉睡垃圾，无法复用到下一个工程。</li>
+            </ul>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">二、数据中台的核心使命：统一物模型与指标字典</h3>
+            <p style="margin-bottom: 16px;">
+              数据中台的本质不是推倒重来，而是作为企业级“数据枢纽”与“统一语言翻译官”：
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>1. 构建统一工程物模型（Digital Twin Object）：</strong>将“墩身”、“箱梁”、“幕墙单元”、“配电箱”等实体，通过标准语义模型统一编码。无论现场用什么品牌的监测仪或哪套填报表单，均挂接至唯一的空间构件上。
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>2. 穿透式“项企联动”指标治理：</strong>将投资预算、合约分解、实测实量、安全隐患等关键指标定义为企业级唯一标准。集团管理层可随时从总部驾驶舱一键下钻至任意标段、任意工点的原始检查单据与施工照片。
+            </p>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">三、筑云方案实践：以飞椽 Fyra 低代码赋能中台快速演进</h3>
+            <p style="margin-bottom: 16px;">
+              筑云科技在葛洲坝集团、重庆建工等大型企业落地中台时，通过飞椽 Fyra 平台提供灵活的可视化配置与数据总线，让企业在保留既有合规系统的前提下，以极低成本持续搭建物联网接入、质量验评看板与经营分析大屏，真正实现“一次建设、多项目持续赋能”。
+            </p>
+          `
+        },
+        2: {
+          tag: "空间融合与工程总控",
+          date: "2026-08-15",
+          author: "筑云科技技术创新中心",
+          title: "BIM+GIS 一张图在重大工程监管中的典型应用",
+          subtitle: "长线性交通、水利与轨道工程如何通过微观 BIM 构件与宏观 GIS 空间底图实现全景监管",
+          content: `
+            <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle);">
+              <p style="font-size: 1.05rem; color: #f1f5f9; font-weight: 500; line-height: 1.8;">
+                对于跨越几十公里甚至上百公里的高铁、地铁、高速公路和水利输水工程，单一的宏观地图看不到构件细节，而传统的单体 BIM 模型又脱离了地形地貌与地理坐标系。BIM+GIS 一张图技术的突破，让宏观态势与微观施工在同一视窗内无缝融合。
+              </p>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">一、关键技术挑战：海量异构三维数据的轻量化与实时渲染</h3>
+            <p style="margin-bottom: 16px;">
+              重大线性工程往往包含数十万级构件、数十 GB 的高分辨率正射影像及数公里地下地质断层。筑云技术团队通过突破三维瓦片（3D Tiles）动态切片分级加载、视锥体剔除（Frustum Culling）以及 WebGL/WebGPU 硬件加速，实现了在普通办公浏览器中秒级渲染全线大场景。
+            </p>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">二、典型应用场景落地剖析</h3>
+            <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px;">
+              <li><strong>全线工期形象动态反演：</strong>将甘特图进度计划关联至 BIM 构件模型，系统自动按照时间轴用红绿蓝三色直观展示各标段提前、按期或滞后状态，工期风险一目了然。</li>
+              <li><strong>盾构下穿与沉降安全监测：</strong>在重庆轨道 15 号线项目中，盾构掘进姿态与地表微动传感器数据实时投射到 3D 地质模型上，一旦沉降突破阈值立即在三维地图上高亮告警并触发联防机制。</li>
+              <li><strong>数字孪生防汛应急调度：</strong>在输水隧洞与水利工程中，接入实时水位流量雨情，在三维地形上模拟淹没推演，为指挥调度赢得宝贵的应急决策时间。</li>
+            </ul>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">三、结语：一张图的尽头是业务闭环</h3>
+            <p style="margin-bottom: 16px;">
+              BIM+GIS 绝不是华而不实的三维动画展板，它核心是作为“空间索引目录”，把工程人员、设备、物料、工单全部锚定在三维时空坐标上，为数字化建造带来实实在在的管理确定性。
+            </p>
+          `
+        },
+        3: {
+          tag: "物联网与现场管控",
+          date: "2026-07-30",
+          author: "筑云科技智慧工地事业部",
+          title: "智慧工地从“设备堆砌”到“风险闭环”的关键突破",
+          subtitle: "如何通过统一协议接入与毫秒级预警规则引擎，将现场海量传感数据转化为可执行的管理工单",
+          content: `
+            <div style="margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle);">
+              <p style="font-size: 1.05rem; color: #f1f5f9; font-weight: 500; line-height: 1.8;">
+                “摄像头装了几百个，没人天天盯着看；高支模传感器响个不停，大家都当耳边风。”这是不少施工项目引入智慧工地后的真实尴尬。只有将感知信号转化为责任闭环工单，智慧工地才能从“装点门面”走向“保驾护航”。
+              </p>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">一、痛点根源：数据链路上存在三大断点</h3>
+            <p style="margin-bottom: 16px;">
+              <strong>断点一：硬件协议七零八落。</strong>塔吊、升降机、环境监测、电箱测温来自不同厂商，各自有私有协议和独立 APP，现场管理人员需要打开四五个手机软件看数据。
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>断点二：告警风暴导致麻木。</strong>阈值设置粗暴，风吹草动就发短信，最终导致真正的危险信号被垃圾警报淹没。
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>断点三：只报警不闭环。</strong>系统提醒了“未戴安全帽”或“基坑位移超标”，但没有责任人领单，更没有整改复核留痕，无法形成法律和管理意义上的责任闭环。
+            </p>
+
+            <h3 style="font-size: 1.25rem; color: #ffffff; font-weight: 700; margin: 28px 0 12px;">二、筑云的破局解法：边缘协议网关 + 规则联动工单引擎</h3>
+            <p style="margin-bottom: 16px;">
+              <strong>1. 工业级协议中枢标准化：</strong>自研边缘计算网关，内置主流协议适配器，无论是 Modbus、MQTT 还是行业安监协议，均实现秒级接入并规范化为标准 JSON 数据流。
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>2. 智能消抖与复合告警规则：</strong>例如在福建永安抽水蓄能电站等复杂地下工程中，系统将“瓦斯浓度爬升”与“通风机开启状态”、“人员定位分布”多维联合研判，避免单一误报。
+            </p>
+            <p style="margin-bottom: 16px;">
+              <strong>3. 自动生成移动整改工单：</strong>发生真实告警后，系统在 3 秒内自动派发责任工单至现场安全员企业微信或微信小程序，要求 30 分钟内拍照核销整改，未销号自动逐级上报至项目经理，彻底杜绝责任真空。
+            </p>
+          `
+        }
+      };
+
+      function openArticleModal(id) {
+        const article = articlesData[id];
+        if (!article) return;
+        const modal = document.getElementById("article-modal");
+        const body = document.getElementById("article-modal-content");
+        body.innerHTML = `
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span class="eyebrow-badge">${article.tag}</span>
+            <span style="font-size:0.8125rem; color:var(--text-muted);">${article.date} · ${article.author}</span>
+          </div>
+          <h2 style="font-size:1.75rem; color:#ffffff; font-weight:800; line-height:1.3; margin-bottom:12px;">${article.title}</h2>
+          <p style="font-size:1rem; color:var(--cyan-400); font-weight:500; margin-bottom:28px; line-height:1.6;">${article.subtitle}</p>
+          ${article.content}
+          <div style="margin-top:40px; padding-top:24px; border-top:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+            <span style="font-size:0.875rem; color:var(--text-muted);">如需获取完整行业报告或定制方案，欢迎联系技术顾问。</span>
+            <a href="contact.html" class="button button-primary" style="padding:10px 20px; font-size:0.875rem;">咨询与预约演示 &rarr;</a>
+          </div>
+        `;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeArticleModal() {
+        const modal = document.getElementById("article-modal");
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+      }
+
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closeArticleModal();
+      });
+    </script>
     <script src="script.js?v=2"></script>
   </body>
 </html>
