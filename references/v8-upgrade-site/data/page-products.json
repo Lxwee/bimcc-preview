@@ -1,0 +1,103 @@
+{
+  "title": "产品平台",
+  "summary": "按飞椽 Fyra、BIMCC 智能建造平台、智慧工地、BIM 咨询、累土智控、数字孪生、工程数字技术创新和数智教育组织产品与服务能力。",
+  "modules": [
+    {
+      "id": "page-products-overview",
+      "name": "产品平台总览",
+      "fields": ["标题", "说明", "主视觉", "核心能力"]
+    },
+    {
+      "id": "page-products-architecture",
+      "name": "产品架构",
+      "fields": ["层级", "产品名称", "说明"]
+    },
+    {
+      "id": "page-products-fyra",
+      "name": "飞椽 Fyra",
+      "fields": ["标题", "说明", "能力标签", "视觉"]
+    },
+    {
+      "id": "page-products-core-platforms",
+      "name": "核心平台",
+      "fields": ["平台名称", "适用场景", "能力标签"]
+    },
+    {
+      "id": "page-products-site-services",
+      "name": "现场与专业服务",
+      "fields": ["服务名称", "说明", "标签"]
+    },
+    {
+      "id": "page-products-innovation",
+      "name": "创新与教育",
+      "fields": ["服务名称", "说明", "标签"]
+    },
+    {
+      "id": "page-products-delivery",
+      "name": "落地方式",
+      "fields": ["阶段名称", "阶段说明", "交付证据"]
+    }
+  ],
+  "platforms": [
+    {
+      "id": "fyra",
+      "name": "飞椽 Fyra 智能开发平台",
+      "position": "工程行业 AI + 零代码开发底座",
+      "fit": "适合快速搭建项目管理、巡检验收、统计报表、驾驶舱和移动端业务应用。",
+      "capabilities": ["页面配置", "表单流程", "报表大屏", "APP / H5", "设备组态", "AI 应用构建"],
+      "source": "宣传册 / V8 视觉素材",
+      "status": "source-available"
+    },
+    {
+      "id": "bimcc-platform",
+      "name": "BIMCC 智能建造平台",
+      "position": "项目全生命周期数字建造管理平台",
+      "fit": "适合建设、施工、监管和运维多方协同，统一工程数据、模型数据和物联数据。",
+      "capabilities": ["BIMGIS 一张图", "进度管理", "质量安全", "成本物资", "数字档案", "智慧监管"],
+      "source": "官网 / 宣传册",
+      "status": "source-available"
+    },
+    {
+      "id": "smart-site",
+      "name": "智慧工地建设",
+      "position": "现场感知与监管闭环能力",
+      "fit": "适合项目现场设备接入、风险识别、视频联动、安全监管和现场看板。",
+      "capabilities": ["设备接入", "视频联动", "安全预警", "实名制", "环境监测", "现场看板"],
+      "source": "官网 / 宣传册",
+      "status": "source-available"
+    },
+    {
+      "id": "digital-twin",
+      "name": "数字孪生与智慧运维",
+      "position": "建设到运营的一张图底座",
+      "fit": "适合园区、场馆、基础设施和公共建筑在交付后继续使用建设阶段数据。",
+      "capabilities": ["三维场景", "资产台账", "运行监测", "空间管理", "运维协同", "数据驾驶舱"],
+      "source": "官网 / 宣传册",
+      "status": "source-available"
+    },
+    {
+      "id": "bim-consulting",
+      "name": "BIM 咨询服务",
+      "position": "全过程、全专业 BIM 技术服务",
+      "fit": "适合方案深化、施工模拟、复杂节点协同、数字交付和工程可视化汇报。",
+      "capabilities": ["模型创建", "碰撞检查", "施工模拟", "深化设计", "数字交付", "汇报展示"],
+      "source": "宣传册",
+      "status": "source-available"
+    },
+    {
+      "id": "education",
+      "name": "数字化教育体系",
+      "position": "面向院校和职教的智能建造实训能力",
+      "fit": "适合工程数字化教学、实训室建设、课程资源和产教融合展示。",
+      "capabilities": ["实训平台", "课程资源", "教学场景", "智能建造", "产教融合", "成果展示"],
+      "source": "宣传册",
+      "status": "source-available"
+    }
+  ],
+  "deliveryModel": [
+    "业务诊断与场景梳理",
+    "平台配置与系统集成",
+    "项目试运行与培训交付",
+    "数据沉淀与持续运营"
+  ]
+}

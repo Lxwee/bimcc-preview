@@ -1,0 +1,1504 @@
+[
+  {
+    "title": "葛洲坝集团智能项管平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级平台",
+    "summary": "集团级项目管理平台案例，呈现企业级多项目统管能力。",
+    "keywords": [
+      "集团统管",
+      "多项目管理",
+      "工程数据协同"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/03/葛洲坝集团智能项管平台.jpg",
+    "imageAlt": "葛洲坝集团智能项管平台项目截图",
+    "detailSlug": "gezhouba-platform",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆机电控股集团企业级 BIM 施工管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级平台",
+    "summary": "企业级数字建造平台案例，面向集团工程管理与投资建造一体化场景。",
+    "keywords": [
+      "集团管控",
+      "投资建造一体化"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆机电控股集团企业级.jpg",
+    "imageAlt": "重庆机电控股集团企业级数字建造项目截图",
+    "detailSlug": "machinery-platform",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆轨道 15 号线管控平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "project",
+      "site",
+      "rail"
+    ],
+    "scenario": "智能建造平台 / 轨道交通 / 项目级平台",
+    "summary": "轨道交通项目管控平台案例，融合 BIM、智慧工地和现场数据应用。",
+    "keywords": [
+      "轨交管控",
+      "现场数据",
+      "智慧工地"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆轨道15号线管控平台-1.jpg",
+    "imageAlt": "重庆轨道 15 号线管控平台项目截图",
+    "detailSlug": "rail-15-platform",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "沙特吉达市中心综合开发基础设施项目",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "project",
+      "infra",
+      "overseas"
+    ],
+    "scenario": "基础设施 / 海外项目 / 海外案例",
+    "summary": "海外复杂基础设施项目案例，呈现多专业、多参建方协同经验。",
+    "keywords": [
+      "海外协同",
+      "复杂基础设施"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/01/沙特吉达市中心综合开发基础设施.jpg",
+    "imageAlt": "沙特吉达市中心综合开发基础设施项目截图",
+    "detailSlug": "jeddah-infrastructure",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆来福士广场幕墙项目",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "project",
+      "building",
+      "bim"
+    ],
+    "scenario": "公共建筑 / 综合体 / 综合体案例",
+    "summary": "复杂综合体与地标工程案例，呈现 BIM 预拼装、异形构件和复杂协同经验。",
+    "keywords": [
+      "异形结构",
+      "地标工程",
+      "BIM 预拼装"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆来福士.jpg",
+    "imageAlt": "重庆来福士超级地标数字建造项目截图",
+    "detailSlug": "raffles-curtain-wall",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "深圳罗田水库 - 铁岗水库输水隧洞工程智慧平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "project",
+      "site",
+      "water"
+    ],
+    "scenario": "水利水务 / 项目级平台 / 水利案例",
+    "summary": "水利隧洞工程智慧平台案例，呈现质量溯源、现场监管和智慧管理能力。",
+    "keywords": [
+      "隧洞建设",
+      "质量溯源",
+      "智慧管理"
+    ],
+    "image": "https://www.bimcc.cn/wp-content/uploads/2026/01/深圳罗田水库-铁岗水库输水隧洞工程智慧管理平台.jpg",
+    "imageAlt": "深圳罗田水库输水隧洞工程智慧平台项目截图",
+    "detailSlug": "luotian-water-platform",
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆建工集团工程质量企业智慧监管平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向工程质量监管与集团级项目管理。",
+    "keywords": [
+      "质量监管",
+      "企业平台",
+      "数据驾驶舱"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "中水电十四局华南事业部“HN+智慧建管平台”",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向事业部多项目管理与智慧建管。",
+    "keywords": [
+      "多项目管理",
+      "智慧建管",
+      "平台集成"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "广州南华 BIM+项目建管平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向工程管理公司的项目数字化管理。",
+    "keywords": [
+      "BIM+项目管理",
+      "协同管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "江北城开智慧建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向城开平台的工程数字化建设。",
+    "keywords": [
+      "智慧建造",
+      "项目统管"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "绿发数字建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向基础设施建设公司的数字建造平台。",
+    "keywords": [
+      "数字建造",
+      "企业平台"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "海南交投数智建管平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向交通投资集团的数智建管场景。",
+    "keywords": [
+      "交通建设",
+      "集团管控",
+      "数智建管"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "四川美术学院悦来校区智慧建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building"
+    ],
+    "scenario": "智能建造平台 / 文体教育",
+    "summary": "面向高校建设项目的智慧建造管理。",
+    "keywords": [
+      "校园建设",
+      "项目管理",
+      "数字交付"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆市渝北区中医院 BIM 智慧管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building"
+    ],
+    "scenario": "智能建造平台 / 医疗建筑",
+    "summary": "面向医院建设项目的 BIM 智慧管理。",
+    "keywords": [
+      "医疗建筑",
+      "BIM 管理",
+      "智慧平台"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "北京城市副中心行政办公区二期智慧工地",
+    "category": "site",
+    "categories": [
+      "site",
+      "building"
+    ],
+    "scenario": "智慧工地 / 公共建筑",
+    "summary": "面向大型公共建筑现场监管。",
+    "keywords": [
+      "智慧工地",
+      "现场监管",
+      "公共建筑"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "濮阳职业技术学院本科部新校区智慧工地",
+    "category": "site",
+    "categories": [
+      "site",
+      "building"
+    ],
+    "scenario": "智慧工地 / 文体教育",
+    "summary": "面向校园建设项目现场管理。",
+    "keywords": [
+      "校园建设",
+      "智慧工地",
+      "质量安全"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆轨道交通重庆东站站后工程智慧工地系统",
+    "category": "site",
+    "categories": [
+      "site",
+      "rail"
+    ],
+    "scenario": "智慧工地 / 轨道交通",
+    "summary": "面向轨道交通站后工程现场管理。",
+    "keywords": [
+      "轨道交通",
+      "现场数据",
+      "智慧工地"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "北滨路东延伸段一期三星智慧工地",
+    "category": "site",
+    "categories": [
+      "site",
+      "infra"
+    ],
+    "scenario": "智慧工地 / 市政道路",
+    "summary": "面向城市道路工程智慧工地建设。",
+    "keywords": [
+      "三星智慧工地",
+      "市政道路"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "三纵线立交三星级智慧工地项目",
+    "category": "site",
+    "categories": [
+      "site",
+      "infra"
+    ],
+    "scenario": "智慧工地 / 市政道路",
+    "summary": "面向快速路与立交工程现场管理。",
+    "keywords": [
+      "BIM+智慧工地",
+      "线性工程",
+      "实名制"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "礼嘉儿童医院三星级智慧工地项目",
+    "category": "site",
+    "categories": [
+      "site",
+      "building"
+    ],
+    "scenario": "智慧工地 / 医疗建筑",
+    "summary": "面向医疗建设项目现场监管。",
+    "keywords": [
+      "智慧工地",
+      "安全质量",
+      "现场监管"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "新州大道道路工程项目智慧工地",
+    "category": "site",
+    "categories": [
+      "site",
+      "infra"
+    ],
+    "scenario": "智慧工地 / 道路工程",
+    "summary": "面向道路工程现场管理与监管接入。",
+    "keywords": [
+      "道路工程",
+      "智慧工地",
+      "设备接入"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "石家庄北站 BIM+智慧工地服务平台",
+    "category": "site",
+    "categories": [
+      "site",
+      "rail"
+    ],
+    "scenario": "智慧工地 / 铁路站场",
+    "summary": "面向铁路站场智慧工地服务。",
+    "keywords": [
+      "BIM+智慧工地",
+      "铁路站场"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "罗田水库提标改造工程",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "water"
+    ],
+    "scenario": "BIM 咨询 / 水利水电",
+    "summary": "面向水利工程 BIM 咨询与数字化交付。",
+    "keywords": [
+      "BIM 咨询",
+      "水利工程",
+      "数字交付"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "珠江三角洲水资源配置工程 C1 标",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "water"
+    ],
+    "scenario": "BIM 咨询 / 水资源配置",
+    "summary": "面向大型水资源配置工程 BIM 服务。",
+    "keywords": [
+      "水利水务",
+      "BIM 咨询",
+      "工程协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "渝湘复线高速公路项目",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 高速公路",
+    "summary": "面向高速公路建设的 BIM 技术服务。",
+    "keywords": [
+      "高速公路",
+      "BIM 应用",
+      "施工协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆轨道交通 15 号线系列",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 轨道交通",
+    "summary": "面向轨道交通系列工程 BIM 服务。",
+    "keywords": [
+      "轨道交通",
+      "BIM 咨询",
+      "线性工程"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "郭家沱长江大桥",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 桥梁工程",
+    "summary": "面向特大型桥梁项目的 BIM 技术服务。",
+    "keywords": [
+      "桥梁工程",
+      "BIM 咨询",
+      "复杂结构"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆江北国际机场 T3A 航站楼",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "building"
+    ],
+    "scenario": "BIM 咨询 / 综合体",
+    "summary": "面向大型航站楼综合体的全专业 BIM 服务。",
+    "keywords": [
+      "航站楼",
+      "全专业 BIM",
+      "复杂协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "呈贡文体活动中心智慧运维平台",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "building"
+    ],
+    "scenario": "数字孪生 / 智慧运维",
+    "summary": "面向文体场馆的数字孪生与运维管理。",
+    "keywords": [
+      "智慧运维",
+      "资产管理",
+      "可视化驾驶舱"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆 18 号线运维平台",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "rail"
+    ],
+    "scenario": "数字孪生 / 轨道运维",
+    "summary": "面向轨道交通运营阶段的智慧运维。",
+    "keywords": [
+      "轨道交通",
+      "智慧运维",
+      "设备管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "G98 大三亚环线高速数字孪生平台",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "infra"
+    ],
+    "scenario": "数字孪生 / 高速公路",
+    "summary": "面向高速公路场景的数字孪生管理。",
+    "keywords": [
+      "数字孪生",
+      "高速公路",
+      "运营管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "汕尾新港区白沙湖作业区公用码头智慧运维平台",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "infra"
+    ],
+    "scenario": "数字孪生 / 港区码头",
+    "summary": "面向港区码头资产运营管理。",
+    "keywords": [
+      "港区码头",
+      "智慧运维",
+      "资产台账"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "罗田水库 - 铁岗水库输水隧洞工程展厅",
+    "category": "command",
+    "categories": [
+      "command",
+      "water"
+    ],
+    "scenario": "智慧展厅 / 水利水务",
+    "summary": "面向重点水利工程展示与汇报。",
+    "keywords": [
+      "智慧展厅",
+      "项目展示",
+      "数字汇报"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "雄安雄商公司金融岛站周边一体化开发项目智慧展厅",
+    "category": "command",
+    "categories": [
+      "command",
+      "infra"
+    ],
+    "scenario": "智慧展厅 / 地下空间",
+    "summary": "面向综合开发项目的智慧展厅建设。",
+    "keywords": [
+      "智慧展厅",
+      "综合开发",
+      "展示汇报"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "濮阳职业技术学院本科部新校区智慧展厅",
+    "category": "command",
+    "categories": [
+      "command",
+      "building"
+    ],
+    "scenario": "智慧展厅 / 教育建筑",
+    "summary": "面向校园项目的展厅与成果展示。",
+    "keywords": [
+      "智慧展厅",
+      "校园建设",
+      "成果展示"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "郭家沱大桥智慧展厅项目",
+    "category": "command",
+    "categories": [
+      "command",
+      "building"
+    ],
+    "scenario": "智慧展厅 / 桥梁工程",
+    "summary": "面向桥梁工程的展示空间建设。",
+    "keywords": [
+      "智慧展厅",
+      "桥梁工程",
+      "观摩汇报"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "菲律宾马尼拉国际滨海艺术社区 BIMVR 演示项目",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "overseas"
+    ],
+    "scenario": "BIMVR / 海外项目",
+    "summary": "面向海外项目投标与实施阶段展示。",
+    "keywords": [
+      "BIMVR",
+      "1:1 模拟",
+      "可视化交付"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "以色列特拉维夫绿线项目 BIMVR 施工模拟",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "rail",
+      "overseas"
+    ],
+    "scenario": "BIMVR / 轨道交通",
+    "summary": "面向轨道交通施工模拟与可视化展示。",
+    "keywords": [
+      "BIMVR",
+      "施工模拟",
+      "轨道交通"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "岳阳市中心城区污水系统综合治理 BIMVR 项目",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "water"
+    ],
+    "scenario": "BIMVR / 水务工程",
+    "summary": "面向水务治理项目的虚拟仿真展示。",
+    "keywords": [
+      "BIMVR",
+      "污水治理",
+      "培训展示"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "中冶赛迪定制化平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向工程咨询与企业管理的定制化平台建设。",
+    "keywords": [
+      "定制平台",
+      "业务流程",
+      "企业协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "数字绿建信息管理系统",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向绿色建材和项目数字化管理。",
+    "keywords": [
+      "信息管理",
+      "项目协同",
+      "企业平台"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "甘肃建投数字建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向建筑科研与工程企业数字建造。",
+    "keywords": [
+      "数字建造",
+      "集团管理",
+      "平台建设"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "成都环境 AI+智能建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向环境工程建设公司的智能建造平台。",
+    "keywords": [
+      "AI 应用",
+      "工程管理",
+      "企业平台"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "水电二局 AI 智慧安全管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向水电工程企业的安全管理数字化。",
+    "keywords": [
+      "AI 安全",
+      "风险管理",
+      "工程数据"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆工商职业学院数字基建管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building"
+    ],
+    "scenario": "智能建造平台 / 院校基建",
+    "summary": "面向院校基建项目的数字化管理。",
+    "keywords": [
+      "数字基建",
+      "院校建设",
+      "项目管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "四川能投综能项目管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "enterprise"
+    ],
+    "scenario": "智能建造平台 / 企业级",
+    "summary": "面向能源投资企业的项目管理平台。",
+    "keywords": [
+      "项目管理",
+      "企业平台",
+      "经营协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "濮阳医专附属医院项目智慧工地项目管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building",
+      "site"
+    ],
+    "scenario": "智能建造平台 / 医疗建筑",
+    "summary": "面向医院建设项目的项目管理与智慧工地融合。",
+    "keywords": [
+      "医疗建筑",
+      "项目管理",
+      "智慧工地"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "三峡国际健康城三峡医学中心项目一期工程",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building"
+    ],
+    "scenario": "智能建造平台 / 医疗建筑",
+    "summary": "面向医疗综合体建设项目的数字化管理。",
+    "keywords": [
+      "医疗综合体",
+      "项目管理",
+      "BIM 协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "云阳县体育公园项目 BIM 数字建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building"
+    ],
+    "scenario": "智能建造平台 / 文体教育",
+    "summary": "面向文体项目的 BIM 数字建造管理。",
+    "keywords": [
+      "文体项目",
+      "BIM 平台",
+      "数字建造"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆市劳动人民文化宫保护提升改建项目智慧监管平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building",
+      "site"
+    ],
+    "scenario": "智慧工地 / 文体教育",
+    "summary": "面向保护提升改建项目的智慧监管。",
+    "keywords": [
+      "智慧监管",
+      "公共建筑",
+      "改建项目"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "云南省昆明市呈贡区文体活动中心 PPP 项目 BIM+智慧管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "building",
+      "twin"
+    ],
+    "scenario": "智能建造平台 / 文体场馆",
+    "summary": "面向文体场馆建设和运维衔接场景。",
+    "keywords": [
+      "BIM+智慧管理",
+      "文体场馆",
+      "智慧运维"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "南宁吴圩国际机场 T3 航站区及配套设施建设工程",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "infra",
+      "airport"
+    ],
+    "scenario": "智能建造平台 / 民航机场",
+    "summary": "面向民航机场大体量复杂工程协同。",
+    "keywords": [
+      "机场建设",
+      "BIM+GIS",
+      "一张图决策"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "定日机场智慧工地管理平台",
+    "category": "site",
+    "categories": [
+      "site",
+      "infra",
+      "airport"
+    ],
+    "scenario": "智慧工地 / 民航机场",
+    "summary": "面向机场施工现场管理和监管接入。",
+    "keywords": [
+      "智慧工地",
+      "机场建设",
+      "现场监管"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "十堰武当山机场飞行区改扩建工程数字化平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "infra",
+      "airport"
+    ],
+    "scenario": "智能建造平台 / 民航机场",
+    "summary": "面向飞行区改扩建工程数字化管理。",
+    "keywords": [
+      "飞行区",
+      "数字平台",
+      "施工管控"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "永安抽蓄智慧工地平台",
+    "category": "site",
+    "categories": [
+      "site",
+      "water"
+    ],
+    "scenario": "智慧工地 / 水利水电",
+    "summary": "面向抽水蓄能电站智慧工地建设。",
+    "keywords": [
+      "抽水蓄能",
+      "设备集成",
+      "一张图指挥"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "汕尾新港区白沙湖作业区公用码头建设项目",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "water",
+      "twin"
+    ],
+    "scenario": "数字孪生 / 水利水运",
+    "summary": "面向港区码头建设和智慧运维管理。",
+    "keywords": [
+      "港区码头",
+      "智慧运维",
+      "资产管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "浙江泰顺抽水蓄能电站输水发电系统工程",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "water"
+    ],
+    "scenario": "BIM 咨询 / 水利水电",
+    "summary": "面向抽水蓄能工程 BIM 技术服务。",
+    "keywords": [
+      "抽水蓄能",
+      "BIM 咨询",
+      "输水发电系统"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "环北部湾广东水资源配置工程施工 B4 标",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "water"
+    ],
+    "scenario": "BIM 咨询 / 水资源配置",
+    "summary": "面向跨区域水资源配置工程 BIM 服务。",
+    "keywords": [
+      "水资源配置",
+      "BIM 咨询",
+      "工程协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "公明水库 - 清林径水库连通工程土建二标",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "water"
+    ],
+    "scenario": "BIM 咨询 / 水利水电",
+    "summary": "面向水库连通工程 BIM 技术服务。",
+    "keywords": [
+      "水库连通",
+      "BIM 咨询",
+      "施工协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "天府站智慧工地系统",
+    "category": "site",
+    "categories": [
+      "site",
+      "rail"
+    ],
+    "scenario": "智慧工地 / 轨道交通",
+    "summary": "面向铁路站场施工现场管理。",
+    "keywords": [
+      "铁路站场",
+      "智慧工地",
+      "现场协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "轨道交通 18 号线 BIM 数字建造平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "rail",
+      "twin"
+    ],
+    "scenario": "智能建造平台 / 轨道交通",
+    "summary": "面向轨道交通项目数字建造管理。",
+    "keywords": [
+      "轨道交通",
+      "BIM 平台",
+      "数字建造"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆轨道六号线二期支线项目 BIM 施工管理平台",
+    "category": "platform",
+    "categories": [
+      "platform",
+      "rail",
+      "bim"
+    ],
+    "scenario": "智能建造平台 / 轨道交通",
+    "summary": "面向轨道交通支线项目施工管理。",
+    "keywords": [
+      "BIM 施工管理",
+      "轨道交通",
+      "项目协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆轨道 5 号北线 / 轨道 4 号线二期",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 轨道交通",
+    "summary": "面向轨道交通系列工程 BIM 技术服务。",
+    "keywords": [
+      "轨道交通",
+      "BIM 咨询",
+      "线性工程"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "天津市轨道交通 Z2 线一期工程 PPP 项目",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 轨道交通",
+    "summary": "面向轨道交通 PPP 项目 BIM 技术服务。",
+    "keywords": [
+      "轨道交通",
+      "PPP 项目",
+      "BIM 协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆东站综合交通枢纽轨道交通工程",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 轨道交通",
+    "summary": "面向大型交通枢纽轨道工程 BIM 服务。",
+    "keywords": [
+      "交通枢纽",
+      "轨道交通",
+      "复杂协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "济南城市轨道交通 7 号线一期工程",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 轨道交通",
+    "summary": "面向城市轨道交通工程 BIM 服务。",
+    "keywords": [
+      "城市轨道",
+      "BIM 咨询",
+      "线性工程"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆至万州高速铁路万州北站项目",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "rail"
+    ],
+    "scenario": "BIM 咨询 / 铁路工程",
+    "summary": "面向高速铁路站房与轨道相关工程。",
+    "keywords": [
+      "高速铁路",
+      "BIM 咨询",
+      "站房工程"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "渝武高速拓宽改造工程二标段",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 市政高速",
+    "summary": "面向高速公路拓宽改造 BIM 服务。",
+    "keywords": [
+      "高速公路",
+      "拓宽改造",
+      "BIM 应用"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "开州至云阳高速 PPP 项目数字建造管理平台",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 市政高速",
+    "summary": "面向高速公路 PPP 项目数字建造。",
+    "keywords": [
+      "高速公路",
+      "数字建造",
+      "项目管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆红岩村嘉陵江大桥",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 桥梁工程",
+    "summary": "面向特大型桥梁工程 BIM 技术服务。",
+    "keywords": [
+      "桥梁工程",
+      "BIM 咨询",
+      "复杂结构"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "礼嘉嘉陵江大桥",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 桥梁工程",
+    "summary": "面向大型桥梁工程 BIM 技术服务。",
+    "keywords": [
+      "桥梁工程",
+      "BIM 咨询",
+      "施工协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "南纪门长江大桥",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 桥梁工程",
+    "summary": "面向跨江桥梁工程 BIM 技术服务。",
+    "keywords": [
+      "跨江桥梁",
+      "BIM 咨询",
+      "复杂结构"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "李家沱长江复线桥",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "infra"
+    ],
+    "scenario": "BIM 咨询 / 桥梁工程",
+    "summary": "面向跨江桥梁复线工程 BIM 技术服务。",
+    "keywords": [
+      "桥梁工程",
+      "复线工程",
+      "BIM 应用"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "北京协和医院东院区＆西院区",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "building"
+    ],
+    "scenario": "BIM 咨询 / 医疗建筑",
+    "summary": "面向大型医疗建筑 BIM 技术服务。",
+    "keywords": [
+      "医疗建筑",
+      "BIM 咨询",
+      "专业协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "中国人民大学通州新校区",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "building"
+    ],
+    "scenario": "BIM 咨询 / 教体文旅",
+    "summary": "面向高校园区建设项目 BIM 服务。",
+    "keywords": [
+      "校园建设",
+      "BIM 咨询",
+      "数字交付"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "重庆约克北郡三期项目（香港置地光环）",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "building"
+    ],
+    "scenario": "BIM 咨询 / 综合体",
+    "summary": "面向大型商业办公综合体 BIM 服务。",
+    "keywords": [
+      "综合体",
+      "BIM 咨询",
+      "复杂空间"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "北京 CBD 核心区地下公共空间市政交通基础设施项目",
+    "category": "bim",
+    "categories": [
+      "bim",
+      "building"
+    ],
+    "scenario": "BIM 咨询 / 综合体",
+    "summary": "面向地下公共空间和市政交通综合体。",
+    "keywords": [
+      "地下空间",
+      "市政交通",
+      "BIM 协同"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "石化数字孪生平台项目",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "infra"
+    ],
+    "scenario": "数字孪生 / 石化平台",
+    "summary": "面向石化场景的数字孪生平台建设。",
+    "keywords": [
+      "数字孪生",
+      "资产视图",
+      "运营管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "市郊铁路跳磴至江津线智慧运维场景",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "rail"
+    ],
+    "scenario": "数字孪生 / 市郊铁路",
+    "summary": "面向市郊铁路运营阶段数字孪生应用。",
+    "keywords": [
+      "智慧运维",
+      "轨道交通",
+      "设备管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "数字孪生及智慧运维平台项目",
+    "category": "twin",
+    "categories": [
+      "twin",
+      "infra"
+    ],
+    "scenario": "数字孪生 / 智慧运维",
+    "summary": "面向基础设施和公共资产运营管理。",
+    "keywords": [
+      "数字孪生",
+      "智慧运维",
+      "工单管理"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "广州南沙新区明珠湾区地下环路及公共地下空间智慧展厅",
+    "category": "command",
+    "categories": [
+      "command",
+      "infra"
+    ],
+    "scenario": "智慧展厅 / 地下空间",
+    "summary": "面向地下环路和公共地下空间展示。",
+    "keywords": [
+      "智慧展厅",
+      "地下空间",
+      "工程展示"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "环北部湾广东水资源配置工程施工 B4 标智慧展厅",
+    "category": "command",
+    "categories": [
+      "command",
+      "water"
+    ],
+    "scenario": "智慧展厅 / 水资源配置",
+    "summary": "面向水资源配置工程展示与汇报。",
+    "keywords": [
+      "智慧展厅",
+      "水利水务",
+      "项目汇报"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "濮阳医专附属医院智慧展厅项目",
+    "category": "command",
+    "categories": [
+      "command",
+      "building"
+    ],
+    "scenario": "智慧展厅 / 医疗建筑",
+    "summary": "面向医院建设项目的展示空间建设。",
+    "keywords": [
+      "智慧展厅",
+      "医疗建筑",
+      "成果展示"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "快速路三纵线双山隧道至金家湾立交段改造工程观摩展示",
+    "category": "command",
+    "categories": [
+      "command",
+      "infra"
+    ],
+    "scenario": "智慧展厅 / 市政交通",
+    "summary": "面向快速路和立交改造工程观摩展示。",
+    "keywords": [
+      "智慧展厅",
+      "观摩展示",
+      "市政交通"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "三一集团 BIMVR 展示体验项目",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "overseas"
+    ],
+    "scenario": "BIMVR / 工业展示",
+    "summary": "面向企业展示体验的 BIMVR 服务。",
+    "keywords": [
+      "BIMVR",
+      "展示体验",
+      "沉浸交互"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "中建三局虚拟质量样板间项目",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "building"
+    ],
+    "scenario": "BIMVR / 质量样板",
+    "summary": "面向施工质量样板和培训展示。",
+    "keywords": [
+      "BIMVR",
+      "质量样板",
+      "培训展示"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  },
+  {
+    "title": "川西大数据产业园 BIMVR 服务项目",
+    "category": "bimvr",
+    "categories": [
+      "bimvr",
+      "building"
+    ],
+    "scenario": "BIMVR / 产业园区",
+    "summary": "面向产业园建设项目的 BIMVR 服务。",
+    "keywords": [
+      "BIMVR",
+      "产业园区",
+      "可视化交付"
+    ],
+    "detailSlug": null,
+    "source": "官网案例 / 宣传册"
+  }
+]

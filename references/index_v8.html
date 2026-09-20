@@ -1,0 +1,2053 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>筑云科技 | 行业领先的数字建造服务商 (终极完整全量版 v6)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"PingFang SC"', "Inter", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                50: "#f0f9ff",
+                100: "#e0f2fe",
+                400: "#38bdf8",
+                500: "#0ea5e9",
+                600: "#0284c7",
+                900: "#0c4a6e",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #0b1121;
+        color: #334155;
+      }
+
+      .global-aurora {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: #0b1121;
+        overflow: hidden;
+      }
+      .global-aurora::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        left: -10%;
+        width: 70vw;
+        height: 70vw;
+        background: radial-gradient(
+          circle,
+          rgba(14, 165, 233, 0.45) 0%,
+          rgba(2, 132, 199, 0) 70%
+        );
+        filter: blur(120px);
+        animation: float 20s ease-in-out infinite alternate;
+      }
+      .global-aurora::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        right: -10%;
+        width: 60vw;
+        height: 60vw;
+        background: radial-gradient(
+          circle,
+          rgba(139, 92, 246, 0.3) 0%,
+          rgba(59, 130, 246, 0.2) 40%,
+          rgba(0, 0, 0, 0) 75%
+        );
+        filter: blur(140px);
+        animation: float-reverse 25s ease-in-out infinite alternate;
+      }
+
+      .glass-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow:
+          0 8px 32px 0 rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .glass-card:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-8px);
+        box-shadow:
+          0 20px 40px 0 rgba(0, 0, 0, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      }
+      .glass-card:hover::before {
+        opacity: 1;
+      }
+
+      .glass-dark {
+        background: rgba(15, 23, 42, 0.4);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 8px 32px 0 rgba(0, 0, 0, 0.4),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-slider img {
+        transition: opacity 1s ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(6%, 12%) scale(1.1);
+        }
+      }
+      @keyframes float-reverse {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        100% {
+          transform: translate(-6%, -12%) scale(1.1);
+        }
+      }
+
+      .section-spacing {
+        padding-top: 140px;
+        padding-bottom: 140px;
+      }
+
+      .text-dense {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body class="text-slate-800">
+    <div class="global-aurora"></div>
+
+    <!-- ================= 导航 Header (与客户案例保持一致, 并添加跨页串联) ================= -->
+    <header
+      class="h-16 fixed w-full top-0 z-50 flex items-center justify-center border-b border-white/10 bg-slate-900/60 backdrop-blur-[50px]"
+    >
+      <div class="w-full max-w-[1400px] px-8 flex items-center justify-between">
+        <div class="flex items-center gap-12">
+          <a
+            href="index_v8.html"
+            class="font-bold text-[20px] tracking-tight text-white flex items-center gap-2"
+          >
+            <svg
+              class="w-6 h-6 text-brand-400"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              />
+            </svg>
+            筑云科技
+          </a>
+          <nav
+            class="hidden md:flex gap-10 text-[15px] font-medium text-slate-300"
+          >
+            <a
+              href="index_v8.html"
+              class="text-white relative after:content-[''] after:absolute after:-bottom-5 after:left-0 after:w-full after:h-[2px] after:bg-brand-500 after:rounded-t-full font-semibold"
+              >首页</a
+            >
+            <a href="#products" class="hover:text-white transition-colors"
+              >产品与服务</a
+            >
+            <a href="#solutions" class="hover:text-white transition-colors"
+              >解决方案</a
+            >
+            <a
+              href="customer_cases.html"
+              class="hover:text-white transition-colors"
+              >客户案例</a
+            >
+            <a href="#news" class="hover:text-white transition-colors"
+              >最新动态</a
+            >
+            <a href="#about" class="hover:text-white transition-colors"
+              >关于我们</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-6">
+          <a
+            href="#"
+            class="text-[15px] text-slate-300 hover:text-white transition-colors"
+            >登录系统</a
+          >
+          <a
+            href="#"
+            onclick="
+              typeof openContactModal === 'function'
+                ? openContactModal()
+                : alert('预约演示系统')
+            "
+            class="text-[14px] font-semibold px-6 py-2 bg-gradient-to-r from-brand-500 to-indigo-600 border border-brand-400/40 text-white rounded-full hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] transition-all shadow-lg backdrop-blur-md"
+          >
+            预约演示
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================= 1. 首屏轮播图 ================= -->
+    <section
+      class="relative w-full pt-[64px] hero-slider bg-[#050811] flex items-center justify-center border-b border-white/5"
+    >
+      <div
+        class="relative w-full max-w-[1920px] overflow-hidden flex items-center justify-center"
+        style="height: 600px"
+      >
+        <img
+          id="slide1"
+          src="../exports/banner1.png"
+          class="absolute top-0 left-0 w-full h-full object-cover md:object-contain opacity-100 z-10"
+          alt="Fyra智能开发平台"
+          onerror="
+            this.src =
+              'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'
+          "
+        />
+        <img
+          id="slide2"
+          src="../exports/banner2.png"
+          class="absolute top-0 left-0 w-full h-full object-cover md:object-contain opacity-0 z-0"
+          alt="智能建造平台"
+          onerror="
+            this.src =
+              'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop'
+          "
+        />
+
+        <div
+          class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 z-20 px-5 py-2.5 bg-slate-900/60 backdrop-blur-xl border border-white/15 rounded-full"
+        >
+          <button
+            id="dot1"
+            class="w-3 h-3 rounded-full bg-white transition-all"
+          ></button>
+          <button
+            id="dot2"
+            class="w-3 h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all"
+          ></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 2. 核心数据背书（通栏排列） ================= -->
+    <section
+      class="relative w-full z-20 flex justify-center bg-slate-900/60 backdrop-blur-xl border-b border-white/10 py-12"
+    >
+      <div
+        class="w-full max-w-[1400px] px-8 grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/10"
+      >
+        <div class="flex flex-col items-center group cursor-default">
+          <div
+            class="w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-brand-400 mb-4 shadow-[0_0_15px_rgba(14,165,233,0.1)] group-hover:bg-brand-500 group-hover:text-white transition-all duration-500"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              />
+            </svg>
+          </div>
+          <div
+            class="text-[36px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-brand-300"
+          >
+            1000<span class="text-brand-400">+</span>
+          </div>
+          <div class="text-[14px] text-slate-300 mt-1 tracking-wide">
+            服务合作企业
+          </div>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div
+            class="w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-purple-400 mb-4 shadow-[0_0_15px_rgba(168,85,247,0.1)] group-hover:bg-purple-500 group-hover:text-white transition-all duration-500"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+              />
+            </svg>
+          </div>
+          <div
+            class="text-[36px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-brand-300"
+          >
+            80<span class="text-purple-400">%</span>
+          </div>
+          <div class="text-[14px] text-slate-300 mt-1 tracking-wide">
+            效率提升占比
+          </div>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div
+            class="w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-emerald-400 mb-4 shadow-[0_0_15px_rgba(52,211,153,0.1)] group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div
+            class="text-[36px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-brand-300"
+          >
+            80<span class="text-emerald-400">+</span>
+          </div>
+          <div class="text-[14px] text-slate-300 mt-1 tracking-wide">
+            覆盖省市地域
+          </div>
+        </div>
+        <div class="flex flex-col items-center group cursor-default">
+          <div
+            class="w-14 h-14 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-amber-400 mb-4 shadow-[0_0_15px_rgba(251,191,36,0.1)] group-hover:bg-amber-500 group-hover:text-white transition-all duration-500"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          </div>
+          <div
+            class="text-[36px] font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-brand-300"
+          >
+            100<span class="text-amber-400">+</span>
+          </div>
+          <div class="text-[14px] text-slate-300 mt-1 tracking-wide">
+            标杆成功荣誉
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. 产品与服务（补全 8 大产品线） ================= -->
+    <section class="section-spacing flex justify-center z-20 relative">
+      <div class="w-full max-w-[1400px] px-8">
+        <div
+          class="flex flex-col items-center justify-center mb-20 text-center"
+        >
+          <div
+            class="text-[14px] font-bold text-brand-400 uppercase tracking-widest mb-3"
+          >
+            Products & Services
+          </div>
+          <h2
+            class="text-[34px] md:text-[40px] font-bold text-white mb-5 tracking-wide drop-shadow-lg"
+          >
+            全景产品与服务
+          </h2>
+          <p class="text-dense text-slate-300 max-w-2xl">
+            融合建筑信息模型(BIM)与先进前端框架，为工程建筑行业提供一体化数字建设解决方案。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- 1 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-400 to-indigo-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                飞椽Fyra智能平台
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                零代码开发基座。赋能企业实现全业务链数据融合，打通数据孤岛，实现彻底降本增效。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-400 to-rose-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                智能建造平台
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                项企联动管理，精细到现场每一个施工节点，构建精准智慧决策体系与全面数字化专项攻坚。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-400 to-fuchsia-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                BIM 咨询服务
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                业内顶尖的 BIM
+                技术支持，三维全息可视化护航，提前排除复杂管线施工隐患与交叉干涉。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                智慧工地建设
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                软硬结合整合 IoT
+                硬件，实现劳务管理、安全检查、质量监控无死角上云全方位布控。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                数字孪生运维
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                虚实交融，竣工落成交付完整高保真数字底图，利用感知设备进行智慧楼宇与设施的长效运维。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-400 to-pink-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                智慧展厅建设
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                以高刷超清大屏交互为手段，可视化直观呈现庞大建筑全貌与数字治理成果指挥中心运营面貌。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 7 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-lime-400 to-green-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                工程技术创新
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                深入基建工地前线，研发具备极强前瞻性与落地性的专属算法插件与现场轻量化管理应用集。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- 8 -->
+          <div
+            class="glass-card rounded-[24px] p-8 flex flex-col justify-between group"
+          >
+            <div class="relative z-10">
+              <div class="flex justify-between items-start mb-6">
+                <div
+                  class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-yellow-500 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500"
+                >
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-[19px] font-bold text-white mb-3 tracking-wide">
+                数智教育体系
+              </h3>
+              <p class="text-[15px] text-slate-200 leading-[1.7] mb-6">
+                联合全国重点高校开展数字化产业工人与尖端人才培养，快速填补新时期工程建筑交叉高工空白。
+              </p>
+            </div>
+            <div class="relative z-10 mt-auto border-t border-white/10 pt-5">
+              <a
+                href="#"
+                class="inline-flex items-center justify-between w-full text-[14px] font-semibold text-brand-400 hover:text-white transition-colors group/btn"
+              >
+                查看核心方案详情
+                <span class="group-hover/btn:translate-x-1 transition-transform"
+                  >&rarr;</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. 工程数字化解决方案 ================= -->
+    <section
+      class="section-spacing flex justify-center text-slate-800 relative z-20 border-t border-white/5"
+    >
+      <div class="w-full max-w-[1400px] px-8">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+        >
+          <!-- 左侧主视觉卡片 (Figma V5 stacked card effect) -->
+          <div class="relative h-[550px] w-full max-w-[600px] mx-auto lg:mx-0">
+            <!-- 后置倾斜的卡片 -->
+            <div
+              class="absolute inset-0 bg-slate-900/40 border border-white/10 rounded-[30px] shadow-[0_25px_50px_rgba(0,0,0,0.25)] transform -rotate-3 origin-center"
+            ></div>
+
+            <!-- 前置主卡片 -->
+            <div
+              class="absolute inset-0 bg-white/10 backdrop-blur-md border border-white/15 rounded-[30px] shadow-[0_8px_32px_rgba(0,0,0,0.3)] overflow-hidden"
+            >
+              <!-- 装饰性圆环 -->
+              <div
+                class="absolute top-[30%] left-[30%] w-[420px] h-[420px] border border-white/10 rounded-full"
+              ></div>
+              <div
+                class="absolute top-[35%] left-[25%] w-[420px] h-[420px] border border-white/15 rounded-full shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+              ></div>
+
+              <div class="absolute inset-0 p-10 flex flex-col">
+                <div class="flex justify-between items-start">
+                  <div class="flex flex-col gap-2">
+                    <h3 class="text-[26px] font-bold text-white tracking-wide">
+                      企业级运营数字化
+                    </h3>
+                    <p
+                      class="text-[14px] text-slate-300 font-mono tracking-[1.4px] uppercase"
+                    >
+                      Digital Operation Architecture
+                    </p>
+                  </div>
+                  <div
+                    class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-white"
+                  >
+                    <svg
+                      class="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5"
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div class="mt-auto flex flex-col gap-6">
+                  <p class="text-[16px] text-white/95 leading-[26px]">
+                    穿透总部到分管子公司的财务、人流效能与法务屏障。一套系统贯穿工程全局，驱动超大型企业流程呈飞轮态敏捷生长。
+                  </p>
+                  <button
+                    class="px-6 py-3 border border-white/40 text-[15px] font-medium text-white rounded-full hover:bg-white/20 transition-colors w-fit shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+                  >
+                    查阅部署方案
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧列表 -->
+          <div class="flex flex-col">
+            <h2
+              class="text-[32px] md:text-[38px] font-bold text-white leading-[1.3] mb-10 tracking-[3.8px]"
+            >
+              覆盖全生命周期的<br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-indigo-300"
+                >赋能场景矩阵</span
+              >
+            </h2>
+
+            <div class="flex flex-col gap-4">
+              <!-- 1. 激活状态卡片 (Active Container) -->
+              <div
+                class="relative rounded-xl border border-brand-400 border-l-4 shadow-[0_8px_32px_rgba(0,0,0,0.4)] overflow-hidden"
+              >
+                <div
+                  class="absolute inset-0 bg-slate-900/40 pointer-events-none backdrop-blur-md"
+                ></div>
+                <div
+                  class="absolute inset-0 rounded-xl shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] pointer-events-none"
+                ></div>
+                <div class="relative p-6 sm:p-8 flex flex-col gap-3">
+                  <h4 class="text-[19px] font-bold text-white">
+                    1. 集团单体工程智能控制台
+                  </h4>
+                  <p
+                    class="text-[15px] text-slate-300 leading-relaxed max-w-xl"
+                  >
+                    极度适用于轨道交通、高层商建等高难度单体项目。软硬结合，通过建立三维数字沙盘、AI
+                    视频巡视，达成隐患秒级侦测与安全熔断机制。
+                  </p>
+                </div>
+              </div>
+
+              <!-- 2. 普通可悬停卡片 (Inactive/Hover) -->
+              <div
+                class="relative rounded-xl border border-transparent p-6 sm:px-8 sm:py-6 flex flex-col gap-3 cursor-pointer group hover:bg-white/5 hover:border-white/15 transition-all overflow-hidden"
+              >
+                <h4
+                  class="text-[17px] font-bold text-slate-400 group-hover:text-white transition-colors"
+                >
+                  2. 跨层级行业供应链联动体系
+                </h4>
+                <p
+                  class="text-[15px] text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed max-w-xl"
+                >
+                  向行业全流转。拉通设计院、施工方、监理方、材料供应商底库，促进千亿产业云边生态资源最高效撮合。
+                </p>
+              </div>
+
+              <!-- 3. 普通可悬停卡片 (Inactive/Hover) -->
+              <div
+                class="relative rounded-xl border border-transparent p-6 sm:px-8 sm:py-6 flex flex-col gap-3 cursor-pointer group hover:bg-white/5 hover:border-white/15 transition-all overflow-hidden"
+              >
+                <h4
+                  class="text-[17px] font-bold text-slate-400 group-hover:text-white transition-colors"
+                >
+                  3. 一站式数字孪生资产孵化
+                </h4>
+                <p
+                  class="text-[15px] text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed max-w-xl"
+                >
+                  不仅管“造”，更懂“管”。竣工落成交付完整的数字底座模型给甲方，赋能后续十几年的智慧楼宇、智慧公路与商管运营。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      @keyframes pan-lines {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 40px 40px;
+        }
+      }
+    </style>
+    <!-- ================= 4.2. 技术与服务优势 (New Block) ================= -->
+    <section
+      class="section-spacing bg-white/5 backdrop-blur-xl relative z-20 border-t border-white/5 overflow-hidden group"
+    >
+      <!-- Animated Flowing Diagonal Stripes with Gradient Mask -->
+      <div
+        class="absolute inset-0 opacity-[0.12] mix-blend-overlay pointer-events-none"
+        style="
+          background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 19px,
+            #ffffff 19px,
+            #ffffff 20px
+          );
+          animation: pan-lines 4s linear infinite;
+          mask-image: radial-gradient(
+            ellipse at center,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask-image: radial-gradient(
+            ellipse at center,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 70%
+          );
+        "
+      ></div>
+
+      <!-- Liquid gradient blobs to add "flow" -->
+      <div
+        class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-brand-500/20 rounded-full blur-[100px] pointer-events-none group-hover:bg-brand-500/30 transition-all duration-1000 -translate-y-1/2"
+      ></div>
+      <div
+        class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-[100px] pointer-events-none group-hover:bg-purple-500/30 transition-all duration-1000 translate-y-1/2"
+      ></div>
+
+      <div class="w-full max-w-[1400px] mx-auto px-8 relative z-10">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+        >
+          <!-- 左边 -->
+          <div class="flex flex-col">
+            <h2
+              class="text-[34px] font-bold text-white mb-6 tracking-wide drop-shadow-md"
+            >
+              行业领先的技术与服务优势
+            </h2>
+            <p class="text-[15px] text-blue-100/80 leading-[1.8] mb-12">
+              深耕工程建筑行业数十年，沉淀出最懂施工场景的算法引擎。无论是地基探测的土石方运算，还是高空塔吊的毫米级预警，我们只向客户递交最稳定的技术协议。
+            </p>
+            <div class="grid grid-cols-2 gap-6">
+              <div
+                class="border border-blue-400/30 bg-blue-500/10 rounded-xl p-6 backdrop-blur-sm hover:bg-blue-500/20 transition-colors"
+              >
+                <div
+                  class="text-[32px] font-bold text-white mb-2 tracking-wider"
+                >
+                  99.9%
+                </div>
+                <div class="text-[13px] text-blue-200">
+                  核心 API 集群可用率保障
+                </div>
+              </div>
+              <div
+                class="border border-blue-400/30 bg-blue-500/10 rounded-xl p-6 backdrop-blur-sm hover:bg-blue-500/20 transition-colors"
+              >
+                <div
+                  class="text-[32px] font-bold text-white mb-2 uppercase tracking-wider"
+                >
+                  MS 级
+                </div>
+                <div class="text-[13px] text-blue-200">
+                  三维模型指令渲染极低延迟
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 右边 -->
+          <div class="grid grid-cols-2 gap-x-8 gap-y-12">
+            <div class="flex flex-col">
+              <div
+                class="w-10 h-10 mb-4 text-emerald-400 flex items-center justify-center"
+              >
+                <svg
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </div>
+              <h4 class="text-[17px] font-bold text-white mb-3">稳定且合规</h4>
+              <p class="text-[14px] text-blue-100/70 leading-[1.7]">
+                银行级加密，符合国家信创安全体系认证。
+              </p>
+            </div>
+            <div class="flex flex-col">
+              <div
+                class="w-10 h-10 mb-4 text-blue-300 flex items-center justify-center"
+              >
+                <svg
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zM12 11v6m-3-3h6"
+                  />
+                </svg>
+              </div>
+              <h4 class="text-[17px] font-bold text-white mb-3">
+                分布式架构深厚
+              </h4>
+              <p class="text-[14px] text-blue-100/70 leading-[1.7]">
+                轻松应对万人级别的大型工区同时在线协作。
+              </p>
+            </div>
+            <div class="flex flex-col">
+              <div
+                class="w-10 h-10 mb-4 text-purple-300 flex items-center justify-center"
+              >
+                <svg
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+              <h4 class="text-[17px] font-bold text-white mb-3">
+                成熟的零代码体系
+              </h4>
+              <p class="text-[14px] text-blue-100/70 leading-[1.7]">
+                内置 500+ 工程表单模板，开箱即用极速流配。
+              </p>
+            </div>
+            <div class="flex flex-col">
+              <div
+                class="w-10 h-10 mb-4 text-amber-300 flex items-center justify-center"
+              >
+                <svg
+                  class="w-8 h-8"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h4 class="text-[17px] font-bold text-white mb-3">
+                全天候专家级支持
+              </h4>
+              <p class="text-[14px] text-blue-100/70 leading-[1.7]">
+                配置驻场交付与技术咨询团队，保障平台无死角推进。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4.5. 经典项目案例 ================= -->
+    <section
+      class="section-spacing flex justify-center text-slate-800 relative z-20 border-t border-white/5"
+    >
+      <div class="w-full max-w-[1400px] px-8">
+        <div class="flex flex-col mb-16 text-center items-center">
+          <div
+            class="text-[14px] font-bold text-brand-400 uppercase tracking-widest mb-3"
+          >
+            Classic Projects
+          </div>
+          <h2
+            class="text-[34px] md:text-[40px] font-bold text-white tracking-wide drop-shadow-lg"
+          >
+            标杆工程落地案例
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- 卡片 1 -->
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1541888086225-f674da6ce364?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                沙特吉达市综合开发
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                基础设施工程项目信息管理系统。成功融合海量节点，提供了全方位信息穿透与跨国管控中枢。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <!-- 卡片 2 -->
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                累土智控土石方管控
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                针对大型土石方研发。实现无人车地磅称重、轨迹追踪防漏和全自动云端算量智能结算。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <!-- 卡片 3-8 -->
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                雄安新区超算中心云脑体系
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                构筑深层数字机房管线 BIM
+                孪生体，结合温控传感器与安流阀阵列实现园区级低碳化自动运管。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                上海临港特大商务区建造
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                接入高达 26 支复杂劳务分包数据，打通财务审核壁垒，利用 Fyra
+                平台流转每日 10 万单以上物料。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                大湾区跨海大桥协同监测
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                恶劣海洋作业环境下的云边协同算力部署，风偏和洋流带来的塔架倾斜数据实时传入专家库。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1549421263-5ec394a5ad4c?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                成都机场 T3 航站楼拼装
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                钢结构异形件拼装精度三维回溯。利用数字预拼装技术在场外前置消化了
+                90% 以上交叉风险。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                杭州高铁站南广场智慧工地
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                将数十项安监局指标与工地监控直接互通，实现从违建报警到罚款下发的极速智能闭环。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="glass-card rounded-2xl flex flex-col group cursor-pointer overflow-hidden border border-white/10 hover:border-brand-400/50 transition-colors"
+          >
+            <div class="h-[180px] w-full overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=600&q=80"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <h3 class="text-[16px] font-bold text-white mb-3 line-clamp-2">
+                北京冬奥场馆管廊翻新工程
+              </h3>
+              <p
+                class="text-[13px] text-slate-400 leading-relaxed mb-4 line-clamp-3"
+              >
+                老旧基建焕发数字生机，在既有管廊群的缝隙中打入超密光纤网，构筑全立体赛时场馆指挥仪。
+              </p>
+              <span
+                class="text-[13px] font-bold text-brand-400 mt-auto transition-colors"
+                >查阅全案 &rarr;</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. 最新动态与案例（玻璃流体态资讯版块） ================= -->
+    <section
+      class="section-spacing flex justify-center z-20 relative border-t border-white/5"
+    >
+      <div class="w-full max-w-[1400px] px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+          <div>
+            <div
+              class="text-[14px] font-bold text-brand-400 uppercase tracking-widest mb-3"
+            >
+              News & Cases
+            </div>
+            <h2
+              class="text-[34px] md:text-[40px] font-bold text-white drop-shadow-lg"
+            >
+              前沿动态速递与高能应用
+            </h2>
+          </div>
+          <button
+            class="px-8 py-3 bg-white/10 border border-white/20 text-white rounded-full hover:bg-white/20 transition-all text-[15px] font-medium mt-6 md:mt-0"
+          >
+            浏览全景案例库
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div
+            class="glass-card rounded-[24px] overflow-hidden group cursor-pointer flex flex-col"
+          >
+            <div class="relative h-[320px] overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1541888086225-f674da6ce364?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                alt="News"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[800ms]"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b1121] to-transparent opacity-80"
+              ></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <span
+                    class="px-3 py-1 bg-brand-500 text-white text-[13px] rounded-sm font-semibold tracking-wide"
+                    >标杆交付</span
+                  >
+                  <span class="text-[14px] text-slate-300 font-mono"
+                    >2026-03-12</span
+                  >
+                </div>
+                <h3 class="text-[24px] font-bold text-white leading-tight">
+                  BIM 技术在特大枢纽立交桥工程的深度碰撞与四维排程实践应用
+                </h3>
+              </div>
+            </div>
+            <div class="p-8 pb-10 flex-1 flex flex-col justify-between">
+              <p class="text-[16px] text-slate-300 leading-relaxed max-w-xl">
+                从地下复杂管线建模、干涉自动检测到全生命周期的工期节点四维推演，BIM不仅极大减少了施工返工作业量，更为总承包指挥台构筑了毫无死角的高清可视化指挥舱矩阵。
+              </p>
+              <span
+                class="text-[15px] font-bold text-brand-400 mt-6 inline-block opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+                >阅读全文 &rarr;</span
+              >
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <div
+              class="glass-card rounded-[20px] p-6 flex gap-6 cursor-pointer group hover:bg-white/5 transition-colors"
+            >
+              <div
+                class="w-[140px] h-[100px] rounded-xl overflow-hidden shrink-0 filter border border-white/10 hidden sm:block"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-2">
+                  <span
+                    class="text-[12px] bg-white/20 border border-white/10 text-white px-2.5 py-1 rounded-sm font-medium tracking-wide"
+                    >集团快讯</span
+                  >
+                  <span class="text-[13px] text-slate-400 font-mono"
+                    >2026-03-20</span
+                  >
+                </div>
+                <h4
+                  class="text-[18px] font-bold text-slate-200 group-hover:text-white transition-colors leading-[1.5] line-clamp-2"
+                >
+                  筑云科技 CEO 受邀作为战略嘉宾出席 2026
+                  中欧国际企业智慧建造峰会
+                </h4>
+              </div>
+            </div>
+
+            <div
+              class="glass-card rounded-[20px] p-6 flex gap-6 cursor-pointer group hover:bg-white/5 transition-colors"
+            >
+              <div
+                class="w-[140px] h-[100px] rounded-xl overflow-hidden shrink-0 filter border border-white/10 hidden sm:block"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1574360773950-89196b0521ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-2">
+                  <span
+                    class="text-[12px] bg-emerald-500/30 border border-emerald-400/30 text-emerald-300 px-2.5 py-1 rounded-sm font-medium tracking-wide"
+                    >展会前沿</span
+                  >
+                  <span class="text-[13px] text-slate-400 font-mono"
+                    >2026-02-15</span
+                  >
+                </div>
+                <h4
+                  class="text-[18px] font-bold text-slate-200 group-hover:text-white transition-colors leading-[1.5] line-clamp-2"
+                >
+                  第二十届世界智能建筑硬件大会落幕，Fyra 轻量化大屏受资本热捧
+                </h4>
+              </div>
+            </div>
+
+            <div
+              class="glass-card rounded-[20px] p-6 flex gap-6 cursor-pointer group hover:bg-white/5 transition-colors"
+            >
+              <div class="flex flex-col justify-center">
+                <div class="flex items-center gap-3 mb-2">
+                  <span
+                    class="text-[12px] bg-purple-500/30 border border-purple-400/30 text-purple-300 px-2.5 py-1 rounded-sm font-medium tracking-wide"
+                    >智库白皮书</span
+                  >
+                  <span class="text-[13px] text-slate-400 font-mono"
+                    >2026-01-08</span
+                  >
+                </div>
+                <h4
+                  class="text-[18px] font-bold text-slate-200 group-hover:text-white transition-colors leading-[1.5] line-clamp-2"
+                >
+                  《大型路桥工程全生命周期安全监测数字化指标与技术落位指南
+                  v3.0》正式印发
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5.5. 合作伙伴客户证言 ================= -->
+    <section
+      class="py-24 flex flex-col items-center justify-center text-slate-800 relative z-20 border-t border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent backdrop-blur-[10px]"
+    >
+      <style>
+        @keyframes marquee-scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee-scroll 45s linear infinite;
+        }
+        .marquee-container:hover .animate-marquee {
+          animation-play-state: paused;
+        }
+      </style>
+
+      <!-- 标题区域 -->
+      <div
+        class="w-full max-w-[1400px] px-8 flex flex-col items-center text-center mb-16 relative z-10"
+      >
+        <div
+          class="text-[14px] font-bold text-brand-400 uppercase tracking-widest mb-4"
+        >
+          Partnerships & Trusts
+        </div>
+        <h2
+          class="text-[36px] md:text-[42px] font-bold text-white tracking-widest mb-6 leading-tight"
+        >
+          来自顶尖建筑与生态企业的信任
+        </h2>
+        <p
+          class="text-[15px] sm:text-[16px] text-slate-400 leading-relaxed max-w-2xl mx-auto"
+        >
+          筑云科技与各行业领军企业深层绑定，在复杂庞大的全球级施工现场实穿、锤炼我们的交付能力。并获得了一致的认可。
+        </p>
+      </div>
+
+      <!-- 滚动合作伙伴区域 (Marquee) -->
+      <div
+        class="w-full overflow-hidden relative marquee-container mb-24 py-4"
+        style="
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+          );
+        "
+      >
+        <!-- 轨道主体，宽度应能够包含两倍的所有元素实现无缝滚动 -->
+        <div class="flex animate-marquee w-max gap-8 px-4 items-center">
+          <!-- 第 1 组列表 (Figma 抠图版本 PNG + 正统暗黑发光阴影) -->
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-1.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-2.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <!-- 默认状态：Python 剥离的白色剪影 -->
+            <img
+              src="../exports/logos_figma/logo-3-white.png"
+              class="absolute inset-0 m-auto max-w-full max-h-full p-4 object-contain opacity-70 group-hover:opacity-0 transition-opacity duration-300"
+              alt="Partner Logo"
+            />
+            <!-- hover状态：原彩全貌 -->
+            <img
+              src="../exports/logos_figma/logo-3.png"
+              class="absolute inset-0 m-auto max-w-full max-h-full p-4 object-contain opacity-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-4.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-5.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-6.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-7.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-8.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-9.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-10.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+
+          <!-- 第 2 组列表 (完全复制以确保无缝轮播折返) -->
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-1.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-2.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <!-- 默认状态：Python 剥离的白色剪影 -->
+            <img
+              src="../exports/logos_figma/logo-3-white.png"
+              class="absolute inset-0 m-auto max-w-full max-h-full p-4 object-contain opacity-70 group-hover:opacity-0 transition-opacity duration-300"
+              alt="Partner Logo"
+            />
+            <!-- hover状态：原彩全貌 -->
+            <img
+              src="../exports/logos_figma/logo-3.png"
+              class="absolute inset-0 m-auto max-w-full max-h-full p-4 object-contain opacity-0 group-hover:scale-105 group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-4.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-5.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-6.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-7.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-8.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-9.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+          <div
+            class="group relative flex items-center justify-center p-4 w-44 h-20 rounded-2xl border border-white/5 bg-white/5 hover:border-brand-400/40 hover:bg-white hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(56,189,248,0.2)] transition-all duration-300 cursor-pointer flex-shrink-0"
+          >
+            <img
+              src="../exports/logos_figma/logo-10.png"
+              class="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 group-hover:scale-105 group-hover:filter-none group-hover:opacity-100 transition-all duration-300"
+              alt="Partner Logo"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- 客户证言区 (Testimonials Grid) -->
+      <div
+        class="w-full max-w-[1400px] px-8 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 z-20"
+      >
+        <!-- 证言 1 -->
+        <div
+          class="glass-dark p-8 md:p-10 rounded-[30px] border border-white/10 relative hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-500 flex flex-col h-full group"
+        >
+          <svg
+            class="absolute top-8 right-8 w-12 h-12 text-white/[0.02] group-hover:text-brand-400/10 transition-colors duration-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            />
+          </svg>
+          <p
+            class="text-[15px] md:text-[16px] text-slate-300 leading-[1.8] italic mb-8 relative z-10 font-[400] tracking-wide"
+          >
+            "在我们承接的高铁南广场重大工程中，智能算量与数字化中台系统的表现超乎预期。它将原需庞大工班处理的复核调度工作自动化缩编在云端，为工程攻坚期争取了最宝贵的战略节点。"
+          </p>
+          <div
+            class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10"
+          >
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border border-white/10 ring-2 ring-transparent group-hover:ring-brand-500/30 transition-all duration-500"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                class="w-full h-full object-cover"
+                alt="Avatar"
+              />
+            </div>
+            <div>
+              <h5 class="text-[16px] font-bold text-white tracking-widest">
+                王总工
+              </h5>
+              <p class="text-[13px] text-slate-400 mt-0.5">
+                中建某局一公司 / 项目总指挥
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 证言 2 -->
+        <div
+          class="glass-dark p-8 md:p-10 rounded-[30px] border border-white/10 relative hover:border-brand-500/30 hover:bg-white/[0.04] transition-all duration-500 flex flex-col h-full group"
+        >
+          <svg
+            class="absolute top-8 right-8 w-12 h-12 text-white/[0.02] group-hover:text-brand-400/10 transition-colors duration-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            />
+          </svg>
+          <p
+            class="text-[15px] md:text-[16px] text-slate-300 leading-[1.8] italic mb-8 relative z-10 font-[400] tracking-wide"
+          >
+            "从单一试标标段推进到如今作为全线指定的统一数据底座，它卓越的安全穿透力极大地赢得了行业信任。最核心的高并发分布式处理是我们看中的基础底气。"
+          </p>
+          <div
+            class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5 relative z-10"
+          >
+            <div
+              class="w-12 h-12 rounded-full overflow-hidden border border-white/10 ring-2 ring-transparent group-hover:ring-brand-500/30 transition-all duration-500"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
+                class="w-full h-full object-cover"
+                alt="Avatar"
+              />
+            </div>
+            <div>
+              <h5 class="text-[16px] font-bold text-white tracking-widest">
+                李主任
+              </h5>
+              <p class="text-[13px] text-slate-400 mt-0.5">
+                某交投集团 / 数字化决策者
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 核心底盘 Footer (Figma Design) ================= -->
+    <footer
+      class="mt-auto pt-24 pb-12 relative z-20 bg-[#02050a] border-t border-white/10"
+    >
+      <div
+        class="max-w-[1400px] mx-auto px-8 grid grid-cols-1 md:grid-cols-5 gap-10 mb-16 text-slate-300"
+      >
+        <!-- 品牌与愿景 -->
+        <div class="col-span-1 md:col-span-1">
+          <a
+            href="#"
+            class="font-bold text-[22px] text-white flex items-center gap-2 mb-8"
+          >
+            <svg
+              class="w-7 h-7 text-brand-500"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              />
+            </svg>
+            筑云科技
+          </a>
+          <div class="text-[15px] text-slate-400 leading-[2] mb-6 space-y-4">
+            <p class="text-white font-semibold">
+              致力于为建设工程行业提供<br />一体化数字建设解决方案。
+            </p>
+            <p>
+              穿透深层网络屏障，连结海量终端节点。<br />
+              驱动建筑全产业生态跨步跃升。
+            </p>
+          </div>
+        </div>
+
+        <!-- 产品与服务 -->
+        <div class="col-span-1 md:pl-8 border-l border-white/5">
+          <h4
+            class="font-bold mb-6 text-[15px] text-white tracking-widest uppercase"
+          >
+            产品与服务
+          </h4>
+          <ul
+            class="text-[14px] space-y-4 flex flex-col font-normal text-slate-300/90"
+          >
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >飞椽 Fyra 智能平台</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >智能建造平台</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >BIM 咨询服务</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >智慧工地建设</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >数字孪生运维</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >全要素创新</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 行业解决方案 -->
+        <div class="col-span-1 md:pl-8 border-l border-white/5">
+          <h4
+            class="font-bold mb-6 text-[15px] text-white tracking-widest uppercase"
+          >
+            行业解决方案
+          </h4>
+          <ul
+            class="text-[14px] space-y-4 flex flex-col font-normal text-slate-300/90"
+          >
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >项目级智能建造</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >企业级数字化运营</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:text-brand-400 transition-colors w-fit"
+                >行业级数字生态</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 分支机构 -->
+        <div class="col-span-1 md:pl-8 border-l border-white/5">
+          <h4
+            class="font-bold mb-6 text-[15px] text-white tracking-widest uppercase"
+          >
+            分支机构
+          </h4>
+          <ul
+            class="text-[14px] space-y-4 flex flex-col font-normal text-slate-300/90"
+          >
+            <li class="leading-relaxed">
+              <span class="font-bold text-white/90">重庆总部</span><br />
+              <span class="text-slate-400 text-[13px]"
+                >江北区南桥寺永辉总部大厦 7 楼</span
+              >
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-bold text-white/90">成都分部</span><br />
+              <span class="text-slate-400 text-[13px]"
+                >锦江区绿地中心 468 锦峰 3608</span
+              >
+            </li>
+            <li class="leading-relaxed">
+              <span class="font-bold text-white/90">深圳分部</span><br />
+              <span class="text-slate-400 text-[13px]"
+                >宝安区永意库 13 栋 207</span
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 联系与支持 -->
+        <div class="col-span-1 md:pl-8 border-l border-white/5">
+          <h4
+            class="font-bold mb-6 text-[15px] text-white tracking-widest uppercase"
+          >
+            联系与支持
+          </h4>
+          <ul class="text-[14px] space-y-4 font-normal text-slate-300/90">
+            <li class="flex items-center gap-2">
+              <span class="opacity-60">联络热线:</span> 023-68682379
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="opacity-60">商务对接:</span> 18584713100
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="opacity-60">办公时间:</span> 工作日 9:00 ～ 18:00
+            </li>
+            <li class="pt-6 mt-4 border-t border-white/5">
+              <button
+                class="w-full py-3 px-4 bg-white/10 border border-white/20 text-white rounded hover:bg-white/20 transition-all shadow-lg text-[13px] font-bold tracking-widest uppercase"
+              >
+                申请产品演示
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 底部版权区域 -->
+      <div
+        class="max-w-[1400px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-[13px] text-slate-500 pt-8 border-t border-white/10"
+      >
+        <div class="opacity-80">
+          © 2026 筑云科技 (Bimcc) All Rights Reserved.
+        </div>
+        <div class="mt-4 md:mt-0 space-x-8 flex items-center">
+          <a href="#" class="hover:text-white transition-colors">隐私政策</a>
+          <a href="#" class="hover:text-white transition-colors">服务协议</a>
+          <a href="#" class="hover:text-white transition-colors"
+            >渝 ICP 备 XXXXX 号</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slide1 = document.getElementById("slide1");
+        const slide2 = document.getElementById("slide2");
+        const dot1 = document.getElementById("dot1");
+        const dot2 = document.getElementById("dot2");
+        let isSlide1 = true;
+
+        if (slide1 && slide2) {
+          setInterval(() => {
+            isSlide1 = !isSlide1;
+            if (isSlide1) {
+              slide1.style.opacity = "1";
+              slide1.style.zIndex = "10";
+              slide2.style.opacity = "0";
+              slide2.style.zIndex = "0";
+              dot1.className = "w-3 h-3 rounded-full bg-white transition-all";
+              dot2.className =
+                "w-3 h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+            } else {
+              slide1.style.opacity = "0";
+              slide1.style.zIndex = "0";
+              slide2.style.opacity = "1";
+              slide2.style.zIndex = "10";
+              dot1.className =
+                "w-3 h-3 rounded-full bg-white/40 hover:bg-white/70 transition-all";
+              dot2.className = "w-3 h-3 rounded-full bg-white transition-all";
+            }
+          }, 5000);
+        }
+      });
+    </script>
+  </body>
+</html>

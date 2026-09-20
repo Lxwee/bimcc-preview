@@ -1,93 +1,102 @@
-# official-website-feat
+# BIMCC 筑云科技官网升级项目
 
+版本：2026-09  
+定位：筑云科技一体化数字建设解决方案官方网站，涵盖首页 8 大核心模块、产品矩阵、解决方案、标杆案例库、技术底座与资质背书。  
+视觉方向：深空暗曜石体系（Obsidian Dark）配合精密磨砂玻璃双层流光质感，支持高分屏全画幅 3D 工程与建筑效果图展示。
 
+## 目录结构
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+```text
+index.html                     # 官网首页（8大核心模块、分段切换器、案例库、双层发光CTA）
+products.html                  # 产品平台总览页
+product-detail.html            # 产品详情页
+solutions.html                 # 解决方案总览页
+solution-detail.html           # 解决方案详情页
+cases.html                     # 客户案例全量库
+case-detail.html               # 案例详情页
+technology.html                # 技术与研发
+resources.html                 # 资源中心
+about.html                     # 关于筑云与企业资质
+contact.html                   # 咨询与预约演示
+styles.css                     # 全局深色设计系统样式表
+script.js                      # 交互脚本（导航、Tab分段切换、表单校验、动画）
+assets/                        # 高清视觉资源（品牌Logo、3D建筑效果图、产品架构图、资质证书）
+data/                          # 结构化数据（cases.json, products.json, solutions.json 等）
 ```
-cd existing_repo
-git remote add origin https://git.bimcc.com/digital-engineering/official-website-feat.git
-git branch -M main
-git push -uf origin main
+
+## 本地预览
+
+在项目根目录下启动本地 HTTP 服务：
+
+```bash
+python3 server.py
+# 或
+python3 -m http.server 8089
 ```
 
-## Integrate with your tools
+访问：
+```text
+http://localhost:8089/
+```
 
-* [Set up project integrations](https://git.bimcc.com/digital-engineering/official-website-feat/-/settings/integrations)
+## 核心特性
 
-## Collaborate with your team
+- **视觉系统**：深邃暗曜石背景（`#030712` ~ `#071022`）结合双层磨砂玻璃质感与微光微动效。
+- **纯净 3D 案例库**：8 大标杆案例卡片全量采用纯画幅、高分辨率 3D 建筑与工程渲染图，杜绝任何文字杂质与白边。
+- **分段控制器**：按客户角色分类 / 按行业场景分类的双层磨砂分段控制器，交互平滑，状态明确。
+- **多端响应式**：桌面端（1920px/1440px）、平板端（768px）与移动端全适配。
+- **全链路闭环**：包含在线预约咨询表单与多端交互支持。
+��卡片、案例列表和联系卡片在手机端使用横向卡带。
+- 移动端菜单。
+- 本地表单占位反馈和正式接口口子预留。
+- pending、待复核、待授权标识。
+- 深空产品感首屏：背景光场、BIM / GIS / IoT / AI / Twin 关系节点、按钮流光和 reduced motion 降级。
+- 二级页继承深空产品视觉系统，并在 hero 区增加轻量信号图谱，避免首页和内页质感断层。
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+## 截图输出
 
-## Test and Deploy
+浏览器检查会生成：
 
-Use the built-in continuous integration in GitLab.
+```text
+/Users/bimcc/Desktop/CodeX 记录文件/.impeccable/review/bimcc-home-desktop.png
+/Users/bimcc/Desktop/CodeX 记录文件/.impeccable/review/bimcc-home-mobile.png
+```
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+## 当前不包含
 
-***
+- 可公开且已脱敏的真实平台截图。
+- 真实表单提交后端或 CMS 接收方式。
+- CMS 接入。
+- 正式生产路由与完整 301 跳转清单。
 
-# Editing this README
+## 视觉参考节点
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+`STYLE_DIRECTION.md` 记录本轮视觉提炼和 Motion thesis。当前已采用 Webv8 暗黑流体玻璃方向。客户 Logo、案例成果相关数据和产品截图可参照官网及宣传册；微信咨询和公众号二维码复用现官网联系我们页面。进入正式开发前，建议确认 CMS 权限、表单接收方式和 SEO URL 迁移规则。
 
-## Suggestions for a good README
+## 正式上线提示
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- 设计和本地 HTML 原型不需要 CMS 授权。
+- 替换线上官网需要后台账号、主题或页面编辑权限、媒体库上传权限。
+- 如果要接入真实表单，需要 CMS 表单插件、邮件通知、webhook、自定义接口或服务商配合。
+- SEO URL 指当前官网已经存在的栏目和详情页地址。新版可以重做内容，但核心旧链接建议保留或做 301 跳转。
+- `CMS_HANDOFF.md` 记录正式上线所需授权、模块字段映射、表单接入和 SEO 迁移清单。
+- `data/cms-modules.json` 可作为 WordPress/CMS 模块拆分和字段建模的初始清单。
 
-## Name
-Choose a self-explaining name for your project.
+## 校验
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+运行：
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```bash
+node tests/prototype-contract.test.mjs
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+该测试检查首页模块数量、二级页文件、CMS / 页面模块标记、导航、Hero 指标、占位标识、响应式钩子和交互脚本入口。
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+如需做真实浏览器截图检查，在项目根目录运行：
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```bash
+node prototype/bimcc-home/tests/visual-check.mjs
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+该检查需要本机浏览器权限，用于验证桌面端导航高度、横向溢出、Hero 标题行数、Hero CTA 可见性和移动端基础布局。
+>>>>>>> 09d8d67 (feat: 筑云科技官网全新升级中保真原型与全量素材)

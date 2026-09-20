@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "一体化数字建设解决方案服务商",
+    "lede": "让工程建设管理，从项目现场走向全生命周期数字化。",
+    "description": "筑云科技 BIMCC 以飞椽 Fyra 智能开发平台为技术底座，融合 BIM、GIS、物联网、AI 与数字孪生能力，服务建设单位、施工企业、全咨监理、政府监管与教育医疗客户。",
+    "primaryCta": "预约咨询",
+    "secondaryCta": "查看解决方案",
+    "visualCaption": "飞椽 Fyra 与 BIMCC 智能建造平台协同连接模型、现场与业务数据。"
+  },
+  "heroMetrics": [
+    {
+      "value": "80%",
+      "label": "大型国央企 / 政府监管客户",
+      "source": "宣传册",
+      "status": "source-available"
+    },
+    {
+      "value": "1000+",
+      "label": "重点建设项目",
+      "source": "宣传册",
+      "status": "source-available"
+    },
+    {
+      "value": "80+",
+      "label": "专利软著",
+      "source": "宣传册",
+      "status": "source-available"
+    },
+    {
+      "value": "100+",
+      "label": "国家级、省部级奖项",
+      "source": "宣传册",
+      "status": "source-available"
+    }
+  ],
+  "platformShowcase": {
+    "title": "飞椽 Fyra 是工程行业的 AI + 零代码开发底座。",
+    "tag": "技术底座",
+    "image": "assets/v8/banner-fyra.png",
+    "summary": "它把页面、表单、流程、报表、大屏、APP / H5 和设备组态放进同一套能力里，方便项目级快速交付，也方便企业级长期复用。",
+    "points": [
+      "适合项目立项、巡检、验收、报表和移动端场景",
+      "支持后续接入咨询表单与业务系统",
+      "可与 BIMCC、智慧工地和数字孪生模块一起使用"
+    ]
+  },
+  "sections": [
+    "hero",
+    "pain-solution",
+    "capability-map",
+    "product-platforms",
+    "solution-entry",
+    "delivery-advantages",
+    "featured-cases",
+    "trust-cta"
+  ]
+}

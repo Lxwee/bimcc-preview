@@ -1,0 +1,1177 @@
+const mobileMenu = document.querySelector("#mobileMenu");
+const menuButton = document.querySelector(".menu-button");
+
+function closeMobileMenu() {
+  if (!mobileMenu || !menuButton) return;
+  menuButton.setAttribute("aria-expanded", "false");
+  mobileMenu.hidden = true;
+  document.body.classList.remove("menu-open");
+}
+
+if (mobileMenu && menuButton) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.hidden = isOpen;
+    document.body.classList.toggle("menu-open", !isOpen);
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMobileMenu();
+    });
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeMobileMenu();
+});
+
+const solutionTabs = document.querySelectorAll("[data-solution-tab]");
+const solutionPanels = document.querySelectorAll("[data-solution-panel]");
+
+function activateSolutionTab(tab) {
+  const target = tab.dataset.solutionTab;
+
+  solutionTabs.forEach((item) => {
+    const isActive = item === tab;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-selected", String(isActive));
+    item.tabIndex = isActive ? 0 : -1;
+  });
+
+  solutionPanels.forEach((panel) => {
+    const isActive = panel.dataset.solutionPanel === target;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+solutionTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    activateSolutionTab(tab);
+  });
+
+  tab.addEventListener("keydown", (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+
+    event.preventDefault();
+    const tabs = [...solutionTabs];
+    const currentIndex = tabs.indexOf(tab);
+    const nextIndex = (() => {
+      if (event.key === "Home") return 0;
+      if (event.key === "End") return tabs.length - 1;
+      return event.key === "ArrowRight"
+        ? (currentIndex + 1) % tabs.length
+        : (currentIndex - 1 + tabs.length) % tabs.length;
+    })();
+
+    activateSolutionTab(tabs[nextIndex]);
+    tabs[nextIndex].focus();
+  });
+});
+
+const caseFilters = document.querySelectorAll("[data-case-filter]");
+const caseCards = document.querySelectorAll("[data-case-category]");
+let activeCaseFilter = null;
+
+function activateCaseFilter(filter) {
+  const target = filter.dataset.caseFilter;
+  activeCaseFilter = target === "all" ? null : filter;
+  const nextTarget = activeCaseFilter?.dataset.caseFilter;
+
+  caseFilters.forEach((item) => {
+    const isActive = activeCaseFilter ? item === activeCaseFilter : false;
+    item.classList.toggle("is-active", isActive);
+    item.setAttribute("aria-pressed", String(isActive));
+  });
+
+  caseCards.forEach((card) => {
+    const categories = (card.dataset.caseCategory || "").split(/\s+/).filter(Boolean);
+    const shouldShow = !nextTarget || categories.includes(nextTarget);
+    card.classList.toggle("is-hidden", !shouldShow);
+  });
+}
+
+caseFilters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    activateCaseFilter(filter);
+  });
+});
+
+if (caseFilters.length) {
+  const defaultTarget = document.querySelector("[data-default-case-filter]")?.dataset.defaultCaseFilter;
+  const defaultFilter = defaultTarget
+    ? [...caseFilters].find((filter) => filter.dataset.caseFilter === defaultTarget)
+    : caseFilters[0];
+  activateCaseFilter(defaultFilter || caseFilters[0]);
+}
+
+document.querySelectorAll(".clickable-card").forEach((card) => {
+  const link = card.querySelector("a[href]");
+  if (!link) return;
+
+  card.addEventListener("click", (event) => {
+    if (event.defaultPrevented || event.target.closest("a, button, input, select, textarea")) return;
+    window.location.href = link.href;
+  });
+});
+
+document.querySelectorAll(".case-media img").forEach((image) => {
+  const markMissing = () => {
+    image.closest(".case-media")?.classList.add("is-image-missing");
+    image.hidden = true;
+  };
+
+  image.addEventListener("error", markMissing);
+  if (image.complete && image.naturalWidth === 0) markMissing();
+});
+
+const casePages = {
+  "gezhouba-platform": {
+    title: "葛洲坝集团智能项管平台",
+    summary: "集团级项目管理平台案例，围绕集团统管、多项目管理、资金进度穿透和工程数据协同展开。",
+    scenario: "企业级管理平台",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/03/葛洲坝集团智能项管平台.jpg",
+    caption: "企业级平台案例，重点呈现多项目统管和工程数据协同。",
+    signals: ["Group", "Project", "Data", "Dashboard"],
+    profileIntro: "该案例适合建设集团、工程局和大型企业客户对照企业级平台建设路径。",
+    profile: [
+      ["平台尺度", "企业级平台"],
+      ["工程场景", "多项目工程管理"],
+      ["关联产品", "BIMCC 智能建造平台 / 飞椽 Fyra"],
+      ["能力关键词", "集团统管 / 进度穿透 / 数据协同"]
+    ],
+    focusTitle: "集团级工程管理平台的应用重点",
+    focusIntro: "围绕多项目统一入口、项目数据汇聚、管理驾驶舱和业务流程沉淀建立平台能力。",
+    focus: [
+      ["多项目统管", "将企业、区域、项目、标段和工点放到同一管理视图中。"],
+      ["工程数据协同", "围绕进度、资金、质量、安全、资料等管理对象统一数据口径。"],
+      ["管理驾驶舱", "面向经营管理层呈现项目状态、风险事项和关键指标。"],
+      ["平台持续配置", "通过飞椽 Fyra 支撑页面、流程、表单、报表和大屏持续迭代。"]
+    ],
+    capabilities: [
+      ["BIMCC 智能建造平台", "承载项目管理、项企联动和工程业务协同。"],
+      ["飞椽 Fyra", "支撑企业级应用快速配置和多端入口建设。"],
+      ["数据中台", "统一主数据、指标口径、权限和报表服务。"],
+      ["企业级解决方案", "适合集团多项目监管、经营驾驶舱和标准化落地。"]
+    ],
+    relatedTitle: "适合对照企业级数字化运营与转型方案",
+    relatedIntro: "如果需要解决集团多项目统管、数据汇聚和经营监管问题，可继续查看企业级方案。"
+  },
+  "machinery-platform": {
+    title: "重庆机电控股集团企业级 BIM 施工管理平台",
+    summary: "企业级数字建造平台案例，围绕投资建造一体化、集团管控和项目过程管理展开。",
+    scenario: "企业级管理平台",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆机电控股集团企业级.jpg",
+    caption: "企业级 BIM 施工管理平台案例，适合对照集团工程管理需求。",
+    signals: ["Invest", "Build", "BIM", "Control"],
+    profileIntro: "该案例适合大型业主、集团企业和工程管理部门对照企业级数字建管需求。",
+    profile: [
+      ["平台尺度", "企业级平台"],
+      ["客户类型", "集团企业"],
+      ["关联产品", "BIMCC 智能建造平台 / 飞椽 Fyra"],
+      ["能力关键词", "投资建造一体化 / 集团管控"]
+    ],
+    focusTitle: "投资建造一体化管理的应用重点",
+    focusIntro: "围绕投资、建造、资产和项目过程数据形成统一管理入口。",
+    focus: [
+      ["集团管控", "将企业层、项目层和业务条线的管理要求统一组织。"],
+      ["投资建造协同", "围绕投资、进度、合同、质量和安全数据建立联动视图。"],
+      ["BIM 施工管理", "将模型、工程对象和施工过程数据关联到平台中。"],
+      ["标准化复制", "沉淀流程、表单、指标和项目管理模板，支撑多项目复用。"]
+    ],
+    capabilities: [
+      ["建设单位数字建管", "适合业主统一监管项目过程和数字化交付成果。"],
+      ["BIMCC 智能建造平台", "承载项目全过程管理和多方协同。"],
+      ["低 / 零代码配置", "支撑不同项目和组织流程的持续适配。"],
+      ["数字档案", "沉淀项目资料、模型成果和交付数据。"]
+    ],
+    relatedTitle: "适合对照建设单位数字建管方案",
+    relatedIntro: "如果关注投资、建造、资产和项目监管一体化，可继续查看建设单位方案。"
+  },
+  "rail-15-platform": {
+    title: "重庆轨道 15 号线管控平台",
+    summary: "轨道交通项目级平台案例，融合 BIM、智慧工地和现场数据，支撑长线路、多标段、多参建方协同。",
+    scenario: "项目级平台 / 轨道交通",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆轨道15号线管控平台-1.jpg",
+    caption: "轨道交通项目级管控平台，适合对照线性工程和智慧工地场景。",
+    signals: ["Rail", "BIM", "Site", "GIS"],
+    profileIntro: "该案例适合轨道交通、铁路、市政线性工程和重点项目建设方对照项目级平台路径。",
+    profile: [
+      ["平台尺度", "项目级平台"],
+      ["工程场景", "轨道交通 / 线性工程"],
+      ["关联产品", "BIMCC 智能建造平台 / 智慧工地"],
+      ["能力关键词", "轨交管控 / 现场数据 / 智慧工地"]
+    ],
+    focusTitle: "轨道交通项目管控的应用重点",
+    focusIntro: "围绕线路、标段、工点、现场数据和多参建方协同组织项目管理能力。",
+    focus: [
+      ["BIM + GIS 一张图", "将线路、标段、工点、模型和现场对象放入统一空间视图。"],
+      ["智慧工地接入", "接入现场人员、设备、视频和环境等数据，支撑现场监管。"],
+      ["质量安全闭环", "围绕检查、整改、复核、验收和归档形成过程留痕。"],
+      ["多方协同", "支持建设、施工、监理、咨询和分包单位围绕同源数据协同。"]
+    ],
+    capabilities: [
+      ["项目级智能建造平台", "支撑项目驾驶舱、业务协同和过程管理。"],
+      ["智慧工地建设", "连接现场设备、视频、人员和风险事项。"],
+      ["BIM 咨询服务", "支撑模型深化、施工模拟和数字化交付。"],
+      ["监管驾驶舱", "面向项目管理层呈现进度、质量、安全和风险状态。"]
+    ],
+    relatedTitle: "适合对照项目级智能建造平台方案",
+    relatedIntro: "如果项目具有长线路、多标段、多专业协同特点，可继续查看项目级和轨道交通方案。"
+  },
+  "jeddah-infrastructure": {
+    title: "沙特吉达市中心综合开发基础设施项目",
+    summary: "海外复杂基础设施项目案例，围绕多专业、多参建方协同和工程信息管理展开。",
+    scenario: "基础设施 / 海外项目",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/01/沙特吉达市中心综合开发基础设施.jpg",
+    caption: "海外基础设施案例，适合对照复杂项目协同与工程数据管理需求。",
+    signals: ["Infra", "Overseas", "BIM", "Coordinate"],
+    profileIntro: "该案例适合大型基础设施、海外工程和复杂多方协同项目对照数字化管理路径。",
+    profile: [
+      ["平台尺度", "项目级平台"],
+      ["工程场景", "基础设施 / 海外工程"],
+      ["关联产品", "BIMCC 智能建造平台 / BIM 咨询"],
+      ["能力关键词", "海外协同 / 复杂基础设施"]
+    ],
+    focusTitle: "复杂基础设施协同的应用重点",
+    focusIntro: "围绕多专业接口、跨团队协同、工程资料和项目过程管理组织数字化能力。",
+    focus: [
+      ["多专业协同", "支撑设计、施工、咨询和管理团队围绕模型与资料协同。"],
+      ["工程信息管理", "将项目资料、业务数据和管理流程放入统一平台。"],
+      ["BIM 咨询支撑", "围绕模型创建、深化协调、施工模拟和数字化交付提供技术服务。"],
+      ["项目过程留痕", "沉淀沟通、任务、问题、资料和交付成果。"]
+    ],
+    capabilities: [
+      ["BIM 咨询服务", "支撑复杂基础设施模型与施工协同。"],
+      ["项目级平台", "支撑项目过程管理和多参建方协同。"],
+      ["数字档案", "整理工程资料、模型成果和交付内容。"],
+      ["行业级方案", "适合复用到市政、公路、桥梁和基础设施场景。"]
+    ],
+    relatedTitle: "适合对照行业级智能建造一体化方案",
+    relatedIntro: "如果项目属于复杂基础设施或多参建方协同场景，可继续查看行业级方案。"
+  },
+  "raffles-curtain-wall": {
+    title: "重庆来福士广场幕墙项目",
+    summary: "复杂公共建筑与地标工程案例，围绕异形结构、BIM 预拼装和多专业协同展开。",
+    scenario: "公共建筑 / 综合体",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/01/重庆来福士.jpg",
+    caption: "复杂公共建筑案例，适合对照异形结构和 BIM 咨询服务场景。",
+    signals: ["Building", "BIM", "Facade", "Model"],
+    profileIntro: "该案例适合公共建筑、综合体、幕墙、机电和复杂空间项目对照 BIM 咨询能力。",
+    profile: [
+      ["平台尺度", "项目级服务"],
+      ["工程场景", "公共建筑 / 综合体 / 幕墙"],
+      ["关联产品", "BIM 咨询服务 / BIMCC 智能建造平台"],
+      ["能力关键词", "异形结构 / 地标工程 / BIM 预拼装"]
+    ],
+    focusTitle: "复杂公共建筑 BIM 应用重点",
+    focusIntro: "围绕复杂曲面、异形构件、预拼装和专业协调组织 BIM 技术服务。",
+    focus: [
+      ["异形构件建模", "面向复杂形体和构件关系建立可协同的 BIM 模型。"],
+      ["BIM 预拼装", "通过模型辅助构件深化、安装顺序和现场协同。"],
+      ["专业协调", "支撑幕墙、机电、结构、装修等专业之间的接口协调。"],
+      ["数字化交付", "将模型成果和过程资料沉淀为项目可交付内容。"]
+    ],
+    capabilities: [
+      ["BIM 咨询服务", "覆盖模型创建、深化设计、碰撞检查和施工模拟。"],
+      ["工程数字技术", "结合实景采集、点云和模型对比支撑复杂空间管理。"],
+      ["项目级平台", "可连接质量安全、进度资料和协同流程。"],
+      ["公共建筑方案", "适合医院、文体、教育、科研办公和综合体项目。"]
+    ],
+    relatedTitle: "适合对照 BIM 咨询与公共建筑方案",
+    relatedIntro: "如果项目涉及复杂空间、多专业协同或数字化交付，可继续查看 BIM 咨询服务。"
+  },
+  "luotian-water-platform": {
+    title: "深圳罗田水库 - 铁岗水库输水隧洞工程智慧平台",
+    summary: "水利水务与隧洞工程智慧平台案例，围绕隧洞建设、质量溯源、现场监管和智慧管理展开。",
+    scenario: "水利水务 / 隧洞工程",
+    image: "https://www.bimcc.cn/wp-content/uploads/2026/01/深圳罗田水库-铁岗水库输水隧洞工程智慧管理平台.jpg",
+    caption: "水利隧洞工程案例，适合对照远程工区、质量溯源和智慧工地场景。",
+    signals: ["Water", "Tunnel", "Trace", "Site"],
+    profileIntro: "该案例适合水利水务、抽水蓄能、隧洞和远程工区项目对照智慧平台建设路径。",
+    profile: [
+      ["平台尺度", "项目级平台"],
+      ["工程场景", "水利水务 / 隧洞工程"],
+      ["关联产品", "BIMCC 智能建造平台 / 智慧工地"],
+      ["能力关键词", "隧洞建设 / 质量溯源 / 智慧管理"]
+    ],
+    focusTitle: "水利隧洞智慧平台的应用重点",
+    focusIntro: "围绕远程工区、质量溯源、现场监管和工程资料组织项目智慧管理能力。",
+    focus: [
+      ["远程工区监管", "将分散工点、现场数据和项目状态集中到管理视图。"],
+      ["质量溯源", "围绕检查、整改、验收、资料和影像形成可追溯链路。"],
+      ["智慧工地接入", "连接人员、设备、视频、环境和专项监测数据。"],
+      ["运维衔接", "将建设阶段模型、资料和设备信息沉淀为长期运营基础。"]
+    ],
+    capabilities: [
+      ["智慧工地建设", "支撑现场设备接入、风险预警和监管平台对接。"],
+      ["项目级智能建造平台", "支撑项目驾驶舱、质量安全和资料管理。"],
+      ["数字孪生与智慧运维", "连接模型、设备台账、监测数据和运维工单。"],
+      ["水利水务方案", "适合输水隧洞、抽水蓄能、水运码头和远程工区。"]
+    ],
+    relatedTitle: "适合对照水利水务与智慧工地方案",
+    relatedIntro: "如果项目关注隧洞、工区、质量溯源和现场设备接入，可继续查看水利水务与智慧工地能力。"
+  }
+};
+
+const productPages = {
+  fyra: {
+    title: "飞椽 Fyra 智能开发平台",
+    summary: "面向工程行业的 AI + 零代码应用开发底座，将页面、表单、流程、报表、大屏、APP / H5、设备组态和 AI 能力放进同一套构建体系。",
+    primaryCta: "预约飞椽平台演示",
+    image: "assets/v8/banner-fyra.png",
+    caption: "快速构建工程企业和项目现场需要的数字化应用。",
+    signals: ["Fyra", "Builder", "Data", "AI"],
+    valueTitle: "让工程业务应用更快构建、更容易持续迭代",
+    valueIntro: "飞椽 Fyra 面向工程企业数字化部门、平台建设团队和项目交付团队，减少重复开发，让业务流程、数据和界面配置保持同一节奏。",
+    values: [
+      ["快速响应业务变化", "通过可视化方式构建页面、表单、流程、报表和大屏，缩短从需求到交付使用的等待时间。"],
+      ["降低重复建设成本", "将工程行业常用模块、业务模板和解决方案沉淀为可复用资产，减少重复开发和重复采购。"],
+      ["兼顾标准化与个性化", "既能满足集团统一管理要求，也能适配不同项目、不同角色和不同业务流程的差异。"],
+      ["支撑多端应用落地", "覆盖 PC、Web、H5、APP、客户端和 BI 大屏，满足管理端、现场端、移动端和指挥端使用。"]
+    ],
+    capabilities: [
+      ["页面渲染引擎", "构建门户、工作台、业务详情页和数据看板。"],
+      ["表单与流程引擎", "支撑现场填报、审批流转、任务协同、问题整改和复核归档。"],
+      ["报表与大屏配置", "生成项目统计、经营分析、监管报表和指挥中心大屏。"],
+      ["智能表格与数据建模", "支持在线数据管理、批量录入、元数据建模、主数据和数据服务。"],
+      ["BIMGIS 数字孪生引擎", "将模型、地图、业务数据、实景数据和设备状态组织到统一视图。"],
+      ["物联网与 AI 中台", "支撑多协议设备接入、规则联动、AI 查询、智能体创建和业务辅助。"]
+    ],
+    scenarios: [
+      ["企业级数字化平台建设", "为集团、工程局、城投平台和企业数字化部门构建多项目、多组织、多角色协同平台。"],
+      ["项目级智能建造平台交付", "快速配置进度、质量、安全、成本、物资设备、数字档案和项目驾驶舱。"],
+      ["智慧工地应用扩展", "结合现场设备、视频、传感器和物联网中台，构建风险预警和监管对接应用。"],
+      ["数字孪生与一张图应用", "将模型、地图、业务、实景和设备状态接入统一可视化界面。"],
+      ["工程 AI 应用构建", "支持平台文档查询、平台数据查询、自然语言操作和高频数据辅助录入。"]
+    ],
+    deliverables: ["飞椽平台应用配置成果", "页面与表单配置", "流程与权限体系", "报表和驾驶舱", "移动端应用入口", "设备组态与联动规则", "AI 助手或智能体应用", "平台培训与迭代机制"],
+    relatedTitle: "飞椽适合支撑多类平台快速落地",
+    relatedIntro: "可重点查看企业级平台、项目级智能建造、智慧工地和数字孪生相关案例。"
+  },
+  "bimcc-platform": {
+    title: "BIMCC 智能建造平台",
+    summary: "覆盖工程项目全生命周期的数字建造管理平台，融合 BIM、GIS、UE、3DGS、AI 和 IoT 能力，连接工程业务数据、模型数据与现场物联数据。",
+    primaryCta: "预约平台演示",
+    image: "assets/v8/banner-bimcc.png",
+    caption: "把模型、现场、业务和数据统一到一个平台。",
+    signals: ["BIMCC", "BIM", "GIS", "IoT"],
+    valueTitle: "以一张图和一套业务平台管理工程项目",
+    valueIntro: "BIMCC 不只展示模型，更将进度、质量、安全、成本、物资设备、资料档案和多方协同放进统一业务闭环。",
+    values: [
+      ["一张图看项目", "融合 BIM、GIS、实景、设备和业务数据，实现从宏观态势到微观工点的穿透式管理。"],
+      ["一套平台管业务", "覆盖协同办公、进度、质量、安全、成本、物资设备、数字档案和智慧运维等场景。"],
+      ["多方协同同源数据", "支持业主、施工、监理、咨询、分包和 BIM 服务团队基于同源数据协同。"],
+      ["项企联动沉淀资产", "打通企业、项目和工点之间的数据关系，让项目经验和业务模板持续沉淀。"]
+    ],
+    capabilities: [
+      ["工程协同及前期管理", "支撑项目前期、协同办公、任务协作和多方沟通。"],
+      ["生产进度管理", "支持计划编制、进度跟踪、形象进度、计划对比和预警。"],
+      ["成本商务与物资设备", "管理合同、计量支付、材料设备、进出场和现场使用状态。"],
+      ["技术质量与安全管理", "覆盖技术方案、质量检查、安全巡检、隐患整改和危大工程管理。"],
+      ["智慧物联与 BIMGIS", "接入智慧工地设备、视频、传感器，并与模型和地图联动。"],
+      ["数字档案与智慧运维", "沉淀项目资料、竣工成果、设备台账和运维工单。"]
+    ],
+    scenarios: [
+      ["建设单位项目监管", "统一查看项目进度、投资、质量、安全、资料和数字化交付成果。"],
+      ["施工单位项目履约", "围绕履约、安全质量、进度成本和现场协同提升项目管理能力。"],
+      ["政府或集团监管平台", "构建区域项目一张图、风险预警和多项目监管驾驶舱。"],
+      ["多参建方协同项目", "支撑业主、施工、监理、咨询和分包团队在线协同与过程留痕。"],
+      ["建设到运维衔接", "把模型、设备台账和档案资料转化为长期运营资产。"]
+    ],
+    deliverables: ["BIMCC 智能建造平台", "项目驾驶舱", "BIM + GIS 一张图", "质量安全闭环台账", "生产进度看板", "物资设备管理模块", "数字档案体系", "多端协同入口"],
+    relatedTitle: "BIMCC 是多数解决方案的业务承载平台",
+    relatedIntro: "可查看轨道交通、水利水务、企业级平台和公共建筑等项目案例。"
+  },
+  "smart-site": {
+    title: "智慧工地建设",
+    summary: "围绕项目现场安全、质量、进度、人员、设备、视频和环境监测，提供智慧工地建设全流程服务和监管平台对接能力。",
+    primaryCta: "获取智慧工地方案",
+    image: "assets/v8/banner-bimcc.png",
+    caption: "将现场设备和风险数据接入项目管理闭环。",
+    signals: ["Site", "IoT", "Video", "Risk"],
+    valueTitle: "让现场数据进入管理视图",
+    valueIntro: "智慧工地能力连接设备、视频、人员、环境和专项监测数据，为项目管理和监管上报提供现场依据。",
+    values: [
+      ["设备统一接入", "连接实名制、视频监控、环境监测、塔吊升降机和专项监测设备。"],
+      ["风险提前识别", "通过设备报警、视频 AI、巡检记录和业务规则辅助发现现场风险。"],
+      ["问题闭环处置", "围绕发现、派发、整改、复核和归档形成完整处理链路。"],
+      ["监管平台对接", "按监管要求对接数据上报和现场看板，减少重复填报。"]
+    ],
+    capabilities: [
+      ["人员实名制与劳务管理", "支撑人员进出、考勤、班组和现场用工数据管理。"],
+      ["视频监控与 AI 识别", "接入现场视频，辅助安全风险识别和异常提示。"],
+      ["环境与设备监测", "接入扬尘、噪声、车辆、机械、塔吊、升降机和专项监测数据。"],
+      ["质量安全巡检整改", "支持移动端检查、隐患整改、复核验收和统计分析。"],
+      ["智慧工地驾驶舱", "汇总现场数据、风险事项、设备状态和监管上报情况。"],
+      ["BIM + GIS 一张图联动", "将现场点位、风险、视频和业务对象挂接到模型或地图视图。"]
+    ],
+    scenarios: [
+      ["项目智慧工地建设", "适合房建、市政、轨道、高速、水利水电和机场等项目现场。"],
+      ["质量安全巡检整改", "通过移动端支撑发现问题、派发整改、现场反馈和复核归档。"],
+      ["视频 AI 风险识别", "围绕人员行为、区域风险和现场异常进行辅助识别。"],
+      ["大型机械与专项监测", "接入塔吊、升降机、深基坑、高支模和环境监测等专项数据。"],
+      ["智慧工地监管上报", "对接监管平台或企业平台，形成统一数据入口。"]
+    ],
+    deliverables: ["智慧工地平台", "设备接入清单", "视频联动与 AI 识别规则", "质量安全巡检模块", "风险预警与闭环流程", "现场驾驶舱", "监管上报接口", "培训与运维机制"],
+    relatedTitle: "智慧工地常与项目级平台一起落地",
+    relatedIntro: "可查看重庆轨道 15 号线、罗田水库输水隧洞等现场管理案例。"
+  },
+  "bim-consulting": {
+    title: "BIM 咨询服务",
+    summary: "面向建筑工程、公路工程、市政工程等项目，提供全过程、全专业 BIM 技术服务和数字化交付支撑。",
+    primaryCta: "预约 BIM 咨询",
+    image: "assets/v8/aurora-tech.png",
+    caption: "让模型成果进入施工协同、项目管理和数字化交付。",
+    signals: ["BIM", "Model", "Review", "Deliver"],
+    valueTitle: "把 BIM 从模型交付转化为管理能力",
+    valueIntro: "BIM 咨询服务覆盖设计协调、专业深化、施工模拟、模型审查、平台数据融合和数字化交付。",
+    values: [
+      ["专业深化协同", "覆盖机电、幕墙、钢结构、景观小市政、精装和装配式等专业方向。"],
+      ["设计施工联动", "通过碰撞检查、净高分析、方案比选和施工模拟降低现场返工风险。"],
+      ["模型进入平台", "将模型构件、工程资料、质量安全和进度数据接入 BIMCC 或数字孪生平台。"],
+      ["支撑数字交付", "形成可查询、可追溯、可运维衔接的模型和资料成果。"]
+    ],
+    capabilities: [
+      ["BIM 实施顾问", "制定 BIM 实施策划、标准、流程和交付要求。"],
+      ["设计协调与模型审查", "开展碰撞检查、管线综合、净高分析和专业协调。"],
+      ["深化建模与施工应用", "服务机电、幕墙、钢结构、装配式和复杂节点施工。"],
+      ["施工模拟与技术交底", "通过模型辅助施工组织、方案推演和技术交底。"],
+      ["BIM + GIS 项目管理", "将模型与地图、进度、质量安全和现场数据融合。"],
+      ["数字化交付服务", "整理模型、图纸、设备台账、资料档案和运维衔接数据。"]
+    ],
+    scenarios: [
+      ["设计协调与施工深化", "适合多专业、多标段、复杂空间和高协同要求项目。"],
+      ["BIM + GIS 项目管理", "将模型与项目管理、现场监管和一张图展示结合。"],
+      ["施工模拟与技术交底", "服务复杂施工方案、节点做法和现场交底。"],
+      ["实景采集与质量验评", "结合无人机、三维扫描、点云和 3DGS 做现场对比。"],
+      ["数字化交付与运维衔接", "让 BIM 成果服务竣工移交和长期资产运营。"]
+    ],
+    deliverables: ["BIM 实施策划", "专业模型成果", "碰撞检查报告", "深化设计成果", "施工模拟成果", "BIM + GIS 一张图数据", "数字化交付资料", "平台融合数据"],
+    relatedTitle: "BIM 咨询适合与平台和数字孪生共同推进",
+    relatedIntro: "可查看公共建筑、轨道交通、市政基础设施和数字孪生相关案例。"
+  },
+  "digital-twin": {
+    title: "数字孪生与智慧运维",
+    summary: "通过数字孪生技术搭建可视化运维一张图，集成综合运维看板、设备管理、工单管理、档案管理和监测数据。",
+    primaryCta: "预约运维方案沟通",
+    image: "assets/v8/aurora-main.png",
+    caption: "把建设阶段的数据延伸为运营阶段的资产管理能力。",
+    signals: ["Twin", "Asset", "IoT", "Ops"],
+    valueTitle: "让模型、设备、工单和档案形成资产视图",
+    valueIntro: "数字孪生与智慧运维面向园区、场馆、公共建筑、轨道交通和基础设施运营场景。",
+    values: [
+      ["建设数据衔接运维", "整理 BIM 模型、竣工资料、设备台账和系统数据，为长期运营使用。"],
+      ["设备状态可视", "将设备位置、状态、报警、维保和档案挂接到空间场景中。"],
+      ["工单协同闭环", "支持报修、派单、处理、复核、评价和统计分析。"],
+      ["运维驾驶舱汇报", "汇总设备状态、工单趋势、报警事件、巡检任务和运维绩效。"]
+    ],
+    capabilities: [
+      ["数字孪生一张图", "统一展示空间模型、设备点位、业务数据和监测状态。"],
+      ["设备台账管理", "管理设备基础信息、位置、状态、维保记录、档案和关联工单。"],
+      ["工单闭环管理", "支持报修、派单、处理、复核、评价和统计分析。"],
+      ["实时监测与预警", "接入物联网数据和报警信息，形成阈值预警和处置提醒。"],
+      ["档案资料管理", "关联竣工资料、图纸文件、设备说明和运维记录。"],
+      ["指挥中心展示", "支撑运维大屏、智慧展厅、管理汇报和应急调度。"]
+    ],
+    scenarios: [
+      ["公共建筑智慧运维", "适合场馆、学校、医院、办公楼和综合体。"],
+      ["轨道交通与基础设施运维", "结合线路空间、设备台账和监测数据进行运营管理。"],
+      ["建设交付到运维衔接", "将模型、档案、设备资料和系统数据整理为可运营资产。"],
+      ["设备监测与工单处置", "围绕设备状态、报警事件、巡检任务和维修工单形成闭环。"],
+      ["数字孪生展示与汇报", "支撑管理汇报、参观展示、应急调度和运营评估。"]
+    ],
+    deliverables: ["数字孪生智慧运维平台", "BIM + GIS 运维一张图", "综合运维驾驶舱", "设备台账模块", "工单管理流程", "巡检维保模块", "监测预警接入", "档案资料管理"],
+    relatedTitle: "数字孪生适合连接建设交付和长期运营",
+    relatedIntro: "可查看公共建筑、园区场馆、轨道交通和基础设施运维相关案例。"
+  },
+  "smart-command": {
+    title: "智慧展厅与指挥中心",
+    summary: "依托 BIM、数字孪生、三维大屏和沉浸式展示能力，为企业、项目和院校打造智慧展厅、指挥中心和观摩展示空间。",
+    primaryCta: "沟通展厅方案",
+    image: "assets/v8/banner-bimcc.png",
+    caption: "让项目成果、建设态势和企业能力更清晰地被看见。",
+    signals: ["Show", "Screen", "Twin", "Command"],
+    valueTitle: "面向展示、汇报、培训和指挥的工程数字体验",
+    valueIntro: "智慧展厅与指挥中心服务项目迎检、观摩会、企业展厅、管理驾驶舱和教学实训场景。",
+    values: [
+      ["项目建设态势展示", "通过项目驾驶舱、三维场景和数据大屏呈现建设进度与管理成果。"],
+      ["企业能力集中呈现", "围绕产品、案例、荣誉、技术和项目成果组织展陈内容。"],
+      ["观摩迎检支撑", "将现场数据、模型、视频和讲解动线结合，服务检查、汇报和参观。"],
+      ["指挥调度联动", "通过大屏、平台和数据看板支撑管理决策和现场调度。"]
+    ],
+    capabilities: [
+      ["展厅方案设计", "设计展陈主题、空间动线、内容结构和数字化展示方式。"],
+      ["施工图与集成实施", "支撑施工图深化、设备采购、装修安装和系统联调。"],
+      ["三维大屏与数字孪生", "融合模型、场景、数据看板和多媒体内容。"],
+      ["指挥中心驾驶舱", "呈现项目进度、质量安全、风险预警和现场状态。"],
+      ["沉浸式互动展示", "结合 BIMVR、AR / MR、全息投影和多屏联动。"],
+      ["运营维护服务", "支持内容更新、设备维护、讲解素材和活动保障。"]
+    ],
+    scenarios: [
+      ["项目观摩会", "展示重点项目建设成果、智慧工地应用和数字建造亮点。"],
+      ["企业智慧展厅", "集中呈现企业业务、产品、案例、荣誉和数字化能力。"],
+      ["项目指挥中心", "服务项目总控、领导汇报、应急调度和现场联动。"],
+      ["院校实训展示", "用于工程数字化、BIM 和智能建造教学展示。"],
+      ["园区运维中心", "展示资产状态、设备运行、工单处置和运维绩效。"]
+    ],
+    deliverables: ["展厅策划方案", "展陈内容结构", "施工图设计", "软硬件集成", "三维大屏界面", "指挥驾驶舱", "互动展示内容", "运营维护方案"],
+    relatedTitle: "展示空间需要真实平台和真实项目支撑",
+    relatedIntro: "可结合客户案例、产品平台和技术研发内容组织展厅叙事。"
+  },
+  "engineering-tech": {
+    title: "工程数字技术创新服务",
+    summary: "围绕无人机、三维扫描、点云、3DGS 和实景融合，服务工程现场数字化采集、进度核验、质量验评和实模对比。",
+    primaryCta: "咨询创新技术服务",
+    image: "assets/v8/aurora-tech.png",
+    caption: "用数字采集和实景融合补齐复杂工程现场数据。",
+    signals: ["Drone", "Scan", "Point", "3DGS"],
+    valueTitle: "让现场实景数据进入工程管理",
+    valueIntro: "创新技术服务适合土石方、复杂空间、进度核验、实模一致和现场巡检等专项场景。",
+    values: [
+      ["现场快速采集", "通过无人机、全景、三维扫描等方式获取现场空间和进度数据。"],
+      ["进度与工程量核验", "服务土石方测算、进度比对和施工过程复核。"],
+      ["实模一致对比", "结合 BIM、点云和 3DGS 进行质量验评和空间问题识别。"],
+      ["平台融合应用", "将采集成果接入 BIMCC、BIM + GIS 一张图或数字孪生系统。"]
+    ],
+    capabilities: [
+      ["无人机全景进度管理", "形成现场全景、进度留痕和实景巡检记录。"],
+      ["BIM + 无人机土石方测算", "辅助土石方工程量计算、复核和过程管控。"],
+      ["三维激光扫描", "采集复杂空间点云数据，用于逆向建模和质量检查。"],
+      ["点云建模与分析", "支撑模型对比、空间测量、形变分析和数据归档。"],
+      ["3DGS + BIM 对比查看", "用实景模型辅助实模一致、进度对比和问题标注。"],
+      ["平台数据融合", "将采集数据接入项目管理、数字孪生和运维场景。"]
+    ],
+    scenarios: [
+      ["土石方测算", "适合机场、市政、园区和基础设施等大体量土石方场景。"],
+      ["进度核验", "通过实景数据与计划、模型、工程量进行对比。"],
+      ["质量验评", "利用点云、模型和现场图像辅助质量检查。"],
+      ["全景巡检", "沉淀现场时序影像和问题标记。"],
+      ["复杂空间扫描", "服务地下空间、机电管线、场馆和异形结构。"]
+    ],
+    deliverables: ["无人机采集成果", "全景进度记录", "土石方测算结果", "点云数据成果", "三维扫描报告", "3DGS 实景模型", "BIM 对比分析", "平台接入数据"],
+    relatedTitle: "创新技术适合为复杂现场补充可信数据",
+    relatedIntro: "可结合 BIM 咨询、智慧工地和数字孪生方案共同推进。"
+  },
+  "digital-education": {
+    title: "数字化教育体系",
+    summary: "面向高校与职教院校，提供工程数字化课程资源、互动教学平台、智能建造实训室和校企合作基地建设。",
+    primaryCta: "咨询教育体系方案",
+    image: "assets/v8/aurora-main.png",
+    caption: "把真实工程数字化能力转化为教学、实训和产教融合内容。",
+    signals: ["Edu", "BIMVR", "Lab", "Course"],
+    valueTitle: "服务智能建造人才培养和实训基地建设",
+    valueIntro: "数字化教育体系将 BIM、智能建造、工程信息化、XR 和平台实践转化为可教学、可实训、可观摩的课程与空间。",
+    values: [
+      ["课程资源建设", "围绕工程数字化、BIM、智能建造和项目管理组织课程内容。"],
+      ["实训平台支撑", "提供互动教学平台、实训室和虚拟仿真教学环境。"],
+      ["真实项目导入", "将项目案例、平台场景和数字建造流程转化为教学素材。"],
+      ["校企合作基地", "支撑专业建设、实训基地、竞赛培训和产教融合展示。"]
+    ],
+    capabilities: [
+      ["多维集成互动教学平台", "支撑课程、实训、案例和教学管理。"],
+      ["BIMVR / AR / MR 实训室", "提供沉浸式工程场景和虚拟仿真实训。"],
+      ["智能建造课程资源", "围绕平台、模型、现场和项目管理构建教学内容。"],
+      ["数字化创新实训室", "支撑 BIM、工程数字技术和智能建造实训。"],
+      ["校企合作基地建设", "服务专业共建、实训基地和产教融合展示。"],
+      ["竞赛与成果展示", "支持学生训练、成果汇报和教学展示。"]
+    ],
+    scenarios: [
+      ["高校专业建设", "服务土木、建管、智能建造和工程信息化相关专业。"],
+      ["职教实训基地", "建设可操作、可观摩、可考核的工程数字化实训环境。"],
+      ["课程资源开发", "围绕平台实践、工程案例和数字技术形成课程包。"],
+      ["虚拟仿真实训", "用 BIMVR、AR / MR 和三维场景提高教学沉浸感。"],
+      ["校企合作展示", "结合真实案例和企业平台能力展示产教融合成果。"]
+    ],
+    deliverables: ["课程资源包", "互动教学平台", "BIMVR 实训室", "数字化创新实训室", "虚拟仿真实训内容", "校企合作基地方案", "教学案例库", "培训与运营支持"],
+    relatedTitle: "教育体系可连接真实工程案例和平台能力",
+    relatedIntro: "可结合产品平台、客户案例和技术研发内容建立教学素材。"
+  }
+};
+
+const solutionPages = {
+  enterprise: {
+    title: "企业级数字化运营与转型方案",
+    summary: "面向施工单位、建设单位、全咨监理、教育医疗和企业运营管理场景，支撑多项目统管、组织协同、数据汇聚和经营决策。",
+    signals: ["Group", "Data", "Process", "Decision"],
+    caption: "让企业从单项目数字化走向多项目、全组织、可持续运营。",
+    painTitle: "企业数字化建设常见的管理问题",
+    painIntro: "项目多、系统多、数据口径不一致，会让管理层难以及时看到真实建设状态。",
+    pain: [
+      ["项目多，数据难贯通", "不同项目、区域和业务条线各自管理，集团难以形成统一数据视图。"],
+      ["企业标准难落到项目", "制度、流程、表单和指标难以在多个项目之间统一执行。"],
+      ["系统越建越多", "项目平台、设备系统、报表工具和协同工具分散，重复录入和对账成本高。"],
+      ["数字资产难沉淀", "项目结束后，业务模板、数据口径、经验成果和资料资产没有持续复用。"]
+    ],
+    planTitle: "以统一平台沉淀企业工程管理能力",
+    planIntro: "筑云通过 BIMCC、飞椽 Fyra、数据中台和业务模板库，构建集团到项目的数字化运营体系。",
+    plan: [
+      ["经营决策层", "建设集团级运营驾驶舱，汇总进度、投资、质量、安全、履约和经营指标。"],
+      ["项目管理层", "统一多项目台账、计划、问题、合同、成本、物资设备和资料档案。"],
+      ["现场感知层", "接入智慧工地、视频、设备、人员和环境监测数据。"],
+      ["平台支撑层", "通过飞椽 Fyra 支撑流程、表单、报表、大屏和移动端持续配置。"]
+    ],
+    modules: [
+      ["集团运营驾驶舱", "汇总多项目关键指标和风险事项。"],
+      ["项企联动管理", "打通企业、区域、项目、标段和工点管理链路。"],
+      ["标准化模板库", "沉淀流程、表单、指标和项目管理方法。"],
+      ["数据中台与接口", "统一主数据、指标口径、数据服务和权限边界。"],
+      ["企业级智慧工地监管", "接入多项目现场设备和监管数据。"],
+      ["低 / 零代码应用迭代", "支撑业务变化下的快速配置和二次迭代。"]
+    ],
+    scenarios: [
+      ["集团级运营驾驶舱", "服务总部经营管理和领导决策。"],
+      ["多项目项企联动", "服务区域公司、项目公司和项目部统一协同。"],
+      ["企业标准化落地", "把统一制度、模板和指标落实到具体项目。"],
+      ["多系统集成", "对接已有系统、智慧工地平台和数据接口。"],
+      ["企业级智慧监管", "面向质量安全、风险预警和现场监管。"]
+    ],
+    deliverables: ["企业级工程管理平台", "集团运营驾驶舱", "多项目台账", "标准流程与表单", "数据中台与指标体系", "智慧工地接入", "报表和大屏", "运营与培训机制"],
+    relatedTitle: "企业级方案可参考集团平台案例",
+    relatedIntro: "可查看葛洲坝集团智能项管平台、重庆机电控股集团企业级 BIM 施工管理平台等案例。"
+  },
+  industry: {
+    title: "行业级智能建造一体化解决方案",
+    summary: "面向房建、民航、水利水务、隧洞、市政公路、铁路和桥梁等工程类型，提供可复用的智能建造方案和行业模板。",
+    signals: ["Industry", "Template", "Scene", "Delivery"],
+    caption: "把行业经验沉淀为可复用的工程数字化能力。",
+    painTitle: "不同工程类型需要不同的数字化重点",
+    painIntro: "行业级方案关注工程对象、现场条件、数据采集方式和监管要求的差异。",
+    pain: [
+      ["工程类型差异大", "房建、轨道、水利、机场和市政工程的业务重点与现场管理方式不同。"],
+      ["行业模板不足", "通用软件难以直接适配工程流程、专业对象和现场监管要求。"],
+      ["多专业协同复杂", "设计、施工、监理、设备、运营和监管之间需要同源数据支撑。"],
+      ["经验复制困难", "单个项目形成的管理方法难以复制到同类工程。"]
+    ],
+    planTitle: "围绕工程场景配置平台、服务和技术组合",
+    planIntro: "筑云结合 BIMCC、智慧工地、BIM 咨询、数字孪生和工程数字技术，为不同行业场景配置能力组合。",
+    plan: [
+      ["行业模型", "按工程类型配置业务模块、指标、流程和数据对象。"],
+      ["现场接入", "根据现场条件接入设备、视频、传感器、全景和专项监测数据。"],
+      ["一张图管理", "结合 BIM、GIS 和项目数据形成行业场景视图。"],
+      ["案例复用", "将已落地项目经验转化为同类工程的实施模板。"]
+    ],
+    modules: [
+      ["房建与公共建筑", "覆盖医院、文体、教育、科研办公、综合体和高端住宅。"],
+      ["民航机场", "覆盖航站楼、飞行区、配套设施和土石方管理。"],
+      ["轨道交通与铁路", "覆盖线路、标段、工点和多参建方协同。"],
+      ["水利水务与隧洞", "覆盖输水隧洞、抽水蓄能、水运码头和远程工区监管。"],
+      ["市政公路与桥梁", "覆盖道路、桥梁、隧道立交和综合管廊。"],
+      ["智慧运维", "覆盖园区、场馆、轨道和公共建筑的资产运营。"]
+    ],
+    scenarios: [
+      ["大型复杂工程协同", "适合多专业、多参建方、多标段工程。"],
+      ["线性工程管理", "适合轨道、铁路、市政道路和高速公路。"],
+      ["远程工区监管", "适合水利水务、抽水蓄能和隧洞工程。"],
+      ["公共建筑数字交付", "适合医院、学校、文体场馆和综合体。"],
+      ["土石方与现场专项管控", "适合机场、市政和大型基础设施前期工程。"]
+    ],
+    deliverables: ["行业场景方案", "行业模板库", "项目级平台配置", "BIM + GIS 一张图", "智慧工地接入", "BIM 咨询成果", "数字档案", "相似案例匹配"],
+    relatedTitle: "行业级方案需要结合相近工程案例判断",
+    relatedIntro: "可按轨道交通、水利水务、公共建筑、民航机场和基础设施筛选案例。"
+  },
+  project: {
+    title: "项目级智能建造平台解决方案",
+    summary: "面向单体重点建设项目，构建覆盖模型、场地、劳务、设备、质量安全、进度资料和多方协同的项目中控平台。",
+    signals: ["Project", "Site", "BIM", "Archive"],
+    caption: "把项目现场和业务流程纳入同一个管理闭环。",
+    painTitle: "单体项目的核心问题是现场、业务和资料分散",
+    painIntro: "项目级平台需要让多参建方在同一入口完成管理、协同和过程留痕。",
+    pain: [
+      ["项目管理信息分散", "进度、质量、安全、成本、资料和现场问题分布在不同系统或台账中。"],
+      ["现场数据进入慢", "设备、视频、人员、环境和巡检数据无法及时进入管理视图。"],
+      ["多方协同缺少统一入口", "业主、施工、监理、咨询和分包之间沟通链路长。"],
+      ["BIM 应用停留在展示层", "模型没有与进度、质量、安全、资料和现场对象持续联动。"]
+    ],
+    planTitle: "围绕项目全过程构建数字化管理平台",
+    planIntro: "以 BIMCC 平台为核心，结合智慧工地、BIM 咨询、移动端和数字档案，让项目过程可视、可控、可追溯。",
+    plan: [
+      ["项目驾驶舱", "汇总项目关键指标、进度、质量安全、问题闭环和资料状态。"],
+      ["BIM + GIS 一张图", "将模型、地图、工点、设备和业务对象关联展示。"],
+      ["现场协同", "通过移动端、设备接入和视频联动支撑现场处置。"],
+      ["数字档案", "沉淀过程资料、验收证据、模型成果和竣工交付内容。"]
+    ],
+    modules: [
+      ["项目驾驶舱", "统一项目态势、风险事项和关键指标。"],
+      ["生产进度管理", "支持计划、形象进度、偏差分析和预警。"],
+      ["质量安全闭环", "覆盖检查、整改、复核、归档和统计。"],
+      ["智慧工地接入", "接入现场人员、设备、视频和环境监测。"],
+      ["物资设备协同", "管理材料、设备、台账、进出场和使用状态。"],
+      ["数字档案与竣工交付", "归集过程资料、模型成果和交付清单。"]
+    ],
+    scenarios: [
+      ["项目驾驶舱与一张图指挥", "适合重点项目总控和管理汇报。"],
+      ["生产进度联动", "适合计划对比、形象进度和现场调度。"],
+      ["质量安全闭环", "适合隐患整改、危大工程和巡检复核。"],
+      ["智慧工地统一接入", "适合现场设备、视频、人员和环境数据管理。"],
+      ["多方协同与移动处置", "适合参建方协同和现场任务流转。"]
+    ],
+    deliverables: ["项目级智能建造平台", "项目驾驶舱", "BIM + GIS 一张图", "智慧工地设备接入", "质量安全闭环台账", "进度管理看板", "移动端协同入口", "数字档案体系"],
+    relatedTitle: "项目级方案可参考轨道、水利和公共建筑案例",
+    relatedIntro: "可查看重庆轨道 15 号线管控平台、罗田水库输水隧洞工程智慧平台等案例。"
+  },
+  "build-client": {
+    title: "建设单位数字建管解决方案",
+    summary: "面向建设单位、项目公司、城投平台和大型业主，统一项目监管、投资进度质量安全数据和数字化交付成果。",
+    signals: ["Owner", "Invest", "Quality", "Deliver"],
+    caption: "帮助建设单位看全项目过程，沉淀可交付数字资产。",
+    painTitle: "建设单位需要从全局掌握项目过程",
+    painIntro: "进度、投资、质量、安全、协同和交付数据如果无法联动，项目风险就很难提前判断。",
+    pain: [
+      ["项目过程看不全", "关键数据分散在参建方、系统和线下文件中，业主难以及时掌握全局。"],
+      ["进度投资质安难联动", "投资、进度、质量和安全数据口径不同，影响决策判断。"],
+      ["参建方协同成本高", "设计、施工、监理、咨询和供应商之间缺少同源管理入口。"],
+      ["数据无法沉淀到交付和运维", "建设阶段形成的模型、资料和设备台账难以延伸为运营资产。"]
+    ],
+    planTitle: "用数字建管平台统一项目监管和交付成果",
+    planIntro: "筑云基于 BIMCC、数字孪生、BIM 咨询和数字档案，帮助建设单位建立全过程项目管理视图。",
+    plan: [
+      ["全过程监管", "覆盖前期、设计、施工、验收和运维衔接阶段。"],
+      ["投资进度联动", "将进度、投资、合同、计量和工程量数据统一展示。"],
+      ["质量安全监管", "形成巡检、整改、复核、风险预警和问题闭环。"],
+      ["数字化交付", "沉淀模型、档案、设备台账和运维衔接数据。"]
+    ],
+    modules: [
+      ["项目全过程监管", "建设单位统一掌握项目状态和风险事项。"],
+      ["进度投资联动分析", "把计划、工程量、投资和支付数据关联。"],
+      ["质量安全风险监管", "管理隐患、问题、整改和复核闭环。"],
+      ["多方协同与过程留痕", "支撑参建方协同、审批流转和资料归集。"],
+      ["数字化交付与运维衔接", "形成可持续使用的模型、档案和设备数据。"],
+      ["多项目统一监管", "适合集团业主或城投平台管理多个项目。"]
+    ],
+    scenarios: [
+      ["甲方项目监管", "适合业主方掌握项目全局。"],
+      ["集团多项目统管", "适合多项目、多区域、多专业协同。"],
+      ["投资建设一体化管理", "适合关注投资、进度、合同和支付联动的项目。"],
+      ["数字化交付", "适合竣工资料、模型和运维数据要求较高的项目。"],
+      ["资产运营衔接", "适合建设期数据进入运维管理的项目。"]
+    ],
+    deliverables: ["建设单位数字建管平台", "项目全过程监管驾驶舱", "进度投资联动看板", "质量安全闭环台账", "参建方协同流程", "数字档案", "数字孪生运维底座", "项目交付数据清单"],
+    relatedTitle: "建设单位方案可参考企业级和项目级案例",
+    relatedIntro: "可查看重庆机电控股、海南交投、公共建筑和轨道交通等案例方向。"
+  },
+  "build-contractor": {
+    title: "施工单位智能建造解决方案",
+    summary: "面向施工总包、工程局、分公司和项目部，覆盖履约管理、质量安全、进度成本、物资设备、智慧工地和数字档案。",
+    signals: ["Build", "Site", "Cost", "Risk"],
+    caption: "让施工管理从现场分散处理走向平台统一闭环。",
+    painTitle: "施工单位需要同时管履约、现场和成本",
+    painIntro: "施工项目如果缺少统一平台，质量安全、进度、成本和设备数据很难形成闭环。",
+    pain: [
+      ["项目多，标准难统一", "企业和项目部之间的流程、表单、指标和数据口径难以同步。"],
+      ["质量安全闭环慢", "隐患整改、复核验收和问题归档依赖人工跟进。"],
+      ["进度与现场脱节", "计划、形象进度、资源投入和现场实际状态不同步。"],
+      ["智慧工地设备多，平台分散", "设备和视频数据没有进入统一项目管理入口。"]
+    ],
+    planTitle: "用智能建造平台统一施工履约管理",
+    planIntro: "筑云结合 BIMCC、智慧工地、飞椽 Fyra、BIM 咨询和数字档案，支撑施工单位项目履约和多项目管控。",
+    plan: [
+      ["履约驾驶舱", "汇总项目进度、质量安全、成本、物资设备和风险事项。"],
+      ["现场管理闭环", "连接巡检、整改、设备、视频和移动端处置。"],
+      ["成本物资协同", "把合同、成本、物资设备和生产进度进行联动。"],
+      ["企业标准复用", "通过模板、流程和权限配置支撑多项目复制。"]
+    ],
+    modules: [
+      ["企业多项目履约监管", "服务总部、区域公司和项目部多层级管理。"],
+      ["质量安全闭环管理", "覆盖检查、整改、复核、验收和统计。"],
+      ["生产进度管理", "支持计划编制、形象进度、偏差分析和预警。"],
+      ["成本商务管理", "支撑合同、计量、支付、成本和经营分析。"],
+      ["物资设备管理", "管理材料、设备、台账、进出场和使用状态。"],
+      ["智慧工地统一接入", "连接人员、设备、视频、环境和专项监测数据。"]
+    ],
+    scenarios: [
+      ["项目履约监管", "适合施工总包、工程局和项目部。"],
+      ["质量安全创优", "适合安全质量要求高、检查频繁的项目。"],
+      ["生产进度协同", "适合多专业、多标段、多分包协同。"],
+      ["物资设备与成本联动", "适合现场资源和成本管理压力大的项目。"],
+      ["观摩迎检与展示", "适合智慧工地、指挥中心和项目展示需求。"]
+    ],
+    deliverables: ["施工单位智能建造平台", "项目履约驾驶舱", "智慧工地接入", "质量安全闭环模块", "进度计划与看板", "成本商务模块", "物资设备模块", "数字档案与展示能力"],
+    relatedTitle: "施工单位方案可结合智慧工地案例判断",
+    relatedIntro: "可查看轨道交通、公共建筑、水利隧洞和企业级施工管理平台案例。"
+  },
+  "build-supervision": {
+    title: "全咨 / 监理数字化协同解决方案",
+    summary: "面向全过程工程咨询、监理单位和项目管理团队，支撑多方协同、过程留痕、质量安全闭环、验收证据和数字化交付。",
+    signals: ["Consult", "Supervise", "Archive", "Trace"],
+    caption: "让咨询与监理过程有据可查、协同可控、成果可交付。",
+    painTitle: "全咨与监理的核心价值需要过程数据证明",
+    painIntro: "过程工作如果分散在群消息、纸质单据和多个台账中，后期汇报和交付压力会持续放大。",
+    pain: [
+      ["参建方多，协同边界复杂", "业主、施工、设计、咨询、监理和分包同时参与，责任边界容易模糊。"],
+      ["问题闭环依赖线下跟进", "质量、安全、进度和现场问题从发现到归档缺少统一链路。"],
+      ["过程资料难以持续归集", "监理日志、旁站记录、验收资料、会议纪要和影像资料分散。"],
+      ["咨询成果难与项目数据联动", "BIM 咨询和专项分析成果如果停留在文件层，很难进入日常管理。"]
+    ],
+    planTitle: "以协同管理为主线沉淀全过程证据链",
+    planIntro: "筑云将监理管理、问题闭环、资料档案、BIM 模型、现场影像和智慧工地数据统一组织。",
+    plan: [
+      ["协同管理层", "项目驾驶舱、多方协同、任务分发、会议纪要和移动端处置。"],
+      ["监理业务层", "监理日志、旁站记录、巡检检查、问题整改、复核验收和监理报告。"],
+      ["咨询成果层", "BIM 咨询、设计协调、模型审查、施工模拟和数字化交付。"],
+      ["资料档案层", "工程档案、图纸资料、质量检验、中间交工和竣工资料。"]
+    ],
+    modules: [
+      ["多方协同与权限隔离", "支撑不同参建方在线协同和边界管理。"],
+      ["质量安全问题闭环", "形成发现、整改、复核、验收和归档链路。"],
+      ["监理过程数字化", "管理监理日志、旁站记录、巡检检查和会议纪要。"],
+      ["BIM 咨询成果协同", "将模型、协调和模拟成果接入管理流程。"],
+      ["验收证据与数字档案", "沉淀可交付的过程资料和模型成果。"],
+      ["项目管理汇报看板", "展示进度、质量、安全、资料和风险事项。"]
+    ],
+    scenarios: [
+      ["全过程工程咨询", "适合咨询团队统筹项目过程管理。"],
+      ["监理业务数字化", "适合监理日志、旁站、验收和问题闭环。"],
+      ["多参建方协同", "适合业主、施工、监理、咨询和分包共同参与。"],
+      ["BIM 咨询成果应用", "适合模型、协调、深化和施工模拟进入平台。"],
+      ["数字档案交付", "适合验收证据、竣工资料和项目复盘要求。"]
+    ],
+    deliverables: ["全咨 / 监理协同平台", "项目协同驾驶舱", "质量安全闭环台账", "监理日志与旁站模块", "移动端检查入口", "BIM 咨询成果应用", "验收证据体系", "数字档案清单"],
+    relatedTitle: "全咨监理方案可参考协同管理类项目",
+    relatedIntro: "可查看公共建筑、轨道交通和项目级智能建造平台相关案例。"
+  },
+  "build-regulation": {
+    title: "政府 / 集团监管解决方案",
+    summary: "面向政府监管部门、集团总部、区域平台和大型业主单位，构建区域项目一张图监管、风险预警、多层级穿透和指挥决策体系。",
+    signals: ["Regulate", "Map", "Risk", "Command"],
+    caption: "让区域项目和集团项目真正实现一张图监管。",
+    painTitle: "监管需要把分散项目变成可穿透的数据网络",
+    painIntro: "项目数量多、类型多、阶段不同，监管单位需要统一视图、统一指标和风险闭环。",
+    pain: [
+      ["项目分散，监管视图不统一", "区域内或集团内项目难以在统一平台上掌握整体态势。"],
+      ["现场数据接不上来", "智慧工地、视频、实名制、环境和专项监测设备各自独立。"],
+      ["风险发现不及时", "质量安全、危大工程和现场异常依赖人工上报。"],
+      ["多层级管理难穿透", "宏观态势难以下钻到具体项目、标段和工点。"]
+    ],
+    planTitle: "以 BIM + GIS 一张图建立多项目监管体系",
+    planIntro: "筑云整合多项目业务数据、BIM / GIS 模型、智慧工地设备、视频监控、风险预警和监管台账。",
+    plan: [
+      ["监管决策层", "监管驾驶舱、区域一张图、领导大屏、风险分析和指挥调度。"],
+      ["项目监管层", "项目台账、进度监管、质量监管、安全监管、危大工程和数字档案。"],
+      ["现场感知层", "智慧工地接入、视频监控、AI 识别、实名制和专项监测。"],
+      ["数据治理层", "数据标准、主数据、指标体系、接口服务、数据资产和监管报表。"]
+    ],
+    modules: [
+      ["全域总览", "展示项目分布、状态、风险和监管重点。"],
+      ["多层级穿透", "从政府 / 集团总览下钻到区域、公司、项目、标段和工点。"],
+      ["风险预警", "融合设备、视频 AI、业务填报和台账形成提醒与闭环。"],
+      ["智慧工地统一接入", "接入人员、视频、环境、机械和专项监测数据。"],
+      ["监管报表", "生成风险排名、问题闭环、设备接入和项目评价报表。"],
+      ["指挥中心展示", "支撑领导驾驶舱、BI 大屏、指挥中心和观摩展厅。"]
+    ],
+    scenarios: [
+      ["区域项目监管", "适合政府部门和行业主管单位。"],
+      ["集团多项目穿透管理", "适合集团总部、区域公司和项目部多层级管理。"],
+      ["智慧工地统一接入", "适合既有现场设备和监管平台整合。"],
+      ["风险预警与闭环处置", "适合质量安全、危大工程和现场异常管理。"],
+      ["指挥中心与展厅汇报", "适合领导汇报、检查观摩和应急调度。"]
+    ],
+    deliverables: ["政府 / 集团监管平台", "BIM + GIS 区域一张图", "监管驾驶舱", "多项目台账", "智慧工地统一接入", "质量安全预警体系", "问题整改闭环台账", "监管报表与评价分析"],
+    relatedTitle: "监管方案可参考集团和区域平台案例",
+    relatedIntro: "可查看企业级平台、交通基建、公共建筑和水利水务相关案例。"
+  }
+};
+
+const industrySolutionAliases = {
+  "industry-building": {
+    title: "房建与公共建筑智能建造方案",
+    summary: "面向医院、文体、教育、科研办公、综合体和高端住宅等建筑场景，支撑质量安全进度、BIM 协同和数字化交付。",
+    signals: ["Building", "BIM", "Quality", "Archive"]
+  },
+  "industry-airport": {
+    title: "民航机场数字化施工方案",
+    summary: "面向航站楼、飞行区、配套设施和土石方工程，支撑大体量、复杂接口和多专业协同管理。",
+    signals: ["Airport", "Earth", "Schedule", "Safety"]
+  },
+  "industry-rail": {
+    title: "轨道交通与铁路智能建造方案",
+    summary: "面向长线路、多标段、多专业和多参建方协同，构建 BIM + GIS 一张图和项目管控平台。",
+    signals: ["Rail", "Line", "GIS", "Site"]
+  },
+  "industry-water": {
+    title: "水利水务与隧洞智能建造方案",
+    summary: "面向输水隧洞、抽水蓄能、水运码头和远程工区，支撑智慧工地、质量溯源和设备监测。",
+    signals: ["Water", "Tunnel", "IoT", "Trace"]
+  },
+  "industry-municipal": {
+    title: "市政公路与桥梁智能建造方案",
+    summary: "面向市政道路、高速公路、桥梁、隧道立交和综合管廊，支撑 BIM 咨询、施工模拟和现场巡检。",
+    signals: ["Road", "Bridge", "BIM", "Inspect"]
+  },
+  "industry-operations": {
+    title: "智慧运维与园区资产数字孪生方案",
+    summary: "面向场馆、园区、轨道、市政、港区和公共建筑运营阶段，构建数字孪生一张图和运维闭环。",
+    signals: ["Twin", "Asset", "Ops", "Work"]
+  }
+};
+
+for (const [slug, alias] of Object.entries(industrySolutionAliases)) {
+  solutionPages[slug] = {
+    ...solutionPages.industry,
+    ...alias,
+    caption: "按具体工程类型配置平台模块、现场接入和交付内容。"
+  };
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function getSlug(defaultSlug) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("slug") || defaultSlug;
+}
+
+function setField(root, selector, value) {
+  if (!value) return;
+  root.querySelectorAll(selector).forEach((element) => {
+    element.textContent = value;
+  });
+}
+
+function setSignals(root, prefix, signals = []) {
+  ["A", "B", "C", "D"].forEach((key, index) => {
+    setField(root, `[data-${prefix}-field="signal${key}"]`, signals[index]);
+  });
+}
+
+function renderCards(root, selector, items = [], mode = "cards") {
+  const container = root.querySelector(selector);
+  if (!container) return;
+
+  container.innerHTML = items
+    .map((item, index) => {
+      const title = Array.isArray(item) ? item[0] : item.title || item.name || item;
+      const text = Array.isArray(item) ? item[1] : item.text || item.description || "";
+      const count = String(index + 1).padStart(2, "0");
+
+      if (mode === "deliverables") {
+        return `<article><strong>${count}</strong><p>${escapeHtml(title)}</p></article>`;
+      }
+
+      return `<article><span>${count}</span><h3>${escapeHtml(title)}</h3><p>${escapeHtml(text)}</p></article>`;
+    })
+    .join("");
+}
+
+function renderKeyValueCards(root, selector, items = []) {
+  const container = root.querySelector(selector);
+  if (!container) return;
+
+  container.innerHTML = items
+    .map(([label, value]) => {
+      return `<article><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></article>`;
+    })
+    .join("");
+}
+
+function markCurrentDetailLinks(root, selector, slug) {
+  root.querySelectorAll(selector).forEach((link) => {
+    const targetSlug = link.dataset.productLink || link.dataset.solutionLink;
+    const isGroupedIndustry = link.dataset.solutionLink === "industry" && slug.startsWith("industry-");
+    const isActive = targetSlug === slug || isGroupedIndustry;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function hydrateProductDetail() {
+  const root = document.querySelector("[data-product-field]");
+  if (!root) return;
+
+  const slug = getSlug("fyra");
+  const data = productPages[slug] || productPages.fyra;
+  document.title = `${data.title} - 筑云科技 BIMCC`;
+
+  setField(document, '[data-product-field="title"]', data.title);
+  setField(document, '[data-product-field="summary"]', data.summary);
+  setField(document, '[data-product-field="primaryCta"]', data.primaryCta);
+  setField(document, '[data-product-field="caption"]', data.caption);
+  setField(document, '[data-product-field="valueTitle"]', data.valueTitle);
+  setField(document, '[data-product-field="valueIntro"]', data.valueIntro);
+  setField(document, '[data-product-field="capabilityTitle"]', data.capabilityTitle || "核心能力模块");
+  setField(document, '[data-product-field="capabilityIntro"]', data.capabilityIntro || "围绕平台建设、现场应用和长期运营组织产品能力。");
+  setField(document, '[data-product-field="scenarioTitle"]', data.scenarioTitle || "典型应用场景");
+  setField(document, '[data-product-field="scenarioIntro"]', data.scenarioIntro || "面向不同组织角色、工程类型和项目阶段快速落地。");
+  setField(document, '[data-product-field="deliverableTitle"]', data.deliverableTitle || "可交付内容");
+  setField(document, '[data-product-field="deliverableIntro"]', data.deliverableIntro || "以平台、数据、流程、培训和运营机制作为交付结果。");
+  setField(document, '[data-product-field="relatedTitle"]', data.relatedTitle);
+  setField(document, '[data-product-field="relatedIntro"]', data.relatedIntro);
+  setSignals(document, "product", data.signals);
+  markCurrentDetailLinks(document, "[data-product-link]", slug);
+
+  const image = document.querySelector('[data-product-field="image"]');
+  if (image) {
+    image.src = data.image;
+    image.alt = `${data.title}视觉展示`;
+  }
+
+  renderCards(document, '[data-product-list="values"]', data.values);
+  renderCards(document, '[data-product-list="capabilities"]', data.capabilities);
+  renderCards(document, '[data-product-list="scenarios"]', data.scenarios);
+  renderCards(document, '[data-product-list="deliverables"]', data.deliverables, "deliverables");
+}
+
+function hydrateSolutionDetail() {
+  const root = document.querySelector("[data-solution-field]");
+  if (!root) return;
+
+  const slug = getSlug("enterprise");
+  const data = solutionPages[slug] || solutionPages.enterprise;
+  document.title = `${data.title} - 筑云科技 BIMCC`;
+
+  setField(document, '[data-solution-field="title"]', data.title);
+  setField(document, '[data-solution-field="summary"]', data.summary);
+  setField(document, '[data-solution-field="caption"]', data.caption);
+  setField(document, '[data-solution-field="painTitle"]', data.painTitle);
+  setField(document, '[data-solution-field="painIntro"]', data.painIntro);
+  setField(document, '[data-solution-field="planTitle"]', data.planTitle);
+  setField(document, '[data-solution-field="planIntro"]', data.planIntro);
+  setField(document, '[data-solution-field="moduleTitle"]', data.moduleTitle || "关键能力模块");
+  setField(document, '[data-solution-field="moduleIntro"]', data.moduleIntro || "每个模块都面向真实业务动作。");
+  setField(document, '[data-solution-field="scenarioTitle"]', data.scenarioTitle || "应用场景");
+  setField(document, '[data-solution-field="scenarioIntro"]', data.scenarioIntro || "对应项目阶段、组织层级和工程类型。");
+  setField(document, '[data-solution-field="deliverableTitle"]', data.deliverableTitle || "交付内容");
+  setField(document, '[data-solution-field="deliverableIntro"]', data.deliverableIntro || "方案最终落到系统、流程、看板和数据上。");
+  setField(document, '[data-solution-field="relatedTitle"]', data.relatedTitle);
+  setField(document, '[data-solution-field="relatedIntro"]', data.relatedIntro);
+  setSignals(document, "solution", data.signals);
+  markCurrentDetailLinks(document, "[data-solution-link]", slug);
+
+  renderCards(document, '[data-solution-list="pain"]', data.pain);
+  renderCards(document, '[data-solution-list="plan"]', data.plan);
+  renderCards(document, '[data-solution-list="modules"]', data.modules);
+  renderCards(document, '[data-solution-list="scenarios"]', data.scenarios);
+  renderCards(document, '[data-solution-list="deliverables"]', data.deliverables, "deliverables");
+}
+
+function hydrateCaseDetail() {
+  const root = document.querySelector("[data-case-field]");
+  if (!root) return;
+
+  const slug = getSlug("gezhouba-platform");
+  const data = casePages[slug] || casePages["gezhouba-platform"];
+  document.title = `${data.title} - 筑云科技 BIMCC`;
+
+  setField(document, '[data-case-field="title"]', data.title);
+  setField(document, '[data-case-field="summary"]', data.summary);
+  setField(document, '[data-case-field="caption"]', data.caption);
+  setField(document, '[data-case-field="profileIntro"]', data.profileIntro);
+  setField(document, '[data-case-field="focusTitle"]', data.focusTitle);
+  setField(document, '[data-case-field="focusIntro"]', data.focusIntro);
+  setField(document, '[data-case-field="relatedTitle"]', data.relatedTitle);
+  setField(document, '[data-case-field="relatedIntro"]', data.relatedIntro);
+  setSignals(document, "case", data.signals);
+
+  const image = document.querySelector('[data-case-field="image"]');
+  if (image) {
+    image.src = data.image;
+    image.alt = `${data.title}项目图`;
+  }
+
+  renderKeyValueCards(document, '[data-case-list="profile"]', data.profile);
+  renderCards(document, '[data-case-list="focus"]', data.focus);
+  renderCards(document, '[data-case-list="capabilities"]', data.capabilities);
+}
+
+hydrateProductDetail();
+hydrateSolutionDetail();
+hydrateCaseDetail();
+
+const leadForm = document.querySelector("#leadForm");
+const formStatus = document.querySelector("#formStatus");
+
+if (leadForm && formStatus) {
+  const submitButton = leadForm.querySelector('button[type="submit"]');
+  let localSubmitTimer;
+
+  function setFormState({ submitting = false, message = "" } = {}) {
+    leadForm.setAttribute("aria-busy", String(submitting));
+    leadForm.classList.toggle("is-submitting", submitting);
+    if (submitButton) submitButton.disabled = submitting;
+    if (message) {
+      formStatus.textContent = message;
+      formStatus.classList.add("has-message");
+    }
+  }
+
+  setFormState({ submitting: false });
+
+  leadForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.clearTimeout(localSubmitTimer);
+
+    const requiredFields = [...leadForm.querySelectorAll("[required]")];
+    const missingField = requiredFields.find((field) => !field.value.trim());
+
+    if (missingField) {
+      setFormState({
+        submitting: false,
+        message: "请先补充必填信息，便于团队判断沟通方向。",
+      });
+      missingField.focus();
+      return;
+    }
+
+    setFormState({
+      submitting: true,
+      message: "正在提交预约信息。",
+    });
+
+    localSubmitTimer = window.setTimeout(() => {
+      leadForm.reset();
+      setFormState({
+        submitting: false,
+        message: "已收到预约信息，筑云团队将尽快与你沟通。",
+      });
+    }, 420);
+  });
+}
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const revealItems = document.querySelectorAll(".reveal");
+
+if (reduceMotion || !("IntersectionObserver" in window)) {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+} else {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealItems.forEach((item) => observer.observe(item));
+}
+
+const heroStage = document.querySelector(".hero-stage");
+
+if (heroStage && !reduceMotion) {
+  heroStage.addEventListener("pointermove", (event) => {
+    const rect = heroStage.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
+    heroStage.style.setProperty("--pointer-x", `${x.toFixed(1)}%`);
+    heroStage.style.setProperty("--pointer-y", `${y.toFixed(1)}%`);
+  });
+
+  heroStage.addEventListener("pointerleave", () => {
+    heroStage.style.removeProperty("--pointer-x");
+    heroStage.style.removeProperty("--pointer-y");
+  });
+}

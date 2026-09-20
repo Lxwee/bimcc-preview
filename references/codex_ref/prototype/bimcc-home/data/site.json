@@ -1,0 +1,77 @@
+{
+  "brandName": "筑云科技 BIMCC",
+  "primaryNav": [
+    { "label": "首页", "href": "index.html#home" },
+    { "label": "产品平台", "href": "products.html" },
+    { "label": "解决方案", "href": "solutions.html" },
+    { "label": "客户案例", "href": "cases.html" },
+    { "label": "技术研发", "href": "technology.html" },
+    { "label": "关于我们", "href": "about.html" }
+  ],
+  "secondaryRoutes": [
+    { "label": "联系我们", "href": "contact.html", "purpose": "旧 URL 与 CTA 兼容页" },
+    { "label": "资源中心", "href": "resources.html", "purpose": "后续内容承接页，暂不作为主导航" }
+  ],
+  "primaryCta": {
+    "label": "预约咨询",
+    "href": "contact.html"
+  },
+  "seo": {
+    "canonicalHome": "https://www.bimcc.cn/",
+    "migrationStrategy": "新版可整体替换旧官网内容，核心旧 URL 建议保留或 301 跳转"
+  },
+  "formIntegration": {
+    "status": "reserved",
+    "endpoint": "",
+    "supportedFutureTargets": ["CMS 表单", "邮件通知", "企业微信 webhook", "飞书 webhook", "自定义接口"],
+    "trackingFields": ["source_page", "lead_channel"]
+  },
+  "contact": {
+    "telephone": "023-68682379",
+    "businessContact": "18584713100",
+    "businessContactNote": "微信同号",
+    "serviceTime": "周一至周五 9:00-18:00",
+    "qrCodeSource": "复用现官网“联系我们”中的微信咨询与公众号二维码素材",
+    "consultationPaths": [
+      {
+        "type": "telephone",
+        "label": "官方热线",
+        "value": "023-68682379",
+        "status": "source-available"
+      },
+      {
+        "type": "wechat",
+        "label": "商务微信",
+        "value": "18584713100",
+        "note": "微信同号",
+        "status": "source-available"
+      },
+      {
+        "type": "qr-source",
+        "label": "微信咨询与公众号二维码",
+        "value": "复用现官网联系我们页素材",
+        "status": "asset-to-reuse"
+      },
+      {
+        "type": "form-reserved",
+        "label": "官网咨询表单",
+        "value": "正式上线时接入 CMS、邮件或 webhook",
+        "status": "reserved"
+      }
+    ],
+    "branches": [
+      "重庆（总部）：重庆市江北区南桥寺永辉总部大厦7楼",
+      "深圳：广东省深圳市宝安区永意库13栋207",
+      "成都：四川省成都市锦江区绿地中心468锦峰3608"
+    ]
+  },
+  "verificationStatus": "pending",
+  "notes": [
+    "主导航收拢为 6 项：资源中心降级为后续内容承接页，联系我们保留为 CTA 与旧 URL 兼容页。",
+    "联系电话、商务微信和分支机构地址已按官网公开信息更新。",
+    "官网首页合作伙伴 Logo 可用于新版方案展示。",
+    "案例名称、案例图片、产品截图和成果表达可参照官网及宣传册。",
+    "公众号和二维码素材复用现官网联系我们页。",
+    "本地原型不接 CMS，不提交真实表单，仅保留正式接口位置."
+  ]
+}

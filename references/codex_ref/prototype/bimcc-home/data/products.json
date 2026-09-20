@@ -1,0 +1,40 @@
+[
+  {
+    "name": "飞椽 Fyra 智能开发平台",
+    "summary": "工程行业 AI+零代码开发底座，支撑页面、表单、流程、报表、大屏和移动端应用快速构建。",
+    "proofPoints": ["零代码应用构建", "流程与报表引擎", "大屏 / APP / H5 一体"],
+    "cta": "了解飞椽 Fyra",
+    "status": "pending"
+  },
+  {
+    "name": "BIMCC 智能建造平台",
+    "summary": "项目全生命周期数字建造管理平台，覆盖进度、质量、安全、成本、物资设备和 BIMGIS 一张图管理。",
+    "proofPoints": ["BIMGIS 一张图", "质量安全进度协同", "数字档案与交付"],
+    "cta": "查看平台能力",
+    "status": "pending"
+  },
+  {
+    "name": "智慧工地建设",
+    "summary": "现场设备接入与智慧监管一体化。",
+    "cta": "查看智慧工地方案",
+    "status": "pending"
+  },
+  {
+    "name": "数字孪生与智慧运维",
+    "summary": "从工程交付到资产运营的一张图。",
+    "cta": "了解智慧运维",
+    "status": "pending"
+  },
+  {
+    "name": "BIM 咨询服务",
+    "summary": "全过程、全专业 BIM 技术服务。",
+    "cta": "查看 BIM 咨询",
+    "status": "pending"
+  },
+  {
+    "name": "数字化教育体系",
+    "summary": "面向高校与职教的智能建造实训体系。",
+    "cta": "查看教育方案",
+    "status": "pending"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "home-hero-trust",
+    "label": "Hero 信任入口",
+    "anchor": "#home",
+    "sourceData": ["data/home.json", "官网首页", "公司宣传册"],
+    "fields": ["title", "lede", "description", "primaryCta", "secondaryCta", "visualImage", "heroMetrics", "clientLogos"],
+    "assets": ["assets/v8/banner-bimcc.png", "assets/clients/logo-*.png"],
+    "productionNote": "Hero 数字保留来源口径，正式上线前复核 80%、1000+、80+、100+ 四项表达。"
+  },
+  {
+    "id": "home-pain-solution",
+    "label": "痛点与价值",
+    "anchor": "#pain-solution",
+    "sourceData": ["data/home.json", "公司宣传册"],
+    "fields": ["sectionTitle", "sectionSummary", "painTitle", "painSummary"],
+    "assets": [],
+    "productionNote": "保持工程建设行业语境，避免改成通用软件痛点。"
+  },
+  {
+    "id": "home-capability-map",
+    "label": "能力地图",
+    "anchor": "#capability",
+    "sourceData": ["data/home.json", "data/products.json", "公司宣传册"],
+    "fields": ["layerTag", "layerTitle", "layerSummary"],
+    "assets": [],
+    "productionNote": "固定技术底座、业务平台、服务交付三层关系，便于后续扩展二级页面。"
+  },
+  {
+    "id": "home-product-platforms",
+    "label": "产品平台",
+    "anchor": "#products",
+    "sourceData": ["data/products.json", "data/home.json", "V8 视觉素材"],
+    "fields": ["productName", "summary", "proofPoints", "cta", "showcaseImage", "showcasePoints"],
+    "assets": ["assets/v8/banner-fyra.png"],
+    "productionNote": "飞椽 Fyra 展示块作为推荐产品模块，其他产品卡可后续链接到详情页。"
+  },
+  {
+    "id": "home-solution-entry",
+    "label": "解决方案入口",
+    "anchor": "#solutions",
+    "sourceData": ["data/solutions.json", "公司宣传册"],
+    "fields": ["solutionGroup", "name", "summary", "fit", "recommended"],
+    "assets": [],
+    "productionNote": "保留按客户角色和按行业场景两组字段，CMS 模板层实现 Tab 切换。"
+  },
+  {
+    "id": "home-delivery-advantages",
+    "label": "技术研发",
+    "anchor": "#technology",
+    "sourceData": ["公司宣传册", "官网产品与服务信息"],
+    "fields": ["advantageTitle", "advantageSummary", "technicalKeyword"],
+    "assets": [],
+    "productionNote": "BIM、GIS、UE、3DGS、AI 等术语建议在详情页或资源中心补解释。"
+  },
+  {
+    "id": "home-featured-cases",
+    "label": "客户案例精选",
+    "anchor": "#cases",
+    "sourceData": ["data/cases.json", "官网案例", "公司宣传册"],
+    "fields": ["title", "category", "scenario", "summary", "keywords", "image", "source"],
+    "assets": ["官网 wp-content 案例图片"],
+    "productionNote": "案例图、客户名称和项目成果需保留来源；未授权项可先使用脱敏展示。"
+  },
+  {
+    "id": "home-trust-cta",
+    "label": "联系转化",
+    "anchor": "#contact",
+    "sourceData": ["data/site.json", "官网联系我们"],
+    "fields": ["telephone", "businessContact", "serviceTime", "branches", "qrCodeSource", "consultationPaths", "formFields"],
+    "assets": ["现官网联系我们二维码素材"],
+    "productionNote": "表单接口当前只预留，上线时按 CMS 表单、邮件或 webhook 绑定接收方式。"
+  }
+]
