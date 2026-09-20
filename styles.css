@@ -1478,8 +1478,8 @@ img, svg {
 }
 
 .client-logo-pill img {
-  max-width: 124px;
-  max-height: 38px;
+  max-width: 100px;
+  max-height: 30px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1489,10 +1489,10 @@ img, svg {
 }
 
 .client-logo-pill:hover {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.75);
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3), 0 0 18px rgba(255, 255, 255, 0.15);
 }
 
 .client-logo-pill:hover img {
