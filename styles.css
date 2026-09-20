@@ -11,22 +11,22 @@
 :root {
   color-scheme: dark;
 
-  /* 背景色阶 (100% 严格对齐 index_v8.html 科技深邃海军蓝渐变底色) */
-  --bg-base: #0b1121;
-  --bg-surface: #0b1121;
-  --bg-surface-elevated: #0f172a;
-  --bg-card: rgba(255, 255, 255, 0.08);
-  --bg-card-hover: rgba(255, 255, 255, 0.14);
+  /* 背景色阶 (整体背景压暗 30%，呈现更加纯粹深邃的暗夜科技底色) */
+  --bg-base: #050811;
+  --bg-surface: #050811;
+  --bg-surface-elevated: #090d1a;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --bg-card-hover: rgba(255, 255, 255, 0.12);
 
-  /* 文本颜色梯度 (Soft Restrained Legibility - Zero Retina Fatigue) */
-  --text-white: rgba(255, 255, 255, 0.95);
-  --text-main: #e2e8f0;
+  /* 文本颜色梯度 (高清晰对比度 · 消除视觉障碍) */
+  --text-white: #ffffff;
+  --text-main: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
   /* 线框与微光 (Precision 1px Translucent Borders & Subtle Depth) */
-  --border-hairline: rgba(255, 255, 255, 0.1);
-  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-hairline: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.08);
   --border-light: rgba(255, 255, 255, 0.18);
   --border-accent: rgba(56, 189, 248, 0.35);
 
@@ -46,9 +46,9 @@
   --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
 
   /* 阴影系统 (Soft Atmospheric Diffusion) */
-  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 16px 36px -6px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 28px 64px -12px rgba(0, 0, 0, 0.65);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 16px 36px -6px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 28px 64px -12px rgba(0, 0, 0, 0.75);
   --shadow-glow-cyan: 0 0 40px rgba(14, 165, 233, 0.25);
   --shadow-glow-indigo: 0 0 40px rgba(99, 102, 241, 0.22);
 
@@ -71,7 +71,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Global Aurora Dynamic Background & Reset
+   2. Global Aurora Dynamic Background & Reset (整体压暗 30%)
    -------------------------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -81,7 +81,7 @@
 
 html {
   font-family: var(--font-sans);
-  background-color: #0b1121;
+  background-color: #050811;
   color: var(--text-main);
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -91,7 +91,7 @@ html {
 
 body {
   min-height: 100vh;
-  background-color: #0b1121;
+  background-color: #050811;
   color: #cbd5e1;
   font-size: 15.5px;
   line-height: 1.88;
@@ -99,12 +99,12 @@ body {
   overflow-x: hidden;
 }
 
-/* 动态多光谱极光背景 (100% 严格还原 index_v8.html 科技蓝紫多维流动光幕) */
+/* 动态多光谱极光背景 (发光强度压暗 30%，确保极致文字对比度) */
 .global-aurora {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: #0b1121;
+  background: #050811;
   overflow: hidden;
   pointer-events: none;
 }
@@ -118,8 +118,8 @@ body {
   height: 70vw;
   background: radial-gradient(
     circle,
-    rgba(14, 165, 233, 0.5) 0%,
-    rgba(2, 132, 199, 0.15) 50%,
+    rgba(14, 165, 233, 0.28) 0%,
+    rgba(2, 132, 199, 0.08) 50%,
     rgba(2, 132, 199, 0) 70%
   );
   filter: blur(100px);
@@ -135,8 +135,8 @@ body {
   height: 65vw;
   background: radial-gradient(
     circle,
-    rgba(139, 92, 246, 0.38) 0%,
-    rgba(59, 130, 246, 0.25) 40%,
+    rgba(139, 92, 246, 0.22) 0%,
+    rgba(59, 130, 246, 0.12) 40%,
     rgba(0, 0, 0, 0) 75%
   );
   filter: blur(120px);
@@ -674,13 +674,13 @@ img, svg {
   overflow: hidden;
 }
 
-/* 光晕聚光灯 */
+/* 光晕聚光灯 (压暗 30%) */
 .hero-spotlight {
   position: absolute;
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(99, 102, 241, 0.08) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.10) 0%, rgba(99, 102, 241, 0.05) 45%, transparent 70%);
   top: var(--pointer-y, 35%);
   left: var(--pointer-x, 65%);
   transform: translate(-50%, -50%);
@@ -711,7 +711,7 @@ img, svg {
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
   margin-top: 0.5rem;
   margin-bottom: 1.25rem;
   text-wrap: balance;
@@ -720,18 +720,19 @@ img, svg {
 }
 
 .hero-lead {
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.65;
-  color: #f1f5f9;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
   max-width: 580px;
   margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
 .hero-body, .hero-description {
   font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--text-secondary);
+  line-height: 1.8;
+  color: #cbd5e1;
   max-width: 580px;
   margin-bottom: 1.75rem;
 }
@@ -748,24 +749,25 @@ img, svg {
 .hero-trust-bar {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--border-hairline);
-  font-size: 0.8125rem;
-  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.875rem;
+  color: #f1f5f9;
 }
 
 .hero-trust-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  color: #f1f5f9;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .hero-trust-item span:first-child {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--cyan-400);
+  width: auto;
+  height: auto;
 }
 
 /* Raycast 交互驾驶舱 HUD */
