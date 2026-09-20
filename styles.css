@@ -1489,16 +1489,16 @@ img, svg {
 }
 
 .client-logo-pill:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.95);
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.2);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .client-logo-pill:hover img {
   filter: none;
   opacity: 1;
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* 保留静态类向后兼容 */
