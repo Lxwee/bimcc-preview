@@ -201,8 +201,8 @@ img, svg {
 }
 
 .site-section-hero {
-  padding-top: calc(var(--header-height) + 4.5rem);
-  padding-bottom: clamp(5rem, 7.5vw, 7.5rem);
+  padding-top: calc(var(--header-height) + 4rem);
+  padding-bottom: clamp(5.5rem, 8vw, 7.5rem);
 }
 
 .site-section + .site-section {
@@ -666,11 +666,11 @@ img, svg {
    -------------------------------------------------------------------------- */
 .hero-wrapper {
   position: relative;
-  min-height: calc(100vh - var(--header-height));
+  min-height: calc(94vh - var(--header-height));
   display: flex;
   align-items: center;
-  padding-top: calc(var(--header-height) + 3rem);
-  padding-bottom: 5rem;
+  padding-top: calc(var(--header-height) + 3.75rem);
+  padding-bottom: 5.5rem;
   overflow: hidden;
 }
 
@@ -693,7 +693,7 @@ img, svg {
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
-  gap: 4rem;
+  gap: clamp(3.5rem, 5vw, 4.5rem);
   align-items: center;
   position: relative;
   z-index: 10;
@@ -712,8 +712,8 @@ img, svg {
   line-height: 1.35;
   letter-spacing: -0.02em;
   color: #ffffff;
-  margin-top: 0.5rem;
-  margin-bottom: 1.25rem;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
   word-break: keep-all;
   overflow-wrap: break-word;
 }
@@ -721,20 +721,20 @@ img, svg {
 .hero-lead {
   font-size: 1.0625rem;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #94a3b8;
   max-width: 580px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
   letter-spacing: 0.02em;
 }
 
 .hero-body, .hero-description {
   font-size: 1.0625rem;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   color: #94a3b8;
   max-width: 580px;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
   letter-spacing: 0.02em;
 }
 
@@ -744,14 +744,14 @@ img, svg {
   align-items: center;
   gap: 16px;
   margin-top: 0.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .hero-trust-bar {
   display: flex;
   align-items: center;
   gap: 24px;
-  padding-top: 1.25rem;
+  padding-top: 1.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 0.8125rem;
   color: #94a3b8;
@@ -2765,7 +2765,7 @@ img, svg {
    -------------------------------------------------------------------------- */
 .detail-hero {
   padding-top: calc(var(--header-height) + 3.5rem);
-  padding-bottom: 4.5rem;
+  padding-bottom: 4.75rem;
   background: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%);
   border-bottom: 1px solid var(--border-hairline);
   position: relative;
