@@ -1569,8 +1569,8 @@ function renderDynamicProductHero(slug, data) {
     container.innerHTML = `
       <div class="product-hero-center">
         <div class="eyebrow-badge"><span class="status-pulse"></span>PRODUCT SPECIFICATION · LOW-CODE ENGINE</div>
-        <h1 class="hero-title" style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
-        <p class="hero-description" style="max-width: 760px; margin: 0 auto 28px;">${escapeHtml(data.summary)}</p>
+        <h1 class="hero-title" style="font-size: 3.2vw; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+        <p class="hero-description" style="font-weight: 500; line-height: 1.6; max-width: 760px; margin: 0 auto 28px;">${escapeHtml(data.summary)}</p>
         <div class="hero-actions" style="justify-content: center; margin-bottom: 36px;">
           <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
         </div>
@@ -1610,8 +1610,8 @@ function renderDynamicProductHero(slug, data) {
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
           <div class="eyebrow-badge"><span class="status-pulse"></span>${isTwin ? 'SPATIAL TWIN & IOT OPS' : '3D SPATIAL ENGINE · BIMCC'}</div>
-          <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
-          <p class="hero-description" style="margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <h1 class="hero-title" style="font-size: 3.2vw; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 500; line-height: 1.6; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
@@ -1660,8 +1660,8 @@ function renderDynamicProductHero(slug, data) {
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
           <div class="eyebrow-badge"><span class="status-pulse"></span>${isCommand ? '8K COCKPIT & DISPATCH' : 'IOT SENSOR MATRIX & AI VISION'}</div>
-          <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
-          <p class="hero-description" style="margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <h1 class="hero-title" style="font-size: 3.2vw; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 500; line-height: 1.6; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 24px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
@@ -1729,8 +1729,8 @@ function renderDynamicProductHero(slug, data) {
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
           <div class="eyebrow-badge"><span class="status-pulse"></span>${isTech ? 'PRECISION SURVEY & 3DGS' : isEdu ? 'PEDAGOGY & VIRTUAL SIMULATION' : 'FULL-PROCESS CONSULTING'}</div>
-          <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
-          <p class="hero-description" style="margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <h1 class="hero-title" style="font-size: 3.2vw; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 500; line-height: 1.6; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 24px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
