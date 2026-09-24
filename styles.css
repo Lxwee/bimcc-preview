@@ -2820,8 +2820,9 @@ img, svg {
 .detail-subnav-sticky-bar {
   position: sticky;
   top: var(--header-height);
+  margin-top: var(--header-height);
   z-index: 90;
-  background: rgba(11, 17, 33, 0.78);
+  background: rgba(11, 17, 33, 0.82);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -2862,7 +2863,7 @@ img, svg {
 }
 
 .detail-hero {
-  padding-top: 2rem;
+  padding-top: clamp(2.5rem, 4vw, 3.5rem);
   padding-bottom: 4.75rem;
   background: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%);
   border-bottom: 1px solid var(--border-hairline);
