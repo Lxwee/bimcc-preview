@@ -2820,7 +2820,7 @@ img, svg {
 .detail-subnav-sticky-bar {
   position: sticky;
   top: calc(var(--header-height) + 16px);
-  margin-top: calc(var(--header-height) + 24px);
+  margin-top: 0;
   margin-bottom: 32px;
   z-index: 90;
   width: 100%;
@@ -2897,9 +2897,9 @@ img, svg {
 }
 
 .detail-hero {
-  padding-top: 1rem;
+  padding-top: calc(var(--header-height) + 1.5rem);
   padding-bottom: 4.75rem;
-  background: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%);
+  background: radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.12), transparent 65%);
   border-bottom: 1px solid var(--border-hairline);
   position: relative;
 }
