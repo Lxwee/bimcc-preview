@@ -886,14 +886,14 @@ const productPages = {
     relatedIntro: "可结合产品平台、客户案例和技术研发内容建立教学素材。"
   },
   "ai-shift-meeting": {
-    title: "AI班前会系统",
+    title: "AI 班前会系统",
     summary: "智能安全交底与行为识别软硬件一体化系统。基于 AI 大模型与边缘计算，实现班前会语音自动转写、纪要一键提炼、未交底人员门禁拦截与隐患全流程闭环。",
-    primaryCta: "预约 AI班前会演示",
+    primaryCta: "预约 AI 班前会演示",
     image: "assets/v8/aurora-tech.png",
     caption: "让每日班前安全技术交底真正落到实处，实现施工安全源头闭环。",
-    signals: ["AI LLM", "Safety", "Voice AI", "Gate Sync"],
+    signals: ["AI", "Shift", "Safety", "Gate"],
     valueTitle: "重塑班组安全交底，变形式化走过场为数字化刚性闭环",
-    valueIntro: "AI班前会系统直击传统交底“记录靠手写、签字常代签、未交底混入场、过程难追溯”等痛点，提供软硬件一体、方案灵活（A/B 方案）的智能化解决方案。",
+    valueIntro: "AI 班前会系统直击传统交底“记录靠手写、签字常代签、未交底混入场、过程难追溯”等痛点，提供软硬件一体、方案灵活（A/B 方案）的智能化解决方案。",
     values: [
       ["大模型智能纪要", "语音实时转文字并由 AI 大模型自动提炼安全注意事项、风险防范要点与工作分配，告别人工繁琐记录。"],
       ["门禁闸机强联动", "未交底人员人脸识别自动拦截，杜绝“未交底即作业”，确保 100% 安全交底入场。"],
@@ -915,8 +915,8 @@ const productPages = {
       ["智慧工地标准化标杆项目", "打造数字化安全展示亮点，迎检汇报与示范工程评优首选。"],
       ["企业级多项目安全巡查", "集团总部通过云端中台实时调阅各工地每日班前会开展实况与违规预警。"]
     ],
-    deliverables: ["AI班前会智能终端/宣讲台", "AI边缘计算服务器", "班前会管理软件云平台", "闸机联动控制网关", "移动端交底小程序/APP", "项目安全看板大屏", "部署与实施培训服务"],
-    relatedTitle: "AI班前会已在多个国家级重点工程标杆落地",
+    deliverables: ["AI 班前会智能终端/宣讲台", "AI 边缘计算服务器", "班前会管理软件云平台", "闸机联动控制网关", "移动端交底小程序/APP", "项目安全看板大屏", "部署与实施培训服务"],
+    relatedTitle: "AI 班前会已在多个国家级重点工程标杆落地",
     relatedIntro: "可查看新疆某矿山项目、广安东站/长赣高铁站、雄安启动区二期等典型应用案例。"
   }
 };
@@ -1560,6 +1560,10 @@ function hydrateProductDetail() {
   if (!root) return;
 
   const slug = getSlug("fyra");
+  if (slug === "ai-shift-meeting" || slug === "ai-pre-shift-meeting") {
+    window.location.replace("ai-pre-shift-meeting.html");
+    return;
+  }
   const data = productPages[slug] || productPages.fyra;
   document.title = `${data.title} - 筑云科技 BIMCC`;
 

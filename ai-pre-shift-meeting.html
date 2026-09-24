@@ -3,29 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI班前会系统 - 筑云科技 BIMCC 智能安全交底与实名考勤一体化平台</title>
+    <title>AI 班前会系统 - 筑云科技 BIMCC 智能安全交底与实名考勤一体化平台</title>
     <meta
       name="description"
-      content="筑云科技数智AI班前会系统是面向矿山、工地、制造、水利等生产现场的安全管理产品。通过AI摄像头、边缘算力主机、全向麦与智能宣讲台，实现人员AI识别、无感考勤、专注度监测、中途离席判定与闸机联动管控，全程音视频录制归档，AI大模型自动生成会议纪要。"
+      content="筑云科技数智 AI 班前会系统是面向矿山、工地、制造、水利等生产现场的安全管理产品。通过 AI 摄像头、边缘算力主机、全向麦与智能宣讲台，实现人员 AI 识别、无感考勤、专注度监测、中途离席判定与闸机联动管控，全程音视频录制归档，AI 大模型自动生成会议纪要。"
     />
     <meta
       name="keywords"
-      content="AI班前会,筑云科技,智能安全交底,无感考勤,闸机联动,智能宣讲台,班前会大模型,智慧工地,工程安全管理"
+      content="AI 班前会,筑云科技,智能安全交底,无感考勤,闸机联动,智能宣讲台,班前会大模型,智慧工地,工程安全管理"
     />
     <meta name="theme-color" content="#030610" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css?v=20" />
     <style>
       /* ======================================================================
-         AI班前会 专用高质感视觉规范
+         AI 班前会 专用高质感视觉规范 (完全对齐产品矩阵架构)
          ====================================================================== */
-      .ai-detail-hero {
-        position: relative;
-        padding-top: calc(var(--header-height) + 1.5rem);
-        padding-bottom: 4rem;
-        background: radial-gradient(circle at 50% 15%, rgba(14, 165, 233, 0.14) 0%, rgba(3, 6, 16, 0.98) 75%);
-        border-bottom: 1px solid var(--border-subtle);
-      }
 
       /* 软硬件 3x2 栅格 */
       .hardware-software-grid {
@@ -133,9 +126,6 @@
 
       /* ======================================================================
          10 大功能 Bento 栅格系统 (严整高阶架构)
-         - Row 1: 2 张重点大卡 (1:1 均等并列)
-         - Row 2: 4 张 AI 视觉与监测卡片 (1:1:1:1 均等 4 列)
-         - Row 3: 4 张 流程管理与台账卡片 (1:1:1:1 均等 4 列)
          ====================================================================== */
       .bento-top-row {
         display: grid;
@@ -195,7 +185,7 @@
         border: 1px solid rgba(239, 68, 68, 0.3);
       }
 
-      /* 行业场景卡片 (3x2) */
+      /* 行业场景卡片 (3x2 栅格，高质感 SVG 图标与完美垂直对齐) */
       .scenario-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -220,12 +210,29 @@
         border-radius: var(--radius-lg);
         padding: 28px 24px;
         transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .scenario-card:hover {
         border-color: rgba(129, 140, 248, 0.45);
         transform: translateY(-4px);
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+      }
+
+      .scenario-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+
+      .scenario-title {
+        font-size: 1.1875rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
       }
 
       /* 代表案例深度卡片 (3 列) */
@@ -292,7 +299,7 @@
         </div>
         <div class="header-actions">
           <a class="button button-primary header-cta-btn" href="contact.html">
-            <span>预约方案咨询</span>
+            <span>预约演示</span>
           </a>
           <button
             class="menu-button"
@@ -322,7 +329,7 @@
           <a class="mobile-nav-link" href="cases.html">客户案例</a>
           <a class="mobile-nav-link" href="about.html">关于筑云</a>
           <a class="button button-primary mobile-cta-btn" href="contact.html"
-            >预约方案咨询</a
+            >预约演示</a
           >
         </nav>
       </div>
@@ -330,21 +337,21 @@
 
     <main id="main">
       <!-- ======================================================================
-           2. 详情页头部区：标准面包屑 + 产品快速切换胶囊轨 + 核心 Hero
+           2. 详情页头部区：标准面包屑 + 产品快速切换胶囊轨 + 左右分栏高阶 Hero (对齐产品矩阵规范)
            ====================================================================== -->
-      <section class="ai-detail-hero">
+      <section class="detail-hero">
         <div class="site-container">
-          <!-- 面包屑导航 (支持随时返回产品矩阵) -->
-          <div class="breadcrumb" style="margin-bottom: 20px;">
+          <!-- 面包屑导航 -->
+          <div class="breadcrumb">
             <a href="products.html">产品矩阵</a>
             <span>/</span>
-            <span class="current">AI班前会系统</span>
+            <span class="current">AI 班前会系统</span>
           </div>
 
-          <!-- 产品快速切换胶囊轨 (保持全站详情体验一致) -->
-          <div class="filter-tabs" style="margin-bottom: 36px; overflow-x: auto; max-width: 100%;" aria-label="切换产品详情">
+          <!-- 产品快速切换胶囊轨 (与其他产品页 100% 统一高度与样式) -->
+          <div class="filter-tabs" style="margin-bottom: 32px; overflow-x: auto; max-width: 100%;" aria-label="切换产品详情">
             <a class="filter-tab" href="products.html">全部产品</a>
-            <a class="filter-tab is-active" href="ai-pre-shift-meeting.html" aria-pressed="true">AI班前会 ✦</a>
+            <a class="filter-tab is-active" href="ai-pre-shift-meeting.html" aria-pressed="true">AI 班前会</a>
             <a class="filter-tab" href="product-detail.html?slug=fyra">飞椽 Fyra</a>
             <a class="filter-tab" href="product-detail.html?slug=bimcc-platform">BIMCC 平台</a>
             <a class="filter-tab" href="product-detail.html?slug=smart-site">智慧工地</a>
@@ -355,44 +362,83 @@
             <a class="filter-tab" href="product-detail.html?slug=digital-education">数智教育</a>
           </div>
 
-          <!-- Hero 主视觉 -->
-          <div style="max-width: 880px; margin: 0 auto; text-align: center;" class="reveal">
-            <div class="eyebrow-badge" style="margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.35); color: #e0f2fe;">
-              <span class="status-pulse"></span>
-              <span>自研视觉算法 · 软硬件一体化交付 · 闸机强联动</span>
+          <!-- 左右分栏高阶科技 Hero 架构 (与产品矩阵详情页完全一致) -->
+          <div class="hero-grid reveal" style="align-items: center; gap: 40px;">
+            <div class="hero-content">
+              <div class="eyebrow-badge">
+                <span class="status-pulse"></span>
+                AI COMPUTER VISION & ACCESS CONTROL · 软硬件一体化
+              </div>
+              <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">
+                AI 班前会系统
+              </h1>
+              <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px; color: var(--text-secondary);">
+                面向矿山、工地、制造等生产现场的数智化安全交底与实名考勤一体化产品。通过定制 AI 摄像头、算力主机与全向麦硬件，实现无感考勤、专注度监测与闸机联动，将安全交底从“形式合规”推向“实质有效”。
+              </p>
+              <div class="hero-actions" style="margin-bottom: 28px;">
+                <a class="button button-primary header-cta-btn" href="contact.html">
+                  <span>预约实机演示</span>
+                </a>
+                <a class="button button-secondary" href="#hardware-matrix" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
+                  <span>软硬件产品架构</span>
+                </a>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--cyan-400); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  毫秒级人脸精准核验
+                </span>
+                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #818cf8; background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  30秒专注度与防退场
+                </span>
+                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #34d399; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  联动闸机未交底禁入
+                </span>
+                <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #f43f5e; background: rgba(244,63,94,0.1); border: 1px solid rgba(244,63,94,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  AI 大模型秒级生成纪要
+                </span>
+              </div>
             </div>
 
-            <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 800; line-height: 1.3; color: #f8fafc; margin-bottom: 1.5rem; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);">
-              AI班前会系统<br />
-              <span class="text-gradient-aurora text-glow">让现场安全教育更智能、更规范、可追溯</span>
-            </h1>
-
-            <p class="hero-lead" style="font-size: 1.0625rem; font-weight: 400; line-height: 1.75; color: rgba(255, 255, 255, 0.9); letter-spacing: 0.02em; margin-bottom: 2.5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); max-width: 800px; margin-left: auto; margin-right: auto;">
-              筑云科技数智 AI 班前会系统是面向矿山、工地、制造等生产现场的安全管理产品。通过定制 AI 摄像头、算力主机与全向麦等硬件，实现人员 AI 识别、无感考勤、实时追踪与中途离席判定；全程录音录像留痕，AI 大模型自动生成会议纪要并云端归档，深度打通现场实名制闸机，将班前会从“形式合规”推向“实质有效”。
-            </p>
-
-            <div class="hero-cta-group" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 3.5rem; flex-wrap: wrap;">
-              <a class="button button-primary header-cta-btn" href="contact.html">
-                <span>预约现场演示 & 索取资料</span>
-              </a>
-              <a class="button button-secondary" href="#hardware-matrix" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
-                <span>了解产品架构与方案</span>
-              </a>
-            </div>
-
-            <!-- 核心认证与指标条 -->
-            <div class="hero-trust-bar" style="display: flex; justify-content: center; gap: 24px; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8125rem; color: #94a3b8; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 毫秒级人脸精准核验
+            <!-- 右侧 HUD 智能态势感知控制台 (Raycast / Linear 风格) -->
+            <div class="spatial-hud-box">
+              <div class="lod-tabs-strip">
+                <button class="lod-tab-btn active">实时抓拍识别</button>
+                <button class="lod-tab-btn">30s 专注度轮巡</button>
+                <button class="lod-tab-btn">闸机放行联动</button>
+                <button class="lod-tab-btn">AI 纪要生成</button>
               </div>
-              <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 30秒专注度与防退场监测
+              <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
+                <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">
+                  [AI_SHIFT_MEETING_TERMINAL · LIVE]
+                </div>
+                <div style="font-size: 1.8rem; font-weight: 800; color: #fff; font-family: var(--font-mono); letter-spacing: -0.02em;">
+                  99.8%
+                </div>
+                <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">
+                  人脸活体核验准确率 · 边缘计算实时追踪 · 异常中途退场即刻告警
+                </div>
+                <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; font-family: var(--font-mono); background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
+                  <span class="status-pulse" style="background: #34d399;"></span>
+                  现场闸机通信正常 · 识别延迟 &lt; 12ms · 音视频加密存证
+                </div>
               </div>
-              <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 联动闸机未交底禁入
-              </div>
-              <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> AI 大模型会议纪要秒级生成
+              <div class="spatial-telemetry-grid">
+                <div class="spatial-stat-card">
+                  <span class="spatial-stat-val">0 漏检</span>
+                  <span class="spatial-stat-lbl">未交底入场严禁拦截</span>
+                </div>
+                <div class="spatial-stat-card">
+                  <span class="spatial-stat-val">&lt; 0.3s</span>
+                  <span class="spatial-stat-lbl">多目标无感人脸识别</span>
+                </div>
+                <div class="spatial-stat-card">
+                  <span class="spatial-stat-val">100%</span>
+                  <span class="spatial-stat-lbl">交底全过程音视频留痕</span>
+                </div>
               </div>
             </div>
           </div>
@@ -516,7 +562,7 @@
               <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">远程实时监控 · 异常即刻触达</div>
             </div>
 
-            <!-- 6. 移动端一键打卡 -->
+            <!-- 6. 移动端极简打卡助手 -->
             <div class="glass-card reveal delay-150" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
               <div>
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
@@ -556,10 +602,10 @@
           <div style="text-align: center;">
             <div class="scheme-tab-group" role="tablist">
               <button class="scheme-tab-btn active" id="tabSchemeA" onclick="switchScheme('A')">
-                AI班前会方案 A（轻量标准版 · 6 步闭环）
+                AI 班前会方案 A（轻量标准版 · 6 步闭环）
               </button>
               <button class="scheme-tab-btn" id="tabSchemeB" onclick="switchScheme('B')">
-                AI班前会方案 B（全流程联动版 · 9 步全控）
+                AI 班前会方案 B（全流程联动版 · 9 步全控）
               </button>
             </div>
           </div>
@@ -571,7 +617,7 @@
                 <div>
                   <span class="card-tag accent" style="margin-bottom: 8px;">方案 A · 标准部署</span>
                   <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 6px;">
-                    监控摄像头 + AI边缘服务器 + 云端管理后台 + 网页端管理平台
+                    监控摄像头 + AI 边缘服务器 + 云端管理后台 + 网页端管理平台
                   </h3>
                   <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-top: 6px;">
                     核心解决施工现场班前会“人员实名核验与规范记录”难题，轻量敏捷、即装即用。
@@ -651,7 +697,7 @@
                 <div>
                   <span class="card-tag" style="background: rgba(129, 140, 248, 0.15); color: #818cf8; border-color: rgba(129, 140, 248, 0.3); margin-bottom: 8px;">方案 B · 深度全联动版</span>
                   <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 6px;">
-                    监控摄像头 + 高清电视/宣讲台 + AI边缘服务器 + 云端/网页端 + 联动闸机
+                    监控摄像头 + 高清电视/宣讲台 + AI 边缘服务器 + 云端/网页端 + 联动闸机
                   </h3>
                   <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-top: 6px;">
                     聚焦高危施工与复杂作业场景，全流程闭环管控“视频宣教、专注监测、纪律评估与闸机准入”。
@@ -949,7 +995,7 @@
       </section>
 
       <!-- ======================================================================
-           6. 6 大行业应用场景 (3x2 栅格)
+           6. 6 大行业应用场景 (3x2 栅格，无 Emoji，高质感 SVG 图标与对齐)
            ====================================================================== -->
       <section class="site-section" style="padding: 4.5rem 0;">
         <div class="site-container">
@@ -964,86 +1010,132 @@
           <div class="scenario-grid">
             <!-- 1. 矿山行业 -->
             <div class="scenario-card reveal">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-cyan" style="width: 40px; height: 40px; border-radius: 10px;">
-                  ⛏️
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-cyan" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2l7 7-3 3-7-7 3-3z"/>
+                      <path d="M3 21l9-9"/>
+                      <path d="M12 12l2.5 2.5"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">矿山采掘行业</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">矿山采掘行业</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  智能班前交底与实名核验，严控井下开采与露天采矿高危风险，杜绝无证上岗与代签到。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                智能班前交底与实名核验，严控井下开采与露天采矿高危风险，杜绝无证上岗与代签到。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">下井前安全把关 · 风险前置防控</div>
+              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                下井前安全把关 · 风险前置防控
+              </div>
             </div>
 
             <!-- 2. 制造行业 -->
             <div class="scenario-card reveal delay-100">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-indigo" style="width: 40px; height: 40px; border-radius: 10px;">
-                  🏭
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-indigo" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+                      <path d="M17 18h1"/>
+                      <path d="M12 18h1"/>
+                      <path d="M7 18h1"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">制造行业</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">高端制造与车间</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  数字化班前安全培训，规范车间产线作业流程与特种设备操作规程，提升车间安全素养。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                数字化班前安全培训，规范车间产线作业流程与特种设备操作规程，提升车间安全素养。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">车间规范交底 · 产线安全受控</div>
+              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                车间规范交底 · 产线安全受控
+              </div>
             </div>
 
-            <!-- 3. 石油化工 -->
+            <!-- 3. 石油石化 -->
             <div class="scenario-card reveal delay-150">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-emerald" style="width: 40px; height: 40px; border-radius: 10px;">
-                  🛢️
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-emerald" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M6 3h12v4H6z"/>
+                      <path d="M4 7h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z"/>
+                      <line x1="4" y1="12" x2="20" y2="12"/>
+                      <line x1="4" y1="17" x2="20" y2="17"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">石油行业</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">石油石化与管道</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  AI 前置安全提醒与防爆规范宣讲，保障油气开采、钻井作业与管道运维的本质安全。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                AI 前置安全提醒与防爆规范宣讲，保障油气开采、钻井作业与管道运维的本质安全。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">油气开采保障 · 防爆与合规交底</div>
+              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                油气开采保障 · 防爆与合规交底
+              </div>
             </div>
 
             <!-- 4. 水利水电 -->
             <div class="scenario-card reveal">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-cyan" style="width: 40px; height: 40px; border-radius: 10px;">
-                  💧
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-cyan" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">水利水电</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">水利水电与隧洞</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  线上线下班前交底，守护大坝枢纽、地下洞室与涉水高风险工序施工安全。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                线上线下班前交底，守护大坝枢纽、地下洞室与涉水高风险工序施工安全。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">涉水安全保障 · 复杂洞室防控</div>
+              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                涉水安全保障 · 复杂洞室防控
+              </div>
             </div>
 
             <!-- 5. 化工行业 -->
             <div class="scenario-card reveal delay-100">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-indigo" style="width: 40px; height: 40px; border-radius: 10px;">
-                  🧪
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-indigo" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M10 2v7.31L4.15 19.4c-.67 1.07.1 2.6 1.35 2.6h13c1.25 0 2.02-1.53 1.35-2.6L14 9.31V2"/>
+                      <line x1="8.5" y1="2" x2="15.5" y2="2"/>
+                      <line x1="7" y1="16" x2="17" y2="16"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">化工行业</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">精细化工与危化</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  智能班前宣教与动火/受限空间作业前置核验，严控危险化学品生产与检修安全隐患。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                智能班前宣教与动火/受限空间作业前置核验，严控危险化学品生产与检修安全隐患。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">危化品作业合规 · 检维修交底</div>
+              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                危化品作业合规 · 检维修交底
+              </div>
             </div>
 
-            <!-- 6. 交通基建与铁路 -->
+            <!-- 6. 电力农网 & 交通基建 -->
             <div class="scenario-card reveal delay-150">
-              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                <div class="card-icon-box card-icon-emerald" style="width: 40px; height: 40px; border-radius: 10px;">
-                  🚆
+              <div>
+                <div class="scenario-header">
+                  <div class="card-icon-box card-icon-emerald" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                  </div>
+                  <h3 class="scenario-title">电力农网 & 交通基建</h3>
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">高铁枢纽与交通工程</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  移动式班前会与全过程音视频溯源，筑牢配网改造、变电站施工与高铁站房安全防线。
+                </p>
               </div>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
-                移动式班前会与全过程音视频溯源，筑牢配网改造、变电站施工与高铁站房安全防线。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">移动灵活交底 · 邻近营业线防护</div>
+              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);">
+                移动灵活交底 · 高危防触电防护
+              </div>
             </div>
           </div>
         </div>
@@ -1109,25 +1201,25 @@
       </section>
 
       <!-- ======================================================================
-           8. 底部预约与咨询 CTA
+           8. 底部预约与咨询 CTA (与产品矩阵详情页 100% 统一规范与优雅圆角)
            ====================================================================== -->
-      <section class="site-section text-center" style="padding: 4.5rem 0;">
+      <section class="site-section" style="padding-bottom: 6rem;">
         <div class="site-container">
-          <div class="glass-card reveal" style="padding: 56px 32px; border-radius: var(--radius-2xl); background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.85) 80%); border: 1px solid rgba(56, 189, 248, 0.35); max-width: 860px; margin: 0 auto;">
-            <div class="eyebrow-badge" style="margin-bottom: 1.25rem;">GET STARTED WITH AI PRE-SHIFT MEETING</div>
-            <h2 style="font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-bottom: 1.25rem;">
-              开启现场安全交底数智化新篇章
-            </h2>
-            <p style="font-size: 1.0625rem; color: var(--text-secondary); max-width: 620px; margin: 0 auto 2.5rem; line-height: 1.7;">
-              联系我们的产品专家，申请 AI 班前会软硬件实机演示、定制化部署方案及行业白皮书。
-            </p>
-            <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-              <a class="button button-primary" href="contact.html">
-                <span>立即预约方案演示</span>
-              </a>
-              <a class="button button-secondary" href="tel:02368682379" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
-                <span>致电咨询：023-68682379</span>
-              </a>
+          <div class="footer-cta-card reveal">
+            <div class="footer-cta-content">
+              <div class="eyebrow-badge" style="background: rgba(255,255,255,0.06);">GET STARTED WITH AI PRE-SHIFT MEETING</div>
+              <h2 class="footer-cta-title">开启现场安全交底数智化新篇章</h2>
+              <p class="footer-cta-desc">
+                联系我们的产品专家，申请 AI 班前会软硬件实机演示、定制化部署方案及行业白皮书。
+              </p>
+              <div class="footer-cta-actions">
+                <a class="button button-primary" href="contact.html">
+                  <span>立即预约方案演示</span>
+                </a>
+                <a class="button button-secondary" href="tel:02368682379">
+                  <span>致电咨询：023-68682379</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1154,7 +1246,7 @@
               <span class="brand-title">筑云科技 BIMCC</span>
             </a>
             <p class="footer-tagline">
-              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、AI班前会系统、智慧工地、数字孪生运维、BIM 咨询、数字化教育和工程数字技术创新服务。
+              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、AI 班前会系统、智慧工地、数字孪生运维、BIM 咨询、数字化教育和工程数字技术创新服务。
             </p>
             <div class="footer-badges">
               <span class="badge-item">国家高新技术企业</span>
@@ -1167,7 +1259,7 @@
           <div class="footer-col">
             <h4 class="footer-title">产品平台</h4>
             <ul class="footer-links">
-              <li><a href="ai-pre-shift-meeting.html" style="color: var(--cyan-400);">AI班前会系统 ✦</a></li>
+              <li><a href="ai-pre-shift-meeting.html">AI 班前会系统</a></li>
               <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
               <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
               <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
