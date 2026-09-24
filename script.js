@@ -152,7 +152,7 @@ if (caseFilters.length) {
   activateCaseFilter(defaultFilter || caseFilters[0]);
 }
 
-document.querySelectorAll(".clickable-card").forEach((card) => {
+document.querySelectorAll(".clickable-card, .panorama-card").forEach((card) => {
   const link = card.querySelector("a[href]");
   if (!link) return;
 

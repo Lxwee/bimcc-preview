@@ -1898,6 +1898,7 @@ img, svg {
 
 .panorama-card {
   position: relative;
+  cursor: pointer;
   background: rgba(13, 22, 44, 0.72);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
@@ -1974,7 +1975,16 @@ img, svg {
   transition: all 0.2s ease;
 }
 
-.panorama-link:hover {
+.panorama-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.panorama-link:hover,
+.panorama-card:hover .panorama-link {
   color: #ffffff;
 }
 
@@ -1982,7 +1992,8 @@ img, svg {
   transition: transform 0.2s ease;
 }
 
-.panorama-link:hover span:last-child {
+.panorama-link:hover span:last-child,
+.panorama-card:hover .panorama-link span:last-child {
   transform: translateX(4px);
 }
 
