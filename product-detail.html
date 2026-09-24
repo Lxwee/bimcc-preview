@@ -7,7 +7,7 @@
     <meta name="description" content="筑云科技 BIMCC 产品详情页，展示飞椽 Fyra、BIMCC 智能建造平台、智慧工地、BIM 咨询、数字孪生等核心能力。">
     <meta name="theme-color" content="#03060d">
     <link rel="icon" href="assets/brand/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css?v=20260924_05">
+    <link rel="stylesheet" href="styles.css?v=20260924_06">
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -57,37 +57,34 @@
     </header>
 
     <main id="main">
-      <!-- 详情页吸顶子导航栏 (Sticky Tab & Breadcrumb) -->
-      <nav class="detail-subnav-sticky-bar" id="detailStickySubnav" aria-label="产品导航">
-        <div class="site-container">
-          <div class="detail-subnav-inner">
-            <!-- 面包屑 -->
-            <div class="breadcrumb">
-              <a href="products.html">产品矩阵</a>
-              <span>/</span>
-              <span class="current" data-product-field="title">飞椽 Fyra 智能开发平台</span>
-            </div>
-
-            <!-- 产品快速切换胶囊轨 (Reflect 风格) -->
-            <div class="filter-tabs" aria-label="切换产品详情">
-              <a class="filter-tab" href="products.html">全部产品</a>
-              <a class="filter-tab" href="product-detail.html?slug=fyra" data-product-link="fyra">飞椽 Fyra</a>
-              <a class="filter-tab" href="ai-pre-shift-meeting.html" data-product-link="ai-shift-meeting">AI 班前会</a>
-              <a class="filter-tab" href="product-detail.html?slug=bimcc-platform" data-product-link="bimcc-platform">BIMCC 平台</a>
-              <a class="filter-tab" href="product-detail.html?slug=smart-site" data-product-link="smart-site">智慧工地</a>
-              <a class="filter-tab" href="product-detail.html?slug=bim-consulting" data-product-link="bim-consulting">BIM 咨询</a>
-              <a class="filter-tab" href="product-detail.html?slug=digital-twin" data-product-link="digital-twin">数字孪生</a>
-              <a class="filter-tab" href="product-detail.html?slug=smart-command" data-product-link="smart-command">智慧展厅</a>
-              <a class="filter-tab" href="product-detail.html?slug=engineering-tech" data-product-link="engineering-tech">数字技术</a>
-              <a class="filter-tab" href="product-detail.html?slug=digital-education" data-product-link="digital-education">数智教育</a>
-            </div>
-          </div>
+      <!-- 纯粹极简 Sticky 胶囊浮岛 (完全对标客户案例 cases.html) -->
+      <div class="detail-subnav-sticky-bar" id="detailStickySubnav">
+        <div class="detail-subnav-inner">
+          <nav class="detail-subnav-pill-island" aria-label="切换产品详情">
+            <a class="filter-tab" href="products.html">全部产品</a>
+            <a class="filter-tab is-active" href="product-detail.html?slug=fyra" data-product-link="fyra">飞椽 Fyra</a>
+            <a class="filter-tab" href="ai-pre-shift-meeting.html" data-product-link="ai-shift-meeting">AI 班前会</a>
+            <a class="filter-tab" href="product-detail.html?slug=bimcc-platform" data-product-link="bimcc-platform">BIMCC 平台</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-site" data-product-link="smart-site">智慧工地</a>
+            <a class="filter-tab" href="product-detail.html?slug=bim-consulting" data-product-link="bim-consulting">BIM 咨询</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-twin" data-product-link="digital-twin">数字孪生</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-command" data-product-link="smart-command">智慧展厅</a>
+            <a class="filter-tab" href="product-detail.html?slug=engineering-tech" data-product-link="engineering-tech">数字技术</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-education" data-product-link="digital-education">数智教育</a>
+          </nav>
         </div>
-      </nav>
+      </div>
 
       <!-- 详情页头部区 -->
       <section class="detail-hero">
         <div class="site-container">
+          <!-- 面包屑 -->
+          <div class="breadcrumb" style="justify-content: center; margin-bottom: 2rem;">
+            <a href="products.html">产品矩阵</a>
+            <span>/</span>
+            <span class="current" data-product-field="title">飞椽 Fyra 智能开发平台</span>
+          </div>
+
           <!-- 动态产品 Hero 容器 (支持 4 种差异化排版架构) -->
           <div id="productHeroContainer" class="reveal">
             <!-- 默认初始骨架 / 由 JS 根据 slug 动态生成对应的定制化排版 -->
@@ -342,6 +339,6 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </a>
 
-    <script src="script.js?v=20260924_05"></script>
+    <script src="script.js?v=20260924_06"></script>
   </body>
 </html>

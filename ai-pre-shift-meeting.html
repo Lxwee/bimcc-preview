@@ -14,7 +14,7 @@
     />
     <meta name="theme-color" content="#030610" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20260924_05" />
+    <link rel="stylesheet" href="styles.css?v=20260924_06" />
     <style>
       /* ======================================================================
          AI 班前会 专用高质感视觉规范 (完全对齐产品矩阵架构)
@@ -365,39 +365,36 @@
     </header>
 
     <main id="main">
-      <!-- 详情页吸顶子导航栏 (Sticky Tab & Breadcrumb) -->
-      <nav class="detail-subnav-sticky-bar" id="detailStickySubnav" aria-label="产品导航">
-        <div class="site-container">
-          <div class="detail-subnav-inner">
-            <!-- 面包屑导航 -->
-            <div class="breadcrumb">
-              <a href="products.html">产品矩阵</a>
-              <span>/</span>
-              <span class="current">AI 班前会系统</span>
-            </div>
-
-            <!-- 产品快速切换胶囊轨 (与其他产品页 100% 统一高度与样式) -->
-            <div class="filter-tabs" aria-label="切换产品详情">
-              <a class="filter-tab" href="products.html">全部产品</a>
-              <a class="filter-tab" href="product-detail.html?slug=fyra">飞椽 Fyra</a>
-              <a class="filter-tab is-active" href="ai-pre-shift-meeting.html" aria-pressed="true">AI 班前会</a>
-              <a class="filter-tab" href="product-detail.html?slug=bimcc-platform">BIMCC 平台</a>
-              <a class="filter-tab" href="product-detail.html?slug=smart-site">智慧工地</a>
-              <a class="filter-tab" href="product-detail.html?slug=bim-consulting">BIM 咨询</a>
-              <a class="filter-tab" href="product-detail.html?slug=digital-twin">数字孪生</a>
-              <a class="filter-tab" href="product-detail.html?slug=smart-command">智慧展厅</a>
-              <a class="filter-tab" href="product-detail.html?slug=engineering-tech">数字技术</a>
-              <a class="filter-tab" href="product-detail.html?slug=digital-education">数智教育</a>
-            </div>
-          </div>
+      <!-- 纯粹极简 Sticky 胶囊浮岛 (完全对标客户案例 cases.html) -->
+      <div class="detail-subnav-sticky-bar" id="detailStickySubnav">
+        <div class="detail-subnav-inner">
+          <nav class="detail-subnav-pill-island" aria-label="切换产品详情">
+            <a class="filter-tab" href="products.html">全部产品</a>
+            <a class="filter-tab" href="product-detail.html?slug=fyra">飞椽 Fyra</a>
+            <a class="filter-tab is-active" href="ai-pre-shift-meeting.html" aria-pressed="true">AI 班前会</a>
+            <a class="filter-tab" href="product-detail.html?slug=bimcc-platform">BIMCC 平台</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-site">智慧工地</a>
+            <a class="filter-tab" href="product-detail.html?slug=bim-consulting">BIM 咨询</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-twin">数字孪生</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-command">智慧展厅</a>
+            <a class="filter-tab" href="product-detail.html?slug=engineering-tech">数字技术</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-education">数智教育</a>
+          </nav>
         </div>
-      </nav>
+      </div>
 
       <!-- ======================================================================
            2. 详情页头部区：左右分栏高阶 Hero (对齐产品矩阵规范)
            ====================================================================== -->
       <section class="detail-hero">
         <div class="site-container">
+          <!-- 面包屑导航 -->
+          <div class="breadcrumb" style="margin-bottom: 2rem;">
+            <a href="products.html">产品矩阵</a>
+            <span>/</span>
+            <span class="current">AI 班前会系统</span>
+          </div>
+
           <!-- 左右分栏高阶科技 Hero 架构 (与产品矩阵详情页完全一致) -->
           <div class="hero-grid reveal" style="align-items: center; gap: 40px;">
             <div class="hero-content">
@@ -1339,7 +1336,7 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </a>
 
-    <script src="script.js?v=20260924_05"></script>
+    <script src="script.js?v=20260924_06"></script>
     <script>
       // 方案 A / B 交互式切换
       function switchScheme(scheme) {

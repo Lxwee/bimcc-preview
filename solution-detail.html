@@ -7,7 +7,7 @@
     <meta name="description" content="筑云科技 BIMCC 解决方案详情页，提供企业级运营、施工单位、建设单位、全咨监理、政府监管与项目级智能建造落地蓝图。">
     <meta name="theme-color" content="#03060d">
     <link rel="icon" href="assets/brand/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css?v=20260924_05">
+    <link rel="stylesheet" href="styles.css?v=20260924_06">
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -57,34 +57,31 @@
     </header>
 
     <main id="main">
-      <!-- 详情页吸顶子导航栏 (Sticky Tab & Breadcrumb) -->
-      <nav class="detail-subnav-sticky-bar" id="detailStickySubnav" aria-label="方案导航">
-        <div class="site-container">
-          <div class="detail-subnav-inner">
-            <div class="breadcrumb">
-              <a href="solutions.html">解决方案</a>
-              <span>/</span>
-              <span class="current" data-solution-field="title">企业级数字化运营与转型方案</span>
-            </div>
-
-            <!-- 方案快速切换轨 -->
-            <div class="filter-tabs" aria-label="切换方案详情">
-              <a class="filter-tab" href="solutions.html">方案总览</a>
-              <a class="filter-tab" href="solution-detail.html?slug=enterprise" data-solution-link="enterprise">企业级统管</a>
-              <a class="filter-tab" href="solution-detail.html?slug=industry" data-solution-link="industry">行业级模板</a>
-              <a class="filter-tab" href="solution-detail.html?slug=project" data-solution-link="project">项目级中控</a>
-              <a class="filter-tab" href="solution-detail.html?slug=build-client" data-solution-link="build-client">建设单位</a>
-              <a class="filter-tab" href="solution-detail.html?slug=build-contractor" data-solution-link="build-contractor">施工单位</a>
-              <a class="filter-tab" href="solution-detail.html?slug=build-supervision" data-solution-link="build-supervision">全咨监理</a>
-              <a class="filter-tab" href="solution-detail.html?slug=build-regulation" data-solution-link="build-regulation">政府监管</a>
-            </div>
-          </div>
+      <!-- 纯粹极简 Sticky 胶囊浮岛 (完全对标客户案例 cases.html) -->
+      <div class="detail-subnav-sticky-bar" id="detailStickySubnav">
+        <div class="detail-subnav-inner">
+          <nav class="detail-subnav-pill-island" aria-label="切换方案详情">
+            <a class="filter-tab" href="solutions.html">方案总览</a>
+            <a class="filter-tab is-active" href="solution-detail.html?slug=enterprise" data-solution-link="enterprise">企业级统管</a>
+            <a class="filter-tab" href="solution-detail.html?slug=industry" data-solution-link="industry">行业级模板</a>
+            <a class="filter-tab" href="solution-detail.html?slug=project" data-solution-link="project">项目级中控</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-client" data-solution-link="build-client">建设单位</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-contractor" data-solution-link="build-contractor">施工单位</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-supervision" data-solution-link="build-supervision">全咨监理</a>
+            <a class="filter-tab" href="solution-detail.html?slug=build-regulation" data-solution-link="build-regulation">政府监管</a>
+          </nav>
         </div>
-      </nav>
+      </div>
 
       <!-- 方案详情头部 -->
       <section class="detail-hero">
         <div class="site-container">
+          <div class="breadcrumb" style="justify-content: center; margin-bottom: 2rem;">
+            <a href="solutions.html">解决方案</a>
+            <span>/</span>
+            <span class="current" data-solution-field="title">企业级数字化运营与转型方案</span>
+          </div>
+
           <div class="hero-grid" id="solutionHeroGrid">
             <div class="hero-content reveal">
               <div class="eyebrow-badge">
@@ -265,6 +262,6 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </a>
 
-    <script src="script.js?v=20260924_05"></script>
+    <script src="script.js?v=20260924_06"></script>
   </body>
 </html>
