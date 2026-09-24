@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AI班前会 - 筑云科技 BIMCC 数智化安全交底与实名考勤平台</title>
+    <title>AI班前会系统 - 筑云科技 BIMCC 智能安全交底与实名考勤一体化平台</title>
     <meta
       name="description"
       content="筑云科技数智AI班前会系统是面向矿山、工地、制造、水利等生产现场的安全管理产品。通过AI摄像头、边缘算力主机、全向麦与智能宣讲台，实现人员AI识别、无感考勤、专注度监测、中途离席判定与闸机联动管控，全程音视频录制归档，AI大模型自动生成会议纪要。"
@@ -16,20 +16,18 @@
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css?v=20" />
     <style>
-      /* AI班前会专属增强视觉样式 */
-      .ai-meeting-hero {
+      /* ======================================================================
+         AI班前会 专用高质感视觉规范
+         ====================================================================== */
+      .ai-detail-hero {
         position: relative;
-        min-height: calc(88vh - var(--header-height));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-top: calc(var(--header-height) + 3.5rem);
-        padding-bottom: 5rem;
-        overflow: hidden;
-        text-align: center;
-        background: radial-gradient(circle at 50% 30%, rgba(14, 165, 233, 0.12) 0%, rgba(3, 6, 16, 0.95) 75%);
+        padding-top: calc(var(--header-height) + 1.5rem);
+        padding-bottom: 4rem;
+        background: radial-gradient(circle at 50% 15%, rgba(14, 165, 233, 0.14) 0%, rgba(3, 6, 16, 0.98) 75%);
+        border-bottom: 1px solid var(--border-subtle);
       }
 
+      /* 软硬件 3x2 栅格 */
       .hardware-software-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -37,7 +35,7 @@
         margin-top: 2rem;
       }
 
-      @media (max-width: 1024px) {
+      @media (max-width: 992px) {
         .hardware-software-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -49,10 +47,10 @@
         }
       }
 
-      /* 方案 A/B 互动切换卡片 */
+      /* 方案 A/B 互动切换组件 */
       .scheme-tab-group {
         display: inline-flex;
-        background: rgba(15, 23, 42, 0.7);
+        background: rgba(15, 23, 42, 0.8);
         padding: 6px;
         border-radius: 9999px;
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -74,23 +72,37 @@
 
       .scheme-tab-btn.active {
         color: #ffffff;
-        background: linear-gradient(135deg, rgba(14, 165, 233, 0.85) 0%, rgba(37, 99, 235, 0.9) 100%);
-        box-shadow: 0 4px 16px rgba(14, 165, 233, 0.35);
+        background: linear-gradient(135deg, rgba(14, 165, 233, 0.9) 0%, rgba(37, 99, 235, 0.95) 100%);
+        box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4);
       }
 
-      .process-flow-grid {
+      /* 方案流程栅格：严格 3 列对称对齐，彻底消除寡行 */
+      .process-flow-grid-3cols {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 16px;
-        position: relative;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .process-flow-grid-3cols {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .process-flow-grid-3cols {
+          grid-template-columns: 1fr;
+        }
       }
 
       .process-step-card {
-        background: rgba(15, 23, 42, 0.55);
+        background: rgba(15, 23, 42, 0.6);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: var(--radius-lg);
-        padding: 24px 16px;
-        text-align: center;
+        padding: 24px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         position: relative;
         transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
@@ -98,46 +110,64 @@
       .process-step-card:hover {
         transform: translateY(-4px);
         border-color: rgba(56, 189, 248, 0.4);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
       }
 
-      .process-step-number {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: rgba(56, 189, 248, 0.15);
-        color: #38bdf8;
-        display: inline-flex;
+      .step-header-row {
+        display: flex;
         align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 0.875rem;
+        justify-content: space-between;
         margin-bottom: 12px;
-        border: 1px solid rgba(56, 189, 248, 0.3);
       }
 
-      /* 10大功能 Bento 栅格系统 */
-      .bento-features-grid {
+      .process-step-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #38bdf8;
+        background: rgba(56, 189, 248, 0.12);
+        border: 1px solid rgba(56, 189, 248, 0.25);
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+
+      /* ======================================================================
+         10 大功能 Bento 栅格系统 (严整高阶架构)
+         - Row 1: 2 张重点大卡 (1:1 均等并列)
+         - Row 2: 4 张 AI 视觉与监测卡片 (1:1:1:1 均等 4 列)
+         - Row 3: 4 张 流程管理与台账卡片 (1:1:1:1 均等 4 列)
+         ====================================================================== */
+      .bento-top-row {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-        margin-top: 2rem;
+        margin-bottom: 20px;
       }
 
-      @media (max-width: 900px) {
-        .bento-features-grid {
+      .bento-four-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 1100px) {
+        .bento-four-row {
           grid-template-columns: repeat(2, 1fr);
         }
       }
 
-      @media (max-width: 600px) {
-        .bento-features-grid {
+      @media (max-width: 768px) {
+        .bento-top-row {
+          grid-template-columns: 1fr;
+        }
+        .bento-four-row {
           grid-template-columns: 1fr;
         }
       }
 
       .bento-card {
-        background: rgba(15, 23, 42, 0.6);
+        background: rgba(15, 23, 42, 0.65);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: var(--radius-lg);
         padding: 28px 24px;
@@ -146,34 +176,26 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .bento-card:hover {
         border-color: rgba(56, 189, 248, 0.4);
         transform: translateY(-4px);
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
       }
 
-      .bento-card-featured {
-        grid-column: span 2;
-        background: radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.7) 70%);
-        border-color: rgba(56, 189, 248, 0.25);
+      .bento-featured-card {
+        background: radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.8) 75%);
+        border: 1px solid rgba(56, 189, 248, 0.3);
       }
 
-      @media (max-width: 900px) {
-        .bento-card-featured {
-          grid-column: span 2;
-        }
+      .bento-security-card {
+        background: radial-gradient(circle at 100% 0%, rgba(239, 68, 68, 0.12) 0%, rgba(15, 23, 42, 0.8) 75%);
+        border: 1px solid rgba(239, 68, 68, 0.3);
       }
 
-      @media (max-width: 600px) {
-        .bento-card-featured {
-          grid-column: span 1;
-        }
-      }
-
-      /* 行业场景卡片 */
+      /* 行业场景卡片 (3x2) */
       .scenario-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -206,7 +228,7 @@
         box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
       }
 
-      /* 代表案例深度卡片 */
+      /* 代表案例深度卡片 (3 列) */
       .case-highlight-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -308,31 +330,49 @@
 
     <main id="main">
       <!-- ======================================================================
-           1. 首屏 Hero：AI班前会管理平台
+           2. 详情页头部区：标准面包屑 + 产品快速切换胶囊轨 + 核心 Hero
            ====================================================================== -->
-      <section class="ai-meeting-hero">
+      <section class="ai-detail-hero">
         <div class="site-container">
-          <div style="max-width: 860px; margin: 0 auto;">
-            <!-- 微光胶囊标签 -->
-            <div class="eyebrow-badge" style="margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(56, 189, 248, 0.35); color: #e0f2fe;">
+          <!-- 面包屑导航 (支持随时返回产品矩阵) -->
+          <div class="breadcrumb" style="margin-bottom: 20px;">
+            <a href="products.html">产品矩阵</a>
+            <span>/</span>
+            <span class="current">AI班前会系统</span>
+          </div>
+
+          <!-- 产品快速切换胶囊轨 (保持全站详情体验一致) -->
+          <div class="filter-tabs" style="margin-bottom: 36px; overflow-x: auto; max-width: 100%;" aria-label="切换产品详情">
+            <a class="filter-tab" href="products.html">全部产品</a>
+            <a class="filter-tab is-active" href="ai-pre-shift-meeting.html" aria-pressed="true">AI班前会 ✦</a>
+            <a class="filter-tab" href="product-detail.html?slug=fyra">飞椽 Fyra</a>
+            <a class="filter-tab" href="product-detail.html?slug=bimcc-platform">BIMCC 平台</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-site">智慧工地</a>
+            <a class="filter-tab" href="product-detail.html?slug=bim-consulting">BIM 咨询</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-twin">数字孪生</a>
+            <a class="filter-tab" href="product-detail.html?slug=smart-command">智慧展厅</a>
+            <a class="filter-tab" href="product-detail.html?slug=engineering-tech">数字技术</a>
+            <a class="filter-tab" href="product-detail.html?slug=digital-education">数智教育</a>
+          </div>
+
+          <!-- Hero 主视觉 -->
+          <div style="max-width: 880px; margin: 0 auto; text-align: center;" class="reveal">
+            <div class="eyebrow-badge" style="margin-bottom: 1.5rem; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(56, 189, 248, 0.35); color: #e0f2fe;">
               <span class="status-pulse"></span>
-              <span>自研视觉算法 · 软硬件一体化交付</span>
+              <span>自研视觉算法 · 软硬件一体化交付 · 闸机强联动</span>
             </div>
 
-            <!-- 主标题 -->
-            <h1 class="hero-title" style="font-size: 44px; font-weight: 800; line-height: 1.3; color: #f8fafc; margin-bottom: 1.5rem; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);">
-              AI班前会管理平台<br />
+            <h1 class="hero-title" style="font-size: clamp(2rem, 3.5vw, 2.75rem); font-weight: 800; line-height: 1.3; color: #f8fafc; margin-bottom: 1.5rem; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);">
+              AI班前会系统<br />
               <span class="text-gradient-aurora text-glow">让现场安全教育更智能、更规范、可追溯</span>
             </h1>
 
-            <!-- 描述文案 -->
-            <p class="hero-lead" style="font-size: 1.0625rem; font-weight: 400; line-height: 1.7; color: rgba(255, 255, 255, 0.92); letter-spacing: 0.02em; margin-bottom: 2.5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);">
-              筑云科技数智 AI 班前会系统是面向矿山、工地、制造等生产现场的安全管理产品。通过定制 AI 摄像头、算力主机与全向麦等硬件，实现人员 AI 识别、无感考勤、实时追踪与中途离席判定；班前会全程录音录像留痕，会议纪要自动生成并云端归档，支持多单位、多班组台账管理与可视化监管大屏，将班前会从“形式合规”推向“实质有效”。
+            <p class="hero-lead" style="font-size: 1.0625rem; font-weight: 400; line-height: 1.75; color: rgba(255, 255, 255, 0.9); letter-spacing: 0.02em; margin-bottom: 2.5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); max-width: 800px; margin-left: auto; margin-right: auto;">
+              筑云科技数智 AI 班前会系统是面向矿山、工地、制造等生产现场的安全管理产品。通过定制 AI 摄像头、算力主机与全向麦等硬件，实现人员 AI 识别、无感考勤、实时追踪与中途离席判定；全程录音录像留痕，AI 大模型自动生成会议纪要并云端归档，深度打通现场实名制闸机，将班前会从“形式合规”推向“实质有效”。
             </p>
 
-            <!-- 核心 CTA -->
-            <div class="hero-cta-group" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 3.5rem;">
-              <a class="button button-primary" href="contact.html">
+            <div class="hero-cta-group" style="display: flex; justify-content: center; gap: 16px; margin-bottom: 3.5rem; flex-wrap: wrap;">
+              <a class="button button-primary header-cta-btn" href="contact.html">
                 <span>预约现场演示 & 索取资料</span>
               </a>
               <a class="button button-secondary" href="#hardware-matrix" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
@@ -340,16 +380,16 @@
               </a>
             </div>
 
-            <!-- 底部关键认证与指标 -->
+            <!-- 核心认证与指标条 -->
             <div class="hero-trust-bar" style="display: flex; justify-content: center; gap: 24px; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.8125rem; color: #94a3b8; flex-wrap: wrap;">
               <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 无感人脸精准核验
+                <span style="color: #38bdf8;">✓</span> 毫秒级人脸精准核验
               </div>
               <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 30秒专注度与离席检测
+                <span style="color: #38bdf8;">✓</span> 30秒专注度与防退场监测
               </div>
               <div style="display: flex; align-items: center; gap: 6px;">
-                <span style="color: #38bdf8;">✓</span> 联动闸机准入管控
+                <span style="color: #38bdf8;">✓</span> 联动闸机未交底禁入
               </div>
               <div style="display: flex; align-items: center; gap: 6px;">
                 <span style="color: #38bdf8;">✓</span> AI 大模型会议纪要秒级生成
@@ -360,125 +400,155 @@
       </section>
 
       <!-- ======================================================================
-           2. 软硬件一体化产品矩阵 (Hardware & Software Ecosystem)
+           3. 软硬件一体化产品矩阵 (3x2 栅格，规整对称)
            ====================================================================== -->
-      <section class="site-section" id="hardware-matrix" style="padding: 5rem 0; background: rgba(13, 20, 36, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <section class="site-section" id="hardware-matrix" style="padding: 4.5rem 0; background: rgba(13, 20, 36, 0.45); border-bottom: 1px solid var(--border-subtle);">
         <div class="site-container">
           <div class="section-header text-center reveal">
             <div class="eyebrow-badge">HARDWARE & SOFTWARE SUITE</div>
             <h2 class="section-title">软硬件深度协同 · 现场极简快速部署</h2>
             <p class="section-desc">
-              针对现场高尘、强光、多工种并发等复杂施工条件，提供高度集成、即插即用的端侧设备与云端分析平台。
+              针对现场高尘、强光、多工种并发等复杂施工条件，提供高度集成、即插即用的 6 大端侧设备与云端分析平台。
             </p>
           </div>
 
           <div class="hardware-software-grid">
-            <!-- 1. 监控摄像头 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-cyan" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M23 7l-7 5 7 5V7z" />
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                </svg>
+            <!-- 1. AI 智能监控摄像头 -->
+            <div class="glass-card reveal" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-cyan" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 7l-7 5 7 5V7z" />
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">硬件构成 · 01</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">AI 智能监控摄像头</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  高清晰度宽动态摄像头，人员聚集进入视野时自动开始人数清点与人脸无感识别，支持高精度活体检测。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">AI 智能监控摄像头</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                高清晰度宽动态摄像头，人员聚集进入视野时自动开始人数清点与人脸无感识别，支持高精度活体检测。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">端侧毫秒级视觉捕捉 · 防逆光防遮挡</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">端侧毫秒级视觉捕捉 · 防逆光防遮挡</div>
             </div>
 
-            <!-- 2. 高清电视 / 智能宣讲台 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-indigo" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
-                  <polyline points="17 2 12 7 7 2" />
-                </svg>
+            <!-- 2. 高清大屏 / 智能宣讲台 -->
+            <div class="glass-card reveal delay-100" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-indigo" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+                      <polyline points="17 2 12 7 7 2" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">硬件构成 · 02</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">高清交互大屏 / 智能宣讲台</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  支持语音指令操控，准备就绪后自动启动视频安全宣教；智能调整视角与亮度，营造沉浸式交底体验。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">高清交互大屏 / 智能宣讲台</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                支持语音指令操控，准备就绪后自动启动视频安全宣教；智能调整视角与亮度，营造沉浸式交底体验。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">语音智能交互 · 视频安全教育播报</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">语音智能交互 · 视频安全教育播报</div>
             </div>
 
             <!-- 3. AI边缘服务器 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-emerald" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                  <line x1="6" y1="6" x2="6.01" y2="6" />
-                  <line x1="6" y1="18" x2="6.01" y2="18" />
-                </svg>
+            <div class="glass-card reveal delay-150" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-emerald" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+                      <line x1="6" y1="6" x2="6.01" y2="6" />
+                      <line x1="6" y1="18" x2="6.01" y2="18" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">硬件构成 · 03</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">AI 边缘服务器</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  本地化离线处理引擎，弱网/断网环境下依然可实时分析人脸、声音与专注度，保障现场交底不中断。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">AI 边缘服务器</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                本地化离线处理引擎，弱网/断网环境下依然可实时分析人脸、声音与专注度，保障现场交底不中断。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">本地边缘算力 · 毫秒级即时响应</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">本地边缘算力 · 毫秒级即时响应</div>
             </div>
 
             <!-- 4. 云端管理后台 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-cyan" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
-                </svg>
+            <div class="glass-card reveal" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-cyan" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">软件平台 · 04</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">云端管理中台</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  海量音视频安全台账云端安全归档，自动生成多维度统计报表，支持集团与项目级权限精细化下发。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">云端管理中台</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                海量音视频安全台账云端安全归档，自动生成多维度统计报表，支持集团与项目级权限精细化下发。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">音视频永久追溯 · 多组织台账中心</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--cyan-400); font-weight: 600;">音视频永久追溯 · 多组织台账中心</div>
             </div>
 
             <!-- 5. 网页端可视化大屏 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-indigo" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 3v18h18" />
-                  <path d="M18 17V9" />
-                  <path d="M13 17V5" />
-                  <path d="M8 17v-3" />
-                </svg>
+            <div class="glass-card reveal delay-100" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-indigo" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M3 3v18h18" />
+                      <path d="M18 17V9" />
+                      <path d="M13 17V5" />
+                      <path d="M8 17v-3" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">软件平台 · 05</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">网页端可视化监管大屏</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  管理人员随时随地通过浏览器远程实时巡检各工区、各班组开会动态，异常情况即时弹窗预警。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">网页端可视化监管大屏</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                管理人员随时随地通过浏览器远程实时巡检各工区、各班组开会动态，异常情况即时弹窗预警。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">远程实时监控 · 异常即刻触达</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">远程实时监控 · 异常即刻触达</div>
             </div>
 
             <!-- 6. 移动端一键打卡 -->
-            <div class="glass-card" style="padding: 32px 24px; border-radius: var(--radius-lg); position: relative;">
-              <div class="card-icon-box card-icon-emerald" style="width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                  <line x1="12" y1="18" x2="12.01" y2="18" />
-                </svg>
+            <div class="glass-card reveal delay-150" style="padding: 30px 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                  <div class="card-icon-box card-icon-emerald" style="width: 44px; height: 44px; border-radius: 10px;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                      <line x1="12" y1="18" x2="12.01" y2="18" />
+                    </svg>
+                  </div>
+                  <span class="card-tag" style="font-size: 0.6875rem;">软件平台 · 06</span>
+                </div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px;">移动端极简打卡助手</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                  支持班组长与工人手机端一键打卡签到、快速启动班前会流程，交底内容随身查阅，简化现场操作。
+                </p>
               </div>
-              <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">移动端极简打卡助手</h3>
-              <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                支持班组长与工人手机端一键打卡签到、快速启动班前会流程，交底内容随身查阅，简化现场操作。
-              </p>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">手机一键打卡 · 现场零门槛操作</div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">手机一键打卡 · 现场零门槛操作</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ======================================================================
-           3. 解决方案 A vs 方案 B 交互式对比演播舱
+           4. 方案 A vs 方案 B 对比 (严格 3x2 / 3x3 规整对齐，无寡行)
            ====================================================================== -->
-      <section class="site-section" style="padding: 5rem 0;">
+      <section class="site-section" style="padding: 4.5rem 0;">
         <div class="site-container">
           <div class="section-header text-center reveal">
             <div class="eyebrow-badge">DEPLOYMENT MODES</div>
             <h2 class="section-title">灵活适配两种落地部署模式</h2>
             <p class="section-desc">
-              无论是快速敏捷的标准版，还是深度闭环的全流程管控版，筑云 AI 班前会皆能无缝适配现场实际需求。
+              无论是快速敏捷的标准版，还是深度闭环的全流程联动版，筑云 AI 班前会皆能无缝适配现场实际需求。
             </p>
           </div>
 
@@ -486,21 +556,21 @@
           <div style="text-align: center;">
             <div class="scheme-tab-group" role="tablist">
               <button class="scheme-tab-btn active" id="tabSchemeA" onclick="switchScheme('A')">
-                AI班前会方案 A（轻量标准版）
+                AI班前会方案 A（轻量标准版 · 6 步闭环）
               </button>
               <button class="scheme-tab-btn" id="tabSchemeB" onclick="switchScheme('B')">
-                AI班前会方案 B（全流程联动版）
+                AI班前会方案 B（全流程联动版 · 9 步全控）
               </button>
             </div>
           </div>
 
-          <!-- 方案 A 内容容器 -->
+          <!-- 方案 A 内容容器 (3 列 x 2 行 = 6 步，完全对称无寡行) -->
           <div id="schemeContentA" class="reveal">
             <div class="glass-card" style="padding: 36px; border-radius: var(--radius-xl); background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25);">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
                 <div>
                   <span class="card-tag accent" style="margin-bottom: 8px;">方案 A · 标准部署</span>
-                  <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-top: 6px;">
+                  <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 6px;">
                     监控摄像头 + AI边缘服务器 + 云端管理后台 + 网页端管理平台
                   </h3>
                   <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-top: 6px;">
@@ -512,54 +582,79 @@
                 </a>
               </div>
 
-              <!-- 方案 A 步骤流程 -->
-              <h4 style="font-size: 1rem; color: #94a3b8; margin-bottom: 16px;">完整交底与识别流程 (6 步闭环)：</h4>
-              <div class="process-flow-grid">
+              <!-- 方案 A 步骤流程 (3x2 栅格) -->
+              <h4 style="font-size: 0.9375rem; color: #94a3b8; margin-bottom: 18px; font-weight: 600;">
+                交底与识别全流程（3 × 2 闭环节点）：
+              </h4>
+              <div class="process-flow-grid-3cols">
                 <div class="process-step-card">
-                  <div class="process-step-number">1</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">读取视频流</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">采集班前会现场实时视频画面</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 01</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">实时采集</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">1. 读取视频流</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">采集班前会现场实时高清视频画面，为后续视觉分析提供数据源。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number">2</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">自动识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">识别现场聚集人员与开会场景</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 02</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">场景感知</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">2. 自动识别开会</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">AI 自动识别现场聚集人员与开会场景，无需人工手动开机打卡。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number">3</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">人脸特征检测</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">高动态捕捉参会人员面部特征</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 03</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">面部特征</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">3. 人脸特征检测</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">高动态捕捉参会人员面部特征，精准过滤非在场人员与干扰背景。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number">4</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">视觉语音识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">解析现场交底音频与规范行为</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 04</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">多模态解析</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">4. 视觉与语音识别</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">同步解析现场交底安全语音，并对不规范动作行为进行即时标记。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number">5</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">人脸特征比对</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">比对实名花名册，防范代参会</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 05</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">实名防伪</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">5. 人脸特征精准比对</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">毫秒级比对劳务实名花名册，杜绝代开会、替签到与无证冒用。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number">6</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">结果呈现与台账</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">汇总数据，自动归档云端台账</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge">STEP 06</span>
+                    <span style="font-size: 0.75rem; color: var(--cyan-400);">云端归档</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">6. 结果呈现与台账</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">自动汇总考勤与交底音视频，即时归档云端生成多维度统计台账。</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 方案 B 内容容器 -->
+          <!-- 方案 B 内容容器 (3 列 x 3 行 = 9 步，完全对称无寡行) -->
           <div id="schemeContentB" style="display: none;">
             <div class="glass-card" style="padding: 36px; border-radius: var(--radius-xl); background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(129, 140, 248, 0.35);">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
                 <div>
                   <span class="card-tag" style="background: rgba(129, 140, 248, 0.15); color: #818cf8; border-color: rgba(129, 140, 248, 0.3); margin-bottom: 8px;">方案 B · 深度全联动版</span>
-                  <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-top: 6px;">
+                  <h3 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-top: 6px;">
                     监控摄像头 + 高清电视/宣讲台 + AI边缘服务器 + 云端/网页端 + 联动闸机
                   </h3>
                   <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-top: 6px;">
-                    聚焦高危施工与复杂作业场景，全流程闭环管控“视频宣教、专注监测、纪律评估与闸机联动”。
+                    聚焦高危施工与复杂作业场景，全流程闭环管控“视频宣教、专注监测、纪律评估与闸机准入”。
                   </p>
                 </div>
                 <a class="button button-primary" href="contact.html" style="font-size: 0.875rem;">
@@ -567,53 +662,90 @@
                 </a>
               </div>
 
-              <!-- 方案 B 步骤流程 -->
-              <h4 style="font-size: 1rem; color: #94a3b8; margin-bottom: 16px;">全流程深度闭环 (9 大进阶节点)：</h4>
-              <div class="process-flow-grid">
+              <!-- 方案 B 步骤流程 (3x3 栅格) -->
+              <h4 style="font-size: 0.9375rem; color: #94a3b8; margin-bottom: 18px; font-weight: 600;">
+                全流程深度闭环（3 × 3 进阶节点）：
+              </h4>
+              <div class="process-flow-grid-3cols">
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">1</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">自动识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">人员聚集自动触发</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 01</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">自动触发</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">1. 自动识别开会</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">人员就位聚集自动触发开会流程，宣讲台自动就绪。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">2</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">识别参会人员</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">全员精准核验花名册</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 02</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">实名核验</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">2. 识别参会人员</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">无感人脸识别比对花名册，秒级锁定全员签到状态。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">3</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">行为异常识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">交头接耳/玩手机检测</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 03</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">纪律监测</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">3. 行为异常识别</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">实时检测交头接耳、低头玩手机与违规吸烟等异常。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">4</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">离开识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">人员中途退场即时判定</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 04</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">离席判定</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">4. 离开状态识别</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">参会工人中途退场即刻识别标记，取消其有效考勤。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">5</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">视频安全教育</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">语音操控开始高清教育</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 05</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">智能宣教</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">5. 视频安全教育</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">语音指令联动大屏，播放当日高危工序标准警示片。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">6</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">自动记录归档</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">音视频全程云端留存</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 06</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">存证归档</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">6. 自动记录归档</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">交底全程音视频自动上云加密存储，永久追溯防篡改。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">7</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">散开停止识别</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">会议结束自动判定</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 07</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">结束判定</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">7. 散开停止识别</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">会议结束人员散开自动结会，生成当场应到实到名单。</p>
                 </div>
-                <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">8</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">联动现场闸机</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">未开会人员拒绝放行</p>
+
+                <div class="process-step-card" style="border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.08);">
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #f87171; background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3);">NODE 08 · 核心</span>
+                    <span style="font-size: 0.75rem; color: #f87171; font-weight: 700;">闸机联动</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">8. 联动现场闸机放行</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">向实名制闸机下发当日通行权限，未参会者坚决阻断。</p>
                 </div>
+
                 <div class="process-step-card">
-                  <div class="process-step-number" style="color: #818cf8; background: rgba(129, 140, 248, 0.15); border-color: rgba(129, 140, 248, 0.3);">9</div>
-                  <h4 style="font-size: 1rem; color: #fff; margin-bottom: 6px;">智能量化评价</h4>
-                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.5;">大模型生成效果简报</p>
+                  <div class="step-header-row">
+                    <span class="process-step-badge" style="color: #a78bfa; background: rgba(167, 139, 250, 0.12); border-color: rgba(167, 139, 250, 0.25);">NODE 09</span>
+                    <span style="font-size: 0.75rem; color: #a78bfa;">AI 简报</span>
+                  </div>
+                  <h4 style="font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 6px;">9. 大模型智能量化评价</h4>
+                  <p style="font-size: 0.8125rem; color: var(--text-muted); line-height: 1.6;">大模型分析交底专注度与要点覆盖率，秒出质量简报。</p>
                 </div>
               </div>
             </div>
@@ -622,9 +754,9 @@
       </section>
 
       <!-- ======================================================================
-           4. 10 大核心功能特性 (Bento 栅格系统)
+           5. 10 大核心功能特性 (重构的高阶 Bento 栅格系统)
            ====================================================================== -->
-      <section class="site-section" style="padding: 5rem 0; background: rgba(13, 20, 36, 0.5); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <section class="site-section" style="padding: 4.5rem 0; background: rgba(13, 20, 36, 0.5); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
         <div class="site-container">
           <div class="section-header text-center reveal">
             <div class="eyebrow-badge">CORE CAPABILITIES</div>
@@ -634,136 +766,192 @@
             </p>
           </div>
 
-          <div class="bento-features-grid">
-            <!-- 1. 解放双手 & AI大模型会议纪要 (Featured 大卡片) -->
-            <div class="bento-card bento-card-featured reveal">
+          <!-- Tier 1: 2 张重点旗舰大卡 (AI 大模型纪要 + 闸机强联动准入) -->
+          <div class="bento-top-row reveal">
+            <!-- 1. AI 大模型自动生成会议纪要 -->
+            <div class="bento-card bento-featured-card">
               <div>
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                  <span class="card-tag accent">FEATURE 01 & 08</span>
-                  <span style="font-size: 0.75rem; color: #38bdf8; font-weight: 700;">AI 大模型赋能</span>
+                  <span class="card-tag accent">FEATURE 01</span>
+                  <span style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 700;">AI 大模型核心驱动</span>
                 </div>
-                <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 10px;">
-                  解放双手 · AI 自动生成会议纪要与智能评价简报
+                <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                  解放双手 · AI 自动生成会议纪要与智能评价
                 </h3>
-                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                  无需人工手持设备记录，利用现场摄像头与全向麦，全程录音录像。交底结束后，AI 大模型自动提取核心安全交底事项，生成格式化会议纪要与检查要点，并基于评价模型对班前会质量与专注度进行量化评分。
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+                  无需人工手持设备繁琐记录，现场全向麦与摄像头全程录音录像。交底结束后，AI 大模型自动提炼核心安全要点、隐患防范措施与施工分工，生成标准化纪要，并对班前会专注度与交底质量进行量化评分。
                 </p>
+                <!-- 模拟微组件：AI 提炼流 -->
+                <div style="background: rgba(4, 8, 18, 0.6); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 12px 16px; margin-bottom: 12px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--cyan-400); margin-bottom: 6px;">
+                    <span>AI 语音实时解析转写中...</span>
+                    <span>质量评级: 98.5 (优秀)</span>
+                  </div>
+                  <div style="font-size: 0.8125rem; color: #cbd5e1; line-height: 1.5;">
+                    ▸ 提取高危提示：今日 3 号基坑临边作业必须 100% 挂设双钩安全带；<br />
+                    ▸ 明确工序交底：机电管线焊接前必须完成动火审批与现场灭火器核验。
+                  </div>
+                </div>
               </div>
-              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--text-muted);">
-                全自动语音转文字 · 重点安全事项提炼 · 班前会质量智能评分
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--text-muted);">
+                全自动语音转文字 · 核心安全事项智能提炼 · 班组质量量化简报
               </div>
             </div>
 
-            <!-- 2. 人员自动识别 -->
-            <div class="bento-card reveal delay-100">
-              <div>
-                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 02</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">人员无感精准识别</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  人员进入摄像头视野范围，系统自动抓拍比对实名花名册，彻底杜绝无证上岗与代签到。
-                </p>
-              </div>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); margin-top: 16px;">实名防作弊 · 毫秒级核验</div>
-            </div>
-
-            <!-- 3. 定点定时自动开会 -->
-            <div class="bento-card reveal delay-150">
-              <div>
-                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 03</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">定点定时自动开会</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  预设时间与指定点位自动触发开会流程，无需人工值守，全自动完成音视频采集与同步。
-                </p>
-              </div>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); margin-top: 16px;">计划自动触发 · 规范化开会</div>
-            </div>
-
-            <!-- 4. 内容预制与语音播报 -->
-            <div class="bento-card reveal delay-200">
-              <div>
-                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 04</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">交底内容标准化预制</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  预制班前会必讲安全红线与工序注意事项，支持每日个性化内容下发与 AI 语音播报。
-                </p>
-              </div>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); margin-top: 16px;">工序风险预警 · 标准化交底</div>
-            </div>
-
-            <!-- 5. 关联门禁闸机管控 (Featured 大卡片) -->
-            <div class="bento-card bento-card-featured reveal delay-100">
+            <!-- 2. 关联门禁闸机强联动 -->
+            <div class="bento-card bento-security-card">
               <div>
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                  <span class="card-tag" style="color: #f87171; border-color: rgba(248, 113, 113, 0.3); background: rgba(248, 113, 113, 0.1);">FEATURE 05</span>
-                  <span style="font-size: 0.75rem; color: #f87171; font-weight: 700;">入场强管控</span>
+                  <span class="card-tag" style="color: #f87171; border-color: rgba(248, 113, 113, 0.3); background: rgba(248, 113, 113, 0.15);">FEATURE 02</span>
+                  <span style="font-size: 0.75rem; color: #f87171; font-weight: 700;">现场准入刚性拦截</span>
                 </div>
-                <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 10px;">
+                <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
                   关联门禁闸机 · 未进行班前教育严禁入场作业
                 </h3>
-                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
-                  针对隧道、矿井、深基坑、高空临边等高危场景，AI班前会系统与现场实名制闸机深度联动。只有完成当日班前交底且全过程在场的人员，闸机才会放行入场，将安全防线前置到生产作业的第一步。
+                <p style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px;">
+                  针对隧道、矿井、深基坑、高空临边等高危场景，AI 班前会系统与现场实名制闸机深度互通。只有完成当日班前交底且全过程在场的人员，闸机才放行入场，将安全防线真正前置到生产作业的第一步。
+                </p>
+                <!-- 模拟微组件：闸机拦截状态 -->
+                <div style="background: rgba(4, 8, 18, 0.6); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 8px; padding: 12px 16px; margin-bottom: 12px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="font-size: 0.8125rem; color: #fca5a5;">
+                      <span style="display: inline-block; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; margin-right: 6px;"></span>
+                      未完成交底人员：<strong>闸机红灯拦截 · 禁止通行</strong>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #4ade80; background: rgba(74, 222, 128, 0.1); padding: 2px 8px; border-radius: 4px;">完成交底即时放行</span>
+                  </div>
+                </div>
+              </div>
+              <div style="padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--text-muted);">
+                硬件闭环联动 · 严把高危作业准入关口 · 杜绝无交底进场施工
+              </div>
+            </div>
+          </div>
+
+          <!-- Tier 2: 4 张 AI 视觉与多模态行为感知卡片 (4 列对称) -->
+          <div class="bento-four-row reveal delay-100">
+            <!-- 3. 人员无感精准识别 -->
+            <div class="bento-card">
+              <div>
+                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 03</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">人员无感精准识别</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  人员进入摄像头视野，系统自动抓拍比对实名花名册，彻底杜绝无证上岗与替签到。
                 </p>
               </div>
-              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--text-muted);">
-                硬件联动 · 严把高危准入关口 · 杜绝无交底进场
+              <div style="font-size: 0.75rem; color: var(--cyan-400); margin-top: 16px; font-weight: 600;">
+                实名防作弊 · 毫秒级核验
               </div>
             </div>
 
-            <!-- 6. 穿戴 AI 识别 -->
-            <div class="bento-card reveal delay-150">
+            <!-- 4. 劳保穿戴 AI 识别 -->
+            <div class="bento-card">
+              <div>
+                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 04</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">劳保穿戴 AI 识别</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  AI 智能检测工人是否正确佩戴安全帽、反光背心与防护用品，未合规即刻语音纠错。
+                </p>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--amber-400); margin-top: 16px; font-weight: 600;">
+                安全帽/反光背心视觉纠错
+              </div>
+            </div>
+
+            <!-- 5. 违规行为与禁烟抓拍 -->
+            <div class="bento-card">
+              <div>
+                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 05</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">违规吸烟与行为抓拍</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  对开会期间抽烟、玩手机、嬉闹等不规范行为即时取证抓拍，并记录入班组安全考核档案。
+                </p>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--indigo-400); margin-top: 16px; font-weight: 600;">
+                现场纪律智能监督取证
+              </div>
+            </div>
+
+            <!-- 6. 30秒专注度与防离席 -->
+            <div class="bento-card">
               <div>
                 <span class="card-tag" style="margin-bottom: 12px;">FEATURE 06</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">劳保穿戴 AI 识别</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  AI 智能检测参会工人是否正确穿戴安全帽、反光衣与防护用具，未合规即时语音提醒。
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">30秒专注度与防离席</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  每 30 秒执行一次全场轮巡检测，实时识别交头接耳、走神以及中途溜号离席行为。
                 </p>
               </div>
-              <div style="font-size: 0.75rem; color: var(--amber-400); margin-top: 16px;">安全帽/反光衣识别 · 即时纠错</div>
+              <div style="font-size: 0.75rem; color: var(--emerald-400); margin-top: 16px; font-weight: 600;">
+                全程在场判定 · 杜绝溜号
+              </div>
             </div>
+          </div>
 
-            <!-- 7. 专注度监测 -->
-            <div class="bento-card reveal delay-200">
+          <!-- Tier 3: 4 张 流程自动化与台账管控卡片 (4 列对称) -->
+          <div class="bento-four-row reveal delay-150">
+            <!-- 7. 定点定时自动开会 -->
+            <div class="bento-card">
               <div>
                 <span class="card-tag" style="margin-bottom: 12px;">FEATURE 07</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">30秒专注度与防退场监测</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  会议过程中每 30 秒执行一次全场人脸轮巡识别，识别交头接耳、低头玩手机及中途离席。
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">定点定时自动开会</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  预设工区时间自动触发开会流程，无需专人值守，自动完成音视频采集与同步。
                 </p>
               </div>
-              <div style="font-size: 0.75rem; color: var(--cyan-400); margin-top: 16px;">防中途离场 · 纪律全过程把控</div>
+              <div style="font-size: 0.75rem; color: var(--cyan-400); margin-top: 16px; font-weight: 600;">
+                排班计划触发 · 规范开会
+              </div>
             </div>
 
-            <!-- 9. 系统操作简单 -->
-            <div class="bento-card reveal delay-100">
+            <!-- 8. 交底内容标准化预制 -->
+            <div class="bento-card">
+              <div>
+                <span class="card-tag" style="margin-bottom: 12px;">FEATURE 08</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">交底内容标准化预制</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  预置各工种安全红线与工序注意事项，支持每日个性化内容下发与 AI 语音播报。
+                </p>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--indigo-400); margin-top: 16px; font-weight: 600;">
+                工序风险预警 · 标准化库
+              </div>
+            </div>
+
+            <!-- 9. 音视频全流程云端存证 -->
+            <div class="bento-card">
               <div>
                 <span class="card-tag" style="margin-bottom: 12px;">FEATURE 09</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">极简交互 · 零培训上手</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  界面直观友好，针对班组长与一线工人操作习惯深度优化，现场人员无需繁琐培训即可熟练使用。
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">全流程音视频存证</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  音频、视频、考勤花名册与签字确认全部自动上云加密存储，永久追溯防抵赖。
                 </p>
               </div>
-              <div style="font-size: 0.75rem; color: var(--indigo-400); margin-top: 16px;">工友友好 · 现场极速推广</div>
+              <div style="font-size: 0.75rem; color: var(--emerald-400); margin-top: 16px; font-weight: 600;">
+                过程数字留痕 · 迎检合规
+              </div>
             </div>
 
-            <!-- 10. 移动端一键打卡 -->
-            <div class="bento-card reveal delay-150">
+            <!-- 10. 可视化大屏与移动打卡 -->
+            <div class="bento-card">
               <div>
                 <span class="card-tag" style="margin-bottom: 12px;">FEATURE 10</span>
-                <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 8px;">移动端一键打卡签到</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6;">
-                  支持移动端快速打卡与流程发起，随时随地查阅班组交底台账，提升现场管理便携度。
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 8px;">可视化大屏与移动打卡</h3>
+                <p style="font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6;">
+                  项目与企业大屏多工区穿透式监管，支持移动端一键发起与个人安全交底随身查。
                 </p>
               </div>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); margin-top: 16px;">手机端敏捷打卡 · 台账随身查</div>
+              <div style="font-size: 0.75rem; color: var(--cyan-400); margin-top: 16px; font-weight: 600;">
+                多端协同 · 项企穿透监管
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ======================================================================
-           5. 6 大行业应用场景
+           6. 6 大行业应用场景 (3x2 栅格)
            ====================================================================== -->
-      <section class="site-section" style="padding: 5rem 0;">
+      <section class="site-section" style="padding: 4.5rem 0;">
         <div class="site-container">
           <div class="section-header text-center reveal">
             <div class="eyebrow-badge">INDUSTRY SCENARIOS</div>
@@ -780,7 +968,7 @@
                 <div class="card-icon-box card-icon-cyan" style="width: 40px; height: 40px; border-radius: 10px;">
                   ⛏️
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">矿山行业</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">矿山采掘行业</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 智能班前交底与实名核验，严控井下开采与露天采矿高危风险，杜绝无证上岗与代签到。
@@ -794,7 +982,7 @@
                 <div class="card-icon-box card-icon-indigo" style="width: 40px; height: 40px; border-radius: 10px;">
                   🏭
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">制造行业</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">高端制造与车间</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 数字化班前安全培训，规范车间产线作业流程与特种设备操作规程，提升车间安全素养。
@@ -802,13 +990,13 @@
               <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">车间规范交底 · 产线安全受控</div>
             </div>
 
-            <!-- 3. 石油行业 -->
+            <!-- 3. 石油化工 -->
             <div class="scenario-card reveal delay-150">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
                 <div class="card-icon-box card-icon-emerald" style="width: 40px; height: 40px; border-radius: 10px;">
                   🛢️
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">石油行业</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">石油石化与管道</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 AI 前置安全提醒与防爆规范宣讲，保障油气开采、钻井作业与管道运维的本质安全。
@@ -822,7 +1010,7 @@
                 <div class="card-icon-box card-icon-cyan" style="width: 40px; height: 40px; border-radius: 10px;">
                   💧
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">水利水电</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">水利水电与隧洞</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 线上线下班前交底，守护大坝枢纽、地下洞室与涉水高风险工序施工安全。
@@ -836,7 +1024,7 @@
                 <div class="card-icon-box card-icon-indigo" style="width: 40px; height: 40px; border-radius: 10px;">
                   🧪
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">化工行业</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">精细化工与危化</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 智能班前宣教与动火/受限空间作业前置核验，严控危险化学品生产与检修安全隐患。
@@ -844,27 +1032,27 @@
               <div style="font-size: 0.75rem; color: var(--indigo-400); font-weight: 600;">危化品作业合规 · 检维修交底</div>
             </div>
 
-            <!-- 6. 电力农网 / 交通基建 -->
+            <!-- 6. 交通基建与铁路 -->
             <div class="scenario-card reveal delay-150">
               <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
                 <div class="card-icon-box card-icon-emerald" style="width: 40px; height: 40px; border-radius: 10px;">
-                  ⚡
+                  🚆
                 </div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">电力农网 & 交通基建</h3>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff;">高铁枢纽与交通工程</h3>
               </div>
               <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 12px;">
                 移动式班前会与全过程音视频溯源，筑牢配网改造、变电站施工与高铁站房安全防线。
               </p>
-              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">移动灵活交底 · 高危防触电防护</div>
+              <div style="font-size: 0.75rem; color: var(--emerald-400); font-weight: 600;">移动灵活交底 · 邻近营业线防护</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- ======================================================================
-           6. 标杆工程客户案例 (Real Benchmark Cases)
+           7. 标杆工程客户案例 (3 大代表标杆，等宽均衡)
            ====================================================================== -->
-      <section class="site-section" style="padding: 5rem 0; background: rgba(13, 20, 36, 0.45); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <section class="site-section" style="padding: 4.5rem 0; background: rgba(13, 20, 36, 0.45); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
         <div class="site-container">
           <div class="section-header text-center reveal">
             <div class="eyebrow-badge">PROVEN TRACK RECORD</div>
@@ -880,11 +1068,11 @@
               <div>
                 <span class="card-tag accent" style="margin-bottom: 12px;">矿山采掘 · 标杆实践</span>
                 <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 12px;">新疆某大型矿山项目</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
                   该项目存在矿山高危作业、工序复杂、安全交底流于形式等行业难题。引入系统后，实现 AI 人脸核验考勤、杜绝无证上岗与代签到；配合 AI 语音播报与互动考核，严把岗前安全关。全程自动录制存档、数据实时上传，形成“会前研判、会中交底、会后溯源”的完整闭环。
                 </p>
               </div>
-              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--cyan-400);">
+              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--cyan-400); font-weight: 600;">
                 实现矿山班组安全管理标准化、数字化智慧运营升级
               </div>
             </div>
@@ -894,11 +1082,11 @@
               <div>
                 <span class="card-tag" style="background: rgba(129, 140, 248, 0.15); color: #818cf8; border-color: rgba(129, 140, 248, 0.3); margin-bottom: 12px;">轨道交通 · 铁路站房</span>
                 <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 12px;">广安东站、长赣高铁站</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
                   高铁站房施工专业交叉多、作业面密集、高空临边多且毗邻运营线路，传统班前会易出现人员签到不实、现场管控薄弱。系统严格规范每日班前安全教育流程，杜绝走过场式交底，精准落实高空作业、临边施工、管线防护与邻近营业线施工等高风险工序安全提示。
                 </p>
               </div>
-              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--indigo-400);">
+              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--indigo-400); font-weight: 600;">
                 杜绝代签到 · 强化邻近营业线高风险施工专项防控
               </div>
             </div>
@@ -908,11 +1096,11 @@
               <div>
                 <span class="card-tag" style="background: rgba(52, 211, 153, 0.15); color: #34d399; border-color: rgba(52, 211, 153, 0.3); margin-bottom: 12px;">国家级新区 · 重点房建</span>
                 <h3 style="font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 12px;">雄安启动区综合服务二期项目</h3>
-                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px;">
                   雄安新区重点房建配套工程，施工体量大、作业班组多，现场人员流动频繁。落地 AI 班前会系统后，实现人员自动清点、防护着装识别、会议专注度监测与全过程留痕归档，深度联动门禁闸机实现入场管控，标准化落实班前安全教育，全面助力智能建造落地。
                 </p>
               </div>
-              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--emerald-400);">
+              <div style="padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.8125rem; color: var(--emerald-400); font-weight: 600;">
                 闸机强联动 · 专注度监测 · 助力雄安标杆智能建造落地
               </div>
             </div>
@@ -921,11 +1109,11 @@
       </section>
 
       <!-- ======================================================================
-           7. 底部高转化预约与咨询 CTA
+           8. 底部预约与咨询 CTA
            ====================================================================== -->
-      <section class="site-section text-center" style="padding: 5rem 0;">
+      <section class="site-section text-center" style="padding: 4.5rem 0;">
         <div class="site-container">
-          <div class="glass-card" style="padding: 56px 32px; border-radius: var(--radius-2xl); background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.85) 80%); border: 1px solid rgba(56, 189, 248, 0.35); max-width: 860px; margin: 0 auto;">
+          <div class="glass-card reveal" style="padding: 56px 32px; border-radius: var(--radius-2xl); background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.85) 80%); border: 1px solid rgba(56, 189, 248, 0.35); max-width: 860px; margin: 0 auto;">
             <div class="eyebrow-badge" style="margin-bottom: 1.25rem;">GET STARTED WITH AI PRE-SHIFT MEETING</div>
             <h2 style="font-size: 2.25rem; font-weight: 800; color: #ffffff; margin-bottom: 1.25rem;">
               开启现场安全交底数智化新篇章
@@ -937,8 +1125,8 @@
               <a class="button button-primary" href="contact.html">
                 <span>立即预约方案演示</span>
               </a>
-              <a class="button button-secondary" href="tel:023-68682379" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
-                <span>咨询电话：023-68682379</span>
+              <a class="button button-secondary" href="tel:02368682379" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.2); color: #f8fafc;">
+                <span>致电咨询：023-68682379</span>
               </a>
             </div>
           </div>
@@ -947,30 +1135,31 @@
     </main>
 
     <!-- ======================================================================
-         底部页脚 (Footer)
+         9. 全站统一页脚 (Footer)
          ====================================================================== -->
     <footer class="site-footer">
       <div class="site-container">
         <div class="footer-grid">
-          <!-- 公司品牌与简介 -->
+          <!-- 品牌与愿景 -->
           <div class="footer-brand-col">
-            <a class="brand footer-brand" href="index.html">
+            <a class="brand" href="index.html">
               <div class="brand-mark">
                 <img
                   src="assets/brand/logo.png?v=3"
                   alt="筑云科技 Logo"
-                  width="32"
-                  height="32"
+                  width="28"
+                  height="28"
                 />
               </div>
-              <span class="brand-title">筑云科技</span>
+              <span class="brand-title">筑云科技 BIMCC</span>
             </a>
-            <p class="footer-summary">
-              以自研飞椽 Fyra 智能底座与行业大模型为核心，为工程建设全生命周期提供一体化数字建设整体解决方案。
+            <p class="footer-tagline">
+              筑云科技 BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽 Fyra 智能开发平台、AI班前会系统、智慧工地、数字孪生运维、BIM 咨询、数字化教育和工程数字技术创新服务。
             </p>
-            <div class="footer-contact-info">
-              <p>咨询热线：023-68682379 / 18584713100</p>
-              <p>工作时间：周一至周五 9:00 - 18:00</p>
+            <div class="footer-badges">
+              <span class="badge-item">国家高新技术企业</span>
+              <span class="badge-item">专精特新企业</span>
+              <span class="badge-item">CMMI 认证</span>
             </div>
           </div>
 
@@ -978,13 +1167,13 @@
           <div class="footer-col">
             <h4 class="footer-title">产品平台</h4>
             <ul class="footer-links">
+              <li><a href="ai-pre-shift-meeting.html" style="color: var(--cyan-400);">AI班前会系统 ✦</a></li>
               <li><a href="product-detail.html?slug=fyra">飞椽 Fyra 智能开发平台</a></li>
               <li><a href="product-detail.html?slug=bimcc-platform">BIMCC 智能建造平台</a></li>
-              <li><a href="ai-pre-shift-meeting.html" style="color: #38bdf8; font-weight: 600;">AI班前会</a></li>
               <li><a href="product-detail.html?slug=smart-site">智慧工地建设</a></li>
-              <li><a href="product-detail.html?slug=digital-twin">数字孪生 / 智慧运维</a></li>
-              <li><a href="product-detail.html?slug=bim-consulting">BIM 咨询服务</a></li>
-              <li><a href="product-detail.html?slug=digital-education">数字化教育体系</a></li>
+              <li><a href="products.html">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">BIM 咨询服务</a></li>
+              <li><a href="products.html">数字化教育体系</a></li>
             </ul>
           </div>
 
@@ -1024,7 +1213,12 @@
       </div>
     </footer>
 
-    <script src="script.js?v=13"></script>
+    <!-- 返回顶部悬浮按钮 -->
+    <a href="#main" class="back-to-top" id="backToTop" aria-label="返回顶部">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <script src="script.js?v=20"></script>
     <script>
       // 方案 A / B 交互式切换
       function switchScheme(scheme) {
