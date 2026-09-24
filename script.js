@@ -153,8 +153,14 @@ if (caseFilters.length) {
 }
 
 // 全局卡片整卡热区点击跳转委托（覆盖全站产品卡片、角色方案卡片、行业卡片、案例卡片、解决方案卡片等）
+let cardPointerDownPos = null;
+
+document.addEventListener("mousedown", (event) => {
+  cardPointerDownPos = { x: event.clientX, y: event.clientY, time: Date.now() };
+});
+
 document.addEventListener("click", (event) => {
-  // 如果用户点击了原生交互元素（如表单控件、已包含的子按钮、可编辑区等），不拦截
+  // 如果用户点击了原生交互表单或明确的可编辑元素，不拦截
   if (event.target.closest("button, input, select, textarea, [contenteditable]")) return;
 
   // 检查是否位于卡片容器内
@@ -187,17 +193,26 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  // 避免文本选中复制操作误触跳转
-  const selection = window.getSelection();
-  if (selection && selection.toString().trim().length > 0) {
-    return;
+  // 判断是否为真正意义上的大距离拖拽选字（只有位移 > 8px 且有选区时才视为选字不跳转）
+  if (cardPointerDownPos) {
+    const dx = Math.abs(event.clientX - cardPointerDownPos.x);
+    const dy = Math.abs(event.clientY - cardPointerDownPos.y);
+    const selection = window.getSelection();
+    if ((dx > 8 || dy > 8) && selection && selection.toString().trim().length > 0) {
+      return;
+    }
   }
 
   // 执行跳转
   if (primaryLink.target === "_blank") {
     window.open(primaryLink.href, "_blank", "noopener,noreferrer");
   } else {
-    primaryLink.click();
+    // 优先采用直接设置 location 确保在所有浏览器及 iframe/容器中 100% 触发
+    if (primaryLink.href) {
+      window.location.href = primaryLink.href;
+    } else {
+      primaryLink.click();
+    }
   }
 });
 
