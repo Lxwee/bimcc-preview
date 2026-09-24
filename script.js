@@ -152,14 +152,53 @@ if (caseFilters.length) {
   activateCaseFilter(defaultFilter || caseFilters[0]);
 }
 
-document.querySelectorAll(".clickable-card, .panorama-card").forEach((card) => {
-  const link = card.querySelector("a[href]");
-  if (!link) return;
+// 全局卡片整卡热区点击跳转委托（覆盖全站产品卡片、角色方案卡片、行业卡片、案例卡片、解决方案卡片等）
+document.addEventListener("click", (event) => {
+  // 如果用户点击了原生交互元素（如表单控件、已包含的子按钮、可编辑区等），不拦截
+  if (event.target.closest("button, input, select, textarea, [contenteditable]")) return;
 
-  card.addEventListener("click", (event) => {
-    if (event.defaultPrevented || event.target.closest("a, button, input, select, textarea")) return;
-    window.location.href = link.href;
-  });
+  // 检查是否位于卡片容器内
+  const card = event.target.closest(
+    ".panorama-card, .role-card, .case-card, .case-card-redesign, .landmark-card, .industry-card, .solution-panel-card, .clickable-card, .glass-card"
+  );
+  if (!card) return;
+
+  // 针对行业卡片特别处理（若无子链接则跳转至解决方案页）
+  if (card.classList.contains("industry-card") && !card.querySelector("a[href]")) {
+    window.location.href = "solutions.html";
+    return;
+  }
+
+  // 查找卡片内的主跳转链接
+  const primaryLink =
+    card.querySelector("a.panorama-link, a.role-card-action, a.case-link, a.card-action-link, a.landmark-link, a.clickable-card-link, a.btn-text, a[data-primary-link]") ||
+    card.querySelector("a[href]");
+
+  if (!primaryLink) return;
+
+  // 若直接点击的就是该链接本身（或通过 CSS ::after 伪元素点击），遵循原生行为
+  if (event.target === primaryLink || event.target.closest("a") === primaryLink) {
+    return;
+  }
+
+  // 若点击了卡片内的其他特定外链，遵循该特定链接
+  const otherLink = event.target.closest("a");
+  if (otherLink && otherLink !== primaryLink) {
+    return;
+  }
+
+  // 避免文本选中复制操作误触跳转
+  const selection = window.getSelection();
+  if (selection && selection.toString().trim().length > 0) {
+    return;
+  }
+
+  // 执行跳转
+  if (primaryLink.target === "_blank") {
+    window.open(primaryLink.href, "_blank", "noopener,noreferrer");
+  } else {
+    primaryLink.click();
+  }
 });
 
 document.querySelectorAll(".case-media img").forEach((image) => {

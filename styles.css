@@ -1125,6 +1125,7 @@ img, svg {
 }
 
 .card-action-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1133,11 +1134,32 @@ img, svg {
   color: var(--cyan-400);
   margin-top: 16px;
   transition: all 0.2s ease;
+  text-decoration: none;
 }
 
-.card-action-link:hover {
+.card-action-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.card-action-link:hover,
+.glass-card:hover .card-action-link,
+.solution-panel-card:hover .card-action-link {
   color: #7dd3fc;
   gap: 10px;
+}
+
+.card-action-link span:last-child {
+  transition: transform 0.2s ease;
+}
+
+.card-action-link:hover span:last-child,
+.glass-card:hover .card-action-link span:last-child,
+.solution-panel-card:hover .card-action-link span:last-child {
+  transform: translateX(4px);
 }
 
 /* 4. 解决方案与案例 3 列网格 */
@@ -1172,6 +1194,7 @@ img, svg {
 
 .case-card, .case-card-redesign {
   position: relative;
+  cursor: pointer;
   border-radius: 18px;
   background: rgba(13, 22, 44, 0.72);
   backdrop-filter: blur(28px);
@@ -1292,6 +1315,7 @@ img, svg {
 }
 
 .case-link {
+  position: relative;
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--cyan-400);
@@ -1302,8 +1326,27 @@ img, svg {
   transition: all 0.2s ease;
 }
 
-.case-link:hover {
+.case-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.case-link:hover,
+.case-card:hover .case-link,
+.case-card-redesign:hover .case-link {
   color: #fff;
+}
+
+.case-link span:last-child {
+  transition: transform 0.2s ease;
+}
+
+.case-link:hover span:last-child,
+.case-card:hover .case-link span:last-child,
+.case-card-redesign:hover .case-link span:last-child {
   transform: translateX(4px);
 }
 
@@ -5285,6 +5328,27 @@ img, svg {
   margin-bottom: 8px;
 }
 
+.industry-card {
+  position: relative;
+  cursor: pointer;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: rgba(13, 20, 36, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.industry-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.12);
+}
+
 .industry-desc {
   font-size: 0.875rem;
   color: var(--text-secondary);
@@ -5314,6 +5378,7 @@ img, svg {
 
 .role-card {
   position: relative;
+  cursor: pointer;
   padding: 28px 24px;
   border-radius: var(--radius-xl);
   background: rgba(13, 20, 36, 0.7);
@@ -5393,6 +5458,7 @@ img, svg {
 }
 
 .role-card-action {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -5401,6 +5467,30 @@ img, svg {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--cyan-400);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.role-card-action::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.role-card-action:hover,
+.role-card:hover .role-card-action {
+  color: #fff;
+}
+
+.role-card-action span:last-child {
+  transition: transform 0.2s ease;
+}
+
+.role-card-action:hover span:last-child,
+.role-card:hover .role-card-action span:last-child {
+  transform: translateX(4px);
 }
 
 .solution-prompt-banner {
