@@ -216,6 +216,30 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// 详情页吸顶子导航栏 (Sticky Subnav) 滚动状态监听与激活项视口居中
+const stickySubnav = document.querySelector(".detail-subnav-sticky-bar");
+if (stickySubnav) {
+  const handleStickySubnavScroll = () => {
+    const isStuck = window.scrollY > 40;
+    stickySubnav.classList.toggle("is-stuck", isStuck);
+  };
+  window.addEventListener("scroll", handleStickySubnavScroll, { passive: true });
+  handleStickySubnavScroll();
+
+  // 页面初次加载时，如果有激活状态的 tab，自动在横向滚动条中轻微居中
+  const activeTab = stickySubnav.querySelector(".filter-tab.is-active, .filter-tab.active");
+  const tabTrack = stickySubnav.querySelector(".filter-tabs");
+  if (activeTab && tabTrack) {
+    setTimeout(() => {
+      const activeRect = activeTab.getBoundingClientRect();
+      const trackRect = tabTrack.getBoundingClientRect();
+      if (activeRect.left < trackRect.left || activeRect.right > trackRect.right) {
+        activeTab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    }, 200);
+  }
+}
+
 document.querySelectorAll(".case-media img").forEach((image) => {
   const markMissing = () => {
     image.closest(".case-media")?.classList.add("is-image-missing");

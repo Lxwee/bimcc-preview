@@ -2815,10 +2815,54 @@ img, svg {
 }
 
 /* --------------------------------------------------------------------------
-   13. Detail Pages & Layout Utilities (Product/Solution/Case Details)
+   13. Detail Pages & Sticky Subnav (Product/Solution/Case Details)
    -------------------------------------------------------------------------- */
+.detail-subnav-sticky-bar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 90;
+  background: rgba(11, 17, 33, 0.78);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 0 10px;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.detail-subnav-sticky-bar.is-stuck {
+  background: rgba(7, 12, 24, 0.94);
+  border-bottom-color: rgba(56, 189, 248, 0.22);
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 20px rgba(56, 189, 248, 0.1);
+}
+
+.detail-subnav-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-subnav-sticky-bar .breadcrumb {
+  margin-bottom: 0;
+  font-size: 0.8125rem;
+}
+
+.detail-subnav-sticky-bar .filter-tabs {
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.detail-subnav-sticky-bar .filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+
 .detail-hero {
-  padding-top: calc(var(--header-height) + 3.5rem);
+  padding-top: 2rem;
   padding-bottom: 4.75rem;
   background: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%);
   border-bottom: 1px solid var(--border-hairline);
