@@ -1,0 +1,3323 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>筑云科技 BIMCC - Raycast 风格动态光幕首屏效果演示</title>
+    <meta
+      name="description"
+      content="筑云科技 BIMCC 以自研飞椽 Fyra 智能开发平台为技术底座，融合 BIM、GIS、物联网、AI 与数字孪生能力，为建设单位、施工企业、全咨监理、政府监管与教育医疗客户提供一体化数字建设解决方案。"
+    />
+    <meta
+      name="keywords"
+      content="筑云科技,BIMCC,飞椽Fyra,智能建造平台,智慧工地,数字孪生运维,BIM咨询服务,数字化教育体系,工程数字化"
+    />
+    <meta name="theme-color" content="#030610" />
+    <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css?v=20" />
+    <style>
+      /* 禁用全局浮动大极光背景，确保纯黑纯粹的 Raycast 舞台 */
+      .global-aurora {
+        display: none !important;
+      }
+
+      /* Raycast 首屏与背后动态流体光幕专有容器 */
+      .raycast-hero-section {
+        position: relative;
+        min-height: calc(90vh - var(--header-height));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: calc(var(--header-height) + 3rem);
+        padding-bottom: 5rem;
+        overflow: hidden;
+        text-align: center;
+        background: #020409;
+      }
+
+      /* 位于文字正后方的物理流体光幕 Canvas */
+      .raycast-beam-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* 首屏元素依次出现入场动画 (加长时长与从容节奏，极度丝滑从容入场) */
+      @keyframes heroFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 纯居中文案排版容器 */
+      .raycast-hero-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      /* 1. 先出标签 (0.4s) - 高通透磨砂玻璃微光胶囊 */
+      .raycast-hero-content .eyebrow-badge {
+        margin-bottom: 1.25rem;
+        background: rgba(15, 23, 42, 0.42);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: #e0f2fe;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+      }
+
+      /* 2. 然后大标题 (1.1s, +0.7s) */
+      .raycast-hero-content .hero-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+        color: #f8fafc;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        word-break: keep-all;
+        will-change: transform, opacity;
+        text-shadow:
+          0 2px 12px rgba(0, 0, 0, 0.65),
+          0 0 24px rgba(0, 0, 0, 0.45);
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.1s backwards;
+      }
+
+      /* 3. 然后描述文本 (1.8s, +0.7s) */
+      .raycast-hero-content .hero-lead {
+        font-size: 1.0625rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.92);
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2.25rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-wrap: balance;
+        will-change: transform, opacity;
+        text-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.45),
+          0 0 14px rgba(0, 0, 0, 0.3);
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.8s backwards;
+      }
+
+      /* 4. 然后其他剩余内容: 按钮 + 底部背书 (2.5s, +0.7s) */
+      .raycast-hero-content .hero-cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 3.25rem;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.5s backwards;
+      }
+
+      .raycast-hero-content .button-secondary {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #f8fafc;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .raycast-hero-content .button-secondary:hover {
+        background: rgba(30, 41, 59, 0.85);
+        border-color: rgba(56, 189, 248, 0.5);
+        color: #38bdf8;
+      }
+
+      .raycast-hero-content .hero-trust-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-top: 3.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.8125rem;
+        color: #94a3b8;
+        width: 100%;
+        max-width: 680px;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.5s backwards;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 全局多光谱极光动态背景 -->
+    <div class="global-aurora"></div>
+
+    <!-- ======================================================================
+         1. 顶部吸顶磨砂导航栏 (Header - 间距严格为3倍)
+         ====================================================================== -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <div class="header-brand-nav">
+          <a class="brand" href="index.html" aria-label="筑云科技首页">
+            <div class="brand-mark">
+              <img
+                src="assets/brand/logo.png?v=3"
+                alt="筑云科技 Logo"
+                width="32"
+                height="32"
+              />
+            </div>
+            <span class="brand-title">筑云科技</span>
+          </a>
+          <nav class="site-nav" id="siteNav">
+            <a class="nav-link active" href="index.html" aria-current="page"
+              >首页</a
+            >
+            <a class="nav-link" href="products.html">产品平台</a>
+            <a class="nav-link" href="solutions.html">解决方案</a>
+            <a class="nav-link" href="technology.html">核心技术</a>
+            <a class="nav-link" href="cases.html">客户案例</a>
+            <a class="nav-link" href="about.html">关于筑云</a>
+          </nav>
+        </div>
+        <div class="header-actions">
+          <a class="button button-primary header-cta-btn" href="contact.html">
+            <span>预约方案咨询</span>
+          </a>
+          <button
+            class="menu-button"
+            id="mobileMenuToggle"
+            aria-label="打开移动端菜单"
+            aria-expanded="false"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="mobile-menu-drawer" id="mobileMenuDrawer" hidden>
+        <nav class="mobile-nav-list">
+          <a class="mobile-nav-link active" href="index.html">首页</a>
+          <a class="mobile-nav-link" href="products.html">产品平台</a>
+          <a class="mobile-nav-link" href="solutions.html">解决方案</a>
+          <a class="mobile-nav-link" href="technology.html">核心技术</a>
+          <a class="mobile-nav-link" href="cases.html">客户案例</a>
+          <a class="mobile-nav-link" href="about.html">关于筑云</a>
+          <a class="button button-primary mobile-cta-btn" href="contact.html"
+            >预约方案咨询</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ======================================================================
+           模块 1：首屏 Hero + 核心数字背书 (Apple 风格 · 凝练短语 + 核心关键词)
+           ====================================================================== -->
+      <section class="raycast-hero-section" id="home">
+        <!-- Raycast 风格真实物理流体对角光幕 Canvas (位于文字正后方) -->
+        <canvas id="raycastBeamCanvas" class="raycast-beam-canvas"></canvas>
+
+        <div class="site-container">
+          <div class="raycast-hero-content">
+            <!-- 顶部微光胶囊徽章 -->
+            <div class="eyebrow-badge">
+              <span class="status-pulse"></span>
+              <span>自研飞椽 Fyra 智能底座 · 全周期工程数字化</span>
+            </div>
+
+            <!-- 核心大标题 (严格 40px, 1.35 行高, 两行纯白高对比排版) -->
+            <h1 class="hero-title">
+              一体化数字建设，<br />
+              全周期数字建管服务商
+            </h1>
+
+            <!-- 描述文案 (严格保持 400 字重、0.02em 字距、1.7 行高) -->
+            <p class="hero-lead">
+              让工程管理从项目现场走向全生命周期。依托飞椽 Fyra 智能底座，融合
+              BIM+GIS 一张图、工程 AI 与现场 IoT
+              感知，为业主、施工、全咨与监管单位提供一体化数字建设服务。
+            </p>
+
+            <!-- 居中双 CTA 按钮 -->
+            <div class="hero-cta-group">
+              <a class="button button-primary" href="contact.html">
+                <span>预约方案咨询</span>
+              </a>
+              <a class="button button-secondary" href="cases.html">
+                <span>查看客户案例</span>
+              </a>
+            </div>
+
+            <!-- 底部信任微背书 (居中排列) -->
+            <div class="hero-trust-bar">
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-cyan"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #38bdf8;
+                    opacity: 0.85;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    />
+                  </svg>
+                </span>
+                <span>国家高新技术企业</span>
+              </div>
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-indigo"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #818cf8;
+                    opacity: 0.85;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6v6H9z" />
+                  </svg>
+                </span>
+                <span>重庆市“专精特新”企业</span>
+              </div>
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-emerald"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #34d399;
+                    opacity: 0.85;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </span>
+                <span>1000+ 重点工程实战</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 1 延伸：4 大核心数字背书 (严格依据《BIMCC官网首页完整文案稿.md》)
+           ====================================================================== -->
+      <section
+        class="site-section"
+        style="
+          padding-top: 2.5rem;
+          padding-bottom: 2.5rem;
+          background: rgba(13, 20, 36, 0.6);
+          border-top: 1px solid var(--border-subtle);
+          border-bottom: 1px solid var(--border-subtle);
+        "
+      >
+        <div class="site-container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+            "
+            class="stats-counter-bar"
+          >
+            <!-- 80% 大型国央企 / 政府监管客户 -->
+            <div
+              class="glass-card"
+              style="
+                padding: 24px 20px;
+                text-align: center;
+                border-radius: var(--radius-lg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: rgba(14, 165, 233, 0.12);
+                  border: 1px solid rgba(56, 189, 248, 0.3);
+                  color: var(--cyan-400);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 12px;
+                "
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              </div>
+              <div
+                style="
+                  font-size: clamp(1.85rem, 2.4vw, 34px);
+                  font-weight: 700;
+                  color: rgba(255, 255, 255, 0.95);
+                  font-family: var(--font-sans);
+                  letter-spacing: -0.02em;
+                  line-height: 1.2;
+                  margin-bottom: 4px;
+                "
+              >
+                80<span style="color: var(--cyan-400); font-weight: 600"
+                  >%</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 0.875rem;
+                  font-weight: 600;
+                  color: #ffffff;
+                  margin-bottom: 2px;
+                "
+              >
+                大型国央企客户
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8">
+                高标准工程数字建管首选
+              </div>
+            </div>
+
+            <!-- 1000+ 重点建设项目 -->
+            <div
+              class="glass-card"
+              style="
+                padding: 24px 20px;
+                text-align: center;
+                border-radius: var(--radius-lg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: rgba(168, 85, 247, 0.12);
+                  border: 1px solid rgba(168, 85, 247, 0.3);
+                  color: var(--purple-400);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 12px;
+                "
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <div
+                style="
+                  font-size: clamp(1.85rem, 2.4vw, 34px);
+                  font-weight: 700;
+                  color: rgba(255, 255, 255, 0.95);
+                  font-family: var(--font-sans);
+                  letter-spacing: -0.02em;
+                  line-height: 1.2;
+                  margin-bottom: 4px;
+                "
+              >
+                1000<span style="color: var(--purple-400); font-weight: 600"
+                  >+</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 0.875rem;
+                  font-weight: 600;
+                  color: #ffffff;
+                  margin-bottom: 2px;
+                "
+              >
+                标杆工程落地
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8">
+                房建、交通、水利、民航全覆盖
+              </div>
+            </div>
+
+            <!-- 80+ 专利软著 -->
+            <div
+              class="glass-card"
+              style="
+                padding: 24px 20px;
+                text-align: center;
+                border-radius: var(--radius-lg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: rgba(52, 211, 153, 0.12);
+                  border: 1px solid rgba(52, 211, 153, 0.3);
+                  color: var(--emerald-400);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 12px;
+                "
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              </div>
+              <div
+                style="
+                  font-size: clamp(1.85rem, 2.4vw, 34px);
+                  font-weight: 700;
+                  color: rgba(255, 255, 255, 0.95);
+                  font-family: var(--font-sans);
+                  letter-spacing: -0.02em;
+                  line-height: 1.2;
+                  margin-bottom: 4px;
+                "
+              >
+                80<span style="color: var(--emerald-400); font-weight: 600"
+                  >+</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 0.875rem;
+                  font-weight: 600;
+                  color: #ffffff;
+                  margin-bottom: 2px;
+                "
+              >
+                自主专利与软著
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8">
+                工程级 AI 与平台底座沉淀
+              </div>
+            </div>
+
+            <!-- 100+ 国家级、省部级奖项 -->
+            <div
+              class="glass-card"
+              style="
+                padding: 24px 20px;
+                text-align: center;
+                border-radius: var(--radius-lg);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              "
+            >
+              <div
+                style="
+                  width: 44px;
+                  height: 44px;
+                  border-radius: 50%;
+                  background: rgba(251, 191, 36, 0.12);
+                  border: 1px solid rgba(251, 191, 36, 0.3);
+                  color: var(--amber-400);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin-bottom: 12px;
+                "
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+              <div
+                style="
+                  font-size: clamp(1.85rem, 2.4vw, 34px);
+                  font-weight: 700;
+                  color: rgba(255, 255, 255, 0.95);
+                  font-family: var(--font-sans);
+                  letter-spacing: -0.02em;
+                  line-height: 1.2;
+                  margin-bottom: 4px;
+                "
+              >
+                100<span style="color: var(--amber-400); font-weight: 600"
+                  >+</span
+                >
+              </div>
+              <div
+                style="
+                  font-size: 0.875rem;
+                  font-weight: 600;
+                  color: #ffffff;
+                  margin-bottom: 2px;
+                "
+              >
+                省部级行业大奖
+              </div>
+              <div style="font-size: 0.75rem; color: #94a3b8">
+                智能建造与 BIM 权威认可
+              </div>
+            </div>
+          </div>
+
+          <!-- 合作伙伴与大型客户品牌墙 (横向无缝滚动 Marquee) -->
+          <div class="reveal" style="margin-top: 3.5rem; text-align: center">
+            <p
+              style="
+                font-size: 0.8125rem;
+                color: var(--text-muted);
+                margin-bottom: 1.5rem;
+                letter-spacing: 0.04em;
+              "
+            >
+              服务大型国央企、政府监管部门与多类工程建设主体 ·
+              覆盖全国多地重点工程
+            </p>
+            <div class="client-marquee-container">
+              <div class="client-marquee-track">
+                <!-- 第一组 Logo (1-10) -->
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-1.png"
+                    alt="华润置地"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-2.png"
+                    alt="中建科工"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-3.png"
+                    alt="天府国际机场"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-4.png"
+                    alt="国家电网"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-5.png"
+                    alt="重庆大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-6.png"
+                    alt="重庆科技大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-7.png"
+                    alt="同济大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-8.png"
+                    alt="清华大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-9.png"
+                    alt="中国中铁"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill">
+                  <img
+                    src="assets/clients/logo-10.png"
+                    alt="林同棪国际"
+                    loading="lazy"
+                  />
+                </div>
+
+                <!-- 第二组 Logo (1-10 副本，用于实现 CSS -50% 无缝无限循环平滑滚动) -->
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-1.png"
+                    alt="华润置地"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-2.png"
+                    alt="中建科工"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-3.png"
+                    alt="天府国际机场"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-4.png"
+                    alt="国家电网"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-5.png"
+                    alt="重庆大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-6.png"
+                    alt="重庆科技大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-7.png"
+                    alt="同济大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-8.png"
+                    alt="清华大学"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-9.png"
+                    alt="中国中铁"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="client-logo-pill" aria-hidden="true">
+                  <img
+                    src="assets/clients/logo-10.png"
+                    alt="林同棪国际"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 2：客户痛点 + 筑云解法 (Apple 风格 · 短语 + 核心关键词)
+           ====================================================================== -->
+      <section class="site-section" id="painpoints">
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">
+              <span>痛点与解法 · Pain Points & Solutions</span>
+            </div>
+            <h2 class="section-title">告别系统堆砌，实现全链贯通</h2>
+            <p class="section-desc" style="max-width: 800px; margin: 0 auto">
+              一个底座，连接数据、模型、设备与业务。
+            </p>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 24px;
+              margin-top: 3rem;
+            "
+            class="bento-grid-3cols"
+          >
+            <!-- 卡片 1 -->
+            <div class="glass-card reveal" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-cyan"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                系统割裂 · 重复填报
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                统一底座，单点登录。一次录入，全链实时复用。
+              </p>
+            </div>
+
+            <!-- 卡片 2 -->
+            <div class="glass-card reveal delay-100" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-purple"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                  />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                层级脱节 · 监管迟缓
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                集团-项目-工点穿透。进度、质量、成本一屏统揽。
+              </p>
+            </div>
+
+            <!-- 卡片 3 -->
+            <div class="glass-card reveal delay-150" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-rose"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                风险隐蔽 · 处置被动
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                IoT 传感 + AI 视觉预警。风险毫秒感知，主动智能防范。
+              </p>
+            </div>
+
+            <!-- 卡片 4 -->
+            <div class="glass-card reveal" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-sky"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+                  />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                BIM脱节 · 形式化重
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                模型深度挂接业务与算量。模型即业务，数据即资产。
+              </p>
+            </div>
+
+            <!-- 卡片 5 -->
+            <div class="glass-card reveal delay-100" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-emerald"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                定制漫长 · 成本居高
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                飞椽 Fyra 零代码敏捷组装。按需编排，数天快速上线。
+              </p>
+            </div>
+
+            <!-- 卡片 6 -->
+            <div class="glass-card reveal delay-150" style="padding: 28px 24px">
+              <div
+                class="card-icon-box card-icon-amber"
+                style="margin-bottom: 18px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                  />
+                </svg>
+              </div>
+              <h3
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 8px;
+                "
+              >
+                数据断层 · 运维归零
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  line-height: 1.7;
+                "
+              >
+                施工数据全要素沉淀。一键无缝交付数字孪生运维。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 3：一体化能力地图 (Apple 风格 · 三层能力体系)
+           ====================================================================== -->
+      <section
+        class="site-section"
+        id="capabilities"
+        style="background: rgba(6, 10, 20, 0.5)"
+      >
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">
+              <span>能力架构 · Capability Architecture Map</span>
+            </div>
+            <h2 class="section-title">自研底座为基，贯通全生命周期</h2>
+            <p class="section-desc" style="max-width: 820px; margin: 0 auto">
+              三层能力体系，层层赋能。从敏捷开发、全要素管理到交钥匙交付。
+            </p>
+          </div>
+
+          <!-- 三层能力阶梯架构 -->
+          <div class="capability-stack-grid">
+            <!-- 第一层：技术底座 -->
+            <div
+              class="capability-tier-card reveal"
+              style="--tier-accent: var(--cyan-400)"
+            >
+              <div>
+                <span
+                  class="tier-tier-badge"
+                  style="
+                    color: var(--cyan-400);
+                    border-color: rgba(56, 189, 248, 0.3);
+                  "
+                >
+                  L1 · 技术底座 (Core Engine)
+                </span>
+                <h3 class="tier-title">飞椽 Fyra 智能开发平台</h3>
+                <div class="tier-subtitle">
+                  工程行业 AI + 零代码敏捷构建底座
+                </div>
+              </div>
+              <div>
+                <p class="tier-body">
+                  表单、流程、大屏、工作台与物联网设备组态，拖拽即可敏捷构建。
+                </p>
+                <div class="tier-tags-row">
+                  <span class="tier-tag">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--cyan-400)"
+                      stroke-width="2"
+                    >
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    AI 辅助应用生成
+                  </span>
+                  <span class="tier-tag">零代码表单与流程</span>
+                  <span class="tier-tag">自定义数据大屏</span>
+                  <span class="tier-tag">多端自适应 (Web/APP)</span>
+                  <span class="tier-tag">物联网敏捷组态</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第二层：业务平台 -->
+            <div
+              class="capability-tier-card reveal delay-100"
+              style="--tier-accent: var(--purple-400)"
+            >
+              <div>
+                <span
+                  class="tier-tier-badge"
+                  style="
+                    color: var(--purple-400);
+                    border-color: rgba(168, 85, 247, 0.3);
+                  "
+                >
+                  L2 · 业务平台 (Business Platform)
+                </span>
+                <h3 class="tier-title">BIMCC 智能建造平台</h3>
+                <div class="tier-subtitle" style="color: var(--purple-400)">
+                  全要素数字建造管理中枢
+                </div>
+              </div>
+              <div>
+                <p class="tier-body">
+                  BIM+GIS 宏微观一张图。协同、进度、质量、安全与成本全面受控。
+                </p>
+                <div class="tier-tags-row">
+                  <span class="tier-tag">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--purple-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                      />
+                    </svg>
+                    BIM+GIS 宏微观一张图
+                  </span>
+                  <span class="tier-tag">质量与安全动态闭环</span>
+                  <span class="tier-tag">进度成本穿透纠偏</span>
+                  <span class="tier-tag">电子档案阳光留痕</span>
+                  <span class="tier-tag">多方高效在线协同</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 第三层：服务交付 -->
+            <div
+              class="capability-tier-card reveal delay-150"
+              style="--tier-accent: var(--emerald-400)"
+            >
+              <div>
+                <span
+                  class="tier-tier-badge"
+                  style="
+                    color: var(--emerald-400);
+                    border-color: rgba(52, 211, 153, 0.3);
+                  "
+                >
+                  L3 · 服务交付 (Service & Delivery)
+                </span>
+                <h3 class="tier-title">全生命周期数字建设服务</h3>
+                <div class="tier-subtitle" style="color: var(--emerald-400)">
+                  专业赋能与交钥匙交付
+                </div>
+              </div>
+              <div>
+                <p class="tier-body">
+                  涵盖全专业 BIM
+                  咨询、智慧工地软硬总包、数字孪生运维驾驶舱与工程 XR。
+                </p>
+                <div class="tier-tags-row">
+                  <span class="tier-tag">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--emerald-400)"
+                      stroke-width="2"
+                    >
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    全过程 BIM 咨询
+                  </span>
+                  <span class="tier-tag">智慧工地软硬总包交付</span>
+                  <span class="tier-tag">数字孪生运维驾驶舱</span>
+                  <span class="tier-tag">工程 XR 沉浸式展厅</span>
+                  <span class="tier-tag">智能建造产教实训</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 收束句面板 -->
+          <div class="capability-footer-note reveal">
+            <div class="capability-footer-text">
+              <span style="font-size: 1.5rem">✨</span>
+              <span
+                ><strong>一体化价值交付：</strong
+                >拒绝单点割裂。围绕工程业务闭环，提供平台、技术、咨询、实施与运维一体化交付。</span
+              >
+            </div>
+            <div style="display: flex; gap: 12px; flex-shrink: 0">
+              <a
+                class="button button-primary"
+                href="products.html"
+                style="padding: 8px 18px; font-size: 0.875rem"
+              >
+                <span>了解产品平台</span>
+              </a>
+              <a
+                class="button button-secondary"
+                href="contact.html"
+                style="padding: 8px 18px; font-size: 0.875rem"
+              >
+                <span>预约方案交流</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 4：核心产品平台 (Apple 风格 · 6 大产品矩阵)
+           ====================================================================== -->
+      <section class="site-section" id="products">
+        <div class="site-container">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: flex-end;
+              justify-content: space-between;
+              gap: 20px;
+              margin-bottom: 3.5rem;
+            "
+          >
+            <div>
+              <div class="eyebrow-badge">
+                <span>产品矩阵 · Products & Platform</span>
+              </div>
+              <h2 class="section-title">模块化矩阵，按需自由组装</h2>
+              <p class="section-desc">单点轻量启动，企业级一体化升级。</p>
+            </div>
+            <a class="button button-secondary" href="products.html">
+              <span>查看全部产品平台</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 24px;
+            "
+            class="products-grid-3cols"
+          >
+            <!-- 1. 飞椽 Fyra 智能开发平台 -->
+            <div class="panorama-card reveal">
+              <div>
+                <div class="panorama-icon-box icon-cyan-indigo">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">飞椽 Fyra 智能开发平台</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--cyan-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  工程行业 AI + 零代码开发底座
+                </div>
+                <p class="panorama-desc">
+                  表单、流程、大屏与物联网组态一体化，极速响应个性化管理需求。
+                </p>
+              </div>
+              <a class="panorama-link" href="product-detail.html?slug=fyra">
+                <span>了解飞椽 Fyra</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- 2. BIMCC 智能建造平台 -->
+            <div class="panorama-card reveal delay-100">
+              <div>
+                <div class="panorama-icon-box icon-orange-rose">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">BIMCC 智能建造平台</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--amber-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  全要素数字建造管理中枢
+                </div>
+                <p class="panorama-desc">
+                  模型业务物联三维融合。穿透进度、质量、安全、成本全要素闭环。
+                </p>
+              </div>
+              <a
+                class="panorama-link"
+                href="product-detail.html?slug=bimcc-platform"
+              >
+                <span>查看平台能力</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- 3. 智慧工地建设 -->
+            <div class="panorama-card reveal delay-150">
+              <div>
+                <div class="panorama-icon-box icon-emerald-teal">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">智慧工地软硬件交付</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--emerald-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  现场智能感知与主动预警
+                </div>
+                <p class="panorama-desc">
+                  IoT 设备接入、AI 视觉隐患识别、人员设备环境一体化智能监测。
+                </p>
+              </div>
+              <a
+                class="panorama-link"
+                href="product-detail.html?slug=smart-site"
+              >
+                <span>查看智慧工地方案</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- 4. 数字孪生与智慧运维 -->
+            <div class="panorama-card reveal">
+              <div>
+                <div class="panorama-icon-box icon-sky-blue">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">数字孪生与智慧运维</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--sky-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  资产运营一张图
+                </div>
+                <p class="panorama-desc">
+                  施工资产无缝继承。实时状态监测、智能预警与科学联动处置。
+                </p>
+              </div>
+              <a class="panorama-link" href="products.html">
+                <span>了解智慧运维</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- 5. BIM 咨询服务 -->
+            <div class="panorama-card reveal delay-100">
+              <div>
+                <div class="panorama-icon-box icon-purple-fuchsia">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"
+                    />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">全过程 BIM 咨询服务</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--purple-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  全专业、全阶段技术赋能
+                </div>
+                <p class="panorama-desc">
+                  方案设计、深化建模、施工协同与数字化竣工交付全流程护航。
+                </p>
+              </div>
+              <a class="panorama-link" href="products.html">
+                <span>查看 BIM 咨询</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+
+            <!-- 6. 数字化教育体系 -->
+            <div class="panorama-card reveal delay-150">
+              <div>
+                <div class="panorama-icon-box icon-amber-yellow">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                </div>
+                <h3 class="panorama-title">高校智能建造产教实训</h3>
+                <div
+                  style="
+                    font-size: 0.8125rem;
+                    color: var(--amber-400);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                  "
+                >
+                  产教融合与人才培育
+                </div>
+                <p class="panorama-desc">
+                  配套实训基地、工程仿真平台与教学资源库，赋能新工科人才培养。
+                </p>
+              </div>
+              <a class="panorama-link" href="products.html">
+                <span>查看教育方案</span>
+                <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 5：解决方案入口 (Apple 风格 · 场景化方案)
+           ====================================================================== -->
+      <section class="site-section" id="solutions">
+        <div class="site-container">
+          <div
+            class="section-header text-center reveal"
+            style="margin-bottom: 2.5rem"
+          >
+            <div class="eyebrow-badge">
+              <span>场景方案 · Role & Industry Pathways</span>
+            </div>
+            <h2 class="section-title">量体裁衣，精准适配每个角色</h2>
+            <p class="section-desc" style="max-width: 760px; margin: 0 auto">
+              懂工程，更懂业务。开箱即用的专业解决方案。
+            </p>
+          </div>
+
+          <!-- 双维度大分类切换 (按客户角色 vs 按行业场景) -->
+          <div class="solution-macro-segmented reveal">
+            <div class="solution-macro-nav" role="tablist">
+              <button
+                class="solution-macro-btn active"
+                data-macro-target="roles"
+                role="tab"
+                aria-selected="true"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                <span>按客户角色 (6大主体)</span>
+              </button>
+              <button
+                class="solution-macro-btn"
+                data-macro-target="industry"
+                role="tab"
+                aria-selected="false"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M3 21h18M3 7v14M21 7v14M6 11h4M6 15h4M14 11h4M14 15h4M9 3l3-2 3 2v4H9z"
+                  />
+                </svg>
+                <span>按行业场景 (6大场景)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 模式 1: 按客户角色细分 (6大主体 Bento Grid) -->
+          <div id="solutionRolesSection" class="reveal">
+            <div class="role-bento-grid">
+              <!-- 角色 1: 建设单位 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--cyan-400);
+                        border-color: rgba(56, 189, 248, 0.3);
+                      "
+                    >
+                      建设单位（业主方）
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--cyan-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">业主全过程数字建管</h3>
+                  <p class="role-card-desc">
+                    统一项目监管、投资进度质量安全数据和数字化交付成果，形成业主侧全过程穿透式管控能力。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">BIMCC 智能建造平台</span>
+                      <span class="role-combo-tag">数字孪生运维</span>
+                      <span class="role-combo-tag">BIM 咨询服务</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看建设单位方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+
+              <!-- 角色 2: 施工单位 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--amber-400);
+                        border-color: rgba(251, 191, 36, 0.3);
+                      "
+                    >
+                      施工单位（施工总包）
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--amber-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">智能建造与现场精益管控</h3>
+                  <p class="role-card-desc">
+                    围绕项目履约、安全质量、进度成本与物资设备，融合物联网与 AI
+                    识别，提升项目精益建造与多项目管控能力。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">BIMCC 智能建造平台</span>
+                      <span class="role-combo-tag">智慧工地</span>
+                      <span class="role-combo-tag">飞椽 Fyra 定制化</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看施工单位方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+
+              <!-- 角色 3: 全咨 / 监理 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--cyan-400);
+                        border-color: rgba(56, 189, 248, 0.3);
+                      "
+                    >
+                      全咨 / 监理单位
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--cyan-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                      />
+                      <polyline points="14 2 14 8 20 8" />
+                      <line x1="16" y1="13" x2="8" y2="13" />
+                      <line x1="16" y1="17" x2="8" y2="17" />
+                      <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">过程留痕与多方协同</h3>
+                  <p class="role-card-desc">
+                    支撑多方协同、过程留痕、问题闭环、咨询管理与验收证据沉淀，实现旁站巡视移动化与监理资料数字化。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">项目级智能建造平台</span>
+                      <span class="role-combo-tag">BIM 咨询</span>
+                      <span class="role-combo-tag">数字档案</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看全咨监理方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+
+              <!-- 角色 4: 政府 / 集团监管 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--emerald-400);
+                        border-color: rgba(52, 211, 153, 0.3);
+                      "
+                    >
+                      政府 / 集团监管
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--emerald-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">区域质量安全一张图</h3>
+                  <p class="role-card-desc">
+                    构建区域项目一张图监管、风险预警、智慧工地接入和数据驾驶舱，支撑跨项目态势洞察与合规监督。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">监管驾驶舱</span>
+                      <span class="role-combo-tag">智慧工地平台对接</span>
+                      <span class="role-combo-tag">数据中台</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看政府监管方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+
+              <!-- 角色 5: 教育 / 医疗基建 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--purple-400);
+                        border-color: rgba(192, 132, 252, 0.3);
+                      "
+                    >
+                      教育 / 医疗基建
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--purple-400)"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">产教实训与公共基建</h3>
+                  <p class="role-card-desc">
+                    面向院校实训、医院基建和公共服务项目，提供数字化管理、BIMVR
+                    沉浸式教学与人才培养支撑。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">数字化教育体系</span>
+                      <span class="role-combo-tag">项目级智能建造平台</span>
+                      <span class="role-combo-tag">BIMVR 实训室</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看教育医疗方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+
+              <!-- 角色 6: 企业数字化负责人 -->
+              <div class="role-card">
+                <div>
+                  <div class="role-card-header">
+                    <div
+                      class="role-card-badge"
+                      style="
+                        color: var(--sky-400);
+                        border-color: rgba(56, 189, 248, 0.3);
+                      "
+                    >
+                      企业数字化负责人
+                    </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="var(--sky-400)"
+                      stroke-width="2"
+                    >
+                      <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <h3 class="role-card-title">敏捷开发与资产沉淀</h3>
+                  <p class="role-card-desc">
+                    通过工程行业零代码底座降低重复建设成本，沉淀企业级应用模板和数据资产，敏捷响应个性化业务需求。
+                  </p>
+                  <div class="role-combo-box">
+                    <span class="role-combo-label">推荐产品组合：</span>
+                    <div class="role-combo-tags">
+                      <span class="role-combo-tag">飞椽 Fyra</span>
+                      <span class="role-combo-tag">企业级数字化运营平台</span>
+                      <span class="role-combo-tag">系统集成</span>
+                    </div>
+                  </div>
+                </div>
+                <a class="role-card-action" href="solutions.html">
+                  <span>查看企业架构方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 模式 2: 按行业场景细分 (Bento Grid) -->
+          <div
+            id="solutionIndustrySection"
+            class="reveal"
+            style="display: none"
+          >
+            <div class="industry-bento-grid">
+              <!-- 行业 1: 房建 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(14, 165, 233, 0.12);
+                      color: var(--cyan-400);
+                      border: 1px solid rgba(56, 189, 248, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">房建与公共建筑</h3>
+                  <p class="industry-desc">
+                    质量、安全、进度、成本、资料、模型一体化管理，支持多参建方协同与数字交付。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >商业综合体、住宅群、企业总部、公共展馆
+                </div>
+              </div>
+
+              <!-- 行业 2: 民航机场 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(168, 85, 247, 0.12);
+                      color: var(--purple-400);
+                      border: 1px solid rgba(168, 85, 247, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">民航机场</h3>
+                  <p class="industry-desc">
+                    飞行区、航站楼、配套设施数字化施工管控，支撑大型超复杂枢纽工程高标准协同。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >航站区、跑道飞行区、塔台、配套交通综合枢纽
+                </div>
+              </div>
+
+              <!-- 行业 3: 轨道交通 / 铁路 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(52, 211, 153, 0.12);
+                      color: var(--emerald-400);
+                      border: 1px solid rgba(52, 211, 153, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="4" y="3" width="16" height="16" rx="2" />
+                      <path
+                        d="M4 11h16M12 3v8m-4 8l-2 3m12-3l2 3M8 15h.01M16 15h.01"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">轨道交通 / 铁路</h3>
+                  <p class="industry-desc">
+                    线性工程 BIM+GIS
+                    一张图与多标段协同，穿透盾构掘进、车站主体与区间沉降监测。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >地铁全线多标段、城际铁路、高铁枢纽、车辆段
+                </div>
+              </div>
+
+              <!-- 行业 4: 市政道路 / 高速公路 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(251, 191, 36, 0.12);
+                      color: var(--amber-400);
+                      border: 1px solid rgba(251, 191, 36, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M4 19L8 5m8 14l4-14M12 5v14" />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">市政道路 / 高速公路</h3>
+                  <p class="industry-desc">
+                    进度、安全、征拆、监测与现场协同，打通长大线性道路施工全周期管控链条。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >高速公路、城市快速路、互通立交、特大跨江桥梁
+                </div>
+              </div>
+
+              <!-- 行业 5: 水利水务 / 抽水蓄能 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(14, 165, 233, 0.12);
+                      color: var(--cyan-400);
+                      border: 1px solid rgba(14, 165, 233, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">水利水务 / 抽水蓄能</h3>
+                  <p class="industry-desc">
+                    智慧工地、设备监测、工区协同和风险预警，服务复杂深埋隧洞与高边坡工程。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >抽水蓄能电站、引调水枢纽、大型水库、水务处理厂
+                </div>
+              </div>
+
+              <!-- 行业 6: 医院 / 文体教育 / 科研办公 -->
+              <div class="industry-card">
+                <div>
+                  <div
+                    class="industry-icon-box"
+                    style="
+                      background: rgba(244, 63, 94, 0.12);
+                      color: var(--rose-400);
+                      border: 1px solid rgba(244, 63, 94, 0.3);
+                    "
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                  </div>
+                  <h3 class="industry-title">医院 / 文体 / 科研办公</h3>
+                  <p class="industry-desc">
+                    复杂公共建筑全过程 BIM
+                    与数字建管，融合高精度机电管综与智慧运维底座。
+                  </p>
+                </div>
+                <div class="industry-applicable">
+                  <strong>适用场景：</strong
+                  >三甲医院、高校新校区、体育中心、重点实验室
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 模块底部 CTA 引导条 -->
+          <div class="solution-prompt-banner reveal">
+            <div>
+              <h4
+                style="
+                  font-size: 1.125rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 4px;
+                "
+              >
+                不知道适合哪类方案？
+              </h4>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-secondary);
+                  margin: 0;
+                "
+              >
+                告诉我们你的项目类型和组织角色，筑云团队将为你推荐产品组合与实施路径。
+              </p>
+            </div>
+            <a
+              class="button button-primary"
+              href="contact.html"
+              style="flex-shrink: 0"
+            >
+              <span>获取方案建议</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 6：技术与交付优势 (严格依据《BIMCC官网首页完整文案稿.md》 6 大技术优势)
+           ====================================================================== -->
+      <section class="site-section" id="technology">
+        <div class="site-container">
+          <div class="tech-cockpit-wrapper reveal">
+            <div class="tech-glow-orb-1"></div>
+            <div class="tech-glow-orb-2"></div>
+            <div class="tech-flowing-stripes"></div>
+
+            <div class="tech-cockpit-grid">
+              <!-- 左侧文案与 2 大指标 -->
+              <div>
+                <div class="eyebrow-badge" style="margin-bottom: 16px">
+                  Technology & Architecture
+                </div>
+                <h2
+                  style="
+                    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+                    font-weight: 700;
+                    color: #fff;
+                    margin-bottom: 1rem;
+                    line-height: 1.35;
+                  "
+                >
+                  自研技术底座，让工程数字化更快落地、更易扩展
+                </h2>
+                <p
+                  style="
+                    font-size: 0.9375rem;
+                    color: var(--text-secondary);
+                    line-height: 1.75;
+                    margin-bottom: 1.5rem;
+                  "
+                >
+                  筑云不仅提供软件平台，也将多年工程行业实施经验沉淀为技术引擎、行业模板、交付方法和持续运营能力。
+                </p>
+
+                <div class="tech-kpi-row">
+                  <div class="tech-kpi-card">
+                    <div
+                      style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color: #fff;
+                        font-family: var(--font-sans);
+                        letter-spacing: -0.02em;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      99.9<span
+                        style="color: var(--cyan-400); font-size: 1.5rem"
+                        >%</span
+                      >
+                    </div>
+                    <div
+                      style="font-size: 0.8125rem; color: var(--text-secondary)"
+                    >
+                      核心平台集群可用率保障
+                    </div>
+                  </div>
+                  <div class="tech-kpi-card">
+                    <div
+                      style="
+                        font-size: 2rem;
+                        font-weight: 700;
+                        color: #fff;
+                        font-family: var(--font-sans);
+                        letter-spacing: -0.02em;
+                        margin-bottom: 4px;
+                      "
+                    >
+                      MS<span style="color: var(--cyan-400); font-size: 1.25rem"
+                        >级</span
+                      >
+                    </div>
+                    <div
+                      style="font-size: 0.8125rem; color: var(--text-secondary)"
+                    >
+                      空间模型渲染与指令低延迟
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 右侧 6 大技术优势矩阵 (2x3) -->
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
+              >
+                <!-- 1. 多引擎融合 -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--cyan-400); font-weight: bold"
+                      >•</span
+                    >
+                    BIM + GIS + UE + 3DGS 多引擎融合
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    将二维地图、三维模型、实景数据和业务数据融合到统一可视化底座。
+                  </p>
+                </div>
+
+                <!-- 2. 飞椽敏捷交付 -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--indigo-400); font-weight: bold"
+                      >•</span
+                    >
+                    飞椽 Fyra 零代码敏捷交付
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    用行业模板和可视化构建能力，缩短系统建设周期，降低重复开发成本。
+                  </p>
+                </div>
+
+                <!-- 3. 工程 AI -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--purple-400); font-weight: bold"
+                      >•</span
+                    >
+                    工程 AI 与智能体应用
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    面向安全管理、文档查询、数据分析、平台操作等场景，引入 AI
+                    辅助能力。
+                  </p>
+                </div>
+
+                <!-- 4. 物联网接入 -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--emerald-400); font-weight: bold"
+                      >•</span
+                    >
+                    物联网与多源数据接入
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    支持智慧工地设备、视频、传感器、业务系统和工程数据的统一接入与联动。
+                  </p>
+                </div>
+
+                <!-- 5. 行业模板库 -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--amber-400); font-weight: bold"
+                      >•</span
+                    >
+                    行业模板库与项目经验沉淀
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    覆盖房建、基建、民航、水利、市政等场景，减少从零开始的试错成本。
+                  </p>
+                </div>
+
+                <!-- 6. 开放集成与信创 -->
+                <div class="tech-matrix-cell">
+                  <h4
+                    style="
+                      font-size: 0.9375rem;
+                      font-weight: 700;
+                      color: #fff;
+                      margin-bottom: 4px;
+                      display: flex;
+                      align-items: center;
+                      gap: 6px;
+                    "
+                  >
+                    <span style="color: var(--rose-400); font-weight: bold"
+                      >•</span
+                    >
+                    开放集成与国产化适配
+                  </h4>
+                  <p
+                    style="
+                      font-size: 0.8125rem;
+                      color: var(--text-muted);
+                      line-height: 1.6;
+                    "
+                  >
+                    支持与既有系统、数据库、中间件和国产化软硬件环境协同，保障长期可持续。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 7：精选案例 (严格依据《BIMCC官网首页完整文案稿.md》 8 大官方真实标杆案例)
+           ====================================================================== -->
+      <section class="site-section" id="cases">
+        <div class="site-container">
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              align-items: flex-end;
+              justify-content: space-between;
+              gap: 20px;
+              margin-bottom: 3rem;
+            "
+          >
+            <div>
+              <div class="eyebrow-badge">
+                <span>标杆实战 · Benchmark Projects</span>
+              </div>
+              <h2 class="section-title">1000+ 标杆工程，实力见证</h2>
+              <p class="section-desc">
+                涵盖民航机场、轨道交通、智慧监管、水利水电与大型园区。
+              </p>
+            </div>
+            <a class="button button-secondary" href="cases.html">
+              <span>查看全部 60+ 客户案例</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- 8 大真实官方标杆案例卡片 (4 列或 2x4 网格) -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+            "
+            class="cases-grid-4cols"
+          >
+            <!-- 案例 1: 重庆江北国际机场 T3A 航站楼 -->
+            <div class="case-card reveal">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_cq_jiangbei_airport.jpg?v=20260917"
+                  alt="重庆江北国际机场 T3A 航站楼"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-cyan">民航机场</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">重庆江北国际机场 T3A 航站楼</h4>
+                <p class="case-meta-desc">
+                  53万㎡超大型航空枢纽工程，实施土建、异形钢构幕墙、机电管网及行李弱电全专业
+                  BIM 数字化协同与施工深化。
+                </p>
+                <div class="case-card-footer">
+                  <a
+                    class="case-link"
+                    href="case-detail.html?id=jiangbei-airport"
+                  >
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 2: 重庆建工集团 -->
+            <div class="case-card reveal delay-50">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_cq_jiangong.jpg?v=20260917_02"
+                  alt="重庆建工集团工程质量企业智慧监管平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-purple">智慧监管</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">重庆建工集团工程质量企业智慧监管平台</h4>
+                <p class="case-meta-desc">
+                  围绕工程质量监管、过程留痕、问题闭环和数据看板，帮助施工集团形成企业级质量智慧监管能力。
+                </p>
+                <div class="case-card-footer">
+                  <a class="case-link" href="case-detail.html?id=cq-jiangong">
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 3: 海南交投 -->
+            <div class="case-card reveal delay-100">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_hainan_jiaotou.jpg?v=20260917"
+                  alt="海南交投数智建管平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-blue">交通基建</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">海南交投数智建管平台</h4>
+                <p class="case-meta-desc">
+                  服务交通基础设施项目建设管理，融合项目数据、业务流程与可视化能力，提升多方协同和管控效率。
+                </p>
+                <div class="case-card-footer">
+                  <a
+                    class="case-link"
+                    href="case-detail.html?id=hainan-jiaotou"
+                  >
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 4: 重庆轨道交通 15 号线 -->
+            <div class="case-card reveal delay-150">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_cq_rail15.jpg?v=20260917"
+                  alt="重庆轨道交通 15 号线 BIM+智慧工地建管平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-emerald">轨道交通</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">
+                  重庆轨道交通 15 号线 BIM+智慧工地建管平台
+                </h4>
+                <p class="case-meta-desc">
+                  融合
+                  BIM、智慧工地设备和现场业务数据，支撑轨道交通项目在进度、安全、质量上的一体化管控。
+                </p>
+                <div class="case-card-footer">
+                  <a class="case-link" href="case-detail.html?id=cq-rail15">
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 5: 重庆机电控股集团 -->
+            <div class="case-card reveal">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_cq_jidian.jpg?v=20260917"
+                  alt="重庆机电控股集团企业级 BIM 施工管理平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-cyan">企业级平台</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">
+                  重庆机电控股集团企业级 BIM 施工管理平台
+                </h4>
+                <p class="case-meta-desc">
+                  面向集团多项目管理场景，构建统一的工程数据协同与项目管理平台，支撑企业级项目监管与数字化沉淀。
+                </p>
+                <div class="case-card-footer">
+                  <a class="case-link" href="case-detail.html?id=cq-jidian">
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 6: 永安抽蓄智慧工地 -->
+            <div class="case-card reveal delay-50">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_yongan_chouxu.jpg?v=20260917_02"
+                  alt="永安抽蓄智慧工地平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-amber">水利水电</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">永安抽蓄智慧工地平台</h4>
+                <p class="case-meta-desc">
+                  针对抽水蓄能电站复杂工区和现场管理需求，集成智慧工地设备、BIM+GIS
+                  底座和风险预警能力。
+                </p>
+                <div class="case-card-footer">
+                  <a class="case-link" href="case-detail.html?id=yongan-chouxu">
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 7: 重庆工商职业学院 -->
+            <div class="case-card reveal delay-100">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_cq_gsvi.jpg?v=20260917"
+                  alt="重庆工商职业学院数字基建管理平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-rose">教育基建</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">重庆工商职业学院数字基建管理平台</h4>
+                <p class="case-meta-desc">
+                  面向院校基建管理场景，构建数字化项目管理平台，支撑建设过程协同、资料沉淀和可视化监管。
+                </p>
+                <div class="case-card-footer">
+                  <a class="case-link" href="case-detail.html?id=cq-gsvi">
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 案例 8: 呈贡文体活动中心 -->
+            <div class="case-card reveal delay-150">
+              <div class="case-card-thumb">
+                <img
+                  src="assets/thumbs/case_chenggong_wenti.jpg?v=20260917"
+                  alt="呈贡文体活动中心智慧运维平台"
+                  loading="lazy"
+                />
+                <span class="case-tag tag-purple">数字孪生运维</span>
+              </div>
+              <div class="case-card-body">
+                <h4 class="case-title">呈贡文体活动中心智慧运维平台</h4>
+                <p class="case-meta-desc">
+                  将建设阶段数据延伸到运营阶段，通过数字孪生和智慧运维驾驶舱，支撑公共建筑资产的可视化运营。
+                </p>
+                <div class="case-card-footer">
+                  <a
+                    class="case-link"
+                    href="case-detail.html?id=chenggong-wenti"
+                  >
+                    <span>查看案例详情</span>
+                    <span>&rarr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           模块 8：信任背书 + 转化 CTA (Apple 风格 · 权威背书)
+           ====================================================================== -->
+      <section
+        class="site-section"
+        id="credentials"
+        style="background: rgba(6, 10, 20, 0.45)"
+      >
+        <div class="site-container">
+          <div class="section-header text-center reveal">
+            <div class="eyebrow-badge">
+              <span>权威认可 · Trust & Credentials</span>
+            </div>
+            <h2 class="section-title">硬核资质，护航长期数字化演进</h2>
+            <p class="section-desc" style="max-width: 800px; margin: 0 auto">
+              国家高新技术企业、专精特新、80+ 专利软著、100+ 省部级大奖。
+            </p>
+          </div>
+
+          <!-- 4 组权威背书卡片 -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+              margin-top: 3rem;
+            "
+            class="stats-counter-bar"
+          >
+            <!-- 1. 企业资质 -->
+            <div class="glass-card reveal" style="padding: 24px 20px">
+              <div
+                class="card-icon-box card-icon-cyan"
+                style="margin-bottom: 14px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  />
+                </svg>
+              </div>
+              <h4
+                style="
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 6px;
+                "
+              >
+                企业资质
+              </h4>
+              <p
+                style="
+                  font-size: 0.8125rem;
+                  color: var(--text-secondary);
+                  line-height: 1.6;
+                "
+              >
+                国家高新技术企业、重庆市“专精特新”企业、重点软件企业、CMMI、ISO9001、ISO27001、ISO20000
+                认证。
+              </p>
+            </div>
+
+            <!-- 2. 技术资产 -->
+            <div class="glass-card reveal delay-50" style="padding: 24px 20px">
+              <div
+                class="card-icon-box card-icon-purple"
+                style="margin-bottom: 14px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h4
+                style="
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 6px;
+                "
+              >
+                技术资产
+              </h4>
+              <p
+                style="
+                  font-size: 0.8125rem;
+                  color: var(--text-secondary);
+                  line-height: 1.6;
+                "
+              >
+                80+ 专利软著：BIMCC 数字建造管理系统、智慧工地集成平台、BIMGIS
+                引擎、飞椽 AI 大模型应用构建系统等。
+              </p>
+            </div>
+
+            <!-- 3. 行业荣誉 -->
+            <div class="glass-card reveal delay-100" style="padding: 24px 20px">
+              <div
+                class="card-icon-box card-icon-amber"
+                style="margin-bottom: 14px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h4
+                style="
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 6px;
+                "
+              >
+                行业荣誉
+              </h4>
+              <p
+                style="
+                  font-size: 0.8125rem;
+                  color: var(--text-secondary);
+                  line-height: 1.6;
+                "
+              >
+                多次斩获“龙图杯”全国 BIM 大赛、创新杯、工程建设行业 BIM
+                大赛、新基建杯等 100+ 项权威大奖。
+              </p>
+            </div>
+
+            <!-- 4. 合作生态 -->
+            <div class="glass-card reveal delay-150" style="padding: 24px 20px">
+              <div
+                class="card-icon-box card-icon-emerald"
+                style="margin-bottom: 14px"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                  <path d="M16 3.13a4 4 0 010 7.75" />
+                </svg>
+              </div>
+              <h4
+                style="
+                  font-size: 1rem;
+                  font-weight: 700;
+                  color: #fff;
+                  margin-bottom: 6px;
+                "
+              >
+                合作生态
+              </h4>
+              <p
+                style="
+                  font-size: 0.8125rem;
+                  color: var(--text-secondary);
+                  line-height: 1.6;
+                "
+              >
+                服务大型国央企、政府监管部门、建设单位、施工单位及院校伙伴，形成覆盖全国多地的服务网络。
+              </p>
+            </div>
+          </div>
+
+          <!-- 底部 CTA 转化面板 -->
+          <div class="cta-banner reveal" style="margin-top: 4rem">
+            <div class="cta-glow"></div>
+            <div class="cta-content">
+              <div class="eyebrow-badge" style="margin-bottom: 1rem">
+                <span>Start Your Digital Journey</span>
+              </div>
+              <h3 class="cta-title">准备启动项目数字化建设？</h3>
+              <p class="cta-desc">
+                告诉我们你的项目类型、组织角色和当前系统情况，筑云团队将为你匹配适合的产品组合与实施路径。
+              </p>
+              <div class="cta-actions">
+                <a class="button button-primary" href="contact.html">
+                  <span>预约方案咨询</span>
+                </a>
+                <a
+                  class="button button-secondary"
+                  href="contact.html#contact-form-section"
+                >
+                  <span>获取解决方案资料</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================================================================
+         页脚 Footer (严格依据《BIMCC官网首页完整文案稿.md》)
+         ====================================================================== -->
+    <footer class="site-footer">
+      <div class="site-container">
+        <div class="footer-grid">
+          <!-- 品牌与愿景 -->
+          <div class="footer-brand-col">
+            <a class="brand" href="index.html">
+              <div class="brand-mark">
+                <img
+                  src="assets/brand/logo.png?v=3"
+                  alt="筑云科技 Logo"
+                  width="28"
+                  height="28"
+                />
+              </div>
+              <span class="brand-title">筑云科技 BIMCC</span>
+            </a>
+            <p class="footer-tagline">
+              筑云科技
+              BIMCC，致力于为建设工程行业提供一体化数字建设解决方案，业务覆盖智能建造平台、飞椽
+              Fyra 智能开发平台、智慧工地、数字孪生运维、BIM
+              咨询、数字化教育和工程数字技术创新服务。
+            </p>
+            <div class="footer-badges">
+              <span class="badge-item">国家高新技术企业</span>
+              <span class="badge-item">专精特新企业</span>
+              <span class="badge-item">CMMI 认证</span>
+            </div>
+          </div>
+
+          <!-- 产品平台链接 -->
+          <div class="footer-col">
+            <h4 class="footer-title">产品平台</h4>
+            <ul class="footer-links">
+              <li>
+                <a href="product-detail.html?slug=fyra"
+                  >飞椽 Fyra 智能开发平台</a
+                >
+              </li>
+              <li>
+                <a href="product-detail.html?slug=bimcc-platform"
+                  >BIMCC 智能建造平台</a
+                >
+              </li>
+              <li>
+                <a href="product-detail.html?slug=smart-site">智慧工地建设</a>
+              </li>
+              <li><a href="products.html">数字孪生与智慧运维</a></li>
+              <li><a href="products.html">BIM 咨询服务</a></li>
+              <li><a href="products.html">数字化教育体系</a></li>
+            </ul>
+          </div>
+
+          <!-- 解决方案链接 -->
+          <div class="footer-col">
+            <h4 class="footer-title">解决方案</h4>
+            <ul class="footer-links">
+              <li><a href="solutions.html">建设单位数字建管</a></li>
+              <li><a href="solutions.html">施工单位智能建造</a></li>
+              <li><a href="solutions.html">全咨 / 监理数字化协同</a></li>
+              <li><a href="solutions.html">政府 / 集团监管一张图</a></li>
+              <li><a href="solutions.html">交通基建与轨道交通</a></li>
+              <li><a href="solutions.html">水利水电与数字孪生</a></li>
+            </ul>
+          </div>
+
+          <!-- 咨询入口 -->
+          <div class="footer-col">
+            <h4 class="footer-title">咨询入口</h4>
+            <ul class="footer-links">
+              <li><a href="contact.html">业务咨询 & 演示预约</a></li>
+              <li><a href="cases.html">标杆工程客户案例</a></li>
+              <li><a href="technology.html">核心技术体系与资产</a></li>
+              <li>
+                <a href="contact.html#contact-form-section">获取方案资料</a>
+              </li>
+              <li><a href="about.html">关于筑云与荣誉资质</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 筑云科技 (BIMCC). 保留所有权利。渝ICP备XXXXXXXX号</p>
+          <div class="footer-legal">
+            <a href="about.html">关于我们</a>
+            <a href="contact.html">联系我们</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js?v=13"></script>
+    <script>
+      /**
+       * Raycast 官方级真实有机流体光幕生长引擎 (筑云科技极光青蓝定制版)
+       * 基于对角晶体光板几何模型 + 轴向流体波流淌 (Wave Streaming) + 边缘折射 + 胶片微粒
+       */
+      (function initRaycastFluidHero() {
+        const canvas = document.getElementById("raycastBeamCanvas");
+        if (!canvas) return;
+
+        const gl =
+          canvas.getContext("webgl", {
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+          }) || canvas.getContext("experimental-webgl");
+
+        if (!gl) {
+          console.warn("WebGL not supported");
+          return;
+        }
+
+        const vsSource = `
+          attribute vec2 a_position;
+          void main() {
+            gl_Position = vec4(a_position, 0.0, 1.0);
+          }
+        `;
+
+        const fsSource = `
+          precision highp float;
+          uniform vec2 u_resolution;
+          uniform float u_time;
+
+          // 快速伪随机与多八度连续噪声
+          float hash(vec2 p) {
+            p = fract(p * vec2(123.34, 456.21));
+            p += dot(p, p + 45.32);
+            return fract(p.x * p.y);
+          }
+
+          float noise(vec2 p) {
+            vec2 i = floor(p);
+            vec2 f = fract(p);
+            f = f * f * (3.0 - 2.0 * f);
+            float a = hash(i);
+            float b = hash(i + vec2(1.0, 0.0));
+            float c = hash(i + vec2(0.0, 1.0));
+            float d = hash(i + vec2(1.0, 1.0));
+            return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+          }
+
+          float fbm(vec2 p) {
+            float v = 0.0;
+            float a = 0.5;
+            mat2 rot = mat2(cos(0.52), sin(0.52), -sin(0.52), cos(0.52));
+            for (int i = 0; i < 4; ++i) {
+              v += a * noise(p);
+              p = rot * p * 2.06 + vec2(19.2);
+              a *= 0.5;
+            }
+            return v;
+          }
+
+          // 精确阶梯时序计算器：各板在 [minP, 1.0] 之间平滑呼吸流转，流速从容且不完全消失
+          float computeStaggerProgress(float tau, float start, float growD, float holdD, float retractD, float minP) {
+            float raw = 0.0;
+            float t1 = start + growD;
+            float t2 = t1 + holdD;
+            float t3 = t2 + retractD;
+
+            if (tau < start) {
+              raw = 0.0;
+            } else if (tau < t1) {
+              float u = (tau - start) / growD;
+              raw = smoothstep(0.0, 1.0, u);
+            } else if (tau < t2) {
+              raw = 1.0;
+            } else if (tau < t3) {
+              float u = (tau - t2) / retractD;
+              raw = smoothstep(1.0, 0.0, u);
+            } else {
+              raw = 0.0;
+            }
+            return mix(minP, 1.0, raw);
+          }
+
+          // 单块独立的对角高级磨砂玻璃光板 (宽幅、平齐、温润毛玻璃漫射消隐)
+          // r: 旋转后对角坐标; pWorld: 视口世界坐标; cx: 板中心; halfW: 半宽; progress: 独立时序生长进度 (minP ~ 1.0)
+          float renderSlab(
+            vec2 r,
+            vec2 pWorld,
+            float cx,
+            float halfW,
+            float t,
+            float phi,
+            float progress,
+            float maxLenTop,
+            float maxLenBtm
+          ) {
+            // 1. 横向加宽物理晶体边界与笔直利落的暗缝 (纯平直线，无杂乱扭曲)
+            float dx = abs(r.x - cx);
+            float inX = smoothstep(halfW + 0.0025, halfW - 0.0015, dx);
+            if (inX <= 0.0005) return 0.0;
+
+            float u = (r.x - cx) / halfW; // 局部横向归一化坐标 [-1.0, 1.0]
+
+            // 2. 纵向水平平齐端头 (Horizontal Frosted Cut)
+            // 高度收敛，紧密包裹文案四周，不出屏幕上下边界
+            float currentTop = maxLenTop * progress;
+            float currentBtm = maxLenBtm * progress;
+
+            float yCoord = pWorld.y * 1.50; // 纯水平基准
+
+            // 3. 高级磨砂玻璃柔焦漫射消散 (Gaussian Frosted Blur Mist)
+            // 彻底去除电视机雪花噪点，采用丝滑温润的高斯毛玻璃过渡
+            float fadeTop = smoothstep(currentTop + 0.16, currentTop - 0.22, yCoord);
+            float fadeBtm = smoothstep(-currentBtm - 0.16, -currentBtm + 0.22, yCoord);
+
+            float inY = fadeTop * fadeBtm;
+            if (inY <= 0.0005) return 0.0;
+
+            // 4. 板内高级磨砂玻璃微观漫射流体 (微细连续平滑扰动，温润如玉)
+            float wave1 = sin(r.y * 3.5 - t * 0.6 + phi) * 0.20;
+            float wave2 = cos(r.y * 2.0 - t * 0.4 + phi * 1.3) * 0.15;
+
+            // 随生长进度的光核漫游
+            float coreY = sin(t * 0.25 + phi) * (0.28 * progress);
+            float mainCore = exp(-pow((r.y - coreY) / 0.42, 2.0));
+
+            // 宽幅饱满的磨砂玻璃体 (横向厚实，中间通透，两侧微渐变)
+            float slabBody = smoothstep(1.0, 0.0, abs(u));
+            float slabCross = pow(slabBody, 0.50);
+
+            // 5. 磨砂玻璃右侧 3D 棱镜折射微光边缘 (Rim Light)
+            float rim = smoothstep(0.020, 0.0, abs(u - 0.90)) * 1.10;
+            float leftShadow = smoothstep(-0.95, -0.55, u) * 0.30 + 0.70;
+
+            // 综合能量合成 (纯净、厚实、温润磨砂漫射)
+            float energy = (slabCross * 0.85 + mainCore * 0.60 + (wave1 + wave2) * 0.25) * leftShadow * inX + rim;
+            return energy * inY * smoothstep(0.0, 0.18, progress);
+          }
+
+          void main() {
+            // 视口归一化坐标 (完全居中)
+            vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+            
+            // 对标录屏：严格居中包裹在文案背后，垂直微调
+            vec2 p = st - vec2(0.0, 0.02);
+
+            // 严格对标录屏 -42° 对角旋转 (-0.733038 弧度)
+            float angle = -0.733038;
+            float cosA = cos(angle);
+            float sinA = sin(angle);
+            vec2 r = vec2(p.x * cosA - p.y * sinA, p.x * sinA + p.y * cosA);
+
+            float t = u_time;
+
+            // =========================================================================
+            // 15.0 秒深邃沉稳阶梯呼吸往复流水线 (Staggered Wave Breathing Loop)
+            // =========================================================================
+            float cyclePeriod = 15.0; // 沉稳从容的 15 秒大周期
+            float tau = fract(u_time / cyclePeriod); // 归一化周期时间 [0.0, 1.0]
+
+            // 8 块加厚宽幅晶体板参数 (从中间向两侧产生清晰强烈的阶梯时间差)
+            float growTime = 0.28;    // 生长展开耗时 (~4.2s)
+            float holdTime = 0.18;    // 巅峰保持耗时 (~2.7s)
+            float retractTime = 0.28; // 回收收拢耗时 (~4.2s)
+
+            // 各板严格按离中心对称轴的距离分配启动时机与保底微光比例
+            // 中心板 3, 4: 0.00 启动生长，保留 38% 核心微光底蕴
+            float p3 = computeStaggerProgress(tau, 0.00, growTime, holdTime, retractTime, 0.38);
+            float p4 = computeStaggerProgress(tau, 0.02, growTime, holdTime, retractTime, 0.38);
+
+            // 次中心板 2, 5: 0.08 启动生长，保留 28% 微光底蕴
+            float p2 = computeStaggerProgress(tau, 0.08, growTime, holdTime, retractTime, 0.28);
+            float p5 = computeStaggerProgress(tau, 0.10, growTime, holdTime, retractTime, 0.28);
+
+            // 外侧板 1, 6: 0.16 启动生长，保留 20% 微光底蕴
+            float p1 = computeStaggerProgress(tau, 0.16, growTime, holdTime, retractTime, 0.20);
+            float p6 = computeStaggerProgress(tau, 0.18, growTime, holdTime, retractTime, 0.20);
+
+            // 最外侧板 0, 7: 0.24 启动生长，保留 14% 微光底蕴
+            float p0 = computeStaggerProgress(tau, 0.24, growTime, holdTime, retractTime, 0.14);
+            float p7 = computeStaggerProgress(tau, 0.26, growTime, holdTime, retractTime, 0.14);
+
+            // =========================================================================
+            // 8 块超宽厚实宽幅对角磨砂晶体板定位 (加宽板幅，收紧高度紧密包裹文案)
+            // =========================================================================
+            float pitch = 0.096; // 宽板间距 (大幅加宽)
+            float halfW = 0.046; // 单板半宽 (加厚40%，雄浑饱满)
+
+            // 8 块晶体板独立渲染 (高度紧密收拢在 0.40~0.68 范围，不出屏幕上下界)
+            float e0 = renderSlab(r, p, -3.5 * pitch, halfW, t, 0.8, p0, 0.42, 0.36) * 0.75;
+            float e1 = renderSlab(r, p, -2.5 * pitch, halfW, t, 2.4, p1, 0.52, 0.46) * 0.95;
+            float e2 = renderSlab(r, p, -1.5 * pitch, halfW, t, 4.1, p2, 0.60, 0.54) * 1.30;
+            float e3 = renderSlab(r, p, -0.5 * pitch, halfW, t, 1.1, p3, 0.68, 0.62) * 1.55;
+            float e4 = renderSlab(r, p,  0.5 * pitch, halfW, t, 5.3, p4, 0.66, 0.60) * 1.55;
+            float e5 = renderSlab(r, p,  1.5 * pitch, halfW, t, 3.7, p5, 0.58, 0.52) * 1.30;
+            float e6 = renderSlab(r, p,  2.5 * pitch, halfW, t, 0.3, p6, 0.50, 0.44) * 0.95;
+            float e7 = renderSlab(r, p,  3.5 * pitch, halfW, t, 2.9, p7, 0.38, 0.32) * 0.75;
+
+            // 叠加所有板条光影
+            float total = e0 + e1 + e2 + e3 + e4 + e5 + e6 + e7;
+
+            // 叠加全局高阶磨砂流体丝绸漫射 (温润深邃流动)
+            float flow = fbm(vec2(r.x * 5.0, r.y * 3.5 - t * 0.08));
+            total *= (0.88 + 0.24 * flow);
+
+            // 整体包裹范围 (横向扩展宽厚，纵向舒适收束)
+            float boundX = smoothstep(0.60, 0.35, abs(r.x));
+            float boundY = smoothstep(0.70, 0.38, abs(r.y));
+            total *= (boundX * boundY);
+
+            // 筑云科技极光青蓝品牌色谱映射 (浓郁、厚重、纯正、深邃、高级)
+            // 对标其他页面全局极光背景 (.global-aurora)，色调统一且亮度压暗 50%：
+            // 1. 基底极夜暗蓝 (#020409)
+            // 2. 左上方柔和青蓝极光渐变
+            // 3. 右下方深邃紫蓝极光渐变
+            // 4. 居中微聚光氛围
+            vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+            float distTL = length(uv - vec2(0.0, 1.0));
+            float distBR = length(uv - vec2(1.0, 0.0));
+            float distCenter = length(uv - vec2(0.5, 0.55));
+
+            // 精准对标其他页面全局极光 (.global-aurora)，色调一致但背景加深压暗，提升文字对比度并消除刺眼眩光
+            vec3 baseBg     = vec3(0.004, 0.007, 0.016); // #010204 极致深邃深空暗蓝
+            vec3 glowTL     = vec3(0.018, 0.065, 0.095) * smoothstep(1.30, 0.0, distTL); // 左上青蓝极光晕染 (柔和收敛)
+            vec3 glowBR     = vec3(0.045, 0.018, 0.080) * smoothstep(1.30, 0.0, distBR); // 右下紫蓝极光微晕 (柔和收敛)
+            vec3 centerGlow = vec3(0.005, 0.015, 0.022) * smoothstep(0.85, 0.0, distCenter); // 中心极低微光，保持文字暗场
+
+            vec3 bg           = baseBg + glowTL + glowBR + centerGlow;
+            vec3 darkNavy     = vec3(0.006, 0.07, 0.24);   // #01123d 浓郁深黑蓝
+            vec3 royalBlue    = vec3(0.015, 0.22, 0.65);  // #0438a6 沉稳皇家蓝
+            vec3 sapphireBlue = vec3(0.04, 0.48, 0.88);   // #0a7ae0 纯正宝石蓝
+            vec3 electricCyan = vec3(0.18, 0.72, 0.92);   // #2eb8eb 电气青蓝
+            vec3 iceGlow      = vec3(0.60, 0.88, 0.98);   // #99e0fa 柔和冷调冰蓝极光 (降低生硬白光刺眼度)
+
+            vec3 col = bg;
+            if (total > 0.0005) {
+              col = mix(col, darkNavy, smoothstep(0.0005, 0.16, total));
+              col = mix(col, royalBlue, smoothstep(0.14, 0.48, total));
+              col = mix(col, sapphireBlue, smoothstep(0.44, 0.92, total));
+              col = mix(col, electricCyan, smoothstep(0.88, 1.45, total));
+              col = mix(col, iceGlow, smoothstep(1.40, 2.30, total));
+            }
+
+            gl_FragColor = vec4(col, 1.0);
+          }
+        `;
+
+        function createShader(gl, type, source) {
+          const shader = gl.createShader(type);
+          gl.shaderSource(shader, source);
+          gl.compileShader(shader);
+          if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.error(gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+            return null;
+          }
+          return shader;
+        }
+
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.error(gl.getProgramInfoLog(program));
+          return;
+        }
+
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.bufferData(
+          gl.ARRAY_BUFFER,
+          new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+          gl.STATIC_DRAW,
+        );
+
+        const positionLocation = gl.getAttribLocation(program, "a_position");
+        const resolutionLocation = gl.getUniformLocation(
+          program,
+          "u_resolution",
+        );
+        const timeLocation = gl.getUniformLocation(program, "u_time");
+
+        let width = 0,
+          height = 0;
+
+        function resize() {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const rect = canvas.getBoundingClientRect();
+          width = rect.width || window.innerWidth;
+          height = rect.height || window.innerHeight;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        window.addEventListener("resize", resize);
+        resize();
+
+        const startTime = performance.now();
+
+        function render() {
+          const now = performance.now();
+          const elapsed = (now - startTime) / 1000;
+
+          gl.useProgram(program);
+
+          gl.enableVertexAttribArray(positionLocation);
+          gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+          gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+          gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+          gl.uniform1f(timeLocation, elapsed);
+
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+          requestAnimationFrame(render);
+        }
+
+        requestAnimationFrame(render);
+      })();
+    </script>
+  </body>
+</html>

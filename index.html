@@ -15,6 +15,162 @@
     <meta name="theme-color" content="#0b1121" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css?v=20" />
+    <style>
+      /* 禁用全局浮动大极光背景，确保纯黑纯粹的 Raycast 舞台 */
+      .global-aurora {
+        display: none !important;
+      }
+
+      /* Raycast 首屏与背后动态流体光幕专有容器 */
+      .raycast-hero-section {
+        position: relative;
+        min-height: calc(90vh - var(--header-height));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: calc(var(--header-height) + 3rem);
+        padding-bottom: 5rem;
+        overflow: hidden;
+        text-align: center;
+        background: #020409;
+      }
+
+      /* 位于文字正后方的物理流体光幕 Canvas */
+      .raycast-beam-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* 首屏元素依次出现入场动画 (加长时长与从容节奏，极度丝滑从容入场) */
+      @keyframes heroFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* 纯居中文案排版容器 */
+      .raycast-hero-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      /* 1. 先出标签 (0.4s) - 高通透磨砂玻璃微光胶囊 */
+      .raycast-hero-content .eyebrow-badge {
+        margin-bottom: 1.25rem;
+        background: rgba(15, 23, 42, 0.42);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: #e0f2fe;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+      }
+
+      /* 2. 然后大标题 (1.1s, +0.7s) */
+      .raycast-hero-content .hero-title {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
+        color: #f8fafc;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        word-break: keep-all;
+        will-change: transform, opacity;
+        text-shadow:
+          0 2px 12px rgba(0, 0, 0, 0.65),
+          0 0 24px rgba(0, 0, 0, 0.45);
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.1s backwards;
+      }
+
+      /* 3. 然后描述文本 (1.8s, +0.7s) */
+      .raycast-hero-content .hero-lead {
+        font-size: 1.0625rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.92);
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2.25rem;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-wrap: balance;
+        will-change: transform, opacity;
+        text-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.45),
+          0 0 14px rgba(0, 0, 0, 0.3);
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.8s backwards;
+      }
+
+      /* 4. 然后其他剩余内容: 按钮 + 底部背书 (2.5s, +0.7s) */
+      .raycast-hero-content .hero-cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 3.25rem;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.5s backwards;
+      }
+
+      .raycast-hero-content .button-secondary {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #f8fafc;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+
+      .raycast-hero-content .button-secondary:hover {
+        background: rgba(30, 41, 59, 0.85);
+        border-color: rgba(56, 189, 248, 0.5);
+        color: #38bdf8;
+      }
+
+      .raycast-hero-content .hero-trust-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-top: 3.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 0.8125rem;
+        color: #94a3b8;
+        width: 100%;
+        max-width: 680px;
+        will-change: transform, opacity;
+        animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 2.5s backwards;
+      }
+    </style>
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -90,146 +246,115 @@
       <!-- ======================================================================
            模块 1：首屏 Hero + 核心数字背书 (Apple 风格 · 凝练短语 + 核心关键词)
            ====================================================================== -->
-      <section class="hero-wrapper" id="home">
-        <div class="hero-spotlight"></div>
-        <div class="site-container">
-          <div class="hero-grid">
-            <!-- 左侧核心文案与 CTA (严格 2 个文字层级 · 短语 + 关键词) -->
-            <div class="hero-copy reveal">
-              <div class="eyebrow-badge">
-                <span class="status-pulse"></span>
-                <span>自研飞椽 Fyra 智能底座 · 全周期工程数字化</span>
-              </div>
-              <h1 class="hero-title">
-                一体化数字建设，<br />
-                <span class="text-gradient-aurora text-glow"
-                  >全周期数字建管服务商</span
-                >
-              </h1>
-              <p
-                class="hero-lead"
-                style="max-width: 620px;"
-              >
-                让工程管理从项目现场走向全生命周期。依托飞椽 Fyra 智能底座，融合
-                BIM+GIS 一张图、工程 AI 与现场 IoT
-                感知，为业主、施工、全咨与监管单位提供一体化数字建设服务。
-              </p>
-              <div class="hero-cta-group">
-                <a class="button button-primary" href="contact.html">
-                  <span>预约方案咨询</span>
-                </a>
-                <a class="button button-secondary" href="cases.html">
-                  <span>查看客户案例</span>
-                </a>
-              </div>
+      <section class="raycast-hero-section" id="home">
+        <!-- Raycast 风格真实物理流体对角光幕 Canvas (位于文字正后方) -->
+        <canvas id="raycastBeamCanvas" class="raycast-beam-canvas"></canvas>
 
-              <!-- 底部信任微背书 (柔和护眼 · 舒适辨识度) -->
-              <div class="hero-trust-bar">
-                <div class="hero-trust-item">
-                  <span
-                    class="card-icon-box card-icon-cyan"
-                    style="
-                      width: 20px;
-                      height: 20px;
-                      border-radius: 4px;
-                      padding: 3px;
-                      color: #38bdf8;
-                      opacity: 0.85;
-                    "
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path
-                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                      />
-                    </svg>
-                  </span>
-                  <span>国家高新技术企业</span>
-                </div>
-                <div class="hero-trust-item">
-                  <span
-                    class="card-icon-box card-icon-indigo"
-                    style="
-                      width: 20px;
-                      height: 20px;
-                      border-radius: 4px;
-                      padding: 3px;
-                      color: #818cf8;
-                      opacity: 0.85;
-                    "
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <path d="M9 9h6v6H9z" />
-                    </svg>
-                  </span>
-                  <span>重庆市“专精特新”企业</span>
-                </div>
-                <div class="hero-trust-item">
-                  <span
-                    class="card-icon-box card-icon-emerald"
-                    style="
-                      width: 20px;
-                      height: 20px;
-                      border-radius: 4px;
-                      padding: 3px;
-                      color: #34d399;
-                      opacity: 0.85;
-                    "
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                  </span>
-                  <span>1000+ 重点工程实战</span>
-                </div>
-              </div>
+        <div class="site-container">
+          <div class="raycast-hero-content">
+            <!-- 顶部微光胶囊徽章 -->
+            <div class="eyebrow-badge">
+              <span class="status-pulse"></span>
+              <span>自研飞椽 Fyra 智能底座 · 全周期工程数字化</span>
             </div>
 
-            <!-- 右侧悬浮主控台视窗 (驾驶舱预览) -->
-            <div class="cockpit-container reveal delay-150">
-              <div class="cockpit-stage">
-                <!-- 顶部状态探针 -->
-                <div class="telemetry-chip telemetry-chip-top">
-                  <span class="status-pulse"></span>
-                  <span>Fyra Engine · BIM+GIS 一张图驾驶舱</span>
-                </div>
-                <!-- 底部智能探针 -->
-                <div class="telemetry-chip telemetry-chip-bottom">
+            <!-- 核心大标题 (严格 40px, 1.35 行高, 两行纯白高对比排版) -->
+            <h1 class="hero-title">
+              一体化数字建设，<br />
+              全周期数字建管服务商
+            </h1>
+
+            <!-- 描述文案 (严格保持 400 字重、0.02em 字距、1.7 行高) -->
+            <p class="hero-lead">
+              让工程管理从项目现场走向全生命周期。依托飞椽 Fyra 智能底座，融合
+              BIM+GIS 一张图、工程 AI 与现场 IoT
+              感知，为业主、施工、全咨与监管单位提供一体化数字建设服务。
+            </p>
+
+            <!-- 居中双 CTA 按钮 -->
+            <div class="hero-cta-group">
+              <a class="button button-primary" href="contact.html">
+                <span>预约方案咨询</span>
+              </a>
+              <a class="button button-secondary" href="cases.html">
+                <span>查看客户案例</span>
+              </a>
+            </div>
+
+            <!-- 底部信任微背书 (居中排列) -->
+            <div class="hero-trust-bar">
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-cyan"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #38bdf8;
+                    opacity: 0.85;
+                  "
+                >
                   <svg
-                    width="13"
-                    height="13"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#38bdf8"
+                    stroke="currentColor"
                     stroke-width="2"
                   >
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <path
+                      d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                    />
                   </svg>
-                  <span>全业务链数据融合中台 Active</span>
-                </div>
-                <!-- 驾驶舱截图预览 -->
-                <div class="cockpit-screen">
-                  <img
-                    src="assets/v8/banner-bimcc.png"
-                    alt="BIMCC 智能建造与数字孪生驾驶舱预览"
-                  />
-                </div>
+                </span>
+                <span>国家高新技术企业</span>
+              </div>
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-indigo"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #818cf8;
+                    opacity: 0.85;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6v6H9z" />
+                  </svg>
+                </span>
+                <span>重庆市“专精特新”企业</span>
+              </div>
+              <div class="hero-trust-item">
+                <span
+                  class="card-icon-box card-icon-emerald"
+                  style="
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                    padding: 3px;
+                    color: #34d399;
+                    opacity: 0.85;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                </span>
+                <span>1000+ 重点工程实战</span>
               </div>
             </div>
           </div>
@@ -2866,5 +2991,333 @@
     </footer>
 
     <script src="script.js?v=13"></script>
+    <script>
+      /**
+       * Raycast 官方级真实有机流体光幕生长引擎 (筑云科技极光青蓝定制版)
+       * 基于对角晶体光板几何模型 + 轴向流体波流淌 (Wave Streaming) + 边缘折射 + 胶片微粒
+       */
+      (function initRaycastFluidHero() {
+        const canvas = document.getElementById("raycastBeamCanvas");
+        if (!canvas) return;
+
+        const gl =
+          canvas.getContext("webgl", {
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+          }) || canvas.getContext("experimental-webgl");
+
+        if (!gl) {
+          console.warn("WebGL not supported");
+          return;
+        }
+
+        const vsSource = `
+          attribute vec2 a_position;
+          void main() {
+            gl_Position = vec4(a_position, 0.0, 1.0);
+          }
+        `;
+
+        const fsSource = `
+          precision highp float;
+          uniform vec2 u_resolution;
+          uniform float u_time;
+
+          // 快速伪随机与多八度连续噪声
+          float hash(vec2 p) {
+            p = fract(p * vec2(123.34, 456.21));
+            p += dot(p, p + 45.32);
+            return fract(p.x * p.y);
+          }
+
+          float noise(vec2 p) {
+            vec2 i = floor(p);
+            vec2 f = fract(p);
+            f = f * f * (3.0 - 2.0 * f);
+            float a = hash(i);
+            float b = hash(i + vec2(1.0, 0.0));
+            float c = hash(i + vec2(0.0, 1.0));
+            float d = hash(i + vec2(1.0, 1.0));
+            return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+          }
+
+          float fbm(vec2 p) {
+            float v = 0.0;
+            float a = 0.5;
+            mat2 rot = mat2(cos(0.52), sin(0.52), -sin(0.52), cos(0.52));
+            for (int i = 0; i < 4; ++i) {
+              v += a * noise(p);
+              p = rot * p * 2.06 + vec2(19.2);
+              a *= 0.5;
+            }
+            return v;
+          }
+
+          // 精确阶梯时序计算器：各板在 [minP, 1.0] 之间平滑呼吸流转，流速从容且不完全消失
+          float computeStaggerProgress(float tau, float start, float growD, float holdD, float retractD, float minP) {
+            float raw = 0.0;
+            float t1 = start + growD;
+            float t2 = t1 + holdD;
+            float t3 = t2 + retractD;
+
+            if (tau < start) {
+              raw = 0.0;
+            } else if (tau < t1) {
+              float u = (tau - start) / growD;
+              raw = smoothstep(0.0, 1.0, u);
+            } else if (tau < t2) {
+              raw = 1.0;
+            } else if (tau < t3) {
+              float u = (tau - t2) / retractD;
+              raw = smoothstep(1.0, 0.0, u);
+            } else {
+              raw = 0.0;
+            }
+            return mix(minP, 1.0, raw);
+          }
+
+          // 单块独立的对角高级磨砂玻璃光板 (宽幅、平齐、温润毛玻璃漫射消隐)
+          // r: 旋转后对角坐标; pWorld: 视口世界坐标; cx: 板中心; halfW: 半宽; progress: 独立时序生长进度 (minP ~ 1.0)
+          float renderSlab(
+            vec2 r,
+            vec2 pWorld,
+            float cx,
+            float halfW,
+            float t,
+            float phi,
+            float progress,
+            float maxLenTop,
+            float maxLenBtm
+          ) {
+            // 1. 横向加宽物理晶体边界与笔直利落的暗缝 (纯平直线，无杂乱扭曲)
+            float dx = abs(r.x - cx);
+            float inX = smoothstep(halfW + 0.0025, halfW - 0.0015, dx);
+            if (inX <= 0.0005) return 0.0;
+
+            float u = (r.x - cx) / halfW; // 局部横向归一化坐标 [-1.0, 1.0]
+
+            // 2. 纵向水平平齐端头 (Horizontal Frosted Cut)
+            // 高度收敛，紧密包裹文案四周，不出屏幕上下边界
+            float currentTop = maxLenTop * progress;
+            float currentBtm = maxLenBtm * progress;
+
+            float yCoord = pWorld.y * 1.50; // 纯水平基准
+
+            // 3. 高级磨砂玻璃柔焦漫射消散 (Gaussian Frosted Blur Mist)
+            // 彻底去除电视机雪花噪点，采用丝滑温润的高斯毛玻璃过渡
+            float fadeTop = smoothstep(currentTop + 0.16, currentTop - 0.22, yCoord);
+            float fadeBtm = smoothstep(-currentBtm - 0.16, -currentBtm + 0.22, yCoord);
+
+            float inY = fadeTop * fadeBtm;
+            if (inY <= 0.0005) return 0.0;
+
+            // 4. 板内高级磨砂玻璃微观漫射流体 (微细连续平滑扰动，温润如玉)
+            float wave1 = sin(r.y * 3.5 - t * 0.6 + phi) * 0.20;
+            float wave2 = cos(r.y * 2.0 - t * 0.4 + phi * 1.3) * 0.15;
+
+            // 随生长进度的光核漫游
+            float coreY = sin(t * 0.25 + phi) * (0.28 * progress);
+            float mainCore = exp(-pow((r.y - coreY) / 0.42, 2.0));
+
+            // 宽幅饱满的磨砂玻璃体 (横向厚实，中间通透，两侧微渐变)
+            float slabBody = smoothstep(1.0, 0.0, abs(u));
+            float slabCross = pow(slabBody, 0.50);
+
+            // 5. 磨砂玻璃右侧 3D 棱镜折射微光边缘 (Rim Light)
+            float rim = smoothstep(0.020, 0.0, abs(u - 0.90)) * 1.10;
+            float leftShadow = smoothstep(-0.95, -0.55, u) * 0.30 + 0.70;
+
+            // 综合能量合成 (纯净、厚实、温润磨砂漫射)
+            float energy = (slabCross * 0.85 + mainCore * 0.60 + (wave1 + wave2) * 0.25) * leftShadow * inX + rim;
+            return energy * inY * smoothstep(0.0, 0.18, progress);
+          }
+
+          void main() {
+            // 视口归一化坐标 (完全居中)
+            vec2 st = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.x, u_resolution.y);
+            
+            // 对标录屏：严格居中包裹在文案背后，垂直微调
+            vec2 p = st - vec2(0.0, 0.02);
+
+            // 严格对标录屏 -42° 对角旋转 (-0.733038 弧度)
+            float angle = -0.733038;
+            float cosA = cos(angle);
+            float sinA = sin(angle);
+            vec2 r = vec2(p.x * cosA - p.y * sinA, p.x * sinA + p.y * cosA);
+
+            float t = u_time;
+
+            // =========================================================================
+            // 15.0 秒深邃沉稳阶梯呼吸往复流水线 (Staggered Wave Breathing Loop)
+            // =========================================================================
+            float cyclePeriod = 15.0; // 沉稳从容的 15 秒大周期
+            float tau = fract(u_time / cyclePeriod); // 归一化周期时间 [0.0, 1.0]
+
+            // 8 块加厚宽幅晶体板参数 (从中间向两侧产生清晰强烈的阶梯时间差)
+            float growTime = 0.28;    // 生长展开耗时 (~4.2s)
+            float holdTime = 0.18;    // 巅峰保持耗时 (~2.7s)
+            float retractTime = 0.28; // 回收收拢耗时 (~4.2s)
+
+            // 各板严格按离中心对称轴的距离分配启动时机与保底微光比例
+            // 中心板 3, 4: 0.00 启动生长，保留 38% 核心微光底蕴
+            float p3 = computeStaggerProgress(tau, 0.00, growTime, holdTime, retractTime, 0.38);
+            float p4 = computeStaggerProgress(tau, 0.02, growTime, holdTime, retractTime, 0.38);
+
+            // 次中心板 2, 5: 0.08 启动生长，保留 28% 微光底蕴
+            float p2 = computeStaggerProgress(tau, 0.08, growTime, holdTime, retractTime, 0.28);
+            float p5 = computeStaggerProgress(tau, 0.10, growTime, holdTime, retractTime, 0.28);
+
+            // 外侧板 1, 6: 0.16 启动生长，保留 20% 微光底蕴
+            float p1 = computeStaggerProgress(tau, 0.16, growTime, holdTime, retractTime, 0.20);
+            float p6 = computeStaggerProgress(tau, 0.18, growTime, holdTime, retractTime, 0.20);
+
+            // 最外侧板 0, 7: 0.24 启动生长，保留 14% 微光底蕴
+            float p0 = computeStaggerProgress(tau, 0.24, growTime, holdTime, retractTime, 0.14);
+            float p7 = computeStaggerProgress(tau, 0.26, growTime, holdTime, retractTime, 0.14);
+
+            // =========================================================================
+            // 8 块超宽厚实宽幅对角磨砂晶体板定位 (加宽板幅，收紧高度紧密包裹文案)
+            // =========================================================================
+            float pitch = 0.096; // 宽板间距 (大幅加宽)
+            float halfW = 0.046; // 单板半宽 (加厚40%，雄浑饱满)
+
+            // 8 块晶体板独立渲染 (高度紧密收拢在 0.40~0.68 范围，不出屏幕上下界)
+            float e0 = renderSlab(r, p, -3.5 * pitch, halfW, t, 0.8, p0, 0.42, 0.36) * 0.75;
+            float e1 = renderSlab(r, p, -2.5 * pitch, halfW, t, 2.4, p1, 0.52, 0.46) * 0.95;
+            float e2 = renderSlab(r, p, -1.5 * pitch, halfW, t, 4.1, p2, 0.60, 0.54) * 1.30;
+            float e3 = renderSlab(r, p, -0.5 * pitch, halfW, t, 1.1, p3, 0.68, 0.62) * 1.55;
+            float e4 = renderSlab(r, p,  0.5 * pitch, halfW, t, 5.3, p4, 0.66, 0.60) * 1.55;
+            float e5 = renderSlab(r, p,  1.5 * pitch, halfW, t, 3.7, p5, 0.58, 0.52) * 1.30;
+            float e6 = renderSlab(r, p,  2.5 * pitch, halfW, t, 0.3, p6, 0.50, 0.44) * 0.95;
+            float e7 = renderSlab(r, p,  3.5 * pitch, halfW, t, 2.9, p7, 0.38, 0.32) * 0.75;
+
+            // 叠加所有板条光影
+            float total = e0 + e1 + e2 + e3 + e4 + e5 + e6 + e7;
+
+            // 叠加全局高阶磨砂流体丝绸漫射 (温润深邃流动)
+            float flow = fbm(vec2(r.x * 5.0, r.y * 3.5 - t * 0.08));
+            total *= (0.88 + 0.24 * flow);
+
+            // 整体包裹范围 (横向扩展宽厚，纵向舒适收束)
+            float boundX = smoothstep(0.60, 0.35, abs(r.x));
+            float boundY = smoothstep(0.70, 0.38, abs(r.y));
+            total *= (boundX * boundY);
+
+            // 筑云科技极光青蓝品牌色谱映射 (浓郁、厚重、纯正、深邃、高级)
+            // 对标其他页面全局极光背景 (.global-aurora)，色调统一且亮度压暗 50%：
+            // 1. 基底极夜暗蓝 (#020409)
+            // 2. 左上方柔和青蓝极光渐变
+            // 3. 右下方深邃紫蓝极光渐变
+            // 4. 居中微聚光氛围
+            vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+            float distTL = length(uv - vec2(0.0, 1.0));
+            float distBR = length(uv - vec2(1.0, 0.0));
+            float distCenter = length(uv - vec2(0.5, 0.55));
+
+            // 精准对标其他页面全局极光 (.global-aurora)，色调一致但背景加深压暗，提升文字对比度并消除刺眼眩光
+            vec3 baseBg     = vec3(0.004, 0.007, 0.016); // #010204 极致深邃深空暗蓝
+            vec3 glowTL     = vec3(0.018, 0.065, 0.095) * smoothstep(1.30, 0.0, distTL); // 左上青蓝极光晕染 (柔和收敛)
+            vec3 glowBR     = vec3(0.045, 0.018, 0.080) * smoothstep(1.30, 0.0, distBR); // 右下紫蓝极光微晕 (柔和收敛)
+            vec3 centerGlow = vec3(0.005, 0.015, 0.022) * smoothstep(0.85, 0.0, distCenter); // 中心极低微光，保持文字暗场
+
+            vec3 bg           = baseBg + glowTL + glowBR + centerGlow;
+            vec3 darkNavy     = vec3(0.006, 0.07, 0.24);   // #01123d 浓郁深黑蓝
+            vec3 royalBlue    = vec3(0.015, 0.22, 0.65);  // #0438a6 沉稳皇家蓝
+            vec3 sapphireBlue = vec3(0.04, 0.48, 0.88);   // #0a7ae0 纯正宝石蓝
+            vec3 electricCyan = vec3(0.18, 0.72, 0.92);   // #2eb8eb 电气青蓝
+            vec3 iceGlow      = vec3(0.60, 0.88, 0.98);   // #99e0fa 柔和冷调冰蓝极光 (降低生硬白光刺眼度)
+
+            vec3 col = bg;
+            if (total > 0.0005) {
+              col = mix(col, darkNavy, smoothstep(0.0005, 0.16, total));
+              col = mix(col, royalBlue, smoothstep(0.14, 0.48, total));
+              col = mix(col, sapphireBlue, smoothstep(0.44, 0.92, total));
+              col = mix(col, electricCyan, smoothstep(0.88, 1.45, total));
+              col = mix(col, iceGlow, smoothstep(1.40, 2.30, total));
+            }
+
+            gl_FragColor = vec4(col, 1.0);
+          }
+        `;
+
+        function createShader(gl, type, source) {
+          const shader = gl.createShader(type);
+          gl.shaderSource(shader, source);
+          gl.compileShader(shader);
+          if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.error(gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+            return null;
+          }
+          return shader;
+        }
+
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vsSource);
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fsSource);
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.error(gl.getProgramInfoLog(program));
+          return;
+        }
+
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.bufferData(
+          gl.ARRAY_BUFFER,
+          new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
+          gl.STATIC_DRAW,
+        );
+
+        const positionLocation = gl.getAttribLocation(program, "a_position");
+        const resolutionLocation = gl.getUniformLocation(
+          program,
+          "u_resolution",
+        );
+        const timeLocation = gl.getUniformLocation(program, "u_time");
+
+        let width = 0,
+          height = 0;
+
+        function resize() {
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const rect = canvas.getBoundingClientRect();
+          width = rect.width || window.innerWidth;
+          height = rect.height || window.innerHeight;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          gl.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        window.addEventListener("resize", resize);
+        resize();
+
+        const startTime = performance.now();
+
+        function render() {
+          const now = performance.now();
+          const elapsed = (now - startTime) / 1000;
+
+          gl.useProgram(program);
+
+          gl.enableVertexAttribArray(positionLocation);
+          gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+          gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+          gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+          gl.uniform1f(timeLocation, elapsed);
+
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+          requestAnimationFrame(render);
+        }
+
+        requestAnimationFrame(render);
+      })();
+    </script>
   </body>
 </html>
