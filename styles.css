@@ -5114,13 +5114,16 @@ img, svg {
 
 .drone-coords-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 16px;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--cyan-400);
   margin-bottom: 8px;
   padding-bottom: 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
 }
 
 .drone-main-stat {
@@ -5193,7 +5196,8 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 10px;
+  gap: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -5205,12 +5209,16 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .pedagogy-metrics-strip {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .pedagogy-modules-grid {

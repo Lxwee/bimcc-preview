@@ -1936,9 +1936,9 @@ function renderDynamicProductHero(slug, data) {
           <div class="pedagogy-header-bar">
             <span class="pedagogy-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              PEDAGOGY CLOUD · VIRTUAL SIMULATION LAB
+              PEDAGOGY SIMULATION LAB
             </span>
-            <span class="pedagogy-metrics-strip">400+ 国家精品学时 · 30+ 仿真工法</span>
+            <span class="pedagogy-metrics-strip">400+ 核心学时 · 30+ 仿真工法</span>
           </div>
           <div class="pedagogy-modules-grid">
             <div class="pedagogy-module-card">
