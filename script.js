@@ -1677,6 +1677,57 @@ function hydrateProductDetail() {
   renderDynamicProductHero(slug, data);
 }
 
+function getProductHeroTags(slug) {
+  const tagMap = {
+    'smart-site': [
+      { text: 'AI 视频隐患秒级抓拍', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '塔吊群防碰撞力矩遥测', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '人员环境全要素闭环', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'smart-command': [
+      { text: '8K 巨幕宏观态势联动', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
+      { text: '多屏音视频坐席 <50ms', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '应急预案一键秒级调度', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'bim-consulting': [
+      { text: '全专业施工图管综深化', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '4D 施工模拟与工法交底', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '全生命周期一模到底交付', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'engineering-tech': [
+      { text: '无人机 1.2cm/px 正射采集', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '3DGS 实景时序土方算量', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '激光点云逆向 0 误差建模', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'digital-education': [
+      { text: '400+ 学时国家级精品课件', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: 'BIMVR 30+ 典型工法仿真演练', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '虚拟施工考核全自动评分', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'bimcc-platform': [
+      { text: '1000万+ 构件秒开', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '4D 进度与成本动态穿透', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '信创国产环境 100% 适配', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'digital-twin': [
+      { text: '3DGS 厘米级高斯辐射', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '水动力物理管网模拟', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '设备故障 MTBF +42%', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ]
+  };
+  const tags = tagMap[slug] || [];
+  if (!tags.length) return '';
+  return `
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      ${tags.map(t => `
+        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: ${t.color}; background: ${t.bg}; border: 1px solid ${t.border}; padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          ${getSvg('check', 12, t.color)} ${t.text}
+        </span>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderDynamicProductHero(slug, data) {
   const container = document.getElementById('productHeroContainer');
   if (!container) return;
@@ -1704,17 +1755,17 @@ function renderDynamicProductHero(slug, data) {
             <div class="canvas-node-card">
               <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">01 COMPONENT LIBRARY</div>
               <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">120+ 工程专属控件</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">表单 / 流程 / 复杂报表 / 大屏</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">表单 · 流程 · 报表 · 大屏</div>
             </div>
             <div class="canvas-node-card active-engine">
               <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">02 ZERO-CODE ENGINE</div>
               <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">飞椽可视化编排</div>
-              <div style="font-size: 0.75rem; color: var(--text-secondary);">DSL 实时解析渲染 &lt; 8ms</div>
+              <div style="font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap;">DSL 实时解析渲染 &lt; 8ms</div>
             </div>
             <div class="canvas-node-card">
               <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">03 MULTI-TERMINAL</div>
               <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">全端即时发布</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">Web / 移动端 / 企微 / 钉钉</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">Web · 移动端 · 企微 · 钉钉</div>
             </div>
           </div>
         </div>
@@ -1732,11 +1783,7 @@ function renderDynamicProductHero(slug, data) {
           <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
-          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--cyan-400); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">${getSvg('check', 12, 'var(--cyan-400)')} ${isTwin ? '3DGS 厘米级高斯辐射' : '1000万+ 构件秒开'}</span>
-            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #818cf8; background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">${getSvg('check', 12, '#818cf8')} ${isTwin ? '水动力物理管网模拟' : '4D 进度与成本动态穿透'}</span>
-            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #34d399; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px;">${getSvg('check', 12, '#34d399')} ${isTwin ? '设备故障 MTBF +42%' : '信创国产环境 100% 适配'}</span>
-          </div>
+          ${getProductHeroTags(slug)}
         </div>
         <div class="spatial-hud-box">
           <div class="lod-tabs-strip">
@@ -1779,10 +1826,10 @@ function renderDynamicProductHero(slug, data) {
           <div class="eyebrow-badge"><span class="status-pulse"></span>${isCommand ? '8K COCKPIT & DISPATCH' : 'IOT SENSOR MATRIX & AI VISION'}</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
-          <div class="hero-actions" style="margin-bottom: 24px;">
+          <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
-          <p style="font-size: 0.8125rem; color: var(--text-muted);">${escapeHtml(data.caption)}</p>
+          ${getProductHeroTags(slug)}
         </div>
         <div class="bento-perception-grid">
           <div class="bento-hud-card">
@@ -1790,7 +1837,7 @@ function renderDynamicProductHero(slug, data) {
               <span class="bento-hud-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">${isCommand ? '8K ULTRA-HD' : 'AI COMPUTER VISION'}</span>
               <span class="status-pulse" style="background: #f59e0b;"></span>
             </div>
-            <div class="bento-hud-title">${isCommand ? '三维大屏态势展示' : 'AI 视频隐患智能识别'}</div>
+            <div class="bento-hud-title">${isCommand ? '三维大屏全景态势展示' : 'AI 视频隐患智能识别'}</div>
             <div class="bento-hud-body">${isCommand ? '巨幕宏观态势与重点工区穿透联动' : '未戴安全帽/临边防护破损 毫秒级抓拍'}</div>
             <div class="bento-hud-metric">${isCommand ? '8K 60fps' : '99.4% 闭环'}</div>
           </div>
@@ -1800,7 +1847,7 @@ function renderDynamicProductHero(slug, data) {
               <span class="status-pulse"></span>
             </div>
             <div class="bento-hud-title">${isCommand ? '多屏联动协同坐席' : '塔吊群防碰撞与力矩'}</div>
-            <div class="bento-hud-body">${isCommand ? '坐席多方音视频联动调度延时 <50ms' : '回转角度/幅度/吊重实时遥测与预警'}</div>
+            <div class="bento-hud-body">${isCommand ? '坐席多方音视频联动调度延时 <50ms' : '回转角度/幅度/吊重实时遥测预警'}</div>
             <div class="bento-hud-metric">${isCommand ? '<50ms' : '0 事故碰撞'}</div>
           </div>
           <div class="bento-hud-card">
@@ -1824,67 +1871,157 @@ function renderDynamicProductHero(slug, data) {
         </div>
       </div>
     `;
-  } else {
-    // Archetype 4: Milestone Roadmap & Precision KPI Board (bim-consulting, engineering-tech, digital-education)
-    const isTech = slug === 'engineering-tech';
-    const isEdu = slug === 'digital-education';
-    
-    let step1 = isTech ? ['01', '无人机航测实景采集', '高精正射影像 1.2cm/px · 全景留痕', '精度 <3mm'] :
-                isEdu ? ['01', '智能建造课程资源库', '400+ 学时国家级精品教学课件', '400+ 学时'] :
-                ['01', '方案与合规性审查', '日照/净高/节能辅助模拟分析', '合规 100%'];
-    let step2 = isTech ? ['02', '3DGS 实模时序对比', '隐蔽工程扫描与土方算量 5min', '算量 5min'] :
-                isEdu ? ['02', 'BIMVR 沉浸式实训室', '30+ 真实工程典型工法仿真演练', '30+ 工法'] :
-                ['02', '全专业施工图深化', '机电管综与复杂节点 100% 碰撞清零', '清零 100%'];
-    let step3 = isTech ? ['03', '复杂空间激光逆向', '地下空间/大跨度钢结构应力仿真', '0 误差'] :
-                isEdu ? ['03', '虚拟施工考核系统', '实操考核与虚拟隐患排查双盲答辩', '全自动评分'] :
-                ['03', '施工技术交底推演', '4D 施工时序模拟与节点做法交底', '返工 0 风险'];
-    let step4 = isTech ? ['04', '平台数据融合交付', '采集成果接入 BIMCC 与数字孪生', '同源归档'] :
-                isEdu ? ['04', '校企产教融合基地', '支撑技能大赛/专业共建/联合授牌', '产教示范'] :
-                ['04', '一模到底数字交付', '整理模型/图纸/设备台账/档案', '资产 100%'];
-
+  } else if (slug === 'engineering-tech') {
+    // Archetype 5: 3DGS & Drone LiDAR Telemetry Deck
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>${isTech ? 'PRECISION SURVEY & 3DGS' : isEdu ? 'PEDAGOGY & VIRTUAL SIMULATION' : 'FULL-PROCESS CONSULTING'}</div>
+          <div class="eyebrow-badge"><span class="status-pulse"></span>PRECISION SURVEY & 3DGS</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
-          <div class="hero-actions" style="margin-bottom: 24px;">
+          <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
-          <p style="font-size: 0.8125rem; color: var(--text-muted);">${escapeHtml(data.caption)}</p>
+          ${getProductHeroTags(slug)}
+        </div>
+        <div class="drone-telemetry-deck">
+          <div class="drone-telemetry-hud">
+            <div class="drone-coords-row">
+              <span>[3DGS & LIDAR TELEMETRY]</span>
+              <span>X: 3042.85m · Y: 1890.42m · Z: 142.60m</span>
+            </div>
+            <div class="drone-main-stat">4,850,000 pts</div>
+            <div class="drone-sub-desc">空地一体三维激光点云扫描 · 厘米级高斯辐射实景逆向</div>
+            <div class="drone-status-pill">
+              <span class="status-pulse" style="background: #34d399;"></span> 航测航线自动规划 · 5min 土方快速算量完成
+            </div>
+          </div>
+          <div class="drone-sensors-grid">
+            <div class="drone-sensor-card">
+              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">01 DRONE SURVEY</div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">无人机正射航测</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">1.2cm/px 正射影像</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; margin-top: 2px;">精度 &lt;3mm</div>
+            </div>
+            <div class="drone-sensor-card">
+              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #818cf8; font-weight: 700;">02 3DGS RECONSTRUCT</div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">3DGS 实模对比</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">隐蔽工程扫描对比</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #818cf8; font-weight: 700; margin-top: 2px;">算量 5min</div>
+            </div>
+            <div class="drone-sensor-card">
+              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; font-weight: 700;">03 LASER REVERSE</div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">空间激光逆向</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">大跨度钢结构应力</div>
+              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #c084fc; font-weight: 700; margin-top: 2px;">0 误差建模</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slug === 'digital-education') {
+    // Archetype 6: Interactive Pedagogy & Virtual Simulation Lab
+    container.innerHTML = `
+      <div class="hero-grid" style="align-items: center; gap: 40px;">
+        <div class="hero-content">
+          <div class="eyebrow-badge"><span class="status-pulse"></span>PEDAGOGY & VIRTUAL SIMULATION</div>
+          <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <div class="hero-actions" style="margin-bottom: 28px;">
+            <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
+          </div>
+          ${getProductHeroTags(slug)}
+        </div>
+        <div class="pedagogy-virtual-lab">
+          <div class="pedagogy-header-bar">
+            <span class="pedagogy-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              PEDAGOGY CLOUD · VIRTUAL SIMULATION LAB
+            </span>
+            <span class="pedagogy-metrics-strip">400+ 国家精品学时 · 30+ 仿真工法</span>
+          </div>
+          <div class="pedagogy-modules-grid">
+            <div class="pedagogy-module-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">MODULE 01</span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan-400); font-weight: 700; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px;">400+ 学时</span>
+              </div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">智能建造课程资源库</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">12 门核心课 · 国家级精品教学课件</div>
+            </div>
+            <div class="pedagogy-module-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #818cf8; font-weight: 700;">MODULE 02</span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818cf8; font-weight: 700; background: rgba(129,140,248,0.12); padding: 2px 6px; border-radius: 4px;">30+ 工法</span>
+              </div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">BIMVR 沉浸式实训室</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">真实工程典型工法 1:1 虚拟交互演练</div>
+            </div>
+            <div class="pedagogy-module-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #34d399; font-weight: 700;">MODULE 03</span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52,211,153,0.12); padding: 2px 6px; border-radius: 4px;">全自动评分</span>
+              </div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">虚拟施工考核系统</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">实操考核与虚拟隐患排查双盲考核</div>
+            </div>
+            <div class="pedagogy-module-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; font-weight: 700;">MODULE 04</span>
+                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #c084fc; font-weight: 700; background: rgba(192,132,252,0.12); padding: 2px 6px; border-radius: 4px;">产教示范</span>
+              </div>
+              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">校企产教融合基地</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">支撑技能大赛 · 1+X 认证 · 联合授牌</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    // Archetype 4: Milestone Roadmap & Precision KPI Board (bim-consulting)
+    container.innerHTML = `
+      <div class="hero-grid" style="align-items: center; gap: 40px;">
+        <div class="hero-content">
+          <div class="eyebrow-badge"><span class="status-pulse"></span>FULL-PROCESS CONSULTING</div>
+          <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <div class="hero-actions" style="margin-bottom: 28px;">
+            <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
+          </div>
+          ${getProductHeroTags(slug)}
         </div>
         <div class="milestone-pipeline-box">
           <div class="milestone-stage-row">
-            <span class="milestone-step-num">${step1[0]}</span>
+            <span class="milestone-step-num">01</span>
             <div class="milestone-step-info">
-              <div class="milestone-step-title">${step1[1]}</div>
-              <div class="milestone-step-desc">${step1[2]}</div>
+              <div class="milestone-step-title">方案与合规性审查</div>
+              <div class="milestone-step-desc">日照 / 净高 / 节能辅助模拟深度分析</div>
             </div>
-            <span class="milestone-step-kpi">${step1[3]}</span>
+            <span class="milestone-step-kpi">合规 100%</span>
           </div>
           <div class="milestone-stage-row">
-            <span class="milestone-step-num">${step2[0]}</span>
+            <span class="milestone-step-num">02</span>
             <div class="milestone-step-info">
-              <div class="milestone-step-title">${step2[1]}</div>
-              <div class="milestone-step-desc">${step2[2]}</div>
+              <div class="milestone-step-title">全专业施工图深化</div>
+              <div class="milestone-step-desc">机电管综与复杂节点 100% 碰撞清零</div>
             </div>
-            <span class="milestone-step-kpi">${step2[3]}</span>
+            <span class="milestone-step-kpi">清零 100%</span>
           </div>
           <div class="milestone-stage-row">
-            <span class="milestone-step-num">${step3[0]}</span>
+            <span class="milestone-step-num">03</span>
             <div class="milestone-step-info">
-              <div class="milestone-step-title">${step3[1]}</div>
-              <div class="milestone-step-desc">${step3[2]}</div>
+              <div class="milestone-step-title">施工技术交底推演</div>
+              <div class="milestone-step-desc">4D 施工时序模拟与复杂节点做法交底</div>
             </div>
-            <span class="milestone-step-kpi">${step3[3]}</span>
+            <span class="milestone-step-kpi">返工 0 风险</span>
           </div>
           <div class="milestone-stage-row">
-            <span class="milestone-step-num">${step4[0]}</span>
+            <span class="milestone-step-num">04</span>
             <div class="milestone-step-info">
-              <div class="milestone-step-title">${step4[1]}</div>
-              <div class="milestone-step-desc">${step4[2]}</div>
+              <div class="milestone-step-title">一模到底数字交付</div>
+              <div class="milestone-step-desc">整理交付模型 / 图纸 / 设备台账与档案</div>
             </div>
-            <span class="milestone-step-kpi">${step4[3]}</span>
+            <span class="milestone-step-kpi">资产 100%</span>
           </div>
         </div>
       </div>

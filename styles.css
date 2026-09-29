@@ -4962,11 +4962,11 @@ img, svg {
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 12px;
   transition: all 0.3s var(--ease-spring);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
@@ -5002,6 +5002,7 @@ img, svg {
   font-size: 0.8125rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  text-wrap: balance;
 }
 
 .bento-hud-metric {
@@ -5011,7 +5012,7 @@ img, svg {
   color: var(--cyan-400);
 }
 
-/* Archetype 4: Engineering Milestone & Precision Roadmap (e.g. BIM Consulting, Engineering Tech, Digital Education) */
+/* Archetype 4: Engineering Milestone & Precision Roadmap (e.g. BIM Consulting) */
 .milestone-pipeline-box {
   background: rgba(14, 22, 42, 0.85);
   backdrop-filter: blur(32px);
@@ -5072,6 +5073,7 @@ img, svg {
 .milestone-step-desc {
   font-size: 0.75rem;
   color: var(--text-muted);
+  text-wrap: balance;
 }
 
 .milestone-step-kpi {
@@ -5086,6 +5088,155 @@ img, svg {
   white-space: nowrap;
 }
 
+/* Archetype 5: 3DGS & Drone LiDAR Telemetry Deck (engineering-tech) */
+.drone-telemetry-deck {
+  background: rgba(12, 19, 36, 0.88);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.drone-telemetry-hud {
+  background: rgba(3, 8, 20, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.drone-coords-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--cyan-400);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.drone-main-stat {
+  font-family: var(--font-mono);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.drone-sub-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.drone-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: #34d399;
+  font-family: var(--font-mono);
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.drone-sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.drone-sensor-card {
+  background: rgba(18, 28, 52, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.drone-sensor-card:hover {
+  background: rgba(24, 38, 70, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Archetype 6: Interactive Pedagogy & Virtual Simulation Lab (digital-education) */
+.pedagogy-virtual-lab {
+  background: rgba(14, 20, 38, 0.88);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pedagogy-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pedagogy-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cyan-400);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pedagogy-metrics-strip {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.pedagogy-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.pedagogy-module-card {
+  background: rgba(18, 28, 52, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.pedagogy-module-card:hover {
+  background: rgba(24, 38, 70, 0.85);
+  border-color: rgba(129, 140, 248, 0.35);
+  transform: translateY(-2px);
+}
+
 @media (max-width: 900px) {
   .canvas-flow-track {
     grid-template-columns: 1fr;
@@ -5094,6 +5245,12 @@ img, svg {
     grid-template-columns: 1fr;
   }
   .bento-perception-grid {
+    grid-template-columns: 1fr;
+  }
+  .drone-sensors-grid {
+    grid-template-columns: 1fr;
+  }
+  .pedagogy-modules-grid {
     grid-template-columns: 1fr;
   }
 }
