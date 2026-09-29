@@ -2263,6 +2263,57 @@ const solutionHeroWorkbenches = {
   }
 };
 
+function getSolutionHeroTags(slug) {
+  const tagMap = {
+    'build-client': [
+      { text: '投资进度双向对账穿透', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '质量安全全局预警闭环', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '竣工档案数字资产移交', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'build-contractor': [
+      { text: '全专业机电管综碰撞清零', color: '#fb923c', bg: 'rgba(251,146,60,0.1)', border: 'rgba(251,146,60,0.25)' },
+      { text: '4D 施工时序演练与交底', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '智慧工地物联直连预警', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'build-supervision': [
+      { text: '多方协同巡检电子留痕', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' },
+      { text: '危大工程隐患 100% 销项', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '证据链合法合规归档', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' }
+    ],
+    'build-regulation': [
+      { text: '辖区重大工程一张图总览', color: '#c084fc', bg: 'rgba(192,132,252,0.1)', border: 'rgba(192,132,252,0.25)' },
+      { text: '多维安全风险秒级预警', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
+      { text: '监管数据与企业双向互通', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'enterprise': [
+      { text: '集团级运营多项目驾驶舱', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '跨项目构件与数据资产复用', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '零代码应用按需敏捷扩展', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'industry': [
+      { text: '8 大重点行业专属工程模板', color: '#fbbf24', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' },
+      { text: 'BIM+GIS 复杂空间高精建模', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '软硬件一体化实装落地交付', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ],
+    'project': [
+      { text: '单体重大工程现场总控', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: 'BIM+GIS 实模一体动态渲染', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '现场作业全要素闭环管控', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+    ]
+  };
+  const tags = tagMap[slug] || [];
+  if (!tags.length) return '';
+  return `
+    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+      ${tags.map(t => `
+        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: ${t.color}; background: ${t.bg}; border: 1px solid ${t.border}; padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          ${getSvg('check', 12, t.color)} ${t.text}
+        </span>
+      `).join('')}
+    </div>
+  `;
+}
+
 function hydrateSolutionDetail() {
   const root = document.querySelector("[data-solution-field]");
   if (!root) return;
@@ -2288,6 +2339,12 @@ function hydrateSolutionDetail() {
   setField(document, '[data-solution-field="relatedIntro"]', data.relatedIntro);
   setSignals(document, "solution", data.signals);
   markCurrentDetailLinks(document, "[data-solution-link]", slug);
+
+  // Inject Micro-Capsule Hero Tags
+  const tagsContainer = document.getElementById("solutionHeroTagsContainer");
+  if (tagsContainer) {
+    tagsContainer.innerHTML = getSolutionHeroTags(slug);
+  }
 
   // Render Differentiated Solution Hero Studio Workbench (7 Distinct Framework Archetypes)
   const studioContainer = document.getElementById("solutionStudioContainer");

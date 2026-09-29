@@ -7,7 +7,7 @@
     <meta name="description" content="筑云科技 BIMCC 解决方案详情页，提供企业级运营、施工单位、建设单位、全咨监理、政府监管与项目级智能建造落地蓝图。">
     <meta name="theme-color" content="#03060d">
     <link rel="icon" href="assets/brand/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css?v=20260929_04">
+    <link rel="stylesheet" href="styles.css?v=20260929_05">
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -57,23 +57,23 @@
     </header>
 
     <main id="main">
-      <!-- 纯粹极简 Sticky 胶囊浮岛 (完全对标客户案例 cases.html) -->
+      <!-- 纯粹极简 Sticky 胶囊浮岛 (完全对标产品平台与客户案例浮岛) -->
       <div class="detail-subnav-sticky-bar" id="detailStickySubnav">
         <div class="detail-subnav-inner">
-          <nav class="detail-subnav-pill-island" aria-label="切换方案详情">
-            <a class="filter-tab" href="solutions.html">方案总览</a>
-            <a class="filter-tab" href="solution-detail.html?slug=enterprise" data-solution-link="enterprise">企业级统管</a>
-            <a class="filter-tab" href="solution-detail.html?slug=industry" data-solution-link="industry">行业级模板</a>
-            <a class="filter-tab" href="solution-detail.html?slug=project" data-solution-link="project">项目级中控</a>
+          <nav class="detail-subnav-pill-island" aria-label="切换解决方案">
+            <a class="filter-tab" href="solutions.html">全部方案</a>
             <a class="filter-tab" href="solution-detail.html?slug=build-client" data-solution-link="build-client">建设单位</a>
             <a class="filter-tab" href="solution-detail.html?slug=build-contractor" data-solution-link="build-contractor">施工单位</a>
             <a class="filter-tab" href="solution-detail.html?slug=build-supervision" data-solution-link="build-supervision">全咨监理</a>
             <a class="filter-tab" href="solution-detail.html?slug=build-regulation" data-solution-link="build-regulation">政府监管</a>
+            <a class="filter-tab" href="solution-detail.html?slug=enterprise" data-solution-link="enterprise">企业级统管</a>
+            <a class="filter-tab" href="solution-detail.html?slug=industry" data-solution-link="industry">行业级模板</a>
+            <a class="filter-tab" href="solution-detail.html?slug=project" data-solution-link="project">项目级中控</a>
           </nav>
           <script>
             (function() {
               try {
-                var slug = new URLSearchParams(window.location.search).get('slug') || 'enterprise';
+                var slug = new URLSearchParams(window.location.search).get('slug') || 'build-client';
                 var target = document.querySelector('[data-solution-link="' + slug + '"]');
                 if (!target && slug.startsWith('industry-')) {
                   target = document.querySelector('[data-solution-link="industry"]');
@@ -98,16 +98,20 @@
                 <span id="solutionEyebrowBadge">SOLUTION ARCHITECTURE</span>
               </div>
               <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px; text-wrap: balance; max-width: 620px;" data-solution-field="title">
-                企业级数字化运营与转型方案
+                建设单位数字建管解决方案
               </h1>
-              <p class="hero-description" data-solution-field="summary" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; max-width: 560px;">
+              <p class="hero-description" data-solution-field="summary" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; max-width: 560px; margin-bottom: 24px;">
                 面向施工单位、建设单位、全咨监理和企业运营管理场景，解决多项目统管、组织协同、数据汇聚和经营决策问题。
               </p>
-              <div class="hero-actions">
+              <div class="hero-actions" style="margin-bottom: 28px;">
                 <a class="button button-primary header-cta-btn" href="contact.html">
-                  预约演示
+                  获取专属方案建议
+                </a>
+                <a class="button button-secondary" href="#modules">
+                  查看核心模块清单
                 </a>
               </div>
+              <div id="solutionHeroTagsContainer"></div>
             </div>
 
             <!-- 右侧解决方案专属架构工作台 (动态渲染) -->
@@ -271,6 +275,6 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
     </a>
 
-    <script src="script.js?v=20260929_04"></script>
+    <script src="script.js?v=20260929_05"></script>
   </body>
 </html>
