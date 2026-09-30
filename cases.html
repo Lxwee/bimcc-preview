@@ -4264,11 +4264,15 @@
         // 交互优化：仅在用户已向下滚动（Tab 已吸附）时才自动滚回卡片顶部
         if (window.scrollY > 100) {
           const gridContainer = document.getElementById("cases-grid");
-          if (gridContainer) {
-            const stickyBar = document.querySelector(".detail-subnav-sticky-bar");
-            const barH = stickyBar ? stickyBar.offsetHeight : 0;
+          const stickyBar = document.querySelector(".detail-subnav-sticky-bar");
+          if (gridContainer && stickyBar) {
+            // 计算吸附后 header + tab 栏总共占据的高度
             const headerH = 64;
-            const targetScrollY = gridContainer.offsetTop - headerH - barH - 24;
+            const stickyBarH = stickyBar.offsetHeight;
+            const stickyOffset = headerH + 20 + stickyBarH + 12; // header + sticky top + bar高度 + 间距
+            // 获取 grid 距页面顶部的绝对距离
+            const gridAbsTop = gridContainer.getBoundingClientRect().top + window.pageYOffset;
+            const targetScrollY = gridAbsTop - stickyOffset;
             window.scrollTo({ top: Math.max(0, targetScrollY), behavior: "smooth" });
           }
         }
