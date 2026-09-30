@@ -4261,16 +4261,22 @@
           }
         });
 
-        // 核心交互体验优化：Tab 切换后平滑自动滚动回到卡片网格顶部
-        const gridContainer = document.getElementById("cases-grid");
-        if (gridContainer) {
-          const gridTop = gridContainer.getBoundingClientRect().top + window.pageYOffset;
-          // 减去 Header 与 Tab 吸附留白空间，精准对齐卡片顶部
-          const targetScrollY = Math.max(0, gridTop - 206);
-          window.scrollTo({
-            top: targetScrollY,
-            behavior: "smooth"
-          });
+        // 交互优化：仅在 Tab 已吸附时才自动滚回卡片顶部，初始位置不滚动
+        const stickyBar = document.querySelector(".detail-subnav-sticky-bar");
+        if (stickyBar) {
+          const barRect = stickyBar.getBoundingClientRect();
+          const headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 64;
+          const stickyTop = headerH + 20;
+          // 当 tab 栏的顶部位置接近 sticky 吸附位置时，说明已经吸附
+          const isStuck = Math.abs(barRect.top - stickyTop) < 5;
+          if (isStuck) {
+            const gridContainer = document.getElementById("cases-grid");
+            if (gridContainer) {
+              const gridTop = gridContainer.getBoundingClientRect().top + window.pageYOffset;
+              const targetScrollY = Math.max(0, gridTop - 206);
+              window.scrollTo({ top: targetScrollY, behavior: "smooth" });
+            }
+          }
         }
       }
 
