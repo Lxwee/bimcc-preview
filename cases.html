@@ -322,6 +322,7 @@
 
     <!-- ================= 2. 案例展示大厅 (Tab 通栏带 100% 顶格紧贴 section 顶端, 零像素缝隙) ================= -->
     <section
+      id="cases-section"
       class="w-full bg-[#0b1121] border-t border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] pt-0 pb-24 flex flex-col items-center relative z-20"
     >
       <!-- 极光弥散科技发光背景光晕 -->
@@ -334,6 +335,7 @@
 
       <!-- 纯粹极简 Sticky 胶囊浮岛 (彻底取消突兀背景色块, 增加 Tab 上方留白, 极佳呼吸感) -->
       <div
+        id="cases-sticky-tab"
         class="sticky top-[64px] z-40 w-full pt-8 pb-0 mb-10 flex justify-center pointer-events-none"
       >
         <div
@@ -4261,15 +4263,17 @@
           }
         });
 
-        // 交互优化：Tab 切换后将案例内容滚回到第一个卡片（紧接 Tab 栏下方）
-        if (window.scrollY > 100) {
-          const gridContainer = document.getElementById("cases-grid");
-          if (gridContainer) {
-            // 给 grid 设置 scroll-margin-top 来抵消吸附的 header + tab 栏高度
-            const stickyBar = document.querySelector(".detail-subnav-sticky-bar");
-            const offset = (stickyBar ? stickyBar.offsetHeight : 0) + 84 + 40; // header(64) + stickyTop(20) + barH + gap(40)
-            gridContainer.style.scrollMarginTop = offset + "px";
-            gridContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        // 交互优化：Tab 切换后将案例内容滚回到分类第一个卡片（使 Tab 栏与第一个卡片完美呈现，绝不遮挡）
+        const casesSection = document.getElementById("cases-section");
+        if (casesSection) {
+          const headerHeight = 64;
+          const sectionTop = casesSection.getBoundingClientRect().top + window.pageYOffset;
+          const targetY = sectionTop - headerHeight;
+          if (window.scrollY > targetY + 20) {
+            window.scrollTo({
+              top: targetY,
+              behavior: "smooth",
+            });
           }
         }
       }
