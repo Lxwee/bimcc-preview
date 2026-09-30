@@ -671,7 +671,7 @@ img, svg {
   align-items: center;
   padding-top: calc(var(--header-height) + 3.75rem);
   padding-bottom: 5.5rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* 光晕聚光灯 (压暗 30%) */
@@ -2849,13 +2849,13 @@ img, svg {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  padding: 6px 0;
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
+  background: rgba(11, 17, 33, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 7px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.6);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
