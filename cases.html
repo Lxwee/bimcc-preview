@@ -4267,7 +4267,7 @@
           if (gridContainer) {
             // 给 grid 设置 scroll-margin-top 来抵消吸附的 header + tab 栏高度
             const stickyBar = document.querySelector(".detail-subnav-sticky-bar");
-            const offset = (stickyBar ? stickyBar.offsetHeight : 0) + 84 + 16; // header(64) + stickyTop(20) + barH + gap
+            const offset = (stickyBar ? stickyBar.offsetHeight : 0) + 84 + 40; // header(64) + stickyTop(20) + barH + gap(40)
             gridContainer.style.scrollMarginTop = offset + "px";
             gridContainer.scrollIntoView({ behavior: "smooth", block: "start" });
           }
