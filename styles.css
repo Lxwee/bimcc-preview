@@ -5887,6 +5887,72 @@ img, svg {
   gap: 20px;
 }
 
+/* --------------------------------------------------------------------------
+   Contact Page Hero Card (Single-layer Luxury Glass Card)
+   -------------------------------------------------------------------------- */
+.contact-hero-card {
+  position: relative;
+  background: rgba(10, 16, 29, 0.88);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: var(--radius-xl);
+  padding: 36px 36px 36px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(56, 189, 248, 0.08);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-hero-card:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 50px rgba(56, 189, 248, 0.16);
+  transform: translateY(-2px);
+}
+
+.contact-hero-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+}
+
+.contact-hero-card .contact-phone-number {
+  font-family: var(--font-sans);
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--cyan-400);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-hero-card .contact-phone-number:hover {
+  color: #38bdf8;
+}
+
+.contact-hero-card .contact-hero-footer {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .contact-hero-card {
+    padding: 24px 20px 24px;
+  }
+}
+
+
 
 
 
