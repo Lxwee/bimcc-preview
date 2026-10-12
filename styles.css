@@ -3708,61 +3708,65 @@ img, svg {
 }
 
 /* ==========================================================================
-   14. Luxury Floating Bottom CTA Card (Full Site Banner)
+   14. Luxury Floating Bottom CTA Card & Form Showcase (Unified Single-layer)
    ========================================================================== */
 .footer-cta-card {
   position: relative;
-  border-radius: var(--radius-xl);
-  padding: 6px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-hairline);
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 50px rgba(14, 165, 233, 0.12);
-  transition: all 0.35s var(--ease-spring);
   max-width: 960px;
   margin: 0 auto;
+  border-radius: var(--radius-xl);
+  padding: clamp(3.25rem, 5.5vw, 4.5rem) clamp(1.75rem, 5vw, 3.5rem);
+  background: radial-gradient(ellipse 80% 65% at 50% -10%, rgba(56, 189, 248, 0.16) 0%, rgba(13, 24, 48, 0.72) 45%, rgba(6, 11, 24, 0.96) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(56, 189, 248, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  text-align: center;
+  overflow: hidden;
+  transition: all 0.35s var(--ease-spring);
 }
 
 .footer-cta-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 35px 90px -20px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: 0 32px 85px -15px rgba(0, 0, 0, 0.9), 0 0 65px rgba(56, 189, 248, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.footer-cta-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
+  pointer-events: none;
+  z-index: 3;
 }
 
 .footer-cta-content {
   position: relative;
-  border-radius: calc(var(--radius-xl) - 6px);
-  background: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.18) 0%, rgba(9, 15, 32, 0.96) 60%, #050812 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: clamp(3rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
-  text-align: center;
-  overflow: hidden;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
-}
-
-.footer-cta-content::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 20%;
-  right: 20%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .footer-cta-title {
   font-size: clamp(1.85rem, 3.2vw, 2.5rem);
   font-weight: 700;
   color: #ffffff;
+  margin-top: 14px;
   margin-bottom: 1rem;
-  line-height: 1.4;
-  letter-spacing: 0.028em;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
 }
 
 .footer-cta-desc {
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  color: var(--text-secondary);
-  line-height: 1.85;
-  letter-spacing: 0.025em;
-  max-width: 680px;
+  font-size: clamp(0.9375rem, 1.2vw, 1.05rem);
+  color: rgba(226, 232, 240, 0.85);
+  line-height: 1.8;
+  letter-spacing: 0.015em;
+  max-width: 640px;
   margin: 0 auto 2.25rem;
 }
 
@@ -3772,6 +3776,132 @@ img, svg {
   align-items: center;
   justify-content: center;
   gap: 16px;
+}
+
+/* ==========================================================================
+   专属预约演示表单卡片与留白系统 (about.html 等表单区，彻底消除双层嵌套)
+   ========================================================================== */
+.footer-form-card {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(ellipse 80% 65% at 50% -10%, rgba(56, 189, 248, 0.14) 0%, rgba(13, 24, 48, 0.72) 45%, rgba(6, 11, 24, 0.96) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(56, 189, 248, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  padding: clamp(2.75rem, 5vw, 4rem) clamp(1.75rem, 5vw, 3.5rem);
+  overflow: hidden;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.footer-form-card:hover {
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: 0 32px 85px -15px rgba(0, 0, 0, 0.9), 0 0 65px rgba(56, 189, 248, 0.16);
+}
+
+.footer-form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* 表单流式布局与留白体系 */
+.contact-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px; /* 每一行之间的留白充足！ */
+  margin-top: 2rem;
+}
+
+.contact-form-grid .form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .contact-form-grid .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+.contact-form-grid .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px; /* label 和 input 之间的呼吸留白 */
+}
+
+.contact-form-grid .form-field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  letter-spacing: 0.01em;
+}
+
+.contact-form-grid .form-field label .required-star {
+  color: var(--cyan-400);
+  margin-left: 2px;
+}
+
+.contact-form-grid .form-input,
+.contact-form-grid select.form-input,
+.contact-form-grid textarea.form-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: all 0.25s var(--ease-smooth);
+}
+
+.contact-form-grid input.form-input,
+.contact-form-grid select.form-input {
+  height: 48px;
+  padding: 0 16px;
+}
+
+.contact-form-grid select.form-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+.contact-form-grid select.form-input option {
+  background: #090f20;
+  color: #ffffff;
+}
+
+.contact-form-grid textarea.form-input {
+  padding: 14px 16px;
+  min-height: 104px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.contact-form-grid .form-input:focus {
+  border-color: var(--cyan-400);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18), 0 0 16px rgba(56, 189, 248, 0.12);
+}
+
+.contact-form-grid .form-submit-row {
+  text-align: center;
+  margin-top: 12px;
 }
 
 /* ==========================================================================

@@ -286,59 +286,57 @@
       </section>
 
       <!-- 5. 整合联系我们与预约演示表单 -->
-      <section class="site-section" id="contact-form-section">
+      <section class="site-section footer-cta-section" id="contact-form-section">
         <div class="site-container">
-          <div class="double-bezel reveal">
-            <div class="double-bezel-inner" style="padding: clamp(2.5rem, 5vw, 4rem) 2rem; max-width: 820px; margin: 0 auto;">
-              <div class="section-header text-center" style="margin-bottom: 2rem;">
-                <div class="eyebrow-badge" style="margin-bottom: 12px;">GET IN TOUCH</div>
-                <h2 class="section-title" style="font-size: clamp(1.85rem, 3vw, 2.35rem); margin-bottom: 8px;">联系筑云 · 预约方案演示</h2>
-                <p class="section-desc">请填写你的项目类型与业务需求，筑云资深技术专家将在 1 个工作日内与你联系。</p>
+          <div class="footer-form-card reveal">
+            <div class="section-header text-center" style="margin-bottom: 2.25rem;">
+              <div class="eyebrow-badge" style="margin-bottom: 14px;">GET IN TOUCH</div>
+              <h2 class="section-title" style="font-size: clamp(1.85rem, 3vw, 2.35rem); margin-bottom: 10px;">联系筑云 · 预约方案演示</h2>
+              <p class="section-desc">请填写你的项目类型与业务需求，筑云资深技术专家将在 1 个工作日内与你联系。</p>
+            </div>
+
+            <form class="contact-form-grid" onsubmit="event.preventDefault(); alert('预约申请已提交，筑云方案专家将尽快与您联系！');">
+              <div class="form-row-2">
+                <div class="form-field">
+                  <label for="about-name">您的姓名 <span class="required-star">*</span></label>
+                  <input id="about-name" type="text" class="form-input" required placeholder="如：张经理">
+                </div>
+                <div class="form-field">
+                  <label for="about-phone">联系电话 <span class="required-star">*</span></label>
+                  <input id="about-phone" type="tel" class="form-input" required placeholder="如：13800000000">
+                </div>
               </div>
 
-              <form class="contact-form" onsubmit="event.preventDefault(); alert('预约申请已提交，筑云方案专家将尽快与您联系！');">
-                <div class="form-row-2">
-                  <div class="form-field">
-                    <label>您的姓名 *</label>
-                    <input type="text" class="form-input" required placeholder="如：张经理">
-                  </div>
-                  <div class="form-field">
-                    <label>联系电话 *</label>
-                    <input type="tel" class="form-input" required placeholder="如：13800000000">
-                  </div>
-                </div>
-
-                <div class="form-row-2">
-                  <div class="form-field">
-                    <label>单位 / 企业名称 *</label>
-                    <input type="text" class="form-input" required placeholder="如：中建某局 / 某城投集团">
-                  </div>
-                  <div class="form-field">
-                    <label>意向产品与服务</label>
-                    <select class="form-input">
-                      <option>飞椽 Fyra 智能开发平台</option>
-                      <option>BIMCC 智能建造平台</option>
-                      <option>智慧工地建设服务</option>
-                      <option>数字孪生与智慧运维</option>
-                      <option>BIM 咨询服务</option>
-                      <option>数字化教育体系</option>
-                      <option>行业定制解决方案</option>
-                    </select>
-                  </div>
-                </div>
-
+              <div class="form-row-2">
                 <div class="form-field">
-                  <label>项目概况与数字化需求简述</label>
-                  <textarea class="form-input" rows="3" placeholder="请简要描述您的工程类型、实施阶段或核心数字化诉求..."></textarea>
+                  <label for="about-company">单位 / 企业名称 <span class="required-star">*</span></label>
+                  <input id="about-company" type="text" class="form-input" required placeholder="如：中建某局 / 某城投集团">
                 </div>
+                <div class="form-field">
+                  <label for="about-product">意向产品与服务</label>
+                  <select id="about-product" class="form-input">
+                    <option>飞椽 Fyra 智能开发平台</option>
+                    <option>BIMCC 智能建造平台</option>
+                    <option>智慧工地建设服务</option>
+                    <option>数字孪生与智慧运维</option>
+                    <option>BIM 咨询服务</option>
+                    <option>数字化教育体系</option>
+                    <option>行业定制解决方案</option>
+                  </select>
+                </div>
+              </div>
 
-                <div style="text-align: center; margin-top: 24px;">
-                  <button type="submit" class="button button-primary" style="height: 48px; padding: 0 36px; font-size: 0.9375rem;">
-                    <span>提交预约演示申请</span>
-                  </button>
-                </div>
-              </form>
-            </div>
+              <div class="form-field">
+                <label for="about-demand">项目概况与数字化需求简述</label>
+                <textarea id="about-demand" class="form-input" rows="3" placeholder="请简要描述您的工程类型、实施阶段或核心数字化诉求..."></textarea>
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="button button-primary" style="height: 48px; padding: 0 42px; font-size: 0.9375rem;">
+                  <span>提交预约演示申请</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
