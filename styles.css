@@ -5985,203 +5985,341 @@ img, svg {
 
 /* --------------------------------------------------------------------------
    Product Combination Matrix (现代高级工程选型矩阵卡片)
-   -------------------------------------------------------------------------- */
+/* ==========================================================================
+   产品选型全景矩阵表格系统 (Solution Matrix Table System)
+   ========================================================================== */
 .product-combos-section {
   position: relative;
-  padding: 6.5rem 0 6rem;
+  padding: 5rem 0 5.5rem;
   background: radial-gradient(ellipse at 50% 0%, rgba(14, 28, 55, 0.45) 0%, rgba(5, 8, 17, 0.85) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   scroll-margin-top: 80px;
 }
 
-.combo-matrix-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 3.5rem;
-}
-
-.combo-matrix-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.combo-matrix-card {
-  position: relative;
-  background: rgba(13, 20, 36, 0.78);
-  border: 1px solid rgba(56, 189, 248, 0.16);
-  border-radius: 20px;
-  padding: 28px 28px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* 顶部业务分类过滤栏 */
+.matrix-filter-bar {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(13, 20, 36, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 6px;
+  margin-top: 1.75rem;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+}
+
+.matrix-filter-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  font-size: 0.84375rem;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.matrix-filter-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.matrix-filter-btn.is-active {
+  background: rgba(56, 189, 248, 0.18);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
+  font-weight: 600;
+}
+
+/* 矩阵表格外部包装器 */
+.solution-matrix-wrap {
+  margin-top: 2.25rem;
+  background: rgba(11, 18, 33, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 18px;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 
-.combo-matrix-card::before {
-  content: "";
-  position: absolute;
+/* 语义化表格结构 */
+.solution-matrix-table {
+  width: 100%;
+}
+
+/* 表格行排版 (Grid 布局模拟高质感行) */
+.matrix-tr {
+  display: grid;
+  grid-template-columns: 29% 37% 21% 13%;
+  align-items: center;
+  padding: 15px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.matrix-tr-head {
+  background: rgba(6, 11, 23, 0.9);
+  padding: 13px 24px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  z-index: 2;
 }
 
-.combo-matrix-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(56, 189, 248, 0.42);
-  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+.matrix-th {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.combo-matrix-card:hover::before {
-  opacity: 1;
+.matrix-tbody .matrix-tr:last-child {
+  border-bottom: none;
 }
 
-.combo-card-top {
+.matrix-tbody .matrix-tr:hover {
+  background: rgba(16, 28, 54, 0.65);
+  box-shadow: inset 3px 0 0 var(--cyan-400);
+}
+
+.matrix-tbody .matrix-tr.is-hidden-row {
+  display: none !important;
+}
+
+/* 单元格基础 */
+.matrix-td {
+  padding-right: 16px;
+}
+.matrix-td:last-child {
+  padding-right: 0;
+  text-align: right;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+/* 1. 目标与场景单元格 (多种表现形式：图标 + 粗体标题 + 级别徽章 + 价值亮点) */
+.matrix-goal-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.matrix-goal-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-400);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.1);
+}
+
+.matrix-goal-icon.icon-enterprise {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+  border-color: rgba(192, 132, 252, 0.25);
+  box-shadow: 0 0 12px rgba(192, 132, 252, 0.1);
+}
+
+.matrix-goal-icon.icon-operation {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.25);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.1);
+}
+
+.matrix-goal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.matrix-goal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
-.combo-goal-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.combo-icon-bullet {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--cyan-400);
-  box-shadow: 0 0 12px var(--cyan-400);
-  flex-shrink: 0;
-}
-
-.combo-goal-title {
-  font-size: 1.1875rem;
+.matrix-goal-name {
+  font-size: 0.9375rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
-  margin: 0;
+  line-height: 1.35;
 }
 
-.combo-client-badge {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.matrix-scope-badge {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--cyan-300);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.24);
   border-radius: 9999px;
-  padding: 4px 12px;
-  letter-spacing: 0.02em;
+  padding: 1px 7px;
   white-space: nowrap;
 }
 
-.combo-products-flow {
+.matrix-scope-badge.enterprise-badge {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.12);
+  border-color: rgba(192, 132, 252, 0.25);
+}
+
+.matrix-scope-badge.operation-badge {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.matrix-goal-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 2. 推荐产品组合栈单元格 (积木 Chip 流) */
+.matrix-stack-flow {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 14px 16px;
-  background: rgba(4, 7, 16, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  gap: 5px;
 }
 
-.combo-product-pill {
+.matrix-chip {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  line-height: 1.4;
   display: inline-flex;
   align-items: center;
-  font-size: 0.875rem;
-  font-weight: 600;
+}
+
+.matrix-chip.chip-primary {
+  color: var(--cyan-300);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.08);
+}
+
+.matrix-chip.chip-secondary {
   color: #e2e8f0;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 5px 12px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
 }
 
-.combo-product-pill.highlight {
-  color: var(--cyan-300);
-  background: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.32);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.1);
+.matrix-chip.chip-module {
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.combo-plus {
-  color: rgba(56, 189, 248, 0.7);
+.matrix-plus {
+  color: rgba(56, 189, 248, 0.6);
+  font-size: 0.75rem;
   font-weight: 700;
-  font-size: 0.875rem;
+  padding: 0 1px;
 }
 
-.combo-card-bottom {
+/* 3. 适用客群单元格 (微型标签组) */
+.matrix-client-tags {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin-top: auto;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
-.combo-feature-tag {
-  font-size: 0.8125rem;
-  color: #64748b;
-  line-height: 1.5;
+.matrix-tag {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 2px 7px;
+  white-space: nowrap;
 }
 
-.combo-action-link {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--cyan-400);
-  text-decoration: none;
+/* 4. 行动按钮单元格 */
+.matrix-cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+  font-size: 0.78125rem;
+  font-weight: 600;
+  color: var(--cyan-300);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  padding: 5px 12px;
+  border-radius: 9999px;
+  text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s ease;
 }
 
-.combo-action-link:hover {
+.matrix-cta-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.matrix-cta-btn:hover {
   color: #ffffff;
-  transform: translateX(3px);
+  background: rgba(56, 189, 248, 0.24);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
 }
 
-@media (max-width: 900px) {
-  .combo-matrix-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
+.matrix-cta-btn:hover svg {
+  transform: translateX(2px);
+}
+
+/* 移动端与平板端响应式处理 */
+@media (max-width: 1024px) {
+  .solution-matrix-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .combo-matrix-card:last-child:nth-child(odd) {
-    max-width: 100%;
+  .solution-matrix-table {
+    min-width: 880px;
   }
 }
 
-@media (max-width: 600px) {
-  .combo-matrix-card {
-    padding: 20px 18px 18px;
+@media (max-width: 768px) {
+  .product-combos-section {
+    padding: 3.5rem 0 4rem;
   }
-  .combo-card-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+  .matrix-filter-bar {
+    border-radius: 16px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .matrix-filter-btn {
+    font-size: 0.75rem;
+    padding: 5px 10px;
   }
 }
+
 
 
 

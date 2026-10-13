@@ -3084,3 +3084,28 @@ window.selectDeployMode = function(mode) {
   if (serviceText) serviceText.textContent = data.service;
 };
 
+// 方案选型全景矩阵多维筛选器交互
+document.addEventListener("DOMContentLoaded", () => {
+  const matrixFilterBtns = document.querySelectorAll(".matrix-filter-btn");
+  const matrixRows = document.querySelectorAll(".solution-matrix-table .matrix-tr[data-category]");
+
+  if (matrixFilterBtns.length > 0 && matrixRows.length > 0) {
+    matrixFilterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetCategory = btn.getAttribute("data-filter");
+        matrixFilterBtns.forEach(b => b.classList.toggle("is-active", b === btn));
+
+        matrixRows.forEach(row => {
+          const rowCategory = row.getAttribute("data-category");
+          const shouldShow = targetCategory === "all" || rowCategory === targetCategory;
+          if (shouldShow) {
+            row.classList.remove("is-hidden-row");
+          } else {
+            row.classList.add("is-hidden-row");
+          }
+        });
+      });
+    });
+  }
+});
+
