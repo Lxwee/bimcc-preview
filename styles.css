@@ -79,6 +79,10 @@
   padding: 0;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   font-family: var(--font-sans);
   background-color: #050811;
@@ -5951,6 +5955,29 @@ img, svg {
     padding: 24px 20px 24px;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Contact Form Success Alert Box
+   -------------------------------------------------------------------------- */
+.form-success-alert {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: var(--emerald-400);
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.6;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1);
+}
+
+.form-success-alert[hidden] {
+  display: none !important;
+}
+
 
 
 

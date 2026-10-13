@@ -14,7 +14,7 @@
     />
     <meta name="theme-color" content="#03060d" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20261012_04" />
+    <link rel="stylesheet" href="styles.css?v=20261013_01" />
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -503,10 +503,12 @@
                 id="contactForm"
                 onsubmit="
                   event.preventDefault();
-                  document.getElementById('formSuccessMsg').hidden = false;
-                  document
-                    .getElementById('formSuccessMsg')
-                    .scrollIntoView({ behavior: 'smooth' });
+                  var msg = document.getElementById('formSuccessMsg');
+                  if (msg) {
+                    msg.hidden = false;
+                    msg.style.display = 'flex';
+                    msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                  }
                 "
               >
                 <div
@@ -891,19 +893,9 @@
                 <!-- 提交成功反馈提示 -->
                 <div
                   id="formSuccessMsg"
+                  class="form-success-alert"
                   hidden
-                  style="
-                    margin-top: 20px;
-                    padding: 16px 20px;
-                    border-radius: var(--radius-sm);
-                    background: rgba(52, 211, 153, 0.1);
-                    border: 1px solid rgba(52, 211, 153, 0.3);
-                    color: var(--emerald-400);
-                    font-size: 0.9375rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                  "
+                  style="display: none;"
                 >
                   <svg
                     width="18"
@@ -912,6 +904,7 @@
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2.5"
+                    style="flex-shrink: 0;"
                   >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
