@@ -219,8 +219,9 @@ document.addEventListener("click", (event) => {
 // 详情页/案例页吸顶子导航栏 (Sticky Subnav) 滚动状态监听与激活项视口居中
 const stickySubnav = document.querySelector(".detail-subnav-sticky-bar, #cases-sticky-tab");
 if (stickySubnav) {
-  // 查找底部联系/预约演示/CTA区域或页脚作为内容结束标记
+  // 查找组合选型区/底部联系/预约演示/CTA区域或页脚作为内容结束标记
   const bottomExitTarget =
+    document.getElementById("product-combos-section") ||
     document.getElementById("contact") ||
     document.getElementById("cases-bottom-cta") ||
     document.querySelector(".footer-cta-section") ||

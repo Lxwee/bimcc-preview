@@ -5983,6 +5983,208 @@ img, svg {
   display: none !important;
 }
 
+/* --------------------------------------------------------------------------
+   Product Combination Matrix (现代高级工程选型矩阵卡片)
+   -------------------------------------------------------------------------- */
+.product-combos-section {
+  position: relative;
+  padding: 6.5rem 0 6rem;
+  background: radial-gradient(ellipse at 50% 0%, rgba(14, 28, 55, 0.45) 0%, rgba(5, 8, 17, 0.85) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  scroll-margin-top: 80px;
+}
+
+.combo-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 3.5rem;
+}
+
+.combo-matrix-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.combo-matrix-card {
+  position: relative;
+  background: rgba(13, 20, 36, 0.78);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 20px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.combo-matrix-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.combo-matrix-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.42);
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.combo-matrix-card:hover::before {
+  opacity: 1;
+}
+
+.combo-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.combo-goal-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.combo-icon-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan-400);
+  box-shadow: 0 0 12px var(--cyan-400);
+  flex-shrink: 0;
+}
+
+.combo-goal-title {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.combo-client-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.combo-products-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: rgba(4, 7, 16, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+.combo-product-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.combo-product-pill.highlight {
+  color: var(--cyan-300);
+  background: rgba(56, 189, 248, 0.12);
+  border-color: rgba(56, 189, 248, 0.32);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.1);
+}
+
+.combo-plus {
+  color: rgba(56, 189, 248, 0.7);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.combo-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.combo-feature-tag {
+  font-size: 0.8125rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.combo-action-link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cyan-400);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.combo-action-link:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .combo-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .combo-matrix-card:last-child:nth-child(odd) {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .combo-matrix-card {
+    padding: 20px 18px 18px;
+  }
+  .combo-card-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+
+
 
 
 

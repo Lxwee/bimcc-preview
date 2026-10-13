@@ -14,7 +14,7 @@
     />
     <meta name="theme-color" content="#03060c" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20261012_02" />
+    <link rel="stylesheet" href="styles.css?v=20261013_03" />
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -1080,77 +1080,196 @@
         </div>
       </section>
 
-      <!-- 4. 产品组合推荐: 按建设目标选择产品组合 (表格化结构) -->
-      <section class="site-section" style="background: rgba(11, 17, 33, 0.45)">
+      <!-- 4. 产品组合推荐: 按建设目标选择产品组合 (现代高级工程选型矩阵) -->
+      <section class="site-section product-combos-section" id="product-combos-section">
         <div class="site-container">
           <div class="section-header text-center reveal">
-            <div class="eyebrow-badge">Combination Guide</div>
+            <div class="eyebrow-badge">
+              <span class="status-pulse"></span>
+              COMBINATION MATRIX · 方案组合矩阵
+            </div>
             <h2 class="section-title">按建设目标选择产品组合</h2>
             <p class="section-desc">
-              根据组织发展阶段与工程管控诉求，推荐最经济、高效的数字化落地组合。
+              根据组织发展阶段与工程管控诉求，推荐最经济、高效的数字化落地组合与技术全案。
             </p>
           </div>
 
-          <div class="spec-table-card reveal">
-            <div
-              class="spec-table-row"
-              style="
-                background: rgba(255, 255, 255, 0.03);
-                font-weight: 700;
-                color: #fff;
-              "
-            >
-              <div>建设目标</div>
-              <div>推荐产品与服务组合（及适用客户）</div>
+          <div class="combo-matrix-grid reveal">
+            <!-- 1. 高危施工与安全交底 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">高危施工与安全交底</h3>
+                </div>
+                <span class="combo-client-badge">矿山 / 高铁 / 隧道 / 危大工程</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">AI 班前会系统</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">智慧工地建设</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">门禁闸机联动</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">人脸识别准入 · 岗前AI安全交底 · 隐患排查闭环</span>
+                <a href="contact.html?demand=ai-shift-meeting" class="combo-action-link">
+                  <span>咨询全案配置</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>高危施工与安全交底</dt>
-              <dd>
-                <strong>AI 班前会系统 + 智慧工地 + 门禁闸机联动</strong
-                >（适用：矿山、高铁站、隧道、危大工程等施工项目现场）
-              </dd>
+
+            <!-- 2. 单项目数字化管控 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">单项目数字化管控</h3>
+                </div>
+                <span class="combo-client-badge">项目公司 / 施工总包 / 建设单位</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">BIMCC 智能建造平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">智慧工地</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">BIM 咨询服务</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">人机料法环全要素管控 · 进度质量协同受控</span>
+                <a href="contact.html?demand=project" class="combo-action-link">
+                  <span>获取项目配置</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>单项目数字化管控</dt>
-              <dd>
-                <strong>BIMCC 智能建造平台 + 智慧工地 + BIM 咨询</strong
-                >（适用：项目公司、施工总包、建设单位）
-              </dd>
+
+            <!-- 3. 企业多项目统一管理 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">企业多项目统一管理</h3>
+                </div>
+                <span class="combo-client-badge">集团企业 / 工程局 / 城投平台</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">BIMCC 平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">飞椽 Fyra 开发平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">工程数据中台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">业务模板库</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">打破项目孤岛 · 资金进度集团穿透监管一张图</span>
+                <a href="contact.html?demand=platform" class="combo-action-link">
+                  <span>咨询企业统管</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>企业多项目统一管理</dt>
-              <dd>
-                <strong>BIMCC 平台 + 飞椽 Fyra + 数据中台 + 业务模板库</strong
-                >（适用：集团企业、工程局、城投平台）
-              </dd>
+
+            <!-- 4. 工程应用快速开发 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">工程应用快速开发</h3>
+                </div>
+                <span class="combo-client-badge">企业数字化部门 / 平台建设团队</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">飞椽 Fyra 低代码平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">表单流程引擎</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">数据大屏 & APP 构建</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">行业级敏捷构建 · 支持深度二开与私有化交付</span>
+                <a href="contact.html?demand=platform" class="combo-action-link">
+                  <span>申请开发版演示</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>工程应用快速开发</dt>
-              <dd>
-                <strong>飞椽 Fyra + 表单/流程/报表/大屏/APP 构建能力</strong
-                >（适用：企业数字化部门、平台建设团队）
-              </dd>
+
+            <!-- 5. 智慧工地与监管对接 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">智慧工地与监管对接</h3>
+                </div>
+                <span class="combo-client-badge">施工现场 / 住建监管 / 施工企业</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">智慧工地建设</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">物联网中台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">视频 AI / 特种设备集成</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">标杆级住建监管上链标准 · 现场 IoT 全设备直连</span>
+                <a href="contact.html?demand=site" class="combo-action-link">
+                  <span>对接监管方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>智慧工地与监管对接</dt>
-              <dd>
-                <strong>智慧工地建设 + 物联网中台 + 视频/设备集成</strong
-                >（适用：施工现场、监管部门、施工企业）
-              </dd>
+
+            <!-- 6. 数字孪生智慧运维 -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">数字孪生智慧运维</h3>
+                </div>
+                <span class="combo-client-badge">园区 / 场馆 / 公共建筑 / 资产运营</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">数字孪生平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">BIM + GIS 空间引擎</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">设备台账与工单联动</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">建筑全生命周期数字资产 · 空间与物联一体化运维</span>
+                <a href="contact.html?demand=twin" class="combo-action-link">
+                  <span>体验孪生运维</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="spec-table-row">
-              <dt>数字孪生智慧运维</dt>
-              <dd>
-                <strong>数字孪生平台 + BIM+GIS + 设备台账 + 工单管理</strong
-                >（适用：园区、场馆、公共建筑、资产运营单位）
-              </dd>
-            </div>
-            <div class="spec-table-row">
-              <dt>教学与实训体系建设</dt>
-              <dd>
-                <strong>数字化教育平台 + BIMVR/AR/MR 实训室 + 课程资源</strong
-                >（适用：高校、职教院校、培训基地）
-              </dd>
+
+            <!-- 7. 教学与实训体系建设 (突出产教融合亮点) -->
+            <div class="combo-matrix-card">
+              <div class="combo-card-top">
+                <div class="combo-goal-wrap">
+                  <span class="combo-icon-bullet"></span>
+                  <h3 class="combo-goal-title">教学与实训体系建设</h3>
+                </div>
+                <span class="combo-client-badge">高校 / 职教院校 / 技能培训基地</span>
+              </div>
+              <div class="combo-products-flow">
+                <span class="combo-product-pill highlight">数字化教育平台</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">BIMVR / AR / MR 实训室</span>
+                <span class="combo-plus">+</span>
+                <span class="combo-product-pill">工程课程与考核资源</span>
+              </div>
+              <div class="combo-card-bottom">
+                <span class="combo-feature-tag">新工科产教融合 · 虚拟仿真沉浸教学与实战考核</span>
+                <a href="contact.html?demand=edu" class="combo-action-link">
+                  <span>获取院校合作方案</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1329,6 +1448,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20261012_01"></script>
+    <script src="script.js?v=20261013_03"></script>
   </body>
 </html>
