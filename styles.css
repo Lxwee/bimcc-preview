@@ -6042,15 +6042,15 @@ img, svg {
   font-weight: 600;
 }
 
-/* 矩阵表格外部包装器 (充足留白与优雅圆角) */
+/* 矩阵表格外部包装器 (充足留白与优雅微光) */
 .solution-matrix-wrap {
   margin-top: 3rem;
-  background: rgba(11, 18, 33, 0.75);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(56, 189, 248, 0.18);
+  background: rgba(10, 16, 30, 0.78);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(56, 189, 248, 0.16);
   border-radius: 20px;
-  box-shadow: 0 24px 52px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 
@@ -6059,25 +6059,26 @@ img, svg {
   width: 100%;
 }
 
-/* 表格行排版 (加大留白与单行宽松比例) */
+/* 表格行排版 (3 列宽舒比例与 60px 呼吸留白，彻底取消截断) */
 .matrix-tr {
   display: grid;
-  grid-template-columns: 24% 45% 21% 10%;
+  grid-template-columns: 380px 1.45fr 1fr;
   align-items: center;
-  gap: 16px;
-  padding: 22px 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  column-gap: 60px;
+  padding: 24px 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .matrix-tr-head {
-  background: rgba(6, 11, 23, 0.92);
-  padding: 16px 32px;
+  background: rgba(6, 11, 23, 0.94);
+  padding: 18px 40px;
   border-bottom: 1px solid rgba(56, 189, 248, 0.22);
   position: sticky;
   top: 0;
   z-index: 2;
+  cursor: default;
 }
 
 .matrix-th {
@@ -6088,13 +6089,47 @@ img, svg {
   text-transform: uppercase;
 }
 
+.matrix-tbody .matrix-tr {
+  cursor: pointer;
+}
+
 .matrix-tbody .matrix-tr:last-child {
   border-bottom: none;
 }
 
 .matrix-tbody .matrix-tr:hover {
-  background: rgba(16, 28, 54, 0.65);
-  box-shadow: inset 3px 0 0 var(--cyan-400);
+  background: rgba(16, 28, 54, 0.72);
+  box-shadow: inset 4px 0 0 var(--cyan-400), 0 8px 24px -6px rgba(0, 0, 0, 0.4);
+}
+
+.matrix-tbody .matrix-tr:hover .matrix-goal-name {
+  color: var(--cyan-300);
+}
+
+.matrix-tbody .matrix-tr:hover .matrix-goal-icon {
+  transform: scale(1.05);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+/* 行级整行直达悬浮微指示器 (脱离文档流，绝不挤压客群标签) */
+.matrix-tbody .matrix-tr::after {
+  content: "→";
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cyan-400);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.matrix-tbody .matrix-tr:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
 }
 
 .matrix-tbody .matrix-tr.is-hidden-row {
@@ -6105,23 +6140,18 @@ img, svg {
 .matrix-td {
   min-width: 0;
 }
-.matrix-td:last-child {
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-}
 
-/* 1. 目标与场景单元格 (多种表现形式：图标 + 粗体标题 + 级别徽章 + 价值亮点) */
+/* 1. 目标与场景单元格 (完整显示自然排版，不换行截断彻底禁用) */
 .matrix-goal-item {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: flex-start;
+  gap: 16px;
 }
 
 .matrix-goal-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.22);
   display: flex;
@@ -6129,7 +6159,9 @@ img, svg {
   justify-content: center;
   color: var(--cyan-400);
   flex-shrink: 0;
+  margin-top: 2px;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.1);
+  transition: all 0.25s ease;
 }
 
 .matrix-goal-icon.icon-enterprise {
@@ -6149,24 +6181,26 @@ img, svg {
 .matrix-goal-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   min-width: 0;
 }
 
 .matrix-goal-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .matrix-goal-name {
-  font-size: 0.9375rem;
+  font-size: 1.03125rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
   line-height: 1.35;
   white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .matrix-scope-badge {
@@ -6174,9 +6208,9 @@ img, svg {
   font-weight: 600;
   color: var(--cyan-300);
   background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.24);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 9999px;
-  padding: 1px 7px;
+  padding: 1px 8px;
   white-space: nowrap;
 }
 
@@ -6192,34 +6226,37 @@ img, svg {
   border-color: rgba(52, 211, 153, 0.25);
 }
 
+/* 描述文本彻底取消截断，自然呼吸排版 */
 .matrix-goal-desc {
-  font-size: 0.75rem;
-  color: #64748b;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  line-height: 1.55;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
 }
 
-/* 2. 推荐产品组合栈单元格 (积木 Chip 流 - 纯单行不换行) */
+/* 2. 推荐产品组合栈单元格 (积木 Chip 流 - 纯单行紧凑高质感) */
 .matrix-stack-flow {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 5px;
+  gap: 7px;
   min-width: 0;
 }
 
 .matrix-chip {
   font-size: 0.8125rem;
   font-weight: 600;
-  padding: 4px 9px;
-  border-radius: 6px;
+  padding: 5px 11px;
+  border-radius: 7px;
   white-space: nowrap;
   line-height: 1.35;
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 
 .matrix-chip.chip-primary {
@@ -6232,29 +6269,29 @@ img, svg {
 .matrix-chip.chip-secondary {
   color: #e2e8f0;
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.11);
 }
 
 .matrix-chip.chip-module {
   color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.038);
+  border: 1px solid rgba(255, 255, 255, 0.075);
 }
 
 .matrix-plus {
-  color: rgba(56, 189, 248, 0.6);
+  color: rgba(56, 189, 248, 0.65);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0 1px;
+  padding: 0 2px;
   flex-shrink: 0;
 }
 
-/* 3. 适用客群单元格 (微型标签组 - 纯单行不换行) */
+/* 3. 适用客群单元格 (微型标签组 - 单行舒展纯净) */
 .matrix-client-tags {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -6262,44 +6299,18 @@ img, svg {
   font-size: 0.75rem;
   color: #94a3b8;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 4px;
-  padding: 3px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 5px;
+  padding: 3px 9px;
   white-space: nowrap;
   flex-shrink: 0;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-/* 4. 行动按钮单元格 */
-.matrix-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.78125rem;
-  font-weight: 600;
-  color: var(--cyan-300);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  padding: 6px 14px;
-  border-radius: 9999px;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.matrix-cta-btn svg {
-  transition: transform 0.2s ease;
-}
-
-.matrix-cta-btn:hover {
-  color: #ffffff;
-  background: rgba(56, 189, 248, 0.24);
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
-}
-
-.matrix-cta-btn:hover svg {
-  transform: translateX(2px);
+.matrix-tbody .matrix-tr:hover .matrix-tag {
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 /* 移动端与平板端响应式处理 (防止窄屏挤压) */
@@ -6309,7 +6320,7 @@ img, svg {
     -webkit-overflow-scrolling: touch;
   }
   .solution-matrix-table {
-    min-width: 1080px;
+    min-width: 1040px;
   }
 }
 

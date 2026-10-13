@@ -14,7 +14,7 @@
     />
     <meta name="theme-color" content="#03060c" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20261013_05" />
+    <link rel="stylesheet" href="styles.css?v=20261013_08" />
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -1105,20 +1105,19 @@
           <!-- 精细化选型矩阵表格 -->
           <div class="solution-matrix-wrap reveal">
             <div class="solution-matrix-table" role="table" aria-label="按建设目标选择产品组合全景矩阵">
-              <!-- 表头 -->
+              <!-- 表头 (3 列精炼矩阵) -->
               <div class="matrix-thead" role="rowgroup">
                 <div class="matrix-tr matrix-tr-head" role="row">
                   <div class="matrix-th" role="columnheader">建设目标与业务场景</div>
                   <div class="matrix-th" role="columnheader">推荐产品组合架构</div>
                   <div class="matrix-th" role="columnheader">适用客户及组织</div>
-                  <div class="matrix-th" role="columnheader">方案对接</div>
                 </div>
               </div>
 
-              <!-- 表体 (7 大建设目标) -->
+              <!-- 表体 (7 大建设目标 · 行级直达交互) -->
               <div class="matrix-tbody" role="rowgroup">
                 <!-- 1. 高危施工与安全交底 (site) -->
-                <div class="matrix-tr" role="row" data-category="site">
+                <div class="matrix-tr" role="row" data-category="site" data-href="contact.html?demand=ai-shift-meeting" title="点击获取「高危施工与安全交底」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon" title="安全防线">
@@ -1148,16 +1147,10 @@
                       <span class="matrix-tag">隧道 / 危大工程</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=ai-shift-meeting" class="matrix-cta-btn">
-                      <span>咨询全案</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 2. 单项目数字化管控 (site) -->
-                <div class="matrix-tr" role="row" data-category="site">
+                <div class="matrix-tr" role="row" data-category="site" data-href="contact.html?demand=project" title="点击获取「单项目数字化管控」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon" title="项目建造管控">
@@ -1188,16 +1181,10 @@
                       <span class="matrix-tag">建设单位</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=project" class="matrix-cta-btn">
-                      <span>获取配置</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 3. 智慧工地与监管对接 (site) -->
-                <div class="matrix-tr" role="row" data-category="site">
+                <div class="matrix-tr" role="row" data-category="site" data-href="contact.html?demand=site" title="点击获取「智慧工地与监管对接」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon" title="IoT监管对接">
@@ -1227,16 +1214,10 @@
                       <span class="matrix-tag">住建监管部门</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=site" class="matrix-cta-btn">
-                      <span>对接方案</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 4. 企业多项目统一管理 (enterprise) -->
-                <div class="matrix-tr" role="row" data-category="enterprise">
+                <div class="matrix-tr" role="row" data-category="enterprise" data-href="contact.html?demand=platform" title="点击获取「企业多项目统一管理」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon icon-enterprise" title="集团多项目管控">
@@ -1269,16 +1250,10 @@
                       <span class="matrix-tag">城投平台</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=platform" class="matrix-cta-btn">
-                      <span>咨询统管</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 5. 工程应用快速开发 (enterprise) -->
-                <div class="matrix-tr" role="row" data-category="enterprise">
+                <div class="matrix-tr" role="row" data-category="enterprise" data-href="contact.html?demand=platform" title="点击获取「工程应用快速开发」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon icon-enterprise" title="低代码快速开发">
@@ -1308,16 +1283,10 @@
                       <span class="matrix-tag">平台建设团队</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=platform" class="matrix-cta-btn">
-                      <span>申请演示</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 6. 数字孪生智慧运维 (operation) -->
-                <div class="matrix-tr" role="row" data-category="operation">
+                <div class="matrix-tr" role="row" data-category="operation" data-href="contact.html?demand=twin" title="点击获取「数字孪生智慧运维」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon icon-operation" title="数字孪生运维">
@@ -1347,16 +1316,10 @@
                       <span class="matrix-tag">公共建筑 / 资产运营</span>
                     </div>
                   </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=twin" class="matrix-cta-btn">
-                      <span>体验孪生</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
-                  </div>
                 </div>
 
                 <!-- 7. 教学与实训体系建设 (operation) -->
-                <div class="matrix-tr" role="row" data-category="operation">
+                <div class="matrix-tr" role="row" data-category="operation" data-href="contact.html?demand=edu" title="点击获取「教学与实训体系建设」方案配置">
                   <div class="matrix-td" role="cell">
                     <div class="matrix-goal-item">
                       <div class="matrix-goal-icon icon-operation" title="高校产教融合">
@@ -1385,12 +1348,6 @@
                       <span class="matrix-tag">高等院校</span>
                       <span class="matrix-tag">职教 / 培训基地</span>
                     </div>
-                  </div>
-                  <div class="matrix-td" role="cell">
-                    <a href="contact.html?demand=edu" class="matrix-cta-btn">
-                      <span>院校合作</span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -1571,6 +1528,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20261013_05"></script>
+    <script src="script.js?v=20261013_08"></script>
   </body>
 </html>

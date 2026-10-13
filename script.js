@@ -3084,7 +3084,7 @@ window.selectDeployMode = function(mode) {
   if (serviceText) serviceText.textContent = data.service;
 };
 
-// 方案选型全景矩阵多维筛选器交互
+// 方案选型全景矩阵多维筛选与整行直达交互
 document.addEventListener("DOMContentLoaded", () => {
   const matrixFilterBtns = document.querySelectorAll(".matrix-filter-btn");
   const matrixRows = document.querySelectorAll(".solution-matrix-table .matrix-tr[data-category]");
@@ -3107,5 +3107,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // 整行点击无缝直达对应方案咨询
+  matrixRows.forEach(row => {
+    row.addEventListener("click", (e) => {
+      if (e.target.closest("a, button")) return;
+      const href = row.getAttribute("data-href");
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
 });
 
