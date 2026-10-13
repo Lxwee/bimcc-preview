@@ -6007,21 +6007,12 @@ img, svg {
   position: relative;
 }
 
-/* 1. 多维度业务分类过滤栏 (独立放置在表格外部，支持滚动吸顶) */
+/* 1. 多维度业务分类过滤栏 (独立放置在表格外部，干净无外层底色) */
 .matrix-filter-wrapper {
-  position: -webkit-sticky;
-  position: sticky;
-  top: var(--header-height, 68px);
-  z-index: 25;
-  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.25rem;
-  background: rgba(5, 8, 17, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-sizing: border-box;
+  margin-bottom: 1.5rem;
 }
 
 .matrix-filter-bar {
@@ -6086,11 +6077,11 @@ img, svg {
   width: 100%;
 }
 
-/* 表头吸顶固定层 (在视口滚动至此时，吸附在 Tab 筛选条正下方) */
+/* 表头吸顶固定层 (在视口滚动浏览表格时，牢牢吸附在顶部导航栏正下方) */
 .matrix-thead {
   position: -webkit-sticky;
   position: sticky;
-  top: calc(var(--header-height, 68px) + 56px);
+  top: var(--header-height, 68px);
   z-index: 20;
   background: rgba(7, 12, 24, 0.98);
   backdrop-filter: blur(28px);
