@@ -3118,5 +3118,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // 方案选型全景矩阵 Tab 吸顶动态底色切换 (常态无黑条背景，吸顶时提供磨砂遮蔽)
+  const matrixFilterWrap = document.querySelector(".matrix-filter-wrapper");
+  if (matrixFilterWrap) {
+    const handleFilterSticky = () => {
+      const rect = matrixFilterWrap.getBoundingClientRect();
+      const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 68;
+      if (rect.top <= headerHeight + 2) {
+        matrixFilterWrap.classList.add("is-stuck");
+      } else {
+        matrixFilterWrap.classList.remove("is-stuck");
+      }
+    };
+    window.addEventListener("scroll", handleFilterSticky, { passive: true });
+    window.addEventListener("resize", handleFilterSticky, { passive: true });
+    handleFilterSticky();
+  }
 });
 

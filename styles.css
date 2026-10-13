@@ -6002,17 +6002,36 @@ img, svg {
   margin-bottom: 1.5rem;
 }
 
-/* 矩阵视口容器 (统一管理 Tab 与表格的滚动与生命周期) */
+/* 矩阵视口容器 (统一管理 Tab 与表格的滚动与生命周期，防止 transform 阻断 sticky) */
 .solution-matrix-viewport {
   position: relative;
+  transform: none !important;
+  will-change: auto !important;
 }
 
-/* 1. 多维度业务分类过滤栏 (独立放置在表格外部，干净无外层底色) */
+/* 1. 多维度业务分类过滤栏 (独立放置在表格外部上方，支持滚动吸顶) */
 .matrix-filter-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--header-height, 68px);
+  z-index: 28;
+  height: 54px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  background: transparent;
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box;
+}
+
+/* 仅在滚动吸顶生效时激活遮蔽底色，常态下 100% 纯透明无黑条背景 */
+.matrix-filter-wrapper.is-stuck {
+  background: rgba(6, 11, 23, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5);
 }
 
 .matrix-filter-bar {
@@ -6070,6 +6089,8 @@ img, svg {
   box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: visible;
   position: relative;
+  transform: none !important;
+  will-change: auto !important;
 }
 
 /* 语义化表格结构 */
@@ -6077,12 +6098,12 @@ img, svg {
   width: 100%;
 }
 
-/* 表头吸顶固定层 (在视口滚动浏览表格时，牢牢吸附在顶部导航栏正下方) */
+/* 表头吸顶固定层 (在视口滚动浏览表格时，紧随 Tab 筛选栏正下方锁定固定) */
 .matrix-thead {
   position: -webkit-sticky;
   position: sticky;
-  top: var(--header-height, 68px);
-  z-index: 20;
+  top: calc(var(--header-height, 68px) + 54px);
+  z-index: 25;
   background: rgba(7, 12, 24, 0.98);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
