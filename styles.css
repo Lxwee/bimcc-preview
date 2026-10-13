@@ -5990,7 +5990,7 @@ img, svg {
    ========================================================================== */
 .product-combos-section {
   position: relative;
-  padding: 5rem 0 5.5rem;
+  padding: 6.5rem 0 7rem;
   background: radial-gradient(ellipse at 50% 0%, rgba(14, 28, 55, 0.45) 0%, rgba(5, 8, 17, 0.85) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -6003,14 +6003,14 @@ img, svg {
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   background: rgba(13, 20, 36, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 9999px;
-  padding: 6px;
-  margin-top: 1.75rem;
+  padding: 6px 10px;
+  margin-top: 2.25rem;
   box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
 }
 
@@ -6018,9 +6018,9 @@ img, svg {
   background: transparent;
   border: 1px solid transparent;
   color: #94a3b8;
-  font-size: 0.84375rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  padding: 6px 16px;
+  padding: 7px 18px;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.25s var(--ease-spring);
@@ -6042,15 +6042,15 @@ img, svg {
   font-weight: 600;
 }
 
-/* 矩阵表格外部包装器 */
+/* 矩阵表格外部包装器 (充足留白与优雅圆角) */
 .solution-matrix-wrap {
-  margin-top: 2.25rem;
+  margin-top: 3rem;
   background: rgba(11, 18, 33, 0.75);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(56, 189, 248, 0.18);
-  border-radius: 18px;
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 24px 52px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 
@@ -6059,20 +6059,21 @@ img, svg {
   width: 100%;
 }
 
-/* 表格行排版 (Grid 布局模拟高质感行) */
+/* 表格行排版 (加大留白与单行宽松比例) */
 .matrix-tr {
   display: grid;
-  grid-template-columns: 29% 37% 21% 13%;
+  grid-template-columns: 24% 45% 21% 10%;
   align-items: center;
-  padding: 15px 24px;
+  gap: 16px;
+  padding: 22px 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
 }
 
 .matrix-tr-head {
-  background: rgba(6, 11, 23, 0.9);
-  padding: 13px 24px;
+  background: rgba(6, 11, 23, 0.92);
+  padding: 16px 32px;
   border-bottom: 1px solid rgba(56, 189, 248, 0.22);
   position: sticky;
   top: 0;
@@ -6102,10 +6103,9 @@ img, svg {
 
 /* 单元格基础 */
 .matrix-td {
-  padding-right: 16px;
+  min-width: 0;
 }
 .matrix-td:last-child {
-  padding-right: 0;
   text-align: right;
   display: flex;
   justify-content: flex-end;
@@ -6115,13 +6115,13 @@ img, svg {
 .matrix-goal-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .matrix-goal-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.22);
   display: flex;
@@ -6149,7 +6149,7 @@ img, svg {
 .matrix-goal-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
 }
 
@@ -6166,6 +6166,7 @@ img, svg {
   color: #ffffff;
   letter-spacing: -0.01em;
   line-height: 1.35;
+  white-space: nowrap;
 }
 
 .matrix-scope-badge {
@@ -6200,23 +6201,25 @@ img, svg {
   text-overflow: ellipsis;
 }
 
-/* 2. 推荐产品组合栈单元格 (积木 Chip 流) */
+/* 2. 推荐产品组合栈单元格 (积木 Chip 流 - 纯单行不换行) */
 .matrix-stack-flow {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 5px;
+  min-width: 0;
 }
 
 .matrix-chip {
   font-size: 0.8125rem;
   font-weight: 600;
-  padding: 3px 9px;
+  padding: 4px 9px;
   border-radius: 6px;
   white-space: nowrap;
-  line-height: 1.4;
+  line-height: 1.35;
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .matrix-chip.chip-primary {
@@ -6243,13 +6246,16 @@ img, svg {
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0 1px;
+  flex-shrink: 0;
 }
 
-/* 3. 适用客群单元格 (微型标签组) */
+/* 3. 适用客群单元格 (微型标签组 - 纯单行不换行) */
 .matrix-client-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  min-width: 0;
 }
 
 .matrix-tag {
@@ -6258,8 +6264,9 @@ img, svg {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 4px;
-  padding: 2px 7px;
+  padding: 3px 8px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* 4. 行动按钮单元格 */
@@ -6272,11 +6279,12 @@ img, svg {
   color: var(--cyan-300);
   background: rgba(56, 189, 248, 0.08);
   border: 1px solid rgba(56, 189, 248, 0.22);
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 9999px;
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .matrix-cta-btn svg {
@@ -6294,14 +6302,14 @@ img, svg {
   transform: translateX(2px);
 }
 
-/* 移动端与平板端响应式处理 */
-@media (max-width: 1024px) {
+/* 移动端与平板端响应式处理 (防止窄屏挤压) */
+@media (max-width: 1200px) {
   .solution-matrix-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   .solution-matrix-table {
-    min-width: 880px;
+    min-width: 1080px;
   }
 }
 
