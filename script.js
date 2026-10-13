@@ -216,12 +216,13 @@ document.addEventListener("click", (event) => {
   }
 });
 
-// 详情页吸顶子导航栏 (Sticky Subnav) 滚动状态监听与激活项视口居中
-const stickySubnav = document.querySelector(".detail-subnav-sticky-bar");
+// 详情页/案例页吸顶子导航栏 (Sticky Subnav) 滚动状态监听与激活项视口居中
+const stickySubnav = document.querySelector(".detail-subnav-sticky-bar, #cases-sticky-tab");
 if (stickySubnav) {
   // 查找底部联系/预约演示/CTA区域或页脚作为内容结束标记
   const bottomExitTarget =
     document.getElementById("contact") ||
+    document.getElementById("cases-bottom-cta") ||
     document.querySelector(".footer-cta-section") ||
     document.getElementById("contact-form-section") ||
     document.querySelector(".site-footer");
@@ -232,8 +233,8 @@ if (stickySubnav) {
 
     if (bottomExitTarget) {
       const targetRect = bottomExitTarget.getBoundingClientRect();
-      // 当底部联系/CTA板块进入视口（距顶部小于视口高度的 82%），说明平台产品/解决方案内容已展示完毕，平滑隐藏吸顶子导航
-      const isPastContent = targetRect.top < window.innerHeight * 0.82;
+      // 当底部联系/CTA板块进入视口（距顶部小于视口高度的 85%），说明平台产品/解决方案/案例内容已展示完毕，平滑隐藏吸顶子导航
+      const isPastContent = targetRect.top < window.innerHeight * 0.85;
       stickySubnav.classList.toggle("is-hidden", isPastContent);
     }
   };

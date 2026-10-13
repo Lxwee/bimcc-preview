@@ -109,8 +109,17 @@
           transform: translate(-6%, -12%) scale(1.1);
         }
       }
+      #cases-sticky-tab {
+        transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      #cases-sticky-tab.is-hidden {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-20px) scale(0.96) !important;
+      }
     </style>
-  <link rel="stylesheet" href="styles.css?v=20261012_02">
+  <link rel="stylesheet" href="styles.css?v=20261013_02">
 </head>
   <body
     class="bg-[#0b1121] text-slate-300 font-sans antialiased flex flex-col min-h-screen"
@@ -3905,6 +3914,7 @@
 
         <!-- 底部联系与 CTA 交互 -->
         <div
+          id="cases-bottom-cta"
           class="mt-24 text-center flex flex-col items-center border-t border-white/5 pt-16 w-full"
         >
           <p class="text-[16px] text-slate-300 mb-6">
@@ -4432,6 +4442,24 @@
           openCaseModal(hash);
         }
       });
+
+      // 吸顶案例分类 Tab 滚动退场监听：当案例浏览完毕进入底部 CTA / 页脚时，自动平滑退场隐藏
+      const casesStickyTab = document.getElementById("cases-sticky-tab");
+      const casesBottomTarget =
+        document.getElementById("cases-bottom-cta") ||
+        document.querySelector(".site-footer");
+
+      if (casesStickyTab && casesBottomTarget) {
+        const handleCasesStickyTabScroll = () => {
+          const targetRect = casesBottomTarget.getBoundingClientRect();
+          // 当底部 CTA 板块顶端进入视口（距顶部小于视口高度的 85%），说明案例列表已展示完毕，平滑隐藏吸顶 Tab
+          const isPastContent = targetRect.top < window.innerHeight * 0.85;
+          casesStickyTab.classList.toggle("is-hidden", isPastContent);
+        };
+        window.addEventListener("scroll", handleCasesStickyTabScroll, { passive: true });
+        handleCasesStickyTabScroll();
+      }
     </script>
+    <script src="script.js?v=20261013_02"></script>
   </body>
 </html>

@@ -2840,7 +2840,12 @@ img, svg {
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.detail-subnav-sticky-bar.is-hidden {
+#cases-sticky-tab {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.detail-subnav-sticky-bar.is-hidden,
+#cases-sticky-tab.is-hidden {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
