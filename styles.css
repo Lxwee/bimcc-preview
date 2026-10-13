@@ -5990,40 +5990,88 @@ img, svg {
    ========================================================================== */
 .product-combos-section {
   position: relative;
-  padding: 6.5rem 0 7rem;
+  padding: 6rem 0 7rem;
   background: radial-gradient(ellipse at 50% 0%, rgba(14, 28, 55, 0.45) 0%, rgba(5, 8, 17, 0.85) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   scroll-margin-top: 80px;
 }
 
-/* 顶部业务分类过滤栏 */
+/* 亲密性原则：大幅缩减标题区与表格控制器间的间距 */
+.product-combos-section .section-header {
+  margin-bottom: 2rem;
+}
+
+/* 矩阵表格外部包装器 (去多余上外边距，overflow: visible 保证吸顶生效) */
+.solution-matrix-wrap {
+  margin-top: 0;
+  background: rgba(10, 16, 30, 0.78);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: visible;
+  position: relative;
+}
+
+/* 语义化表格结构 */
+.solution-matrix-table {
+  width: 100%;
+}
+
+/* 复合吸顶粘性头部：Tab 筛选条 + 3 列表头在滚动时联合锁定在视口顶部 */
+.matrix-sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--header-height, 68px);
+  z-index: 30;
+  background: rgba(6, 11, 23, 0.96);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.24);
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  transition: all 0.2s ease;
+}
+
+/* 顶部业务分类过滤栏容器 */
+.matrix-filter-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 36px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(8, 14, 28, 0.75);
+}
+
 .matrix-filter-bar {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  background: rgba(13, 20, 36, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 8px;
+  background: rgba(13, 20, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 9999px;
-  padding: 6px 10px;
-  margin-top: 2.25rem;
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+  padding: 4px 8px;
+  margin-top: 0;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.35);
 }
 
 .matrix-filter-btn {
   background: transparent;
   border: 1px solid transparent;
   color: #94a3b8;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  padding: 7px 18px;
+  padding: 6px 16px;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.25s var(--ease-spring);
+  transition: all 0.2s var(--ease-spring);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -6038,25 +6086,8 @@ img, svg {
   background: rgba(56, 189, 248, 0.18);
   color: #ffffff;
   border-color: rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.22);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
   font-weight: 600;
-}
-
-/* 矩阵表格外部包装器 (充足留白与优雅微光) */
-.solution-matrix-wrap {
-  margin-top: 3rem;
-  background: rgba(10, 16, 30, 0.78);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(56, 189, 248, 0.16);
-  border-radius: 20px;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-/* 语义化表格结构 */
-.solution-matrix-table {
-  width: 100%;
 }
 
 /* 表格行排版 (3 列宽舒比例与 60px 呼吸留白，彻底取消截断) */
@@ -6072,17 +6103,14 @@ img, svg {
 }
 
 .matrix-tr-head {
-  background: rgba(6, 11, 23, 0.94);
-  padding: 18px 40px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
-  position: sticky;
-  top: 0;
-  z-index: 2;
+  background: transparent;
+  padding: 13px 40px;
+  border-bottom: none;
   cursor: default;
 }
 
 .matrix-th {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   font-weight: 600;
   color: #94a3b8;
   letter-spacing: 0.04em;

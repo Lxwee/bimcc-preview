@@ -14,7 +14,7 @@
     />
     <meta name="theme-color" content="#03060c" />
     <link rel="icon" href="assets/brand/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20261013_08" />
+    <link rel="stylesheet" href="styles.css?v=20261013_10" />
   </head>
   <body>
     <!-- 全局多光谱极光动态背景 -->
@@ -1092,25 +1092,30 @@
             <p class="section-desc">
               立足工程组织发展阶段与业务管控诉求，按需组合标准化产品与定制化底座，一屏概览最经济高效的落地组合。
             </p>
-
-            <!-- 多维度业务视角快速筛选 -->
-            <div class="matrix-filter-bar" role="tablist">
-              <button class="matrix-filter-btn is-active" data-filter="all">全景方案 (7)</button>
-              <button class="matrix-filter-btn" data-filter="site">🏗️ 施工现场与安全 (3)</button>
-              <button class="matrix-filter-btn" data-filter="enterprise">🏢 集团统管与自研 (2)</button>
-              <button class="matrix-filter-btn" data-filter="operation">🌐 空间运维与院校 (2)</button>
-            </div>
           </div>
 
-          <!-- 精细化选型矩阵表格 -->
+          <!-- 精细化选型矩阵表格 (含吸顶固定复合头) -->
           <div class="solution-matrix-wrap reveal">
             <div class="solution-matrix-table" role="table" aria-label="按建设目标选择产品组合全景矩阵">
-              <!-- 表头 (3 列精炼矩阵) -->
-              <div class="matrix-thead" role="rowgroup">
-                <div class="matrix-tr matrix-tr-head" role="row">
-                  <div class="matrix-th" role="columnheader">建设目标与业务场景</div>
-                  <div class="matrix-th" role="columnheader">推荐产品组合架构</div>
-                  <div class="matrix-th" role="columnheader">适用客户及组织</div>
+              <!-- 复合吸顶头部：Tab 筛选器 + 3 列表头联合固定 -->
+              <div class="matrix-sticky-header">
+                <!-- 1. 多维度业务视角快速筛选栏 -->
+                <div class="matrix-filter-toolbar">
+                  <div class="matrix-filter-bar" role="tablist">
+                    <button class="matrix-filter-btn is-active" data-filter="all">全景方案 (7)</button>
+                    <button class="matrix-filter-btn" data-filter="site">🏗️ 施工现场与安全 (3)</button>
+                    <button class="matrix-filter-btn" data-filter="enterprise">🏢 集团统管与自研 (2)</button>
+                    <button class="matrix-filter-btn" data-filter="operation">🌐 空间运维与院校 (2)</button>
+                  </div>
+                </div>
+
+                <!-- 2. 表头 (3 列精炼矩阵) -->
+                <div class="matrix-thead" role="rowgroup">
+                  <div class="matrix-tr matrix-tr-head" role="row">
+                    <div class="matrix-th" role="columnheader">建设目标与业务场景</div>
+                    <div class="matrix-th" role="columnheader">推荐产品组合架构</div>
+                    <div class="matrix-th" role="columnheader">适用客户及组织</div>
+                  </div>
                 </div>
               </div>
 
@@ -1528,6 +1533,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=20261013_08"></script>
+    <script src="script.js?v=20261013_10"></script>
   </body>
 </html>
