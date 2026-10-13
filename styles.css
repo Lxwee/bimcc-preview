@@ -5997,53 +5997,31 @@ img, svg {
   scroll-margin-top: 80px;
 }
 
-/* 亲密性原则：大幅缩减标题区与表格控制器间的间距 */
+/* 亲密性原则：紧凑舒适的标题区与控制器间距 */
 .product-combos-section .section-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* 矩阵表格外部包装器 (去多余上外边距，overflow: visible 保证吸顶生效) */
-.solution-matrix-wrap {
-  margin-top: 0;
-  background: rgba(10, 16, 30, 0.78);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(56, 189, 248, 0.16);
-  border-radius: 20px;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  overflow: visible;
+/* 矩阵视口容器 (统一管理 Tab 与表格的滚动与生命周期) */
+.solution-matrix-viewport {
   position: relative;
 }
 
-/* 语义化表格结构 */
-.solution-matrix-table {
-  width: 100%;
-}
-
-/* 复合吸顶粘性头部：Tab 筛选条 + 3 列表头在滚动时联合锁定在视口顶部 */
-.matrix-sticky-header {
+/* 1. 多维度业务分类过滤栏 (独立放置在表格外部，支持滚动吸顶) */
+.matrix-filter-wrapper {
   position: -webkit-sticky;
   position: sticky;
   top: var(--header-height, 68px);
-  z-index: 30;
-  background: rgba(6, 11, 23, 0.96);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border-top-left-radius: 19px;
-  border-top-right-radius: 19px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.24);
-  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.06) inset;
-  transition: all 0.2s ease;
-}
-
-/* 顶部业务分类过滤栏容器 */
-.matrix-filter-toolbar {
+  z-index: 25;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 36px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(8, 14, 28, 0.75);
+  margin-bottom: 1.25rem;
+  background: rgba(5, 8, 17, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-sizing: border-box;
 }
 
 .matrix-filter-bar {
@@ -6090,13 +6068,46 @@ img, svg {
   font-weight: 600;
 }
 
-/* 表格行排版 (3 列宽舒比例与 60px 呼吸留白，彻底取消截断) */
+/* 2. 矩阵表格外部包装器 (独立卡片容器，overflow: visible 保证表头吸顶生效) */
+.solution-matrix-wrap {
+  margin-top: 0;
+  background: rgba(10, 16, 30, 0.78);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: visible;
+  position: relative;
+}
+
+/* 语义化表格结构 */
+.solution-matrix-table {
+  width: 100%;
+}
+
+/* 表头吸顶固定层 (在视口滚动至此时，吸附在 Tab 筛选条正下方) */
+.matrix-thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: calc(var(--header-height, 68px) + 56px);
+  z-index: 20;
+  background: rgba(7, 12, 24, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.55);
+}
+
+/* 表格行排版 (3 列宽舒比例、48px 坚固列距、彻底杜绝粘连) */
 .matrix-tr {
   display: grid;
-  grid-template-columns: 380px 1.45fr 1fr;
+  grid-template-columns: 340px 1.55fr 1fr;
   align-items: center;
-  column-gap: 60px;
-  padding: 24px 40px;
+  column-gap: 48px;
+  padding: 22px 36px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -6104,13 +6115,13 @@ img, svg {
 
 .matrix-tr-head {
   background: transparent;
-  padding: 13px 40px;
+  padding: 13px 36px;
   border-bottom: none;
   cursor: default;
 }
 
 .matrix-th {
-  font-size: 0.78125rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: #94a3b8;
   letter-spacing: 0.04em;
