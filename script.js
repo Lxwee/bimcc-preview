@@ -3087,36 +3087,48 @@ function selectDeployMode(mode) {
   const deployData = {
     private: {
       profileTitle: "信创私有化交付模式 (ENTERPRISE)",
-      desc: "独占物理服务器 / 客户信创机房物理隔离，网络物理级防穿透，支持纯离线内网环境下稳定持久运行。",
+      desc: "部署于客户指定信创机房或独占物理集群，全链路物理网络隔离，支持纯离线内网环境下稳定持久运行。",
       badges: [
         { text: "物理网络隔离", cls: "spec-chip-cyan" },
         { text: "独占计算与存储资源", cls: "" },
-        { text: "支持纯离线内网运行", cls: "spec-chip-emerald" },
-        { text: "双机热备与异构容灾", cls: "" }
+        { text: "纯离线内网稳定运行", cls: "spec-chip-emerald" },
+        { text: "双机热备与容灾", cls: "" }
       ],
       clients: [
-        { name: "PC Web 浏览器", sub: "Chrome / Edge / 360国产安全浏览器 / Safari (WebGPU 引擎)", icon: "monitor" },
+        { name: "PC Web 浏览器", sub: "Chrome / Edge / 360国产安全浏览器 / Firefox (WebGL/WebGPU 引擎)", icon: "monitor" },
         { name: "移动端原生 APP", sub: "iOS & Android 双端现场移动巡检、拍照标记与离线填报", icon: "smartphone" },
         { name: "政企协同工作台", sub: "企业微信 / 钉钉 / 飞书 单点登录与原生微应用无缝集成", icon: "users" },
-        { name: "8K 展厅与指挥大屏", sub: "超高清数字孪生视效、多屏拼接与总控中心联动调度", icon: "tv" }
+        { name: "指挥中心大屏", sub: "超高清数字孪生视效、多屏拼接与总控中心联动调度", icon: "tv" }
       ],
       compliance: {
         groups: [
-          { name: "芯片算力", items: ["鲲鹏 Kunpeng", "昇腾 Ascend", "飞腾 Phytium", "海光 Hygon"] },
-          { name: "国产数据库", items: ["达梦 DM8", "人大金仓 Kingbase", "OceanBase"] },
-          { name: "操作系统", items: ["统信 UOS", "麒麟 KylinOS", "EulerOS"] }
+          { name: "芯片算力", items: ["华为鲲鹏（技术认证）", "华为昇腾（技术认证）", "飞腾 Phytium", "海光 Hygon"] },
+          { name: "国产数据库", items: ["达梦 DM8（兼容互认）", "东方通 TongWeb（兼容互认）", "人大金仓 Kingbase", "OceanBase"] },
+          { name: "操作系统", items: ["统信 UOS", "麒麟 KylinOS", "openEuler"] }
         ],
-        endorse: "国家信息系统安全等级保护三级（等保三级）· 全栈信创互认证明体系"
+        endorse: "国家高新技术企业 · CMMI 5级认证 · 信息系统服务交付能力四级 · ISO27001/20000 认证"
       },
       cycle: {
-        number: "3~5",
+        number: "3",
+        sep: "–",
+        subNumber: "5",
         unit: "工作日",
-        stages: ["① 硬件与环境检测", "② 离线镜像包加载", "③ 数据库与网络贯通", "④ 联调验收交付"]
+        tag: "标准环境基准",
+        gains: [
+          { icon: "trend", text: "较传统交付周期压缩 50%" },
+          { icon: "users", text: "人员投入精简至 60%" }
+        ],
+        stages: [
+          { num: "01", name: "环境检测与合规基线" },
+          { num: "02", name: "离线镜像与信创适配" },
+          { num: "03", name: "业务模型与权限初始化" },
+          { num: "04", name: "联调验收与交付赋能" }
+        ]
       },
       service: [
-        { title: "7×24h 专属保障群", desc: "技术专班群实时对接，15 分钟内快速响应机制" },
-        { title: "原厂专家驻场支持", desc: "资深实施顾问与架构师现场驻场协助联调上线" },
-        { title: "年度定期巡检", desc: "系统健康体检、数据库优化调优与平滑版本升级" }
+        { title: "7×24h 专属保障群", desc: "技术专班群实时对接，重大故障 15 分钟内响应机制" },
+        { title: "原厂专家驻场支持", desc: "重庆总部、深圳、成都技术网络，资深顾问驻场保障" },
+        { title: "定期系统健康巡检", desc: "季度系统体检、数据库优化调优与重大保障节点专项护航" }
       ]
     },
     hybrid: {
@@ -3143,30 +3155,42 @@ function selectDeployMode(mode) {
         endorse: "金融级端到端数据传输加密 · 行业专网准入安全合规认证"
       },
       cycle: {
-        number: "1~2",
-        unit: "周",
-        stages: ["① 专网路由策略规划", "② 混合云网关部署", "③ 本地与专线联通", "④ 跨网穿透压测验证"]
+        number: "5",
+        sep: "–",
+        subNumber: "7",
+        unit: "工作日",
+        tag: "专网接入基准",
+        gains: [
+          { icon: "trend", text: "敏捷专网穿透对接" },
+          { icon: "shield", text: "数据本地脱敏留存" }
+        ],
+        stages: [
+          { num: "01", name: "专网网络拓扑评估" },
+          { num: "02", name: "安全专线与网关穿透" },
+          { num: "03", name: "业务与数据隔离初始化" },
+          { num: "04", name: "跨网性能压测与验收" }
+        ]
       },
       service: [
-        { title: "技术客户经理 (TAM)", desc: "专属架构技术总监一对一负责方案演进与问题升级" },
-        { title: "专线链路实时遥测", desc: "7×24 小时跨网专线监控与性能瓶颈智能预警" },
-        { title: "季度性能调优", desc: "每季度针对海量业务数据做专项架构诊断与算力调优" }
+        { title: "技术客户经理 (TAM)", desc: "专属架构技术总监负责方案演进与架构升级" },
+        { title: "专线链路实时遥测", desc: "7×24 小时跨网链路监控与性能瓶颈预警机制" },
+        { title: "季度性能专项调优", desc: "定期针对海量业务数据进行架构诊断与性能调优" }
       ]
     },
     saas: {
       profileTitle: "标准云端 SaaS 敏捷模式 (FAST PASS)",
-      desc: "部署于筑云高可用云原生集群（三可用区异地多活容灾），开箱即用，免去企业本地软硬件采购成本。",
+      desc: "部署于筑云高可用云原生集群（三可用区异地多活容灾），开箱即用，免去企业本地软硬件采购与运维成本。",
       badges: [
-        { text: "开箱即用无需部署", cls: "spec-chip-emerald" },
+        { text: "开箱即用无需本地部署", cls: "spec-chip-emerald" },
         { text: "三可用区多活灾备", cls: "spec-chip-cyan" },
-        { text: "持续无感自动升级", cls: "" },
+        { text: "持续在线敏捷升级", cls: "" },
         { text: "每日多副本自动快照", cls: "" }
       ],
       clients: [
-        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 等随时随地极速免安装秒开", icon: "monitor" },
-        { name: "轻量移动端微应用", sub: "微信小程序 / 钉钉微应用便捷打卡、审批与现场查看", icon: "smartphone" },
-        { name: "企业协同快速对接", sub: "一键扫码绑定企业微信或钉钉租户组织架构", icon: "users" },
-        { name: "云端轻量大屏投屏", sub: "支持一键全屏展示项目实时驾驶舱三维看板", icon: "tv" }
+        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 等免安装在线极速访问", icon: "monitor" },
+        { name: "轻量移动端协同", sub: "微信小程序 / 企微微应用便捷巡检、审批与报表查看", icon: "smartphone" },
+        { name: "企业协同快速对接", sub: "支持扫码绑定企业微信、钉钉租户组织架构", icon: "users" },
+        { name: "云端轻量看板大屏", sub: "一键全屏展示项目实时驾驶舱三维轻量化看板", icon: "tv" }
       ],
       compliance: {
         groups: [
@@ -3174,17 +3198,29 @@ function selectDeployMode(mode) {
           { name: "存储安全", items: ["AES-256 静态落盘加密", "多租户逻辑强隔离", "每日多副本快照"] },
           { name: "安全认证", items: ["公安部等保三级", "ISO 27001 认证"] }
         ],
-        endorse: "银行级多租户逻辑强隔离 · 99.9% 业务可用性 SLA 承诺"
+        endorse: "高标准多租户安全隔离 · 99.9% 业务可用性保障承诺"
       },
       cycle: {
-        number: "< 10",
-        unit: "分钟",
-        stages: ["① 专属租户空间初始化", "② 导入基础项目模板", "③ 权限即刻分配上线"]
+        number: "1",
+        sep: "",
+        subNumber: "",
+        unit: "工作日",
+        tag: "快速开通",
+        gains: [
+          { icon: "trend", text: "零本地硬件投入" },
+          { icon: "check", text: "标准化模板即开即用" }
+        ],
+        stages: [
+          { num: "01", name: "专属租户空间初始化" },
+          { num: "02", name: "组织架构与权限导入" },
+          { num: "03", name: "工程行业模板启用" },
+          { num: "04", name: "在线赋能开箱即用" }
+        ]
       },
       service: [
-        { title: "工作日专属在线客服", desc: "专业技术顾问即时沟通，常见问题 5 分钟内答复" },
-        { title: "全套视频实操文档库", desc: "官方全流程交互式教程、最佳实践指引与持续更新" },
-        { title: "终身免费无感迭代", desc: "云端新功能与核心性能优化每两周自动上线享用" }
+        { title: "工作日专属在线技术支持", desc: "专业技术顾问即时沟通，常见问题 15 分钟内响应" },
+        { title: "全套工程实操视频与文档", desc: "官方全流程交互式教程、最佳实践与持续更新" },
+        { title: "持续功能优化与在线维护", desc: "云端新功能与核心性能优化持续在线更新享受" }
       ]
     }
   };
@@ -3202,11 +3238,18 @@ function selectDeployMode(mode) {
 
   // 辅助 SVG 映射
   const getDeviceSvg = (iconName) => {
-    if (iconName === "monitor") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>';
-    if (iconName === "smartphone") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>';
-    if (iconName === "users") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
-    if (iconName === "tv") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>';
-    return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+    if (iconName === "monitor") return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>';
+    if (iconName === "smartphone") return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>';
+    if (iconName === "users") return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+    if (iconName === "tv") return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>';
+    return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+  };
+
+  const getGainSvg = (iconName) => {
+    if (iconName === "trend") return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>';
+    if (iconName === "users") return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>';
+    if (iconName === "shield") return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
+    return '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
   };
 
   // 3. 部署架构
@@ -3259,18 +3302,40 @@ function selectDeployMode(mode) {
     `;
   }
 
-  // 6. 交付周期 SLA
+  // 6. 交付周期 SLA（精细排版与真实指标）
   const cycleContainer = document.getElementById("specCycleContainer");
   if (cycleContainer) {
+    const numDisplay = data.cycle.subNumber 
+      ? `<span class="spec-num-val">${data.cycle.number}</span><span class="spec-num-sep">${data.cycle.sep}</span><span class="spec-num-val">${data.cycle.subNumber}</span>`
+      : `<span class="spec-num-val">${data.cycle.number}</span>`;
+
     cycleContainer.innerHTML = `
       <div class="spec-sla-layout">
-        <div class="spec-sla-badge">
-          <span class="spec-sla-number">${data.cycle.number}</span>
-          <span class="spec-sla-unit">${data.cycle.unit}</span>
+        <div class="spec-sla-header-row">
+          <div class="spec-sla-badge">
+            <div class="spec-sla-metric">
+              <span class="spec-sla-number">${numDisplay}</span>
+              <span class="spec-sla-unit">${data.cycle.unit}</span>
+            </div>
+            ${data.cycle.tag ? `<span class="spec-sla-tag">${data.cycle.tag}</span>` : ''}
+          </div>
+          ${data.cycle.gains && data.cycle.gains.length ? `
+            <div class="spec-sla-gains">
+              ${data.cycle.gains.map(g => `
+                <span class="spec-sla-gain-item">
+                  ${getGainSvg(g.icon)}
+                  <span>${g.text}</span>
+                </span>
+              `).join("")}
+            </div>
+          ` : ''}
         </div>
         <div class="spec-timeline-steps">
           ${data.cycle.stages.map((st, i) => `
-            <span class="timeline-step-chip">${st}</span>
+            <span class="timeline-step-chip">
+              <span class="step-num">${st.num}</span>
+              <span class="step-name">${st.name}</span>
+            </span>
             ${i < data.cycle.stages.length - 1 ? '<span class="timeline-step-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' : ''}
           `).join("")}
         </div>
