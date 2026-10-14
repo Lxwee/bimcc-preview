@@ -1732,6 +1732,11 @@ function hydrateProductDetail() {
 
   // Render 4 Highly-Differentiated Hero Layout Archetypes per Product Slug
   renderDynamicProductHero(slug, data);
+
+  // 初始化技术规格与交付控制台 (默认选中 private 信创私有化模式)
+  if (typeof window.selectDeployMode === "function") {
+    window.selectDeployMode("private");
+  }
 }
 
 function getProductHeroTags(slug) {
@@ -3078,52 +3083,220 @@ window.switchEngineTab = function(engineKey) {
   }
 };
 
-window.selectDeployMode = function(mode) {
+function selectDeployMode(mode) {
   const deployData = {
     private: {
-      deploy: "私有化部署：独占物理服务器 / 信创机房隔离，支持纯离线内网稳定运行",
-      clients: "PC Web 浏览器 / iOS & Android 原生移动端 / 企微钉钉集成 / 8K 数字展厅大屏",
-      compatibility: "全面适配鲲鹏、昇腾、飞腾、海光芯片及达梦、人大金仓、OceanBase 等国产信创环境",
-      cycle: "标准私有化机房 3~5 个工作日完成交付部署、网络打通与联调验证",
-      service: "7×24 小时专属技术保障群、原厂专家驻场支持与每年定期巡检"
+      profileTitle: "信创私有化交付模式 (ENTERPRISE)",
+      desc: "独占物理服务器 / 客户信创机房物理隔离，网络物理级防穿透，支持纯离线内网环境下稳定持久运行。",
+      badges: [
+        { text: "物理网络隔离", cls: "spec-chip-cyan" },
+        { text: "独占计算与存储资源", cls: "" },
+        { text: "支持纯离线内网运行", cls: "spec-chip-emerald" },
+        { text: "双机热备与异构容灾", cls: "" }
+      ],
+      clients: [
+        { name: "PC Web 浏览器", sub: "Chrome / Edge / 360国产安全浏览器 / Safari (WebGPU 引擎)", icon: "monitor" },
+        { name: "移动端原生 APP", sub: "iOS & Android 双端现场移动巡检、拍照标记与离线填报", icon: "smartphone" },
+        { name: "政企协同工作台", sub: "企业微信 / 钉钉 / 飞书 单点登录与原生微应用无缝集成", icon: "users" },
+        { name: "8K 展厅与指挥大屏", sub: "超高清数字孪生视效、多屏拼接与总控中心联动调度", icon: "tv" }
+      ],
+      compliance: {
+        groups: [
+          { name: "芯片算力", items: ["鲲鹏 Kunpeng", "昇腾 Ascend", "飞腾 Phytium", "海光 Hygon"] },
+          { name: "国产数据库", items: ["达梦 DM8", "人大金仓 Kingbase", "OceanBase"] },
+          { name: "操作系统", items: ["统信 UOS", "麒麟 KylinOS", "EulerOS"] }
+        ],
+        endorse: "国家信息系统安全等级保护三级（等保三级）· 全栈信创互认证明体系"
+      },
+      cycle: {
+        number: "3~5",
+        unit: "工作日",
+        stages: ["① 硬件与环境检测", "② 离线镜像包加载", "③ 数据库与网络贯通", "④ 联调验收交付"]
+      },
+      service: [
+        { title: "7×24h 专属保障群", desc: "技术专班群实时对接，15 分钟内快速响应机制" },
+        { title: "原厂专家驻场支持", desc: "资深实施顾问与架构师现场驻场协助联调上线" },
+        { title: "年度定期巡检", desc: "系统健康体检、数据库优化调优与平滑版本升级" }
+      ]
     },
     hybrid: {
-      deploy: "行业专网 / 混合云：核心敏感数据本地留存，多项目穿透与算力依托行业云专区",
-      clients: "PC Web 浏览器 / 企微与钉钉工作台 / 移动巡检终端 / 指挥中心多屏联动",
-      compatibility: "支持国央企统一身份认证对接（OAuth2 / SAML / IAM）与跨网络安全数据网关",
-      cycle: "专线开通与混合架构联通通常需要 1~2 周完成",
-      service: "专属技术客户经理、混合链路实时监控告警与按季度架构调优"
+      profileTitle: "行业专网 / 混合云协同 (HYBRID)",
+      desc: "核心敏感业务数据本地安全留存，多标段协同穿透与海量三维算力依托行业云专区弹性协同。",
+      badges: [
+        { text: "国企行业专网直连", cls: "spec-chip-purple" },
+        { text: "数据本地脱敏留存", cls: "" },
+        { text: "弹性算力混合协同", cls: "spec-chip-cyan" },
+        { text: "双向安全加密网关", cls: "" }
+      ],
+      clients: [
+        { name: "PC Web 浏览器", sub: "主流现代浏览器即开即用、专线高带宽加速访问", icon: "monitor" },
+        { name: "移动巡检终端", sub: "现场人员手持终端安全离线缓存、入网自动协同同步", icon: "smartphone" },
+        { name: "行业统一工作台", sub: "央国企统一门户微前端嵌入、IAM 身份体系打通", icon: "users" },
+        { name: "指挥中心联动大屏", sub: "项目现场与集团指挥中心跨网络分布式多屏联动", icon: "tv" }
+      ],
+      compliance: {
+        groups: [
+          { name: "身份治理", items: ["OAuth2 / SAML 2.0", "国企统一认证 IAM", "国密 SM2/SM3/SM4"] },
+          { name: "网络隔离", items: ["安全加密专线传输", "反向代理白名单网关", "数据分级脱敏"] },
+          { name: "合规证书", items: ["等保三级准入", "行业政企云合规认证"] }
+        ],
+        endorse: "金融级端到端数据传输加密 · 行业专网准入安全合规认证"
+      },
+      cycle: {
+        number: "1~2",
+        unit: "周",
+        stages: ["① 专网路由策略规划", "② 混合云网关部署", "③ 本地与专线联通", "④ 跨网穿透压测验证"]
+      },
+      service: [
+        { title: "技术客户经理 (TAM)", desc: "专属架构技术总监一对一负责方案演进与问题升级" },
+        { title: "专线链路实时遥测", desc: "7×24 小时跨网专线监控与性能瓶颈智能预警" },
+        { title: "季度性能调优", desc: "每季度针对海量业务数据做专项架构诊断与算力调优" }
+      ]
     },
     saas: {
-      deploy: "标准云端 SaaS：筑云高可用云集群（多可用区异地灾备），开箱即用无需本地硬件投入",
-      clients: "现代主流 Web 浏览器 / 企微应用 / 钉钉小程序 / 手机移动端",
-      compatibility: "标准 HTTPS / TLS 1.3 传输加密，三级等保合规认证与每日多副本自动备份",
-      cycle: "账号即开即用（10 分钟内完成项目空间初始化并下发团队权限）",
-      service: "工作日专属在线技术客服、标准化视频实操库与云端功能免费自动升级"
+      profileTitle: "标准云端 SaaS 敏捷模式 (FAST PASS)",
+      desc: "部署于筑云高可用云原生集群（三可用区异地多活容灾），开箱即用，免去企业本地软硬件采购成本。",
+      badges: [
+        { text: "开箱即用无需部署", cls: "spec-chip-emerald" },
+        { text: "三可用区多活灾备", cls: "spec-chip-cyan" },
+        { text: "持续无感自动升级", cls: "" },
+        { text: "每日多副本自动快照", cls: "" }
+      ],
+      clients: [
+        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 等随时随地极速免安装秒开", icon: "monitor" },
+        { name: "轻量移动端微应用", sub: "微信小程序 / 钉钉微应用便捷打卡、审批与现场查看", icon: "smartphone" },
+        { name: "企业协同快速对接", sub: "一键扫码绑定企业微信或钉钉租户组织架构", icon: "users" },
+        { name: "云端轻量大屏投屏", sub: "支持一键全屏展示项目实时驾驶舱三维看板", icon: "tv" }
+      ],
+      compliance: {
+        groups: [
+          { name: "传输加密", items: ["TLS 1.3 传输加密", "全站 HTTPS 强制", "DDoS 流量防护"] },
+          { name: "存储安全", items: ["AES-256 静态落盘加密", "多租户逻辑强隔离", "每日多副本快照"] },
+          { name: "安全认证", items: ["公安部等保三级", "ISO 27001 认证"] }
+        ],
+        endorse: "银行级多租户逻辑强隔离 · 99.9% 业务可用性 SLA 承诺"
+      },
+      cycle: {
+        number: "< 10",
+        unit: "分钟",
+        stages: ["① 专属租户空间初始化", "② 导入基础项目模板", "③ 权限即刻分配上线"]
+      },
+      service: [
+        { title: "工作日专属在线客服", desc: "专业技术顾问即时沟通，常见问题 5 分钟内答复" },
+        { title: "全套视频实操文档库", desc: "官方全流程交互式教程、最佳实践指引与持续更新" },
+        { title: "终身免费无感迭代", desc: "云端新功能与核心性能优化每两周自动上线享用" }
+      ]
     }
   };
 
   const data = deployData[mode] || deployData.private;
 
+  // 1. 切换按钮状态
   document.querySelectorAll(".deploy-option-btn").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.deployMode === mode);
   });
 
-  const deployText = document.getElementById("specDeployText");
-  if (deployText) deployText.textContent = data.deploy;
+  // 2. 顶部激活徽章
+  const profileBadge = document.getElementById("specActiveProfileBadge");
+  if (profileBadge) profileBadge.textContent = data.profileTitle;
 
-  const clientsText = document.getElementById("specClientsText");
-  if (clientsText) clientsText.textContent = data.clients;
+  // 辅助 SVG 映射
+  const getDeviceSvg = (iconName) => {
+    if (iconName === "monitor") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>';
+    if (iconName === "smartphone") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>';
+    if (iconName === "users") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+    if (iconName === "tv") return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>';
+    return '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+  };
 
-  const compText = document.getElementById("specCompatibilityText");
-  if (compText) compText.textContent = data.compatibility;
+  // 3. 部署架构
+  const deployContainer = document.getElementById("specDeployContainer");
+  if (deployContainer) {
+    deployContainer.innerHTML = `
+      <div class="spec-main-desc">${data.desc}</div>
+      <div class="spec-chips-wrap">
+        ${data.badges.map(b => `<span class="spec-chip ${b.cls}">${b.text}</span>`).join("")}
+      </div>
+    `;
+  }
 
-  const cycleText = document.getElementById("specCycleText");
-  if (cycleText) cycleText.textContent = data.cycle;
+  // 4. 支持终端
+  const clientsContainer = document.getElementById("specClientsContainer");
+  if (clientsContainer) {
+    clientsContainer.innerHTML = `
+      <div class="spec-device-grid">
+        ${data.clients.map(c => `
+          <div class="spec-device-card">
+            <span class="spec-device-icon">${getDeviceSvg(c.icon)}</span>
+            <div class="spec-device-info">
+              <span class="spec-device-name">${c.name}</span>
+              <span class="spec-device-sub">${c.sub}</span>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
 
-  const serviceText = document.getElementById("specServiceText");
-  if (serviceText) serviceText.textContent = data.service;
-};
+  // 5. 国产化与信创合规
+  const compContainer = document.getElementById("specCompatibilityContainer");
+  if (compContainer) {
+    compContainer.innerHTML = `
+      <div class="spec-compliance-block">
+        ${data.compliance.groups.map(g => `
+          <div class="spec-group-row">
+            <span class="spec-group-name">${g.name}</span>
+            <div class="spec-chips-wrap">
+              ${g.items.map(it => `<span class="spec-chip">${it}</span>`).join("")}
+            </div>
+          </div>
+        `).join("")}
+        <div class="spec-security-endorse">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>${data.compliance.endorse}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // 6. 交付周期 SLA
+  const cycleContainer = document.getElementById("specCycleContainer");
+  if (cycleContainer) {
+    cycleContainer.innerHTML = `
+      <div class="spec-sla-layout">
+        <div class="spec-sla-badge">
+          <span class="spec-sla-number">${data.cycle.number}</span>
+          <span class="spec-sla-unit">${data.cycle.unit}</span>
+        </div>
+        <div class="spec-timeline-steps">
+          ${data.cycle.stages.map((st, i) => `
+            <span class="timeline-step-chip">${st}</span>
+            ${i < data.cycle.stages.length - 1 ? '<span class="timeline-step-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' : ''}
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  // 7. 售后保障体系
+  const serviceContainer = document.getElementById("specServiceContainer");
+  if (serviceContainer) {
+    serviceContainer.innerHTML = `
+      <div class="spec-service-grid">
+        ${data.service.map(s => `
+          <div class="service-pillar-card">
+            <span class="pillar-name">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--cyan-400)" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              ${s.title}
+            </span>
+            <span class="pillar-desc">${s.desc}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+}
+window.selectDeployMode = selectDeployMode;
 
 // 方案选型全景矩阵多维筛选与整行直达交互
 document.addEventListener("DOMContentLoaded", () => {
@@ -3175,6 +3348,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", handleFilterSticky, { passive: true });
     window.addEventListener("resize", handleFilterSticky, { passive: true });
     handleFilterSticky();
+  }
+
+  // 规格参数控制台默认载入私有化信创交付模式
+  if (document.getElementById("specDeployContainer") && typeof selectDeployMode === "function") {
+    selectDeployMode("private");
   }
 });
 

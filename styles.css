@@ -4465,35 +4465,54 @@ img, svg {
 /* Interactive Deployment Model Switcher (AuthKit style) */
 .deployment-switcher {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 22px;
   flex-wrap: wrap;
 }
 
 .deploy-option-btn {
   flex: 1;
-  min-width: 180px;
-  padding: 16px 20px;
-  border-radius: var(--radius-md);
-  background: rgba(15, 23, 42, 0.6);
+  min-width: 220px;
+  padding: 18px 22px;
+  border-radius: var(--radius-lg);
+  background: rgba(14, 22, 42, 0.65);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   cursor: pointer;
   text-align: left;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.deploy-option-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.3s ease;
 }
 
 .deploy-option-btn:hover {
-  border-color: rgba(56, 189, 248, 0.3);
-  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(18, 30, 58, 0.85);
+  transform: translateY(-2px);
 }
 
 .deploy-option-btn.active {
-  background: rgba(56, 189, 248, 0.1);
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+  background: rgba(14, 28, 56, 0.9);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.18);
+}
+
+.deploy-option-btn.active::after {
+  background: var(--cyan-400);
 }
 
 .deploy-btn-title {
@@ -4507,14 +4526,421 @@ img, svg {
 
 .deploy-btn-desc {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: #94a3b8;
+  line-height: 1.5;
 }
 
+/* ==========================================================================
+   企业级产品技术规格与交付控制台 (Enterprise Product Specs Matrix Console)
+   ========================================================================== */
 
-@media (max-width: 640px) {
-  .spec-table-row {
+.spec-matrix-console {
+  background: rgba(11, 18, 36, 0.85);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7), 
+              0 0 0 1px rgba(56, 189, 248, 0.12) inset,
+              0 1px 0 0 rgba(255, 255, 255, 0.15) inset;
+  position: relative;
+}
+
+/* 控制台顶栏状态栏 (Console Header Strip) */
+.spec-console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 24px;
+  background: rgba(6, 11, 24, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.spec-console-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.spec-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  font-size: 0.6875rem;
+  color: #4ade80;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.spec-status-pill .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.spec-active-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  padding: 4px 12px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* 控制台行项目 (Spec Console Row) */
+.spec-console-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s ease;
+  position: relative;
+  align-items: start;
+}
+
+.spec-console-row:last-child {
+  border-bottom: none;
+}
+
+.spec-console-row:hover {
+  background: rgba(56, 189, 248, 0.025);
+}
+
+.spec-console-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+.spec-console-row:hover::before {
+  background: var(--cyan-400);
+}
+
+/* 左侧指标标题组 (Metric Label Group) */
+.spec-metric-label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.spec-metric-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.spec-metric-icon-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan-400);
+  flex-shrink: 0;
+}
+
+.spec-metric-code {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding-left: 34px;
+}
+
+/* 右侧内容容器 (Metric Value Area) */
+.spec-metric-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 44px;
+  justify-content: center;
+}
+
+.spec-main-desc {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #e2e8f0;
+}
+
+/* 特性与芯片徽章组 (Pill / Chip Group) */
+.spec-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.spec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 5px 11px;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.spec-chip:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+}
+
+.spec-chip-cyan {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.25);
+  color: #7dd3fc;
+}
+
+.spec-chip-purple {
+  background: rgba(167, 139, 250, 0.08);
+  border-color: rgba(167, 139, 250, 0.25);
+  color: #c4b5fd;
+}
+
+.spec-chip-emerald {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #86efac;
+}
+
+/* 终端生态微网格 (Client Device Grid) */
+.spec-device-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.spec-device-card {
+  background: rgba(6, 11, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.spec-device-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(14, 24, 48, 0.7);
+}
+
+.spec-device-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--cyan-400);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.spec-device-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.spec-device-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.spec-device-sub {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+/* 信创分组与合规背书栏 */
+.spec-compliance-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spec-group-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.spec-group-name {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #64748b;
+  font-weight: 600;
+  min-width: 68px;
+}
+
+.spec-security-endorse {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin-top: 4px;
+}
+
+/* 交付 SLA 数字与阶段槽 */
+.spec-sla-layout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.spec-sla-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 8px 16px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.spec-sla-number {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--cyan-400);
+  line-height: 1;
+}
+
+.spec-sla-unit {
+  font-size: 0.75rem;
+  color: #bae6fd;
+}
+
+.spec-timeline-steps {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.timeline-step-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: #cbd5e1;
+  background: rgba(6, 11, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.timeline-step-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* 运维保障 3 大支柱 */
+.spec-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.service-pillar-card {
+  background: rgba(6, 11, 24, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.service-pillar-card:hover {
+  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(14, 24, 48, 0.7);
+}
+
+.pillar-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pillar-desc {
+  font-size: 0.6875rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+@media (max-width: 820px) {
+  .spec-console-row {
     grid-template-columns: 1fr;
-    gap: 0.35rem;
+    gap: 12px;
+    padding: 18px 20px;
+  }
+  .spec-metric-code {
+    padding-left: 0;
+  }
+  .spec-device-grid {
+    grid-template-columns: 1fr;
+  }
+  .spec-service-grid {
+    grid-template-columns: 1fr;
   }
 }
 
