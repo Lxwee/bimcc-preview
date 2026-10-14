@@ -3095,18 +3095,18 @@ function selectDeployMode(mode) {
         { text: "双机热备与容灾", cls: "" }
       ],
       clients: [
-        { name: "PC Web 浏览器", sub: "Chrome / Edge / 360国产安全浏览器 / Firefox (WebGL/WebGPU 引擎)", icon: "monitor" },
-        { name: "移动端原生 APP", sub: "iOS & Android 双端现场移动巡检、拍照标记与离线填报", icon: "smartphone" },
-        { name: "政企协同工作台", sub: "企业微信 / 钉钉 / 飞书 单点登录与原生微应用无缝集成", icon: "users" },
-        { name: "指挥中心大屏", sub: "超高清数字孪生视效、多屏拼接与总控中心联动调度", icon: "tv" }
+        { name: "PC Web 浏览器", sub: "Chrome / Edge / 360安全浏览器 / Firefox", icon: "monitor" },
+        { name: "移动端原生 APP", sub: "iOS & Android 移动巡检与离线填报", icon: "smartphone" },
+        { name: "政企协同工作台", sub: "企微 / 钉钉 / 飞书 单点登录与应用集成", icon: "users" },
+        { name: "指挥中心大屏", sub: "超高清数字孪生视效与多屏拼接联动", icon: "tv" }
       ],
       compliance: {
         groups: [
-          { name: "芯片算力", items: ["华为鲲鹏（技术认证）", "华为昇腾（技术认证）", "飞腾 Phytium", "海光 Hygon"] },
-          { name: "国产数据库", items: ["达梦 DM8（兼容互认）", "东方通 TongWeb（兼容互认）", "人大金仓 Kingbase", "OceanBase"] },
+          { name: "芯片算力", items: ["华为鲲鹏", "华为昇腾", "飞腾 Phytium", "海光 Hygon"] },
+          { name: "国产数据库", items: ["达梦 DM8", "东方通 TongWeb", "人大金仓", "OceanBase"] },
           { name: "操作系统", items: ["统信 UOS", "麒麟 KylinOS", "openEuler"] }
         ],
-        endorse: "国家高新技术企业 · CMMI 5级认证 · 信息系统服务交付能力四级 · ISO27001/20000 认证"
+        endorse: "国家高新技术企业 · CMMI 5级认证 · 鲲鹏/昇腾互认证 · 达梦兼容 · 等保三级"
       },
       cycle: {
         number: "3",
@@ -3141,14 +3141,14 @@ function selectDeployMode(mode) {
         { text: "双向安全加密网关", cls: "" }
       ],
       clients: [
-        { name: "PC Web 浏览器", sub: "主流现代浏览器即开即用、专线高带宽加速访问", icon: "monitor" },
-        { name: "移动巡检终端", sub: "现场人员手持终端安全离线缓存、入网自动协同同步", icon: "smartphone" },
-        { name: "行业统一工作台", sub: "央国企统一门户微前端嵌入、IAM 身份体系打通", icon: "users" },
-        { name: "指挥中心联动大屏", sub: "项目现场与集团指挥中心跨网络分布式多屏联动", icon: "tv" }
+        { name: "PC Web 浏览器", sub: "主流现代浏览器即开即用、专线高带宽加速", icon: "monitor" },
+        { name: "移动巡检终端", sub: "现场终端安全离线缓存、入网自动协同同步", icon: "smartphone" },
+        { name: "行业统一工作台", sub: "国企统一门户微前端嵌入、统一身份打通", icon: "users" },
+        { name: "指挥中心联动大屏", sub: "项目现场与集团指挥中心跨网络分布式联动", icon: "tv" }
       ],
       compliance: {
         groups: [
-          { name: "身份治理", items: ["OAuth2 / SAML 2.0", "国企统一认证 IAM", "国密 SM2/SM3/SM4"] },
+          { name: "身份治理", items: ["OAuth2 / SAML 2.0", "国企统一认证 IAM", "国密 SM2/3/4"] },
           { name: "网络隔离", items: ["安全加密专线传输", "反向代理白名单网关", "数据分级脱敏"] },
           { name: "合规证书", items: ["等保三级准入", "行业政企云合规认证"] }
         ],
@@ -3187,9 +3187,9 @@ function selectDeployMode(mode) {
         { text: "每日多副本自动快照", cls: "" }
       ],
       clients: [
-        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 等免安装在线极速访问", icon: "monitor" },
-        { name: "轻量移动端协同", sub: "微信小程序 / 企微微应用便捷巡检、审批与报表查看", icon: "smartphone" },
-        { name: "企业协同快速对接", sub: "支持扫码绑定企业微信、钉钉租户组织架构", icon: "users" },
+        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 在线极速免安装秒开", icon: "monitor" },
+        { name: "轻量移动端协同", sub: "微信小程序 / 企微微应用巡检审批与报表", icon: "smartphone" },
+        { name: "企业协同快速对接", sub: "一键扫码绑定企业微信、钉钉租户组织架构", icon: "users" },
         { name: "云端轻量看板大屏", sub: "一键全屏展示项目实时驾驶舱三维轻量化看板", icon: "tv" }
       ],
       compliance: {

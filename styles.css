@@ -4528,6 +4528,9 @@ img, svg {
   font-size: 0.75rem;
   color: #94a3b8;
   line-height: 1.5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ==========================================================================
@@ -4606,40 +4609,6 @@ img, svg {
   padding: 4px 12px;
   border-radius: 4px;
   letter-spacing: 0.02em;
-}
-
-/* 控制台行项目 (Spec Console Row) */
-.spec-console-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  padding: 22px 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.25s ease;
-  position: relative;
-  align-items: start;
-}
-
-.spec-console-row:last-child {
-  border-bottom: none;
-}
-
-.spec-console-row:hover {
-  background: rgba(56, 189, 248, 0.025);
-}
-
-.spec-console-row::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: transparent;
-  transition: background 0.25s ease;
-}
-
-.spec-console-row:hover::before {
-  background: var(--cyan-400);
 }
 
 /* 左侧指标标题组 (Metric Label Group - 严格网格左对齐与呼吸感亲密性) */
@@ -4834,28 +4803,32 @@ img, svg {
   font-size: 0.6875rem;
   color: #94a3b8;
   line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* 信创分组与权威背书栏 */
+/* 信创分组与权威背书栏 (严格双列水平对齐网格) */
 .spec-compliance-block {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .spec-group-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 80px 1fr;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  column-gap: 16px;
 }
 
 .spec-group-name {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: #64748b;
+  font-size: 0.75rem;
+  color: #94a3b8;
   font-weight: 600;
-  min-width: 72px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
 .spec-security-endorse {
@@ -5060,6 +5033,13 @@ img, svg {
   }
   .spec-service-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .spec-group-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 }
 
