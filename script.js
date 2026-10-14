@@ -731,11 +731,11 @@ const productPages = {
       ["物联网与 AI 中台", "支撑多协议设备接入、规则联动、AI 查询、智能体创建和业务辅助。"]
     ],
     scenarios: [
-      ["企业级数字化平台建设", "为集团、工程局、城投平台和企业数字化部门构建多项目、多组织、多角色协同平台。"],
-      ["项目级智能建造平台交付", "快速配置进度、质量、安全、成本、物资设备、数字档案和项目驾驶舱。"],
-      ["智慧工地应用扩展", "结合现场设备、视频、传感器和物联网中台，构建风险预警和监管对接应用。"],
-      ["数字孪生与一张图应用", "将模型、地图、业务、实景和设备状态接入统一可视化界面。"],
-      ["工程 AI 应用构建", "支持平台文档查询、平台数据查询、自然语言操作和高频数据辅助录入。"]
+      ["企业级数字化平台建设", "为集团、工程局、城投平台和企业数字化部门构建多项目、多组织、多角色协同平台。", ["组织权限梳理", "业务模块组装", "集团驾驶舱上线"]],
+      ["项目级智能建造平台交付", "快速配置进度、质量、安全、成本、物资设备、数字档案和项目驾驶舱。", ["进度工期仿真", "多专业协同推进", "数字化竣工归档"]],
+      ["智慧工地应用扩展", "结合现场设备、视频、传感器和物联网中台，构建风险预警和监管对接应用。", ["边缘设备组网", "风险隐患智能告警", "现场监管闭环"]],
+      ["数字孪生与一张图应用", "将模型、地图、业务、实景和设备状态接入统一可视化界面。", ["空间底座接入", "工况实时孪生", "态势综合调度"]],
+      ["工程 AI 应用构建", "支持平台文档查询、平台数据查询、自然语言操作和高频数据辅助录入。", ["工程知识库构建", "语言查询调度", "智能辅助填报生成"]]
     ],
     deliverables: ["飞椽平台应用配置成果", "页面与表单配置", "流程与权限体系", "报表和驾驶舱", "移动端应用入口", "设备组态与联动规则", "AI 助手或智能体应用", "平台培训与迭代机制"],
     relatedTitle: "飞椽适合支撑多类平台快速落地",
@@ -1397,6 +1397,53 @@ function renderCards(root, selector, items = [], mode = "cards") {
   const container = root.querySelector(selector);
   if (!container) return;
 
+  function getScenarioWorkflowSteps(title = "", tag = "", rawItem = null) {
+    if (Array.isArray(rawItem) && Array.isArray(rawItem[2]) && rawItem[2].length === 3) {
+      return rawItem[2];
+    }
+    if (rawItem && Array.isArray(rawItem.steps) && rawItem.steps.length === 3) {
+      return rawItem.steps;
+    }
+    const combined = `${title} ${tag}`.toLowerCase();
+    if (combined.includes("企业级") || combined.includes("数字化平台") || combined.includes("城投") || combined.includes("多项目")) {
+      return ["权限与组织梳理", "业务模块拼装", "集团驾驶舱上线"];
+    }
+    if (combined.includes("智能建造") || combined.includes("机场") || combined.includes("枢纽") || combined.includes("履约")) {
+      return ["进度网络仿真", "多专业工序协同", "数字化竣工归档"];
+    }
+    if (combined.includes("智慧工地") || combined.includes("轨道") || combined.includes("铁路") || combined.includes("物联")) {
+      return ["边缘设备组网", "风险隐患智能告警", "现场联动闭环监管"];
+    }
+    if (combined.includes("数字孪生") || combined.includes("一张图") || combined.includes("水利") || combined.includes("隧洞")) {
+      return ["空间底座接入", "工况实时孪生", "态势综合调度"];
+    }
+    if (combined.includes("ai") || combined.includes("市政") || combined.includes("路桥") || combined.includes("智能体")) {
+      return ["工程知识库构建", "自然语言查询调度", "智能辅助填报生成"];
+    }
+    if (combined.includes("运维") || combined.includes("资产") || combined.includes("园区") || combined.includes("场馆")) {
+      return ["空间资产挂接", "设备遥测阈值告警", "工单流转闭环处置"];
+    }
+    if (combined.includes("展厅") || combined.includes("指挥") || combined.includes("观摩") || combined.includes("大屏")) {
+      return ["多源数据接入", "三维视效渲染", "指挥多屏联动"];
+    }
+    if (combined.includes("土石方") || combined.includes("扫描") || combined.includes("无人机") || combined.includes("点云") || combined.includes("实景")) {
+      return ["激光点云扫描", "实景三维高精重构", "实模一致对比验评"];
+    }
+    if (combined.includes("班前") || combined.includes("交底") || combined.includes("安全")) {
+      return ["AI 考勤与交底", "高危风险语音播报", "作业人员签字确认"];
+    }
+    if (combined.includes("实训") || combined.includes("教育") || combined.includes("院校") || combined.includes("课程")) {
+      return ["岗位实训课件导入", "工程虚拟仿真演练", "实操技能考评认证"];
+    }
+    if (combined.includes("咨询") || combined.includes("深化") || combined.includes("设计")) {
+      return ["全专业碰撞排查", "机电管线净高优化", "深化成果轻量交付"];
+    }
+    if (combined.includes("监管") || combined.includes("政府")) {
+      return ["区域数据规范映射", "监管指标穿透核查", "预警事项督办闭环"];
+    }
+    return ["方案规划与配置", "协同编排与落地", "成果沉淀与复用"];
+  }
+
   const scenarioMeta = [
     { icon: "building", tag: "房建与公建重点工程" },
     { icon: "airport", tag: "民航机场与综合枢纽" },
@@ -1538,6 +1585,7 @@ function renderCards(root, selector, items = [], mode = "cards") {
 
       if (mode === "scenarios") {
         const meta = scenarioMeta[index % scenarioMeta.length];
+        const steps = getScenarioWorkflowSteps(title, meta.tag, item);
         return `
           <div class="scenario-showcase-card">
             <div class="scenario-badge-bar">
@@ -1550,26 +1598,19 @@ function renderCards(root, selector, items = [], mode = "cards") {
             <h3 class="scenario-heading">${escapeHtml(title)}</h3>
             <p class="scenario-body-text">${escapeHtml(text)}</p>
             
-            <!-- 场景 3 阶全流程流水线 -->
+            <!-- 场景专属 3 阶业务全流程流水线 -->
             <div class="scenario-workflow-track">
-              <div class="workflow-step active">
-                <span class="step-dot"></span>
-                <span>01 规划建模</span>
-              </div>
-              <span class="step-arrow">${getSvg("arrowRight", 10, "var(--text-muted)")}</span>
-              <div class="workflow-step">
-                <span class="step-dot"></span>
-                <span>02 施工协同</span>
-              </div>
-              <span class="step-arrow">${getSvg("arrowRight", 10, "var(--text-muted)")}</span>
-              <div class="workflow-step">
-                <span class="step-dot"></span>
-                <span>03 资产运维</span>
-              </div>
-            </div>
-
-            <div class="scenario-meta-strip">
-              <span class="scenario-action-hint">查看该场景实施规范 ${getSvg("arrowRight", 11, "var(--cyan-400)")}</span>
+              ${steps
+                .map(
+                  (st, i) => `
+                <div class="workflow-step ${i === 0 ? "active" : ""}">
+                  <span class="step-dot"></span>
+                  <span>0${i + 1} ${escapeHtml(st)}</span>
+                </div>
+                ${i < steps.length - 1 ? `<span class="step-arrow">${getSvg("arrowRight", 10, "var(--text-muted)")}</span>` : ""}
+              `
+                )
+                .join("")}
             </div>
           </div>
         `;
