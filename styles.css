@@ -4614,7 +4614,7 @@ img, svg {
 /* 左侧指标标题组 (Metric Label Group - 严格网格左对齐与呼吸感亲密性) */
 .spec-console-row {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 195px 1fr;
   align-items: flex-start;
   column-gap: 36px;
   padding: 24px 30px;
@@ -4649,7 +4649,7 @@ img, svg {
 .spec-metric-label {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 18px;
   padding-top: 2px;
 }
 
