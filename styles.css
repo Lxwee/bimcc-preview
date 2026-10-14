@@ -2016,30 +2016,43 @@ img, svg {
   margin: 0 0 24px 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .arch-feature-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.arch-feature-item strong {
-  color: #fff;
-  font-weight: 600;
-  white-space: nowrap;
+  gap: 12px;
 }
 
 .arch-feature-bullet {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  margin-top: 8px;
+  margin-top: 7px;
   flex-shrink: 0;
+}
+
+.arch-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.arch-item-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.arch-item-desc {
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #94a3b8);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
 }
 
 .arch-card-layer-1 .arch-feature-bullet {
