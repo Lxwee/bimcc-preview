@@ -3087,16 +3087,16 @@ function selectDeployMode(mode) {
   const deployData = {
     private: {
       profileTitle: "信创私有化交付模式 (ENTERPRISE)",
-      desc: "部署于客户指定信创机房或独占物理集群，全链路物理网络隔离，支持纯离线内网环境下稳定持久运行。",
+      desc: "部署于客户指定信创机房或服务器，全链路物理隔离，支持纯离线内网稳定运行。",
       badges: [
         { text: "物理网络隔离", cls: "spec-chip-cyan" },
         { text: "独占计算与存储资源", cls: "" },
         { text: "纯离线内网稳定运行", cls: "spec-chip-emerald" },
-        { text: "双机热备与容灾", cls: "" }
+        { text: "双机热备与高可用", cls: "" }
       ],
       clients: [
         { name: "PC Web 浏览器", sub: "Chrome / Edge / 360安全浏览器 / Firefox", icon: "monitor" },
-        { name: "移动端原生 APP", sub: "iOS & Android 移动巡检与离线填报", icon: "smartphone" },
+        { name: "移动端原生 APP", sub: "iOS & Android 移动巡检与现场离线填报", icon: "smartphone" },
         { name: "政企协同工作台", sub: "企微 / 钉钉 / 飞书 单点登录与应用集成", icon: "users" },
         { name: "指挥中心大屏", sub: "超高清数字孪生视效与多屏拼接联动", icon: "tv" }
       ],
@@ -3115,13 +3115,13 @@ function selectDeployMode(mode) {
         unit: "工作日",
         tag: "标准环境基准",
         gains: [
-          { icon: "trend", text: "较传统交付周期压缩 50%" },
-          { icon: "users", text: "人员投入精简至 60%" }
+          { icon: "trend", text: "离线镜像标准化部署" },
+          { icon: "shield", text: "工程数据本地自主可控" }
         ],
         stages: [
-          { num: "01", name: "环境检测与合规基线" },
-          { num: "02", name: "离线镜像与信创适配" },
-          { num: "03", name: "业务模型与权限初始化" },
+          { num: "01", name: "运行环境检测与基线确认" },
+          { num: "02", name: "离线镜像导入与信创适配" },
+          { num: "03", name: "业务模型与权限组织初始化" },
           { num: "04", name: "联调验收与交付赋能" }
         ]
       },
@@ -3132,94 +3132,94 @@ function selectDeployMode(mode) {
       ]
     },
     hybrid: {
-      profileTitle: "行业专网 / 混合云协同 (HYBRID)",
-      desc: "核心敏感业务数据本地安全留存，多标段协同穿透与海量三维算力依托行业云专区弹性协同。",
+      profileTitle: "行业专网 / 混合协同模式 (HYBRID)",
+      desc: "工程核心业务数据本地安全留存，多标段与监管端通过安全专网实现跨网受控协同。",
       badges: [
         { text: "国企行业专网直连", cls: "spec-chip-purple" },
-        { text: "数据本地脱敏留存", cls: "" },
-        { text: "弹性算力混合协同", cls: "spec-chip-cyan" },
-        { text: "双向安全加密网关", cls: "" }
+        { text: "工程数据本地留存", cls: "" },
+        { text: "多标段跨网络协同", cls: "spec-chip-cyan" },
+        { text: "安全前置网关隔离", cls: "" }
       ],
       clients: [
-        { name: "PC Web 浏览器", sub: "主流现代浏览器即开即用、专线高带宽加速", icon: "monitor" },
-        { name: "移动巡检终端", sub: "现场终端安全离线缓存、入网自动协同同步", icon: "smartphone" },
-        { name: "行业统一工作台", sub: "国企统一门户微前端嵌入、统一身份打通", icon: "users" },
-        { name: "指挥中心联动大屏", sub: "项目现场与集团指挥中心跨网络分布式联动", icon: "tv" }
+        { name: "PC Web 浏览器", sub: "主流浏览器专线高速访问，免额外插件安装", icon: "monitor" },
+        { name: "现场移动巡检端", sub: "支持现场弱网/无网离线填报，入网自动同步", icon: "smartphone" },
+        { name: "行业统一工作台", sub: "支持国企统一门户微前端嵌入与单点登录对接", icon: "users" },
+        { name: "指挥中心联动大屏", sub: "支持项目部与集团指挥中心跨网分布式大屏联动", icon: "tv" }
       ],
       compliance: {
         groups: [
-          { name: "身份治理", items: ["OAuth2 / SAML 2.0", "国企统一认证 IAM", "国密 SM2/3/4"] },
-          { name: "网络隔离", items: ["安全加密专线传输", "反向代理白名单网关", "数据分级脱敏"] },
-          { name: "合规证书", items: ["等保三级准入", "行业政企云合规认证"] }
+          { name: "身份治理", items: ["统一身份认证", "OAuth2 / CAS 单点登录", "RBAC 细粒度权限控制"] },
+          { name: "网络隔离", items: ["安全加密专网传输", "前置机反向代理网关", "敏感工程数据分级隔离"] },
+          { name: "安全基线", items: ["等保三级安全基线", "全链路操作审计日志", "接口访问控制防护"] }
         ],
-        endorse: "金融级端到端数据传输加密 · 行业专网准入安全合规认证"
+        endorse: "严格遵循国家网络安全等级保护三级规范 · 满足大型国央企工程数字化建设安全要求"
       },
       cycle: {
         number: "5",
         sep: "–",
-        subNumber: "7",
+        subNumber: "10",
         unit: "工作日",
         tag: "专网接入基准",
         gains: [
-          { icon: "trend", text: "敏捷专网穿透对接" },
-          { icon: "shield", text: "数据本地脱敏留存" }
+          { icon: "trend", text: "专线联通即配即用" },
+          { icon: "shield", text: "多网数据安全可控" }
         ],
         stages: [
-          { num: "01", name: "专网网络拓扑评估" },
-          { num: "02", name: "安全专线与网关穿透" },
-          { num: "03", name: "业务与数据隔离初始化" },
-          { num: "04", name: "跨网性能压测与验收" }
+          { num: "01", name: "专网拓扑与网关安全评估" },
+          { num: "02", name: "安全专线配置与网络打通" },
+          { num: "03", name: "业务模型与跨标段权限配置" },
+          { num: "04", name: "跨网性能联调与验收上线" }
         ]
       },
       service: [
-        { title: "专属架构顾问对接", desc: "资深技术顾问全程跟进，协助推进系统架构演进与方案落地" },
+        { title: "专属架构顾问对接", desc: "资深技术顾问全程跟进，协助推进专网系统架构落地与配置调优" },
         { title: "多网协同排障支持", desc: "协助跨网络专线联调对接，协同排查多网络环境链路异常" },
         { title: "系统性能定向调优", desc: "针对工程大数据量并发场景，提供定向架构诊断与运行优化支持" }
       ]
     },
     saas: {
-      profileTitle: "标准云端 SaaS 敏捷模式 (FAST PASS)",
-      desc: "部署于筑云高可用云原生集群（三可用区异地多活容灾），开箱即用，免去企业本地软硬件采购与运维成本。",
+      profileTitle: "标准云端敏捷模式 (FAST PASS)",
+      desc: "依托云端架构开箱即用，免除本地软硬件采购与运维负担，支持标准化项目敏捷开通。",
       badges: [
         { text: "开箱即用无需本地部署", cls: "spec-chip-emerald" },
-        { text: "三可用区多活灾备", cls: "spec-chip-cyan" },
-        { text: "持续在线敏捷升级", cls: "" },
-        { text: "每日多副本自动快照", cls: "" }
+        { text: "免服务器硬件投入", cls: "spec-chip-cyan" },
+        { text: "标准化模板即选即用", cls: "" },
+        { text: "多租户安全数据隔离", cls: "" }
       ],
       clients: [
-        { name: "主流 Web 浏览器", sub: "Chrome / Edge / Safari 在线极速免安装秒开", icon: "monitor" },
-        { name: "轻量移动端协同", sub: "微信小程序 / 企微微应用巡检审批与报表", icon: "smartphone" },
-        { name: "企业协同快速对接", sub: "一键扫码绑定企业微信、钉钉租户组织架构", icon: "users" },
-        { name: "云端轻量看板大屏", sub: "一键全屏展示项目实时驾驶舱三维轻量化看板", icon: "tv" }
+        { name: "主流现代浏览器", sub: "Chrome / Edge / Firefox 快速访问，免客户端安装", icon: "monitor" },
+        { name: "移动端协同巡检", sub: "微信小程序 / 企微与钉钉轻量巡检、审批与报表", icon: "smartphone" },
+        { name: "协同平台一键对接", sub: "一键扫码绑定企业微信、钉钉租户组织架构", icon: "users" },
+        { name: "项目驾驶舱看板", sub: "一键全屏展示项目实时进度、质量安全三维看板", icon: "tv" }
       ],
       compliance: {
         groups: [
-          { name: "传输加密", items: ["TLS 1.3 传输加密", "全站 HTTPS 强制", "DDoS 流量防护"] },
-          { name: "存储安全", items: ["AES-256 静态落盘加密", "多租户逻辑强隔离", "每日多副本快照"] },
-          { name: "安全认证", items: ["公安部等保三级", "ISO 27001 认证"] }
+          { name: "传输安全", items: ["TLS 安全传输加密", "全站 HTTPS 强制", "接口防护与流量控制"] },
+          { name: "数据安全", items: ["多租户逻辑强隔离", "定时自动化数据快照备份", "敏感数据分级加密存储"] },
+          { name: "平台认证", items: ["国家等保三级规范", "国家高新技术企业", "CMMI 5级成熟度研发体系"] }
         ],
-        endorse: "高标准多租户安全隔离 · 99.9% 业务可用性保障承诺"
+        endorse: "遵循国家等保三级安全规范 · CMMI 5级工程化研发管理 · 严守企业租户数据隔离安全底线"
       },
       cycle: {
         number: "1",
-        sep: "",
-        subNumber: "",
+        sep: "–",
+        subNumber: "3",
         unit: "工作日",
-        tag: "快速开通",
+        tag: "快速开通基准",
         gains: [
-          { icon: "trend", text: "零本地硬件投入" },
-          { icon: "check", text: "标准化模板即开即用" }
+          { icon: "trend", text: "零本地服务器投入" },
+          { icon: "check", text: "标准化行业模板即用" }
         ],
         stages: [
-          { num: "01", name: "专属租户空间初始化" },
-          { num: "02", name: "组织架构与权限导入" },
-          { num: "03", name: "工程行业模板启用" },
-          { num: "04", name: "在线赋能开箱即用" }
+          { num: "01", name: "专属企业租户空间开通" },
+          { num: "02", name: "组织架构与权限角色导入" },
+          { num: "03", name: "工程业务标准化模板启用" },
+          { num: "04", name: "在线系统培训与开箱即用" }
         ]
       },
       service: [
         { title: "官方在线技术支持", desc: "专业技术顾问工作日在线答疑，指导功能配置与日常业务操作" },
-        { title: "标准化实操指引与文档", desc: "提供工程全流程实操视频、知识库指引与最佳实践持续更新" },
+        { title: "全套实操指引与文档", desc: "提供工程全流程实操视频、知识库指引与最佳实践持续更新" },
         { title: "持续云端迭代优化", desc: "享受平台核心能力在线升级与功能持续迭代，免去本地维护负担" }
       ]
     }
