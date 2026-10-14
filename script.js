@@ -1501,8 +1501,8 @@ function renderCards(root, selector, items = [], mode = "cards") {
         return `
           <div class="bento-metric-card">
             <div class="card-top-bar">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <span class="card-icon-box card-icon-cyan" style="width: 26px; height: 26px; border-radius: 6px;">
+              <div class="card-top-bar-left">
+                <span class="card-icon-box card-icon-cyan">
                   ${getSvg("layers", 13, "var(--cyan-400)")}
                 </span>
                 <span class="card-num-badge">PILLAR ${count}</span>
