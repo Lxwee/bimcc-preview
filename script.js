@@ -1833,13 +1833,12 @@ function renderDynamicProductHero(slug, data) {
         </div>
       </div>
     `;
-  } else if (slug === 'bimcc-platform' || slug === 'digital-twin') {
-    // Archetype 2: 3D Spatial Hologram & LOD Dial HUD (Raycast / Linear style)
-    const isTwin = slug === 'digital-twin';
+  } else if (slug === 'bimcc-platform') {
+    // Archetype 2A: 3D Spatial Hologram & LOD Dial HUD (BIMCC 智能建造平台)
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>${isTwin ? 'SPATIAL TWIN & IOT OPS' : '3D SPATIAL ENGINE · BIMCC'}</div>
+          <div class="eyebrow-badge"><span class="status-pulse"></span>3D SPATIAL ENGINE · BIMCC</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 28px;">
@@ -1856,7 +1855,7 @@ function renderDynamicProductHero(slug, data) {
           </div>
           <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
             <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[WebGPU ACCELERATED · NATIVE CORE]</div>
-            <div class="spatial-hero-val">${isTwin ? '12,800,000' : '14,280,000'}</div>
+            <div class="spatial-hero-val">14,280,000</div>
             <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">空间实体构件 · LOD 自动逐级退化 · 毫秒级空间检索</div>
             <div class="hero-num-metric" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
               <span class="status-pulse" style="background: #34d399;"></span> 渲染帧率 60.0 fps (锁定) · 延迟 &lt; 16ms
@@ -1868,12 +1867,57 @@ function renderDynamicProductHero(slug, data) {
               <span class="spatial-stat-lbl">渲染批次 DRAWCALLS</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val">${isTwin ? '11.8 M' : '14.28 M'}</span>
+              <span class="spatial-stat-val">14.28 M</span>
               <span class="spatial-stat-lbl">三角面片 TRIANGLES</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val">${isTwin ? '160 MB' : '184 MB'}</span>
+              <span class="spatial-stat-val">184 MB</span>
               <span class="spatial-stat-lbl">显存占用 VRAM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slug === 'digital-twin') {
+    // Archetype 2B: Spatial Twin & IoT Smart Operations HUD (数字孪生与智慧运维专属控制台)
+    container.innerHTML = `
+      <div class="hero-grid" style="align-items: center; gap: 40px;">
+        <div class="hero-content">
+          <div class="eyebrow-badge"><span class="status-pulse"></span>SPATIAL TWIN & IOT OPS</div>
+          <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <div class="hero-actions" style="margin-bottom: 28px;">
+            <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
+          </div>
+          ${getProductHeroTags(slug)}
+        </div>
+        <div class="spatial-hud-box">
+          <div class="lod-tabs-strip">
+            <button class="lod-tab-btn active">空间一张图</button>
+            <button class="lod-tab-btn">物理场仿真</button>
+            <button class="lod-tab-btn">IoT态势感知</button>
+            <button class="lod-tab-btn">预测性维保</button>
+          </div>
+          <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
+            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[SPATIAL IOT TWIN ENGINE · ACTIVE]</div>
+            <div class="spatial-hero-val">99.85<span style="font-size: 1.5rem; color: var(--cyan-400); margin-left: 2px;">%</span></div>
+            <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">空间设备资产全域纳管 · 水动力管网动态反向映射推演</div>
+            <div class="hero-num-metric" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
+              <span class="status-pulse" style="background: #34d399;"></span> 设备健康运行率 99.85% · 异常告警响应 &lt; 1.2s
+            </div>
+          </div>
+          <div class="spatial-telemetry-grid">
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="color: var(--cyan-400);">38,420 点</span>
+              <span class="spatial-stat-lbl">实时物联点位 IOT NODES</span>
+            </div>
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="color: #34d399;">+42.6%</span>
+              <span class="spatial-stat-lbl">故障间隔延长 MTBF GAIN</span>
+            </div>
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="color: #a78bfa;">&lt; 850ms</span>
+              <span class="spatial-stat-lbl">管网物理仿真 SIMULATION</span>
             </div>
           </div>
         </div>
