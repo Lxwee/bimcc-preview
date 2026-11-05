@@ -707,41 +707,75 @@ casePages["rail-15-platform"] = casePages["cq-rail15"];
 casePages["machinery-platform"] = casePages["cq-jidian"];
 
 const productPages = {
-  fyra: {
-    title: "飞椽 Fyra 智能开发平台",
-    summary: "面向工程行业的 AI + 零代码应用开发底座，将页面、表单、流程、报表、大屏、APP / H5、设备组态和 AI 能力放进同一套构建体系。",
-    primaryCta: "预约飞椽平台演示",
-    image: "assets/v8/banner-fyra.png",
-    caption: "快速构建工程企业和项目现场需要的数字化应用。",
-    signals: ["Fyra", "Builder", "Data", "AI"],
-    valueTitle: "让工程业务应用更快构建、更容易持续迭代",
-    valueIntro: "飞椽 Fyra 面向工程企业数字化部门、平台建设团队和项目交付团队，减少重复开发，让业务流程、数据和界面配置保持同一节奏。",
+  leitu: {
+    title: "累土智控土石方数字化管控平台",
+    summary: "面向民航机场、高铁路基及重大土石方工程的数字化管控整体解决方案，融合高精度 GNSS、物联网传感器与智能算法，实现强夯、碾压、摊铺及机械调运的毫米级精细化管控与质量全闭环。",
+    primaryCta: "预约累土智控演示",
+    image: "assets/v8/banner-bimcc.png",
+    caption: "强夯·碾压·摊铺·机械调度一体化智能管控平台。",
+    signals: ["Leitu", "GNSS", "IoT", "Earthwork"],
+    valueTitle: "从人工粗放放样走向全流程数字化高精度智控",
+    valueIntro: "累土智控彻底解决传统土石方施工中强夯定位偏差大、碾压漏压超压、摊铺厚度不均、机械台班工效模糊等长期痛点，实现降本增效与质量硬核保障。",
     values: [
-      ["快速响应业务变化", "通过可视化方式构建页面、表单、流程、报表和大屏，缩短从需求到交付使用的等待时间。"],
-      ["降低重复建设成本", "将工程行业常用模块、业务模板和解决方案沉淀为可复用资产，减少重复开发和重复采购。"],
-      ["兼顾标准化与个性化", "既能满足集团统一管理要求，也能适配不同项目、不同角色和不同业务流程的差异。"],
-      ["支撑多端应用落地", "覆盖 PC、Web、H5、APP、客户端和 BI 大屏，满足管理端、现场端、移动端和指挥端使用。"]
+      ["强夯精准计量，消除返工风险", "GNSS 高精度差分定位结合张力与霍尔传感器，夯击能、次数、落距、夯沉量自动毫秒级计量，定位误差 < 3cm。"],
+      ["碾压遍数实时追踪，杜绝漏压欠压", "车载平板引导作业轨迹，振动传感器实时分析频率与幅值，自动生成压实度等值线图，合格率达 99.6%。"],
+      ["摊铺平整度智能监控，保障结构质量", "动态监测摊铺厚度与温度曲线，智能调度摊铺料车与压路机协同，杜绝超铺欠铺与温度离析裂纹。"],
+      ["机械台班与油耗穿透，杜绝怠速浪费", "自动识别怠速、运输、重载工况，精确监测燃油消耗与违规卸料，机械综合燃油节省 15%~20%。"]
     ],
     capabilities: [
-      ["页面渲染引擎", "构建门户、工作台、业务详情页和数据看板。"],
-      ["表单与流程引擎", "支撑现场填报、审批流转、任务协同、问题整改和复核归档。"],
-      ["报表与大屏配置", "生成项目统计、经营分析、监管报表和指挥中心大屏。"],
-      ["智能表格与数据建模", "支持在线数据管理、批量录入、元数据建模、主数据和数据服务。"],
-      ["BIMGIS 数字孪生引擎", "将模型、地图、业务数据、实景数据和设备状态组织到统一视图。"],
-      ["物联网与 AI 中台", "支撑多协议设备接入、规则联动、AI 查询、智能体创建和业务辅助。"]
+      ["高精差分定位终端", "厘米级北斗/GNSS 差分定位，车载高抗振平板实时导航作业。"],
+      ["强夯智能监测系统", "自动记录夯击次数、夯沉量、提升高度，自动预警异常夯击能。"],
+      ["压实遍数等值线引擎", "动态计算碾压遍数、速度与轨迹重叠，实时渲染三维压实热力图。"],
+      ["摊铺平整度与测温管控", "红外实时测温与厚度传感器联动，多机协同作业动态智能编排。"],
+      ["机械工效与油耗台班", "怠速、运输、重载工况智能识别，电子围栏告警与集群语音调度。"],
+      ["施工单元一张图管控", "土方分区设计图纸导入，施工单元智能划分与自检三检数字闭环。"]
     ],
     scenarios: [
-      ["企业级数字化平台建设", "为集团、工程局、城投平台和企业数字化部门构建多项目、多组织、多角色协同平台。", ["组织权限梳理", "业务模块组装", "集团驾驶舱上线"]],
-      ["项目级智能建造平台交付", "快速配置进度、质量、安全、成本、物资设备、数字档案和项目驾驶舱。", ["进度工期仿真", "多专业协同推进", "数字化竣工归档"]],
-      ["智慧工地应用扩展", "结合现场设备、视频、传感器和物联网中台，构建风险预警和监管对接应用。", ["边缘设备组网", "风险隐患智能告警", "现场监管闭环"]],
-      ["数字孪生与一张图应用", "将模型、地图、业务、实景和设备状态接入统一可视化界面。", ["空间底座接入", "工况实时孪生", "态势综合调度"]],
-      ["工程 AI 应用构建", "支持平台文档查询、平台数据查询、自然语言操作和高频数据辅助录入。", ["工程知识库构建", "语言查询调度", "智能辅助填报生成"]]
+      ["民用航空机场场道工程", "支撑大型机场跑道、停机坪超大面积土石方强夯地基加固与大厚度分层碾压高精度管控。", ["高填方精准夯实", "跑道地基压实度闭环", "机场专用全要素大屏"]],
+      ["高速铁路与公路路基工程", "对长大线路路基分层填筑、连续压实进行毫米级质量追溯，杜绝工后沉降隐患。", ["长大区间连续压实", "边坡边角无死角覆盖", "动态质量检测评定"]],
+      ["水利大坝与场地平整", "对堆石坝、防渗体土料填筑及超大园区场地平整进行机械集群实时统筹调度。", ["大体积填筑协同", "料车运距与轨迹追溯", "填方挖方平衡优化"]],
+      ["工程机械台班精细化运营", "为施工总包与机械租赁企业提供设备工时、油耗监测与工效考核工具。", ["怠速燃油精准管控", "司机工时台班结算", "设备异常偷漏油预警"]]
     ],
-    deliverables: ["飞椽平台应用配置成果", "页面与表单配置", "流程与权限体系", "报表和驾驶舱", "移动端应用入口", "设备组态与联动规则", "AI 助手或智能体应用", "平台培训与迭代机制"],
-    relatedTitle: "飞椽适合支撑多类平台快速落地",
-    relatedIntro: "可重点查看企业级平台、项目级智能建造、智慧工地和数字孪生相关案例。"
+    deliverables: ["累土智控平台云端系统", "车载高抗振平板应用", "高精度 GNSS 基站与天线套件", "强夯张力/霍尔传感监测套件", "碾压振动传感与测速组件", "油耗与姿态监测硬件", "施工单元自检三检报表", "土石方数字化管控大屏驾驶舱"],
+    relatedTitle: "累土智控适合配合智慧工地与智能建造一体化实施",
+    relatedIntro: "可重点查看机场场道、重大基建土石方及智慧工地相关案例与协同方案。"
   },
-  "bimcc-platform": {
+  "ai-shift-meeting": {
+    title: "AI 班前会系统",
+    summary: "智能安全交底与行为识别软硬件一体化系统。基于 AI 大模型与边缘计算，实现班前会语音自动转写、纪要一键提炼、未交底人员门禁拦截与隐患全流程闭环。",
+    primaryCta: "预约 AI 班前会演示",
+    image: "assets/v8/aurora-tech.png",
+    caption: "让每日班前安全技术交底真正落到实处，实现施工安全源头闭环。",
+    signals: ["AI", "Shift", "Safety", "Gate"],
+    valueTitle: "重塑班组安全交底，变形式化走过场为数字化刚性闭环",
+    valueIntro: "AI 班前会系统直击传统交底“记录靠手写、签字常代签、未交底混入场、过程难追溯”等痛点，提供软硬件一体、方案灵活（A/B 方案）的智能化解决方案。",
+    values: [
+      ["大模型智能纪要", "语音实时转文字并由 AI 大模型自动提炼安全注意事项、风险防范要点与工作分配，告别人工繁琐记录。"],
+      ["门禁闸机强联动", "未交底人员人脸识别自动拦截，杜绝“未交底即作业”，确保 100% 安全交底入场。"],
+      ["多模态智能识别", "集成未佩戴安全帽/工装识别、疲劳/酒后状态辅助筛查、人员站位监测与违规抽烟抓拍。"],
+      ["全流程数字留痕", "交底音频、视频、签到表、纪要及确认签字全部自动上云归档，可追溯、防抵赖、支持监管一键报送。"]
+    ],
+    capabilities: [
+      ["智能语音转写与摘要", "现场讲话实时转文字，AI 大模型秒级生成标准化会议纪要与交底重点。"],
+      ["电子签名与人脸签到", "工人现场人脸核验或扫码完成交底确认签字，彻底杜绝替签漏签。"],
+      ["门禁闸机联动权限控制", "打通人员实名制闸机，班前会完成自动下发进场通行权限，未完成即时阻断。"],
+      ["智能宣讲台与硬件集成", "集成监控摄像头、高清宣讲大屏、AI边缘计算终端与云端协同中台。"],
+      ["隐患闭环与数据驾驶舱", "统计各班组交底率、出勤率、违规行为分析，生成项目与企业级安全合规大屏。"],
+      ["双方案弹性部署架构", "支持方案 A（轻量移动端扫码签字）与方案 B（智能宣讲大屏+工牌/人脸双重验证）。"]
+    ],
+    scenarios: [
+      ["高危施工作业与特种工种", "高空、深基坑、动火、吊装等高风险工种每日强制技术安全交底。"],
+      ["矿山与隧道地下工程", "恶劣环境下的班组点名、安全告知、出入井人员合规性精准管控。"],
+      ["高铁枢纽与大型交通工程", "多标段、多班组、数千工人规模化快速交底与精准防漏检。"],
+      ["智慧工地标准化标杆项目", "打造数字化安全展示亮点，迎检汇报与示范工程评优首选。"],
+      ["企业级多项目安全巡查", "集团总部通过云端中台实时调阅各工地每日班前会开展实况与违规预警。"]
+    ],
+    deliverables: ["AI 班前会智能终端/宣讲台", "AI 边缘计算服务器", "班前会管理软件云平台", "闸机联动控制网关", "移动端交底小程序/APP", "项目安全看板大屏", "部署与实施培训服务"],
+    relatedTitle: "AI 班前会已在多个国家级重点工程标杆落地",
+    relatedIntro: "可查看新疆某矿山项目、广安东站/长赣高铁站、雄安启动区二期等典型应用案例。"
+  }
+,
+"bimcc-platform": {
     title: "BIMCC 智能建造平台",
     summary: "覆盖工程项目全生命周期的数字建造管理平台，融合 BIM、GIS、UE、3DGS、AI 和 IoT 能力，连接工程业务数据、模型数据与现场物联数据。",
     primaryCta: "预约平台演示",
@@ -864,7 +898,7 @@ const productPages = {
       ["工单闭环管理", "支持报修、派单、处理、复核、评价和统计分析。"],
       ["实时监测与预警", "接入物联网数据和报警信息，形成阈值预警和处置提醒。"],
       ["档案资料管理", "关联竣工资料、图纸文件、设备说明和运维记录。"],
-      ["指挥中心展示", "支撑运维大屏、智慧展厅、管理汇报和应急调度。"]
+      ["指挥中心与管理大屏", "支撑综合运维大屏、领导汇报看板与应急调度一张图。"]
     ],
     scenarios: [
       ["公共建筑智慧运维", "适合场馆、学校、医院、办公楼和综合体。"],
@@ -877,147 +911,80 @@ const productPages = {
     relatedTitle: "数字孪生适合连接建设交付和长期运营",
     relatedIntro: "可查看公共建筑、园区场馆、轨道交通和基础设施运维相关案例。"
   },
-  "smart-command": {
-    title: "智慧展厅与指挥中心",
-    summary: "依托 BIM、数字孪生、三维大屏和沉浸式展示能力，为企业、项目和院校打造智慧展厅、指挥中心和观摩展示空间。",
-    primaryCta: "沟通展厅方案",
-    image: "assets/v8/banner-bimcc.png",
-    caption: "让项目成果、建设态势和企业能力更清晰地被看见。",
-    signals: ["Show", "Screen", "Twin", "Command"],
-    valueTitle: "面向展示、汇报、培训和指挥的工程数字体验",
-    valueIntro: "智慧展厅与指挥中心服务项目迎检、观摩会、企业展厅、管理驾驶舱和教学实训场景。",
-    values: [
-      ["项目建设态势展示", "通过项目驾驶舱、三维场景和数据大屏呈现建设进度与管理成果。"],
-      ["企业能力集中呈现", "围绕产品、案例、荣誉、技术和项目成果组织展陈内容。"],
-      ["观摩迎检支撑", "将现场数据、模型、视频和讲解动线结合，服务检查、汇报和参观。"],
-      ["指挥调度联动", "通过大屏、平台和数据看板支撑管理决策和现场调度。"]
-    ],
-    capabilities: [
-      ["展厅方案设计", "设计展陈主题、空间动线、内容结构和数字化展示方式。"],
-      ["施工图与集成实施", "支撑施工图深化、设备采购、装修安装和系统联调。"],
-      ["三维大屏与数字孪生", "融合模型、场景、数据看板和多媒体内容。"],
-      ["指挥中心驾驶舱", "呈现项目进度、质量安全、风险预警和现场状态。"],
-      ["沉浸式互动展示", "结合 BIMVR、AR / MR、全息投影和多屏联动。"],
-      ["运营维护服务", "支持内容更新、设备维护、讲解素材和活动保障。"]
-    ],
-    scenarios: [
-      ["项目观摩会", "展示重点项目建设成果、智慧工地应用和数字建造亮点。"],
-      ["企业智慧展厅", "集中呈现企业业务、产品、案例、荣誉和数字化能力。"],
-      ["项目指挥中心", "服务项目总控、领导汇报、应急调度和现场联动。"],
-      ["院校实训展示", "用于工程数字化、BIM 和智能建造教学展示。"],
-      ["园区运维中心", "展示资产状态、设备运行、工单处置和运维绩效。"]
-    ],
-    deliverables: ["展厅策划方案", "展陈内容结构", "施工图设计", "软硬件集成", "三维大屏界面", "指挥驾驶舱", "互动展示内容", "运营维护方案"],
-    relatedTitle: "展示空间需要真实平台和真实项目支撑",
-    relatedIntro: "可结合客户案例、产品平台和技术研发内容组织展厅叙事。"
-  },
-  "engineering-tech": {
-    title: "工程数字技术创新服务",
-    summary: "围绕无人机、三维扫描、点云、3DGS 和实景融合，服务工程现场数字化采集、进度核验、质量验评和实模对比。",
-    primaryCta: "咨询创新技术服务",
+    "engineering-tech": {
+    title: "工程建模与数字技术",
+    summary: "围绕工程全生命周期的全专业三维 BIM 建模、高精度 GIS 航测实景建模、三维激光点云逆向工程与标准化构件库资产化研发。",
+    primaryCta: "咨询工程建模服务",
     image: "assets/v8/aurora-tech.png",
-    caption: "用数字采集和实景融合补齐复杂工程现场数据。",
-    signals: ["Drone", "Scan", "Point", "3DGS"],
-    valueTitle: "让现场实景数据进入工程管理",
-    valueIntro: "创新技术服务适合土石方、复杂空间、进度核验、实模一致和现场巡检等专项场景。",
+    caption: "全专业正向 BIM 建模、实景航测建模与构件库资产化服务。",
+    signals: ["BIM", "GIS", "Model", "LiDAR"],
+    valueTitle: "高精度三维建模，夯实工程数字化数据源头",
+    valueIntro: "工程建模服务覆盖设计深化、施工制造、实景复核与轻量化构件库，确保模型资产“建得出、用得上、管得好”。",
     values: [
-      ["现场快速采集", "通过无人机、全景、三维扫描等方式获取现场空间和进度数据。"],
-      ["进度与工程量核验", "服务土石方测算、进度比对和施工过程复核。"],
-      ["实模一致对比", "结合 BIM、点云和 3DGS 进行质量验评和空间问题识别。"],
-      ["平台融合应用", "将采集成果接入 BIMCC、BIM + GIS 一张图或数字孪生系统。"]
+      ["全专业正向深度建模", "覆盖建筑、结构、机电管综、钢结构、幕墙及桥隧等复杂专业高精度建模。"],
+      ["航测实景与激光扫描", "通过无人机倾斜摄影与三维激光雷达点云，高保真还原施工现场真实空间地形。"],
+      ["实模一致与逆向分析", "结合实景点云与设计模型进行高精度形变分析、偏差比对与隐蔽工程复核。"],
+      ["构件库标准化资产沉淀", "建立企业级标准化参数化构件库，实现模型构件规范化、轻量化与高频复用。"]
     ],
     capabilities: [
-      ["无人机全景进度管理", "形成现场全景、进度留痕和实景巡检记录。"],
-      ["BIM + 无人机土石方测算", "辅助土石方工程量计算、复核和过程管控。"],
-      ["三维激光扫描", "采集复杂空间点云数据，用于逆向建模和质量检查。"],
-      ["点云建模与分析", "支撑模型对比、空间测量、形变分析和数据归档。"],
-      ["3DGS + BIM 对比查看", "用实景模型辅助实模一致、进度对比和问题标注。"],
-      ["平台数据融合", "将采集数据接入项目管理、数字孪生和运维场景。"]
+      ["全专业 BIM 深化建模", "机电管综综合排布、复杂节点详图深化、预制构件拆分建模。"],
+      ["大场景 GIS 实景三维", "无人机航测倾斜摄影高精三维实景重建、正射影像生成与实景融合。"],
+      ["三维激光扫描逆向工程", "复杂空间、既有建筑、地下管廊毫米级点云采集与逆向精准翻模。"],
+      ["点云与模型合规比对", "点云与设计 BIM 模型自动偏差分析，快速发现施工尺寸与净高误差。"],
+      ["模型轻量化与拓扑优化", "超大规模模型几何与语义分离轻量化处理，保障 Web 与移动端秒级加载。"],
+      ["企业级构件库资产建设", "参数化构件族定制研发、构件编码规范制定与构件管理云平台搭建。"]
     ],
     scenarios: [
-      ["土石方测算", "适合机场、市政、园区和基础设施等大体量土石方场景。"],
-      ["进度核验", "通过实景数据与计划、模型、工程量进行对比。"],
-      ["质量验评", "利用点云、模型和现场图像辅助质量检查。"],
-      ["全景巡检", "沉淀现场时序影像和问题标记。"],
-      ["复杂空间扫描", "服务地下空间、机电管线、场馆和异形结构。"]
+      ["重大基础设施与复杂枢纽", "服务大型机场、高铁站房、复杂超高层建筑的全专业高精度 BIM 建模。"],
+      ["既有建筑改造与逆向翻模", "针对老旧建筑、历史风貌区、工业厂房进行三维激光扫描与逆向数字建档。"],
+      ["大范围场地平整与土石方", "结合倾斜摄影实景三维高精地形，精确计算挖填方量并进行现状复核。"],
+      ["企业级标准化构件体系", "为建筑集团建立标准化参数化构件云资产，赋能全集团多项目规范统一。"],
+      ["施工质量验评与实模核验", "利用激光扫描与 3DGS 实景比对关键工序节点，严控施工毫米级偏差。"]
     ],
-    deliverables: ["无人机采集成果", "全景进度记录", "土石方测算结果", "点云数据成果", "三维扫描报告", "3DGS 实景模型", "BIM 对比分析", "平台接入数据"],
-    relatedTitle: "创新技术适合为复杂现场补充可信数据",
-    relatedIntro: "可结合 BIM 咨询、智慧工地和数字孪生方案共同推进。"
+    deliverables: ["全专业深度 BIM 模型成果", "无人机倾斜摄影三维实景模型", "三维激光点云成果与逆向模型", "碰撞检查与管线综合深化报告", "点云偏差对比与分析报告", "企业级标准化构件库资产", "模型轻量化处理及平台接入"],
+    relatedTitle: "工程建模为上层建造平台与数字孪生提供高质量数据基石",
+    relatedIntro: "可查看大型公共建筑、轨道交通、水利水务及数字孪生相关案例。"
   },
-  "digital-education": {
-    title: "数字化教育体系",
-    summary: "面向高校与职教院校，提供工程数字化课程资源、互动教学平台、智能建造实训室和校企合作基地建设。",
-    primaryCta: "咨询教育体系方案",
-    image: "assets/v8/aurora-main.png",
-    caption: "把真实工程数字化能力转化为教学、实训和产教融合内容。",
-    signals: ["Edu", "BIMVR", "Lab", "Course"],
-    valueTitle: "服务智能建造人才培养和实训基地建设",
-    valueIntro: "数字化教育体系将 BIM、智能建造、工程信息化、XR 和平台实践转化为可教学、可实训、可观摩的课程与空间。",
+  fyra: {
+    title: "飞椽数字底座 (Fyra Engine)",
+    summary: "工程企业级统一数字底座，融合自研 BIM+GIS 空间时空引擎、低代码可视化编排、多协议物联网感知与工程行业 AI 算力，为全线业务应用提供坚实支撑。",
+    primaryCta: "预约飞椽底座演示",
+    image: "assets/v8/banner-fyra.png",
+    caption: "融合 BIM、GIS、IoT 与工程 AI 能力的统一自主技术底座。",
+    signals: ["Fyra", "BIM+GIS", "Digital Base", "IoT & AI"],
+    valueTitle: "以融合底座打通模型、空间、业务与物联全栈能力",
+    valueIntro: "飞椽数字底座下沉为工程数字化建设的坚实基座，将自研 BIMGIS 时空引擎、低代码可视化编排、多源物联感知与工程行业 AI 算力深度融合，赋能上层业务应用敏捷交付与同源治理。",
     values: [
-      ["课程资源建设", "围绕工程数字化、BIM、智能建造和项目管理组织课程内容。"],
-      ["实训平台支撑", "提供互动教学平台、实训室和虚拟仿真教学环境。"],
-      ["真实项目导入", "将项目案例、平台场景和数字建造流程转化为教学素材。"],
-      ["校企合作基地", "支撑专业建设、实训基地、竞赛培训和产教融合展示。"]
+      ["BIMGIS 空间时空底座", "自研多源模型轻量化解析与大场景地理时空渲染引擎，毫秒级加载超大工程与城市级模型。"],
+      ["低代码与业务流编排", "提供零代码/低代码页面配置、动态表单、审批流程与报表设计器，支撑业务应用极速构建。"],
+      ["多源物联网与感知中台", "统一接入机械车载、环境感知、AI 抓拍、GNSS 等多协议物联设备与边缘网关。"],
+      ["工程行业 AI 智能体算力", "工程知识图谱、规范库 RAG 检索、自然语言多维调度与现场安全智能问答中台。"]
     ],
     capabilities: [
-      ["多维集成互动教学平台", "支撑课程、实训、案例和教学管理。"],
-      ["BIMVR / AR / MR 实训室", "提供沉浸式工程场景和虚拟仿真实训。"],
-      ["智能建造课程资源", "围绕平台、模型、现场和项目管理构建教学内容。"],
-      ["数字化创新实训室", "支撑 BIM、工程数字技术和智能建造实训。"],
-      ["校企合作基地建设", "服务专业共建、实训基地和产教融合展示。"],
-      ["竞赛与成果展示", "支持学生训练、成果汇报和教学展示。"]
+      ["BIMGIS 空间时空引擎", "将超大规模 BIM 构件、GIS 地形、无人机倾斜摄影与空间时空拓扑统一渲染。"],
+      ["页面与低代码渲染引擎", "构建各业务门户、工作台、复杂业务详情页和交互式数据驾驶舱。"],
+      ["表单与流程流转引擎", "支撑现场填报、审批流转、任务协同、问题整改与复核归档的高性能配置。"],
+      ["物联网多协议接入中台", "支持 MQTT、Modbus、HTTP 等工业与工程物联协议，实时计算并分发传感器流数据。"],
+      ["工程行业 AI 大模型中台", "集成自然语言查询、智能问答、工程规范库解析与现场异常智能诊断。"],
+      ["统一元数据与主数据中台", "打通工程企业与项目多源异构数据，建立统一主数据标准与 API 开放服务。"]
     ],
     scenarios: [
-      ["高校专业建设", "服务土木、建管、智能建造和工程信息化相关专业。"],
-      ["职教实训基地", "建设可操作、可观摩、可考核的工程数字化实训环境。"],
-      ["课程资源开发", "围绕平台实践、工程案例和数字技术形成课程包。"],
-      ["虚拟仿真实训", "用 BIMVR、AR / MR 和三维场景提高教学沉浸感。"],
-      ["校企合作展示", "结合真实案例和企业平台能力展示产教融合成果。"]
+      ["企业级统一数字化基座建设", "为大型工程局、城投平台打造底层互通、技术自主、多应用共享的数字底座。", ["全集团数据拉通", "底层技术资产统一", "组织权限集中管控"]],
+      ["智能建造与专业系统支撑", "为 BIMCC 建造平台、累土智控、智慧工地提供底层三维渲染与数据中台能力。", ["高并发大场景渲染", "复杂业务组件复用", "多端即时同步更新"]],
+      ["数字孪生与全景一张图构建", "为园区、机场、水务等运维阶段提供宏微观一体的空间底座与物联网联动。", ["时空地理拓扑接入", "实时工况虚实映射", "全域态势一体调度"]],
+      ["工程 AI 智能体创新孵化", "基于行业知识库与规则引擎，快速开发安全、质量、造价等专业 AI 助手。", ["工程知识库构建", "安全规程多轮对话", "智能辅助决策分析"]]
     ],
-    deliverables: ["课程资源包", "互动教学平台", "BIMVR 实训室", "数字化创新实训室", "虚拟仿真实训内容", "校企合作基地方案", "教学案例库", "培训与运营支持"],
-    relatedTitle: "教育体系可连接真实工程案例和平台能力",
-    relatedIntro: "可结合产品平台、客户案例和技术研发内容建立教学素材。"
-  },
-  "ai-shift-meeting": {
-    title: "AI 班前会系统",
-    summary: "智能安全交底与行为识别软硬件一体化系统。基于 AI 大模型与边缘计算，实现班前会语音自动转写、纪要一键提炼、未交底人员门禁拦截与隐患全流程闭环。",
-    primaryCta: "预约 AI 班前会演示",
-    image: "assets/v8/aurora-tech.png",
-    caption: "让每日班前安全技术交底真正落到实处，实现施工安全源头闭环。",
-    signals: ["AI", "Shift", "Safety", "Gate"],
-    valueTitle: "重塑班组安全交底，变形式化走过场为数字化刚性闭环",
-    valueIntro: "AI 班前会系统直击传统交底“记录靠手写、签字常代签、未交底混入场、过程难追溯”等痛点，提供软硬件一体、方案灵活（A/B 方案）的智能化解决方案。",
-    values: [
-      ["大模型智能纪要", "语音实时转文字并由 AI 大模型自动提炼安全注意事项、风险防范要点与工作分配，告别人工繁琐记录。"],
-      ["门禁闸机强联动", "未交底人员人脸识别自动拦截，杜绝“未交底即作业”，确保 100% 安全交底入场。"],
-      ["多模态智能识别", "集成未佩戴安全帽/工装识别、疲劳/酒后状态辅助筛查、人员站位监测与违规抽烟抓拍。"],
-      ["全流程数字留痕", "交底音频、视频、签到表、纪要及确认签字全部自动上云归档，可追溯、防抵赖、支持监管一键报送。"]
-    ],
-    capabilities: [
-      ["智能语音转写与摘要", "现场讲话实时转文字，AI 大模型秒级生成标准化会议纪要与交底重点。"],
-      ["电子签名与人脸签到", "工人现场人脸核验或扫码完成交底确认签字，彻底杜绝替签漏签。"],
-      ["门禁闸机联动权限控制", "打通人员实名制闸机，班前会完成自动下发进场通行权限，未完成即时阻断。"],
-      ["智能宣讲台与硬件集成", "集成监控摄像头、高清宣讲大屏、AI边缘计算终端与云端协同中台。"],
-      ["隐患闭环与数据驾驶舱", "统计各班组交底率、出勤率、违规行为分析，生成项目与企业级安全合规大屏。"],
-      ["双方案弹性部署架构", "支持方案 A（轻量移动端扫码签字）与方案 B（智能宣讲大屏+工牌/人脸双重验证）。"]
-    ],
-    scenarios: [
-      ["高危施工作业与特种工种", "高空、深基坑、动火、吊装等高风险工种每日强制技术安全交底。"],
-      ["矿山与隧道地下工程", "恶劣环境下的班组点名、安全告知、出入井人员合规性精准管控。"],
-      ["高铁枢纽与大型交通工程", "多标段、多班组、数千工人规模化快速交底与精准防漏检。"],
-      ["智慧工地标准化标杆项目", "打造数字化安全展示亮点，迎检汇报与示范工程评优首选。"],
-      ["企业级多项目安全巡查", "集团总部通过云端中台实时调阅各工地每日班前会开展实况与违规预警。"]
-    ],
-    deliverables: ["AI 班前会智能终端/宣讲台", "AI 边缘计算服务器", "班前会管理软件云平台", "闸机联动控制网关", "移动端交底小程序/APP", "项目安全看板大屏", "部署与实施培训服务"],
-    relatedTitle: "AI 班前会已在多个国家级重点工程标杆落地",
-    relatedIntro: "可查看新疆某矿山项目、广安东站/长赣高铁站、雄安启动区二期等典型应用案例。"
+    deliverables: ["飞椽数字底座软件平台", "BIMGIS 空间渲染组件", "低代码可视化设计器", "物联网数据接入网关", "工程 AI 智能体算力套件", "标准 API 开放平台", "底座开发者与运维支持"],
+    relatedTitle: "飞椽数字底座为全场景业务赋能",
+    relatedIntro: "可重点查看企业级数字化、智能建造平台、累土智控及智慧工地等落地应用。"
   }
 };
 
 productPages["enterprise"] = productPages["bimcc-platform"];
 productPages["site"] = productPages["smart-site"];
 productPages["ai-pre-shift-meeting"] = productPages["ai-shift-meeting"];
+productPages["leitu"] = productPages["leitu"];
+productPages["engineering-modeling"] = productPages["engineering-tech"];
 
 const solutionPages = {
   enterprise: {
@@ -1741,15 +1708,16 @@ function hydrateProductDetail() {
 
 function getProductHeroTags(slug) {
   const tagMap = {
+    'leitu': [
+      { text: 'GNSS 厘米级差分定位', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '夯击能/夯沉量自动计量', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '压实等值线实时渲染', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' },
+      { text: '机械台班怠速精准识别', color: '#fbbf24', bg: 'rgba(251,191,36,0.1)', border: 'rgba(251,191,36,0.25)' }
+    ],
     'smart-site': [
       { text: 'AI 视频隐患秒级抓拍', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
       { text: '塔吊群防碰撞力矩遥测', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
       { text: '人员环境全要素闭环', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
-    ],
-    'smart-command': [
-      { text: '8K 巨幕宏观态势联动', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
-      { text: '多屏音视频坐席 <50ms', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
-      { text: '应急预案一键秒级调度', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
     ],
     'bim-consulting': [
       { text: '全专业施工图管综深化', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
@@ -1757,14 +1725,10 @@ function getProductHeroTags(slug) {
       { text: '全生命周期一模到底交付', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
     ],
     'engineering-tech': [
-      { text: '无人机 1.2cm/px 正射采集', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
-      { text: '3DGS 实景时序土方算量', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
-      { text: '激光点云逆向 0 误差建模', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
-    ],
-    'digital-education': [
-      { text: '400+ 学时国家级精品课件', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
-      { text: 'BIMVR 30+ 典型工法仿真演练', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
-      { text: '虚拟施工考核全自动评分', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' }
+      { text: '全专业正向深度建模', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
+      { text: '航测倾斜摄影与激光扫描', color: '#818cf8', bg: 'rgba(129,140,248,0.1)', border: 'rgba(129,140,248,0.25)' },
+      { text: '激光点云实模精准对比', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' },
+      { text: '构件库标准化资产沉淀', color: '#c084fc', bg: 'rgba(192,132,252,0.1)', border: 'rgba(192,132,252,0.25)' }
     ],
     'bimcc-platform': [
       { text: '1000万+ 构件秒开', color: 'var(--cyan-400)', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
@@ -1794,11 +1758,58 @@ function renderDynamicProductHero(slug, data) {
   const container = document.getElementById('productHeroContainer');
   if (!container) return;
 
-  if (slug === 'fyra') {
-    // Archetype 1: Center-Stage Visual Flow Workspace (Scalewithteddy / Webflow style)
+  if (slug === 'leitu') {
+    // Archetype 0: Earthwork Telemetry Deck (累土智控土石方数字化管控平台)
+    container.innerHTML = `
+      <div class="hero-grid" style="align-items: center; gap: 40px;">
+        <div class="hero-content">
+          <div class="eyebrow-badge"><span class="status-pulse"></span>EARTHWORK DIGITAL TELEMETRY · LEITU OS</div>
+          <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
+          <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
+          <div class="hero-actions" style="margin-bottom: 28px;">
+            <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
+          </div>
+          ${getProductHeroTags(slug)}
+        </div>
+        <div class="spatial-hud-box">
+          <div class="lod-tabs-strip">
+            <button class="lod-tab-btn active" type="button">强夯精控</button>
+            <button class="lod-tab-btn" type="button">连续压实</button>
+            <button class="lod-tab-btn" type="button">智能摊铺</button>
+            <button class="lod-tab-btn" type="button">调运工效</button>
+          </div>
+          <div class="spatial-hero-metric-card" style="padding: 24px 28px 18px;">
+            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 6px; letter-spacing: 0.08em;">
+              [RTK-GNSS DIFFERENTIAL TELEMETRY · LEITU ACTIVE]
+            </div>
+            <div class="spatial-hero-val" style="font-size: 2.3rem; font-weight: 800; letter-spacing: 0;">386,400 <span style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">m³</span></div>
+            <div class="spatial-hero-lbl" style="font-size: 0.8125rem; color: #94a3b8; margin-top: 4px;">土石方智能计量 · 强夯/压实/摊铺全闭环监测</div>
+            <div class="spatial-sub-pill" style="margin-top: 14px; font-size: 0.75rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <span class="status-pulse" style="background: #34d399;"></span> 84 台机械在线 · 强夯定位 &lt; 3cm · 压实合格率 99.6%
+            </div>
+          </div>
+          <div class="spatial-telemetry-grid">
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0;">&lt; 3 cm</span>
+              <span class="spatial-stat-lbl">强夯放样误差</span>
+            </div>
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">99.6%</span>
+              <span class="spatial-stat-lbl">连续压实合格率</span>
+            </div>
+            <div class="spatial-stat-card">
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">-18.5%</span>
+              <span class="spatial-stat-lbl">综合燃油消耗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } else if (slug === 'fyra') {
+    // Archetype 1: Center-Stage Visual Flow Workspace (飞椽数字底座)
     container.innerHTML = `
       <div class="product-hero-center">
-        <div class="eyebrow-badge"><span class="status-pulse"></span>PRODUCT SPECIFICATION · LOW-CODE ENGINE</div>
+        <div class="eyebrow-badge"><span class="status-pulse"></span>PRODUCT FOUNDATION · BIM+GIS &amp; LOW-CODE ENGINE</div>
         <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
         <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; max-width: 760px; margin: 0 auto 28px;">${escapeHtml(data.summary)}</p>
         <div class="hero-actions" style="justify-content: center; margin-bottom: 36px;">
@@ -1806,28 +1817,28 @@ function renderDynamicProductHero(slug, data) {
         </div>
         <div class="wide-canvas-board">
           <div class="canvas-header-bar">
-            <span class="canvas-tag">FYRA VISUAL COMPOSER</span>
+            <span class="canvas-tag">FYRA DIGITAL FOUNDATION</span>
             <div class="canvas-metrics-inline">
+              <span>BIMGIS 空间实体: <span class="hero-num-metric">1000万+</span></span>
               <span>DSL 实时渲染: <span class="hero-num-metric">&lt;8ms</span></span>
-              <span>工程专属控件: <span class="hero-num-metric">120+</span></span>
-              <span>多端统一发布: <span class="hero-num-metric">100%</span></span>
+              <span>多协议物联接入: <span class="hero-num-metric">100%</span></span>
             </div>
           </div>
-          <div class="canvas-flow-track">
+          <div class="canvas-flow-track" id="heroDynamicTrack">
             <div class="canvas-node-card">
-              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">01 COMPONENT LIBRARY</div>
-              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;"><span class="hero-num-metric">120+</span> 工程专属控件</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">表单 · 流程 · 报表 · 大屏</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">01 SPATIAL BASE</div>
+              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">BIM+GIS 空间时空底座</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">大场景地理时空 · 构件语义解析</div>
             </div>
             <div class="canvas-node-card active-engine">
               <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">02 ZERO-CODE ENGINE</div>
-              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">飞椽可视化编排</div>
+              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">飞椽可视化编排底座</div>
               <div style="font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap;">DSL 实时解析渲染 <span class="hero-num-metric">&lt; 8ms</span></div>
             </div>
             <div class="canvas-node-card">
-              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">03 MULTI-TERMINAL</div>
-              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">全端即时发布</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">Web · 移动端 · 企微 · 钉钉</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">03 APPS &amp; AGENTS</div>
+              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">建造应用与 AI 智能体</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">赋能 BIMCC · 累土 · 智慧工地</div>
             </div>
           </div>
         </div>
@@ -1848,30 +1859,32 @@ function renderDynamicProductHero(slug, data) {
         </div>
         <div class="spatial-hud-box">
           <div class="lod-tabs-strip">
-            <button class="lod-tab-btn active">LOD 100 概念</button>
-            <button class="lod-tab-btn">LOD 300 深化</button>
-            <button class="lod-tab-btn">LOD 400 制造</button>
-            <button class="lod-tab-btn">LOD 500 运维</button>
+            <button class="lod-tab-btn active" type="button">LOD 100 概念</button>
+            <button class="lod-tab-btn" type="button">LOD 300 深化</button>
+            <button class="lod-tab-btn" type="button">LOD 400 制造</button>
+            <button class="lod-tab-btn" type="button">LOD 500 运维</button>
           </div>
-          <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
-            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[WebGPU ACCELERATED · NATIVE CORE]</div>
-            <div class="spatial-hero-val">14,280,000</div>
-            <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">空间实体构件 · LOD 自动逐级退化 · 毫秒级空间检索</div>
-            <div class="hero-num-metric" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
+          <div class="spatial-hero-metric-card" style="padding: 24px 28px 18px;">
+            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 6px; letter-spacing: 0.08em;">
+              [WebGPU ACCELERATED · NATIVE CORE]
+            </div>
+            <div class="spatial-hero-val" style="font-size: 2.3rem; font-weight: 800; letter-spacing: 0;">14,280,000</div>
+            <div class="spatial-hero-lbl" style="font-size: 0.8125rem; color: #94a3b8; margin-top: 4px;">空间实体构件 · LOD 自动逐级退化 · 毫秒级空间检索</div>
+            <div class="spatial-sub-pill" style="margin-top: 14px; font-size: 0.75rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(56, 189, 248, 0.2);">
               <span class="status-pulse" style="background: #34d399;"></span> 渲染帧率 60.0 fps (锁定) · 延迟 &lt; 16ms
             </div>
           </div>
           <div class="spatial-telemetry-grid">
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val">48 次/帧</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0;">48 次/帧</span>
               <span class="spatial-stat-lbl">渲染批次 DRAWCALLS</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val">14.28 M</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">14.28 M</span>
               <span class="spatial-stat-lbl">三角面片 TRIANGLES</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val">184 MB</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">184 MB</span>
               <span class="spatial-stat-lbl">显存占用 VRAM</span>
             </div>
           </div>
@@ -1879,57 +1892,68 @@ function renderDynamicProductHero(slug, data) {
       </div>
     `;
   } else if (slug === 'digital-twin') {
-    // Archetype 2B: Spatial Twin & IoT Smart Operations HUD (数字孪生与智慧运维专属控制台)
+    // Archetype 2B: IoT & Digital Twin Operations HUD (数字孪生与智慧运维)
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>SPATIAL TWIN & IOT OPS</div>
+          <div class="eyebrow-badge"><span class="status-pulse"></span>SPATIAL TWIN &amp; IOT OPS</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
-          ${getProductHeroTags(slug)}
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--cyan-400); background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+              ${getSvg('check', 12, 'var(--cyan-400)')} 3DGS 厘米级高斯辐射
+            </span>
+            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #818cf8; background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+              ${getSvg('check', 12, '#818cf8')} 水动力物理管网模拟
+            </span>
+            <span style="font-size: 0.75rem; font-family: var(--font-mono); color: #34d399; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); padding: 4px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+              ${getSvg('check', 12, '#34d399')} 设备故障 MTBF +42%
+            </span>
+          </div>
         </div>
         <div class="spatial-hud-box">
           <div class="lod-tabs-strip">
-            <button class="lod-tab-btn active">空间一张图</button>
-            <button class="lod-tab-btn">物理场仿真</button>
-            <button class="lod-tab-btn">IoT态势感知</button>
-            <button class="lod-tab-btn">预测性维保</button>
+            <button class="lod-tab-btn active" type="button">空间一张图</button>
+            <button class="lod-tab-btn" type="button">设备台账</button>
+            <button class="lod-tab-btn" type="button">物联遥测</button>
+            <button class="lod-tab-btn" type="button">工单闭环</button>
           </div>
-          <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
-            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[SPATIAL IOT TWIN ENGINE · ACTIVE]</div>
-            <div class="spatial-hero-val">99.85<span style="font-size: 1.5rem; color: var(--cyan-400); margin-left: 2px;">%</span></div>
-            <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">空间设备资产全域纳管 · 水动力管网动态反向映射推演</div>
-            <div class="hero-num-metric" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
-              <span class="status-pulse" style="background: #34d399;"></span> 设备健康运行率 99.85% · 异常告警响应 &lt; 1.2s
+          <div class="spatial-hero-metric-card" style="padding: 24px 28px 18px;">
+            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 6px; letter-spacing: 0.08em;">
+              [REAL-TIME SPATIAL TWIN &amp; IOT TELEMETRY]
+            </div>
+            <div class="spatial-hero-val" style="font-size: 2.3rem; font-weight: 800; letter-spacing: 0;">38,420 <span style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">点位</span></div>
+            <div class="spatial-hero-lbl" style="font-size: 0.8125rem; color: #94a3b8; margin-top: 4px;">物联网遥测点位在线 · 机电设备工况数字孪生感知</div>
+            <div class="spatial-sub-pill" style="margin-top: 14px; font-size: 0.75rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <span class="status-pulse" style="background: #34d399;"></span> 态势更新 100ms · 故障预测准确率 98.4%
             </div>
           </div>
           <div class="spatial-telemetry-grid">
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="color: var(--cyan-400);">38,420 点</span>
-              <span class="spatial-stat-lbl">实时物联点位 IOT NODES</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0;">99.98%</span>
+              <span class="spatial-stat-lbl">系统可用性 SLA</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="color: #34d399;">+42.6%</span>
-              <span class="spatial-stat-lbl">故障间隔延长 MTBF GAIN</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">&lt; 850 ms</span>
+              <span class="spatial-stat-lbl">管网水动力仿真</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="color: #a78bfa;">&lt; 850ms</span>
-              <span class="spatial-stat-lbl">管网物理仿真 SIMULATION</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">+42.6%</span>
+              <span class="spatial-stat-lbl">设备平均无故障 MTBF</span>
             </div>
           </div>
         </div>
       </div>
     `;
-  } else if (slug === 'smart-site' || slug === 'smart-command') {
-    // Archetype 3: 2x2 Bento Smart Perception Grid (Wope / Vercel style)
-    const isCommand = slug === 'smart-command';
+  } else if (slug === 'smart-site') {
+    // Archetype 3: 2x2 Bento Smart Perception Grid (智慧工地)
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>${isCommand ? '8K COCKPIT & DISPATCH' : 'IOT SENSOR MATRIX & AI VISION'}</div>
+          <div class="eyebrow-badge"><span class="status-pulse"></span>SMART JOBSITE · EDGE AI</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 28px;">
@@ -1938,153 +1962,87 @@ function renderDynamicProductHero(slug, data) {
           ${getProductHeroTags(slug)}
         </div>
         <div class="bento-perception-grid">
-          <div class="bento-hud-card">
-            <div class="bento-hud-header">
-              <span class="bento-hud-tag hero-num-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">${isCommand ? '8K ULTRA-HD' : 'AI COMPUTER VISION'}</span>
-              <span class="status-pulse" style="background: #f59e0b;"></span>
+          <div class="bento-perception-card">
+            <div class="bento-perception-header">
+              <span class="bento-hud-tag hero-num-tag">01 视觉中枢</span>
+              <span class="bento-hud-metric" style="font-size: 1.15rem; font-weight: 800; letter-spacing: 0;">&lt; 0.3s</span>
             </div>
-            <div class="bento-hud-title">${isCommand ? '三维大屏全景态势展示' : 'AI 视频隐患智能识别'}</div>
-            <div class="bento-hud-body">${isCommand ? '巨幕宏观态势与重点工区穿透联动' : '未戴安全帽/临边防护破损 毫秒级抓拍'}</div>
-            <div class="bento-hud-metric">${isCommand ? '8K 60fps' : '99.4% 闭环'}</div>
+            <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">AI 隐患抓拍引擎</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">未佩戴安全帽 · 临边越界 · 烟火违规毫秒级识别</div>
           </div>
-          <div class="bento-hud-card">
-            <div class="bento-hud-header">
-              <span class="bento-hud-tag hero-num-tag" style="background: rgba(56, 189, 248, 0.15); color: var(--cyan-400);">${isCommand ? 'MULTI-SCREEN' : 'SAFETY TELEMETRY'}</span>
-              <span class="status-pulse"></span>
+          <div class="bento-perception-card">
+            <div class="bento-perception-header">
+              <span class="bento-hud-tag hero-num-tag" style="color: #818cf8;">02 特种设备</span>
+              <span class="bento-hud-metric" style="font-size: 1.15rem; font-weight: 800; letter-spacing: 0; color: #818cf8;">100% 覆盖</span>
             </div>
-            <div class="bento-hud-title">${isCommand ? '多屏联动协同坐席' : '塔吊群防碰撞与力矩'}</div>
-            <div class="bento-hud-body">${isCommand ? '坐席多方音视频联动调度延时 <50ms' : '回转角度/幅度/吊重实时遥测预警'}</div>
-            <div class="bento-hud-metric">${isCommand ? '&lt;50ms' : '0 事故碰撞'}</div>
+            <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">塔吊群防碰撞系统</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">多机回转防撞 · 倾角力矩遥测 · 升降机限载自动切断</div>
           </div>
-          <div class="bento-hud-card">
-            <div class="bento-hud-header">
-              <span class="bento-hud-tag hero-num-tag" style="background: rgba(52, 211, 153, 0.15); color: #34d399;">${isCommand ? 'EMERGENCY' : 'ENVIRONMENT'}</span>
-              <span class="status-pulse" style="background: #34d399;"></span>
+          <div class="bento-perception-card">
+            <div class="bento-perception-header">
+              <span class="bento-hud-tag hero-num-tag" style="color: #34d399;">03 环境监测</span>
+              <span class="bento-hud-metric" style="font-size: 1.15rem; font-weight: 800; letter-spacing: 0; color: #34d399;">24h 联动</span>
             </div>
-            <div class="bento-hud-title">${isCommand ? '应急指挥预案联动' : '绿色施工环境监测'}</div>
-            <div class="bento-hud-body">${isCommand ? '重大突发事件一键触发处置链路' : 'PM2.5/PM10/噪声超标联动自动喷淋'}</div>
-            <div class="bento-hud-metric">${isCommand ? '秒级响应' : '24h 自动喷淋'}</div>
+            <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">微气象与智能喷淋</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">扬尘 PM2.5/PM10 动态超标自启雾炮与围挡喷淋</div>
           </div>
-          <div class="bento-hud-card">
-            <div class="bento-hud-header">
-              <span class="bento-hud-tag hero-num-tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">${isCommand ? 'EXHIBITION' : 'PERSONNEL'}</span>
-              <span class="status-pulse" style="background: #c084fc;"></span>
+          <div class="bento-perception-card">
+            <div class="bento-perception-header">
+              <span class="bento-hud-tag hero-num-tag" style="color: #c084fc;">04 劳务实名</span>
+              <span class="bento-hud-metric" style="font-size: 1.15rem; font-weight: 800; letter-spacing: 0; color: #c084fc;">分账 100%</span>
             </div>
-            <div class="bento-hud-title">${isCommand ? '展厅观摩迎检交互' : '劳务实名制通行闸机'}</div>
-            <div class="bento-hud-body">${isCommand ? '标准化讲解动线与科技感实模呈现' : '考勤与薪资监管系统实时双向对账'}</div>
-            <div class="bento-hud-metric">${isCommand ? '观摩标杆' : '1,842人 在册'}</div>
+            <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">住建监管数据贯通</div>
+            <div style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.5;">人员人脸闸机考勤 · 工人工资分账专户直连穿透</div>
           </div>
         </div>
       </div>
     `;
-  } else if (slug === 'engineering-tech') {
-    // Archetype 5: 3DGS & Drone LiDAR Telemetry Deck
+  } else if (slug === 'engineering-tech' || slug === 'engineering-modeling') {
+    // Archetype 5: 3D Modeling & Reverse BIM Deck (工程建模)
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>PRECISION SURVEY & 3DGS</div>
+          <div class="eyebrow-badge"><span class="status-pulse"></span>ENGINEERING 3D MODELING &amp; ASSETS</div>
           <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
           <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
           <div class="hero-actions" style="margin-bottom: 28px;">
             <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
           </div>
-          ${getProductHeroTags(slug)}
+          ${getProductHeroTags('engineering-tech')}
         </div>
         <div class="drone-telemetry-deck">
           <div class="drone-telemetry-hud">
             <div class="drone-coords-row">
-              <span>[3DGS &amp; LIDAR TELEMETRY]</span>
-              <span>X: 3042.85m · Y: 1890.42m · Z: 142.60m</span>
+              <span>[ENGINEERING MODELING &amp; LIDAR]</span>
+              <span>LOD 400 · 误差 &lt; 2mm · 倾斜摄影 1.2cm/px</span>
             </div>
-            <div class="drone-main-stat">4,850,000 pts</div>
-            <div class="drone-sub-desc">空地一体三维激光点云扫描 · 厘米级高斯辐射实景逆向</div>
-            <div class="drone-status-pill">
-              <span class="status-pulse" style="background: #34d399;"></span> 航测航线自动规划 · 5min 土方快速算量完成
-            </div>
-          </div>
-          <div class="drone-sensors-grid">
-            <div class="drone-sensor-card">
-              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">01 DRONE SURVEY</div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">无人机正射航测</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);"><span class="hero-num-metric">1.2cm/px</span> 正射影像</div>
-              <div class="hero-num-metric" style="font-size: 0.75rem; color: #34d399; font-weight: 700; margin-top: 2px;">精度 &lt;3mm</div>
-            </div>
-            <div class="drone-sensor-card">
-              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #818cf8; font-weight: 700;">02 3DGS RECONSTRUCT</div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">3DGS 实模对比</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">隐蔽工程扫描对比</div>
-              <div class="hero-num-metric" style="font-size: 0.75rem; color: #818cf8; font-weight: 700; margin-top: 2px;">算量 5min</div>
-            </div>
-            <div class="drone-sensor-card">
-              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; font-weight: 700;">03 LASER REVERSE</div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">空间激光逆向</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">大跨度钢结构应力</div>
-              <div class="hero-num-metric" style="font-size: 0.75rem; color: #c084fc; font-weight: 700; margin-top: 2px;">0 误差建模</div>
+            <div class="drone-main-stat" style="font-size: 2.2rem; font-weight: 800; letter-spacing: 0;">3,680,000 <span style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">构件</span></div>
+            <div class="drone-sub-desc">全专业正向深化建模 · 空间冲突管综 100% 碰撞清零</div>
+            <div class="drone-chips-flex">
+              <span class="drone-chip"><span class="status-pulse" style="background:#34d399;"></span> 倾斜摄影正射重建</span>
+              <span class="drone-chip">机电管线综合深化</span>
+              <span class="drone-chip">轻量化压缩率 92%</span>
             </div>
           </div>
-        </div>
-      </div>
-    `;
-  } else if (slug === 'digital-education') {
-    // Archetype 6: Interactive Pedagogy & Virtual Simulation Lab
-    container.innerHTML = `
-      <div class="hero-grid" style="align-items: center; gap: 40px;">
-        <div class="hero-content">
-          <div class="eyebrow-badge"><span class="status-pulse"></span>PEDAGOGY & VIRTUAL SIMULATION</div>
-          <h1 class="hero-title" style="font-size: 40px; line-height: 1.35; margin-bottom: 16px;">${escapeHtml(data.title)}</h1>
-          <p class="hero-description" style="font-weight: 400; line-height: 1.65; letter-spacing: 0.02em; margin-bottom: 24px;">${escapeHtml(data.summary)}</p>
-          <div class="hero-actions" style="margin-bottom: 28px;">
-            <a class="button button-primary header-cta-btn" href="contact.html">预约演示</a>
-          </div>
-          ${getProductHeroTags(slug)}
-        </div>
-        <div class="pedagogy-virtual-lab">
-          <div class="pedagogy-header-bar">
-            <span class="pedagogy-tag hero-num-tag">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              PEDAGOGY SIMULATION LAB
-            </span>
-            <span class="pedagogy-metrics-strip">400+ 核心学时 · 30+ 仿真工法</span>
-          </div>
-          <div class="pedagogy-modules-grid">
-            <div class="pedagogy-module-card">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">MODULE 01</span>
-                <span class="hero-num-metric" style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 700; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px;">400+ 学时</span>
-              </div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">智能建造课程资源库</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;"><span class="hero-num-metric">12</span> 门核心课 · 国家级精品教学课件</div>
+          <div class="drone-kpi-grid">
+            <div class="drone-kpi-cell">
+              <span class="drone-kpi-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0;">45,000+</span>
+              <span class="drone-kpi-lbl">标准构件库资产</span>
             </div>
-            <div class="pedagogy-module-card">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #818cf8; font-weight: 700;">MODULE 02</span>
-                <span class="hero-num-metric" style="font-size: 0.75rem; color: #818cf8; font-weight: 700; background: rgba(129,140,248,0.12); padding: 2px 6px; border-radius: 4px;">30+ 工法</span>
-              </div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">BIMVR 沉浸式实训室</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">真实工程典型工法 <span class="hero-num-metric">1:1</span> 虚拟交互演练</div>
+            <div class="drone-kpi-cell">
+              <span class="drone-kpi-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">100%</span>
+              <span class="drone-kpi-lbl">管综碰撞清零</span>
             </div>
-            <div class="pedagogy-module-card">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #34d399; font-weight: 700;">MODULE 03</span>
-                <span class="hero-num-metric" style="font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52,211,153,0.12); padding: 2px 6px; border-radius: 4px;">全自动评分</span>
-              </div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">虚拟施工考核系统</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">实操考核与虚拟隐患排查双盲考核</div>
-            </div>
-            <div class="pedagogy-module-card">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; font-weight: 700;">MODULE 04</span>
-                <span class="hero-num-metric" style="font-size: 0.75rem; color: #c084fc; font-weight: 700; background: rgba(192,132,252,0.12); padding: 2px 6px; border-radius: 4px;">产教示范</span>
-              </div>
-              <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">校企产教融合基地</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">支撑技能大赛 · <span class="hero-num-metric">1+X</span> 认证 · 联合授牌</div>
+            <div class="drone-kpi-cell">
+              <span class="drone-kpi-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">LOD 400</span>
+              <span class="drone-kpi-lbl">施工制造级深度</span>
             </div>
           </div>
         </div>
       </div>
     `;
   } else {
-    // Archetype 4: Milestone Roadmap & Precision KPI Board (bim-consulting)
+    // Archetype 4: Milestone Roadmap & Precision KPI Board (bim-consulting 等)
     container.innerHTML = `
       <div class="hero-grid" style="align-items: center; gap: 40px;">
         <div class="hero-content">
