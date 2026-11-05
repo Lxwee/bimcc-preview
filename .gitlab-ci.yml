@@ -2,7 +2,7 @@ pages:
   stage: deploy
   script:
     - mkdir -p public
-    - cp -r *.html *.css *.js assets data public/
+    - cp -r *.html *.css *.js assets data bimcc-redesign public/
   artifacts:
     paths:
       - public
