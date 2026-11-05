@@ -5779,7 +5779,7 @@ img, svg {
 
 .lod-tabs-strip {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   background: rgba(3, 8, 20, 0.7);
   padding: 4px;
   border-radius: var(--radius-sm);
@@ -5789,8 +5789,8 @@ img, svg {
 
 .lod-tab-btn {
   flex: 1;
-  padding: 6px 10px;
-  font-size: 0.75rem;
+  padding: 7px 6px;
+  font-size: 0.72rem;
   font-weight: 600;
   font-family: var(--font-number);
   font-feature-settings: "tnum" 1, "pnum" 0;
@@ -5801,6 +5801,12 @@ img, svg {
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
 }
 
 .lod-tab-btn.active {

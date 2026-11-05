@@ -1849,10 +1849,10 @@ function renderDynamicProductHero(slug, data) {
         </div>
         <div class="spatial-hud-box">
           <div class="lod-tabs-strip">
-            <button class="lod-tab-btn active">LOD 100 概念模型</button>
-            <button class="lod-tab-btn">LOD 300 施工深化</button>
-            <button class="lod-tab-btn">LOD 400 构件制造</button>
-            <button class="lod-tab-btn">LOD 500 智慧运维</button>
+            <button class="lod-tab-btn active">LOD 100 概念</button>
+            <button class="lod-tab-btn">LOD 300 深化</button>
+            <button class="lod-tab-btn">LOD 400 制造</button>
+            <button class="lod-tab-btn">LOD 500 运维</button>
           </div>
           <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
             <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[WebGPU ACCELERATED · NATIVE CORE]</div>
