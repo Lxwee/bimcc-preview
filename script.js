@@ -1524,14 +1524,14 @@ function renderCards(root, selector, items = [], mode = "cards") {
                 <div class="spotlight-metric-row">
                   <div class="spotlight-metric-info">
                     <span>全生命周期数据一致性</span>
-                    <strong style="color: #38bdf8; font-family: var(--font-mono);">100.0%</strong>
+                    <strong style="color: #38bdf8; font-family: var(--font-number); font-weight: 800; font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums;">100.0%</strong>
                   </div>
                   <div class="spotlight-bar-track"><div class="spotlight-bar-fill" style="width: 100%;"></div></div>
                 </div>
                 <div class="spotlight-metric-row">
                   <div class="spotlight-metric-info">
                     <span>DSL 实时编排解析延迟</span>
-                    <strong style="color: #34d399; font-family: var(--font-mono);">&lt; 8ms</strong>
+                    <strong style="color: #34d399; font-family: var(--font-number); font-weight: 800; font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums;">&lt; 8ms</strong>
                   </div>
                   <div class="spotlight-bar-track"><div class="spotlight-bar-fill" style="width: 96%; background: linear-gradient(90deg, #38bdf8, #34d399);"></div></div>
                 </div>
@@ -2609,7 +2609,7 @@ function hydrateSolutionDetail() {
                 <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">投资预算 · 概算/预算/结算三算对比</div>
                 <div style="font-size: 0.75rem; color: var(--text-secondary);">合同执行动态穿透 · 超概算指标智能拦截</div>
               </div>
-              <span style="font-size: 0.6875rem; font-family: monospace; color: var(--cyan-400); background: rgba(56,189,248,0.1); padding: 3px 8px; border-radius: 4px;">三算穿透 100%</span>
+              <span style="font-size: 0.6875rem; font-family: var(--font-number); font-weight: 700; font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; color: var(--cyan-400); background: rgba(56,189,248,0.1); padding: 3px 8px; border-radius: 4px;">三算穿透 100%</span>
             </div>
             <div class="sol-waterfall-connector">${getSvg('arrowRight', 14, '#64748b')}</div>
             <div class="sol-waterfall-row" style="border-color: rgba(129,140,248,0.3);">
@@ -2618,7 +2618,7 @@ function hydrateSolutionDetail() {
                 <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">过程合规 · 进度里程碑与支付联锁</div>
                 <div style="font-size: 0.75rem; color: var(--text-secondary);">付款依据模型工程量与留痕 · 变更签证多方线上会签</div>
               </div>
-              <span style="font-size: 0.6875rem; font-family: monospace; color: #818cf8; background: rgba(129,140,248,0.1); padding: 3px 8px; border-radius: 4px;">支付联锁安全</span>
+              <span style="font-size: 0.6875rem; font-family: var(--font-number); font-weight: 700; font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; color: #818cf8; background: rgba(129,140,248,0.1); padding: 3px 8px; border-radius: 4px;">支付联锁安全</span>
             </div>
             <div class="sol-waterfall-connector">${getSvg('arrowRight', 14, '#64748b')}</div>
             <div class="sol-waterfall-row" style="border-color: rgba(52,211,153,0.3);">
@@ -2627,7 +2627,7 @@ function hydrateSolutionDetail() {
                 <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">资产移交 · 一模到底竣工资产池</div>
                 <div style="font-size: 0.75rem; color: var(--text-secondary);">空间实体与资料 100% 挂接 · 免转换导入智慧运维</div>
               </div>
-              <span style="font-size: 0.6875rem; font-family: monospace; color: #34d399; background: rgba(52,211,153,0.1); padding: 3px 8px; border-radius: 4px;">交付缩短 45天</span>
+              <span style="font-size: 0.6875rem; font-family: var(--font-number); font-weight: 700; font-feature-settings: 'tnum' 1; font-variant-numeric: tabular-nums; color: #34d399; background: rgba(52,211,153,0.1); padding: 3px 8px; border-radius: 4px;">交付缩短 45天</span>
             </div>
           </div>
           <div class="engine-studio-footer" style="background: rgba(0,0,0,0.3); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.06);">
@@ -3087,7 +3087,7 @@ function selectDeployMode(mode) {
   const deployData = {
     private: {
       profileTitle: "信创私有化交付模式 (ENTERPRISE)",
-      desc: "部署于客户指定信创机房或服务器，全链路物理隔离，支持纯离线内网稳定运行。",
+      desc: "部署于客户私有信创机房或服务器，全链路物理网络隔离，支持纯离线内网稳定运行。",
       badges: [
         { text: "物理网络隔离", cls: "spec-chip-cyan" },
         { text: "独占计算与存储资源", cls: "" },
@@ -3126,14 +3126,14 @@ function selectDeployMode(mode) {
         ]
       },
       service: [
-        { title: "专属技术沟通通道", desc: "设立原厂技术专班对接群，快速跟进与协调处理系统运行问题" },
-        { title: "原厂本地驻场支持", desc: "依托重庆总部及深圳、成都服务网络，提供资深技术顾问现场保障" },
-        { title: "关键业务节点护航", desc: "系统上线初期与关键保障节点，提供专项技术支持与深度巡检" }
+        { title: "专属技术专班通道", desc: "设立原厂技术专班群实时对接，快速协调排查系统运行问题" },
+        { title: "原厂本地驻场支持", desc: "依托重庆总部及全国技术网络，提供资深技术顾问现场保障" },
+        { title: "关键业务节点护航", desc: "系统上线初期与重要保障节点，提供原厂专项保障与深度巡检" }
       ]
     },
     hybrid: {
       profileTitle: "行业专网 / 混合协同模式 (HYBRID)",
-      desc: "工程核心业务数据本地安全留存，多标段与监管端通过安全专网实现跨网受控协同。",
+      desc: "核心业务数据本地安全留存，多标段协同通过安全专网受控互通，兼顾合规与弹性算力。",
       badges: [
         { text: "国企行业专网直连", cls: "spec-chip-purple" },
         { text: "工程数据本地留存", cls: "" },
@@ -3172,14 +3172,14 @@ function selectDeployMode(mode) {
         ]
       },
       service: [
-        { title: "专属架构顾问对接", desc: "资深技术顾问全程跟进，协助推进专网系统架构落地与配置调优" },
-        { title: "多网协同排障支持", desc: "协助跨网络专线联调对接，协同排查多网络环境链路异常" },
-        { title: "系统性能定向调优", desc: "针对工程大数据量并发场景，提供定向架构诊断与运行优化支持" }
+        { title: "专属架构顾问对接", desc: "资深技术顾问全程跟进，推进专网系统架构落地与配置调优" },
+        { title: "多网协同排障支持", desc: "协助跨网络专线联调对接，协同排查多网复杂链路异常" },
+        { title: "系统性能定向调优", desc: "针对工程大数据并发场景，提供定向架构诊断与运行优化" }
       ]
     },
     saas: {
       profileTitle: "标准云端敏捷模式 (FAST PASS)",
-      desc: "依托云端架构开箱即用，免除本地软硬件采购与运维负担，支持标准化项目敏捷开通。",
+      desc: "依托高可用云原生集群开箱即用，全面免除企业本地软硬件采购与长期运维负担。",
       badges: [
         { text: "开箱即用无需本地部署", cls: "spec-chip-emerald" },
         { text: "免服务器硬件投入", cls: "spec-chip-cyan" },
@@ -3218,9 +3218,9 @@ function selectDeployMode(mode) {
         ]
       },
       service: [
-        { title: "官方在线技术支持", desc: "专业技术顾问工作日在线答疑，指导功能配置与日常业务操作" },
-        { title: "全套实操指引与文档", desc: "提供工程全流程实操视频、知识库指引与最佳实践持续更新" },
-        { title: "持续云端迭代优化", desc: "享受平台核心能力在线升级与功能持续迭代，免去本地维护负担" }
+        { title: "官方在线技术支持", desc: "专业技术顾问工作日在线答疑，指导业务配置与日常系统操作" },
+        { title: "全套实操指引文档", desc: "提供工程全流程实操视频、知识库指引与行业最佳实践持续更新" },
+        { title: "持续云端敏捷升级", desc: "享受平台核心能力在线升级与持续迭代，无需企业本地维护负担" }
       ]
     }
   };

@@ -65,10 +65,10 @@
   --container-padding: clamp(20px, 4vw, 36px);
   --header-height: 68px;
 
-  /* 现代字体栈 */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  /* 现代字体栈 (严格以 solutions.html 官方看板为唯一准则，移除 DIN Alternate / Space Grotesk 等窄身字体) */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  --font-number: "Space Grotesk", "DIN Alternate", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-number: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -1452,10 +1452,12 @@ img, svg {
 }
 
 .case-metric-val {
-  font-size: 0.925rem;
-  font-weight: 700;
+  font-size: 0.9375rem;
+  font-weight: 800;
   color: var(--cyan-400);
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .case-footer-action {
@@ -4885,54 +4887,58 @@ img, svg {
   gap: 4px;
 }
 
-/* 核心数字字体：现代科技工业无衬线与等宽数字 */
+/* 核心数字字体：现代科技无衬线粗体与等宽对齐 (严格对齐 solutions.html 截图基准) */
 .spec-sla-number {
-  font-family: "Space Grotesk", "DIN Alternate", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-number);
   font-feature-settings: "tnum" 1, "pnum" 0;
   font-variant-numeric: tabular-nums;
-  font-size: 1.625rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   color: #38bdf8;
   line-height: 1;
 }
 
 .spec-num-val {
   display: inline-block;
+  font-family: var(--font-number);
+  font-weight: 800;
 }
 
 .spec-num-sep {
   display: inline-block;
-  margin: 0 3px;
+  margin: 0 4px;
   font-size: 1.25rem;
-  font-weight: 400;
-  color: rgba(56, 189, 248, 0.6);
+  font-weight: 600;
+  color: rgba(56, 189, 248, 0.7);
+  font-family: var(--font-number);
 }
 
 .spec-sla-unit {
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #cbd5e1;
   letter-spacing: 0.02em;
-  margin-left: 3px;
+  margin-left: 4px;
 }
 
 .spec-sla-tag {
   font-size: 0.6875rem;
-  color: rgba(56, 189, 248, 0.9);
+  color: rgba(56, 189, 248, 0.95);
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.25);
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-family: var(--font-mono);
-  letter-spacing: 0.04em;
+  font-family: var(--font-number);
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 /* 真实收益微标 (Gains) */
 .spec-sla-gains {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -4944,7 +4950,7 @@ img, svg {
   color: #38bdf8;
   background: rgba(56, 189, 248, 0.06);
   border: 1px dashed rgba(56, 189, 248, 0.25);
-  padding: 5px 11px;
+  padding: 5px 12px;
   border-radius: 6px;
   line-height: 1.2;
 }
@@ -4953,20 +4959,20 @@ img, svg {
 .spec-timeline-steps {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .timeline-step-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.75rem;
   color: #cbd5e1;
   background: rgba(6, 11, 24, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  padding: 5px 11px;
+  padding: 6px 12px;
   transition: all 0.2s ease;
 }
 
@@ -4976,9 +4982,11 @@ img, svg {
 }
 
 .timeline-step-chip .step-num {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 700;
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.72rem;
+  font-weight: 800;
   color: var(--cyan-400);
 }
 
@@ -4993,21 +5001,21 @@ img, svg {
   opacity: 0.4;
 }
 
-/* 售后保障 3 大支柱 */
+/* 售后保障 3 大支柱 (加大卡片呼吸感与留白) */
 .spec-service-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
 }
 
 .service-pillar-card {
   background: rgba(6, 11, 24, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   transition: all 0.2s ease;
 }
 
@@ -5028,7 +5036,8 @@ img, svg {
 .pillar-desc {
   font-size: 0.6875rem;
   color: #94a3b8;
-  line-height: 1.5;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
 @media (max-width: 820px) {
@@ -5402,7 +5411,9 @@ img, svg {
 .sol-bento-metric-val {
   font-size: 1.25rem;
   font-weight: 800;
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   color: #fff;
 }
 
