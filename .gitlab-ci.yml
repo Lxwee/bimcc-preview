@@ -2,7 +2,10 @@ pages:
   stage: deploy
   script:
     - mkdir -p public
-    - cp -r bimcc-redesign/* public/
+    - cp -r *.html *.css *.js assets data public/
   artifacts:
     paths:
       - public
+  only:
+    - main
+    - feat/official-website-redesign
