@@ -68,6 +68,7 @@
   /* 现代字体栈 */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-number: "Space Grotesk", "DIN Alternate", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -4201,7 +4202,10 @@ img, svg {
   align-items: center;
   gap: 6px;
   font-size: 0.6875rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
   color: var(--cyan-400);
   background: rgba(56, 189, 248, 0.08);
   padding: 3px 10px;
@@ -4250,10 +4254,14 @@ img, svg {
 }
 
 .flow-node-badge {
-  font-size: 0.625rem;
-  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
   color: var(--cyan-400);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .flow-node-title {
@@ -5708,7 +5716,9 @@ img, svg {
   display: flex;
   align-items: center;
   gap: 18px;
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 0.75rem;
   color: var(--text-secondary);
 }
@@ -5771,6 +5781,9 @@ img, svg {
   padding: 6px 10px;
   font-size: 0.75rem;
   font-weight: 600;
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   color: var(--text-muted);
   border: none;
   background: transparent;
@@ -5783,6 +5796,17 @@ img, svg {
   background: rgba(56, 189, 248, 0.2);
   color: var(--cyan-400);
   border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.spatial-hero-val {
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .spatial-telemetry-grid {
@@ -5800,11 +5824,14 @@ img, svg {
 }
 
 .spatial-stat-val {
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 1.15rem;
   font-weight: 700;
   color: #ffffff;
   display: block;
+  letter-spacing: -0.01em;
 }
 
 .spatial-stat-lbl {
@@ -5848,7 +5875,9 @@ img, svg {
 }
 
 .bento-hud-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 0.6875rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -5870,10 +5899,13 @@ img, svg {
 }
 
 .bento-hud-metric {
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--cyan-400);
+  letter-spacing: -0.01em;
 }
 
 /* Archetype 4: Engineering Milestone & Precision Roadmap (e.g. BIM Consulting) */
@@ -5908,9 +5940,11 @@ img, svg {
 }
 
 .milestone-step-num {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 800;
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9375rem;
+  font-weight: 700;
   color: var(--cyan-400);
   background: rgba(56, 189, 248, 0.12);
   border: 1px solid rgba(56, 189, 248, 0.25);
@@ -5941,7 +5975,9 @@ img, svg {
 }
 
 .milestone-step-kpi {
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 0.8125rem;
   font-weight: 700;
   color: #34d399;
@@ -5981,7 +6017,9 @@ img, svg {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 0.6875rem;
   color: var(--cyan-400);
   margin-bottom: 8px;
@@ -5991,12 +6029,15 @@ img, svg {
 }
 
 .drone-main-stat {
-  font-family: var(--font-mono);
-  font-size: 1.85rem;
-  font-weight: 800;
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
+  font-size: 2.2rem;
+  font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
   margin-bottom: 4px;
+  line-height: 1.15;
 }
 
 .drone-sub-desc {
@@ -6011,7 +6052,9 @@ img, svg {
   gap: 8px;
   font-size: 0.75rem;
   color: #34d399;
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   background: rgba(52, 211, 153, 0.12);
   border: 1px solid rgba(52, 211, 153, 0.25);
   padding: 4px 12px;
@@ -6066,7 +6109,9 @@ img, svg {
 }
 
 .pedagogy-tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--cyan-400);
@@ -6080,9 +6125,20 @@ img, svg {
 .pedagogy-metrics-strip {
   font-size: 0.75rem;
   color: var(--text-muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+/* 统一通用数字微标与指标类 */
+.hero-num-tag,
+.hero-num-metric,
+.hero-step-index {
+  font-family: var(--font-number);
+  font-feature-settings: "tnum" 1, "pnum" 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .pedagogy-modules-grid {

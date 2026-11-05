@@ -1808,24 +1808,24 @@ function renderDynamicProductHero(slug, data) {
           <div class="canvas-header-bar">
             <span class="canvas-tag">FYRA VISUAL COMPOSER</span>
             <div class="canvas-metrics-inline">
-              <span>DSL 实时渲染: &lt;8ms</span>
-              <span>工程专属控件: 120+</span>
-              <span>多端统一发布: 100%</span>
+              <span>DSL 实时渲染: <span class="hero-num-metric">&lt;8ms</span></span>
+              <span>工程专属控件: <span class="hero-num-metric">120+</span></span>
+              <span>多端统一发布: <span class="hero-num-metric">100%</span></span>
             </div>
           </div>
           <div class="canvas-flow-track">
             <div class="canvas-node-card">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">01 COMPONENT LIBRARY</div>
-              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">120+ 工程专属控件</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">01 COMPONENT LIBRARY</div>
+              <div style="font-weight: 700; color: #fff; margin-bottom: 4px;"><span class="hero-num-metric">120+</span> 工程专属控件</div>
               <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">表单 · 流程 · 报表 · 大屏</div>
             </div>
             <div class="canvas-node-card active-engine">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">02 ZERO-CODE ENGINE</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 4px;">02 ZERO-CODE ENGINE</div>
               <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">飞椽可视化编排</div>
-              <div style="font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap;">DSL 实时解析渲染 &lt; 8ms</div>
+              <div style="font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap;">DSL 实时解析渲染 <span class="hero-num-metric">&lt; 8ms</span></div>
             </div>
             <div class="canvas-node-card">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">03 MULTI-TERMINAL</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; margin-bottom: 4px;">03 MULTI-TERMINAL</div>
               <div style="font-weight: 700; color: #fff; margin-bottom: 4px;">全端即时发布</div>
               <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">Web · 移动端 · 企微 · 钉钉</div>
             </div>
@@ -1855,10 +1855,10 @@ function renderDynamicProductHero(slug, data) {
             <button class="lod-tab-btn">LOD 500 智慧运维</button>
           </div>
           <div style="background: rgba(3, 8, 20, 0.8); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 24px; text-align: center; position: relative;">
-            <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[WebGPU ACCELERATED · NATIVE CORE]</div>
-            <div style="font-size: 1.8rem; font-weight: 800; color: #fff; font-family: var(--font-mono); letter-spacing: -0.02em;">${isTwin ? '12,800,000' : '14,280,000'}</div>
+            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 8px;">[WebGPU ACCELERATED · NATIVE CORE]</div>
+            <div class="spatial-hero-val">${isTwin ? '12,800,000' : '14,280,000'}</div>
             <div style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 14px;">空间实体构件 · LOD 自动逐级退化 · 毫秒级空间检索</div>
-            <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; font-family: var(--font-mono); background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
+            <div class="hero-num-metric" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; color: #34d399; background: rgba(52,211,153,0.12); padding: 4px 12px; border-radius: 9999px;">
               <span class="status-pulse" style="background: #34d399;"></span> 渲染帧率 60.0 fps (锁定) · 延迟 &lt; 16ms
             </div>
           </div>
@@ -1896,7 +1896,7 @@ function renderDynamicProductHero(slug, data) {
         <div class="bento-perception-grid">
           <div class="bento-hud-card">
             <div class="bento-hud-header">
-              <span class="bento-hud-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">${isCommand ? '8K ULTRA-HD' : 'AI COMPUTER VISION'}</span>
+              <span class="bento-hud-tag hero-num-tag" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">${isCommand ? '8K ULTRA-HD' : 'AI COMPUTER VISION'}</span>
               <span class="status-pulse" style="background: #f59e0b;"></span>
             </div>
             <div class="bento-hud-title">${isCommand ? '三维大屏全景态势展示' : 'AI 视频隐患智能识别'}</div>
@@ -1905,16 +1905,16 @@ function renderDynamicProductHero(slug, data) {
           </div>
           <div class="bento-hud-card">
             <div class="bento-hud-header">
-              <span class="bento-hud-tag" style="background: rgba(56, 189, 248, 0.15); color: var(--cyan-400);">${isCommand ? 'MULTI-SCREEN' : 'SAFETY TELEMETRY'}</span>
+              <span class="bento-hud-tag hero-num-tag" style="background: rgba(56, 189, 248, 0.15); color: var(--cyan-400);">${isCommand ? 'MULTI-SCREEN' : 'SAFETY TELEMETRY'}</span>
               <span class="status-pulse"></span>
             </div>
             <div class="bento-hud-title">${isCommand ? '多屏联动协同坐席' : '塔吊群防碰撞与力矩'}</div>
             <div class="bento-hud-body">${isCommand ? '坐席多方音视频联动调度延时 <50ms' : '回转角度/幅度/吊重实时遥测预警'}</div>
-            <div class="bento-hud-metric">${isCommand ? '<50ms' : '0 事故碰撞'}</div>
+            <div class="bento-hud-metric">${isCommand ? '&lt;50ms' : '0 事故碰撞'}</div>
           </div>
           <div class="bento-hud-card">
             <div class="bento-hud-header">
-              <span class="bento-hud-tag" style="background: rgba(52, 211, 153, 0.15); color: #34d399;">${isCommand ? 'EMERGENCY' : 'ENVIRONMENT'}</span>
+              <span class="bento-hud-tag hero-num-tag" style="background: rgba(52, 211, 153, 0.15); color: #34d399;">${isCommand ? 'EMERGENCY' : 'ENVIRONMENT'}</span>
               <span class="status-pulse" style="background: #34d399;"></span>
             </div>
             <div class="bento-hud-title">${isCommand ? '应急指挥预案联动' : '绿色施工环境监测'}</div>
@@ -1923,7 +1923,7 @@ function renderDynamicProductHero(slug, data) {
           </div>
           <div class="bento-hud-card">
             <div class="bento-hud-header">
-              <span class="bento-hud-tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">${isCommand ? 'EXHIBITION' : 'PERSONNEL'}</span>
+              <span class="bento-hud-tag hero-num-tag" style="background: rgba(192, 132, 252, 0.15); color: #c084fc;">${isCommand ? 'EXHIBITION' : 'PERSONNEL'}</span>
               <span class="status-pulse" style="background: #c084fc;"></span>
             </div>
             <div class="bento-hud-title">${isCommand ? '展厅观摩迎检交互' : '劳务实名制通行闸机'}</div>
@@ -1949,7 +1949,7 @@ function renderDynamicProductHero(slug, data) {
         <div class="drone-telemetry-deck">
           <div class="drone-telemetry-hud">
             <div class="drone-coords-row">
-              <span>[3DGS & LIDAR TELEMETRY]</span>
+              <span>[3DGS &amp; LIDAR TELEMETRY]</span>
               <span>X: 3042.85m · Y: 1890.42m · Z: 142.60m</span>
             </div>
             <div class="drone-main-stat">4,850,000 pts</div>
@@ -1960,22 +1960,22 @@ function renderDynamicProductHero(slug, data) {
           </div>
           <div class="drone-sensors-grid">
             <div class="drone-sensor-card">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">01 DRONE SURVEY</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">01 DRONE SURVEY</div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">无人机正射航测</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted);">1.2cm/px 正射影像</div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; margin-top: 2px;">精度 &lt;3mm</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);"><span class="hero-num-metric">1.2cm/px</span> 正射影像</div>
+              <div class="hero-num-metric" style="font-size: 0.75rem; color: #34d399; font-weight: 700; margin-top: 2px;">精度 &lt;3mm</div>
             </div>
             <div class="drone-sensor-card">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #818cf8; font-weight: 700;">02 3DGS RECONSTRUCT</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #818cf8; font-weight: 700;">02 3DGS RECONSTRUCT</div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">3DGS 实模对比</div>
               <div style="font-size: 0.75rem; color: var(--text-muted);">隐蔽工程扫描对比</div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #818cf8; font-weight: 700; margin-top: 2px;">算量 5min</div>
+              <div class="hero-num-metric" style="font-size: 0.75rem; color: #818cf8; font-weight: 700; margin-top: 2px;">算量 5min</div>
             </div>
             <div class="drone-sensor-card">
-              <div style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; font-weight: 700;">03 LASER REVERSE</div>
+              <div class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; font-weight: 700;">03 LASER REVERSE</div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">空间激光逆向</div>
               <div style="font-size: 0.75rem; color: var(--text-muted);">大跨度钢结构应力</div>
-              <div style="font-family: var(--font-mono); font-size: 0.75rem; color: #c084fc; font-weight: 700; margin-top: 2px;">0 误差建模</div>
+              <div class="hero-num-metric" style="font-size: 0.75rem; color: #c084fc; font-weight: 700; margin-top: 2px;">0 误差建模</div>
             </div>
           </div>
         </div>
@@ -1996,7 +1996,7 @@ function renderDynamicProductHero(slug, data) {
         </div>
         <div class="pedagogy-virtual-lab">
           <div class="pedagogy-header-bar">
-            <span class="pedagogy-tag">
+            <span class="pedagogy-tag hero-num-tag">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
               PEDAGOGY SIMULATION LAB
             </span>
@@ -2005,35 +2005,35 @@ function renderDynamicProductHero(slug, data) {
           <div class="pedagogy-modules-grid">
             <div class="pedagogy-module-card">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">MODULE 01</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan-400); font-weight: 700; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px;">400+ 学时</span>
+                <span class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); font-weight: 700;">MODULE 01</span>
+                <span class="hero-num-metric" style="font-size: 0.75rem; color: var(--cyan-400); font-weight: 700; background: rgba(56,189,248,0.12); padding: 2px 6px; border-radius: 4px;">400+ 学时</span>
               </div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">智能建造课程资源库</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">12 门核心课 · 国家级精品教学课件</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;"><span class="hero-num-metric">12</span> 门核心课 · 国家级精品教学课件</div>
             </div>
             <div class="pedagogy-module-card">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #818cf8; font-weight: 700;">MODULE 02</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #818cf8; font-weight: 700; background: rgba(129,140,248,0.12); padding: 2px 6px; border-radius: 4px;">30+ 工法</span>
+                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #818cf8; font-weight: 700;">MODULE 02</span>
+                <span class="hero-num-metric" style="font-size: 0.75rem; color: #818cf8; font-weight: 700; background: rgba(129,140,248,0.12); padding: 2px 6px; border-radius: 4px;">30+ 工法</span>
               </div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">BIMVR 沉浸式实训室</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">真实工程典型工法 1:1 虚拟交互演练</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">真实工程典型工法 <span class="hero-num-metric">1:1</span> 虚拟交互演练</div>
             </div>
             <div class="pedagogy-module-card">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #34d399; font-weight: 700;">MODULE 03</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52,211,153,0.12); padding: 2px 6px; border-radius: 4px;">全自动评分</span>
+                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #34d399; font-weight: 700;">MODULE 03</span>
+                <span class="hero-num-metric" style="font-size: 0.75rem; color: #34d399; font-weight: 700; background: rgba(52,211,153,0.12); padding: 2px 6px; border-radius: 4px;">全自动评分</span>
               </div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">虚拟施工考核系统</div>
               <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">实操考核与虚拟隐患排查双盲考核</div>
             </div>
             <div class="pedagogy-module-card">
               <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="font-family: var(--font-mono); font-size: 0.6875rem; color: #c084fc; font-weight: 700;">MODULE 04</span>
-                <span style="font-family: var(--font-mono); font-size: 0.75rem; color: #c084fc; font-weight: 700; background: rgba(192,132,252,0.12); padding: 2px 6px; border-radius: 4px;">产教示范</span>
+                <span class="hero-num-tag" style="font-size: 0.6875rem; color: #c084fc; font-weight: 700;">MODULE 04</span>
+                <span class="hero-num-metric" style="font-size: 0.75rem; color: #c084fc; font-weight: 700; background: rgba(192,132,252,0.12); padding: 2px 6px; border-radius: 4px;">产教示范</span>
               </div>
               <div style="font-size: 0.875rem; font-weight: 700; color: #fff;">校企产教融合基地</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">支撑技能大赛 · 1+X 认证 · 联合授牌</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">支撑技能大赛 · <span class="hero-num-metric">1+X</span> 认证 · 联合授牌</div>
             </div>
           </div>
         </div>
