@@ -1971,7 +1971,7 @@ img, svg {
 
 /* 4x2 紧凑精炼卡片内部样式 */
 .product-panorama-grid .panorama-card {
-  padding: 24px 22px;
+  padding: 24px 20px;
   border-radius: 18px;
 }
 
@@ -1979,7 +1979,8 @@ img, svg {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
 
 .product-panorama-grid .panorama-icon-box svg {
@@ -1991,6 +1992,9 @@ img, svg {
   font-size: 1.125rem;
   margin-bottom: 4px;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-panorama-grid .panorama-tag {
@@ -2001,6 +2005,9 @@ img, svg {
   display: block;
   letter-spacing: 0.03em;
   line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .panorama-bullet-list {
@@ -2009,16 +2016,19 @@ img, svg {
   margin: 0 0 18px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
 }
 
 .panorama-bullet-list li {
-  font-size: 0.8125rem;
+  font-size: 0.775rem;
   color: #94a3b8;
-  line-height: 1.5;
+  line-height: 1.4;
   display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .panorama-bullet-list li::before {
@@ -2028,16 +2038,40 @@ img, svg {
   height: 5px;
   border-radius: 50%;
   background: var(--cyan-400);
-  margin-top: 6px;
   flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
 }
 
 .panorama-bullet-list .bullet-highlight {
   color: #ffffff;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
+
+.panorama-bullet-list .bullet-sep {
+  color: #475569;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.panorama-bullet-list .bullet-desc {
+  color: #94a3b8;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 8 大产品卡片专属明亮着色方案 (8 种不同渐变，杜绝黑块) */
+.icon-sky-blue, .icon-blue-sky { background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%); }
+.icon-cyan-indigo { background: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%); }
+.icon-blue-cyan { background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%); }
+.icon-purple-fuchsia, .icon-purple-pink { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); }
+.icon-lime-green { background: linear-gradient(135deg, #10b981 0%, #84cc16 100%); }
+.icon-emerald-teal { background: linear-gradient(135deg, #059669 0%, #14b8a6 100%); }
+.icon-amber-yellow, .icon-amber-orange { background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%); }
+.icon-indigo-purple { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
 
 /* --------------------------------------------------------------------------
    架构能力矩阵卡片样式 (短句列表与清晰层次)
