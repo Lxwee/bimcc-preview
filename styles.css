@@ -1927,25 +1927,116 @@ img, svg {
    11. Rich Layout Form Components (V8 Aesthetic Diversity)
    -------------------------------------------------------------------------- */
 
-/* 1. 核心产品平台 6/8 大产品线卡片网格 (Products Grid) */
-.products-grid-3cols, .product-panorama-grid {
+/* 1. 首页核心产品网格 (3 列 x 2 行 = 6 个) */
+.products-grid-3cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
 @media (max-width: 992px) {
-  .products-grid-3cols, .product-panorama-grid {
+  .products-grid-3cols {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 }
 
 @media (max-width: 640px) {
-  .products-grid-3cols, .product-panorama-grid {
+  .products-grid-3cols {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+}
+
+/* 2. 全部产品全景网格 (4 列 x 2 行 = 8 大核心产品矩阵) */
+.product-panorama-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1200px) {
+  .product-panorama-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-panorama-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* 4x2 紧凑精炼卡片内部样式 */
+.product-panorama-grid .panorama-card {
+  padding: 24px 22px;
+  border-radius: 18px;
+}
+
+.product-panorama-grid .panorama-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.product-panorama-grid .panorama-icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.product-panorama-grid .panorama-title {
+  font-size: 1.125rem;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.product-panorama-grid .panorama-tag {
+  font-size: 0.6875rem;
+  color: var(--cyan-400);
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: block;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
+.panorama-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.panorama-bullet-list li {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.panorama-bullet-list li::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan-400);
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+
+.panorama-bullet-list .bullet-highlight {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 /* --------------------------------------------------------------------------
