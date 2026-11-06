@@ -717,10 +717,10 @@ const productPages = {
     valueTitle: "从人工粗放放样走向全流程数字化高精度智控",
     valueIntro: "累土智控彻底解决传统土石方施工中强夯定位偏差大、碾压漏压超压、摊铺厚度不均、机械台班工效模糊等长期痛点，实现降本增效与质量硬核保障。",
     values: [
-      ["强夯精准计量，消除返工风险", "GNSS 高精度差分定位结合张力与霍尔传感器，夯击能、次数、落距、夯沉量自动毫秒级计量，定位误差 < 3cm。"],
-      ["碾压遍数实时追踪，杜绝漏压欠压", "车载平板引导作业轨迹，振动传感器实时分析频率与幅值，自动生成压实度等值线图，合格率达 99.6%。"],
-      ["摊铺平整度智能监控，保障结构质量", "动态监测摊铺厚度与温度曲线，智能调度摊铺料车与压路机协同，杜绝超铺欠铺与温度离析裂纹。"],
-      ["机械台班与油耗穿透，杜绝怠速浪费", "自动识别怠速、运输、重载工况，精确监测燃油消耗与违规卸料，机械综合燃油节省 15%~20%。"]
+      ["强夯精度不足 -> 毫米级高精计量", "彻底解决人工放样误差大、人工估算夯击能、过程管理粗糙、返工风险高等痛点。高精度 GNSS 差分定位结合强夯机张力与霍尔传感器，夯击能、次数、落距、夯沉量自动毫秒级计量，放样误差 < 3cm，消除返工风险。"],
+      ["碾压质量不均 -> 遍数轨迹全闭环", "彻底解决现场靠人盯人记、漏压超压普遍、压实度不达标/过压、边坡边角难覆盖等痛点。车载平板实时引导作业轨迹，振动传感器采集频率与幅值，自动生成压实遍数等值线图，杜绝漏压超压。"],
+      ["摊铺平整度差 -> 动态找平与协同", "彻底解决人工找平波动大、温度波动易开裂、材料摊铺量粗放、超铺欠铺及工序混乱问题。红外测温与厚度传感器联动，智能调度摊铺料车与压路机协同作业，保障平整度均匀，杜绝温度离析。"],
+      ["调运管控难 -> 机械工时与油耗穿透", "彻底解决工时工况不清、油耗掌握不准、调配松散等长期痛点。通过机械设备采集终端与油耗/姿态传感器，自动精准识别怠速、闲置、运输、非法卸料等工况，满载率自动统计，机械综合油耗显著节约。"]
     ],
     capabilities: [
       ["高精差分定位终端", "厘米级北斗/GNSS 差分定位，车载高抗振平板实时导航作业。"],
@@ -1754,6 +1754,92 @@ function getProductHeroTags(slug) {
   `;
 }
 
+const leituHudData = {
+  yashi: {
+    tag: "[VIBRATION SENSOR TELEMETRY · NANNING AIRPORT ACTIVE]",
+    val: "7,171,374",
+    unit: "m³",
+    lbl: "南宁吴圩机场实测填方总量（压实状态） · 挖方总量 6,589,649 m³",
+    pill: "广西南宁吴圩机场现场遥测 · 遍数等值线实时渲染 · 杜绝漏压超压",
+    stats: [
+      { val: "100%", lbl: "碾压遍数自动计量", color: "#38bdf8" },
+      { val: "0 漏压", lbl: "边坡边角精准覆盖", color: "#34d399" },
+      { val: "动态预警", lbl: "薄弱区域自检三检", color: "#a855f7" }
+    ]
+  },
+  qianghang: {
+    tag: "[RTK-GNSS DIFFERENTIAL TELEMETRY · QIANGHANG ACTIVE]",
+    val: "2,000~3,000",
+    unit: "KN·m",
+    lbl: "南宁吴圩机场强夯填筑能级 · 张力与霍尔传感器毫秒级采集",
+    pill: "夯击能/次数/落距/夯沉量自动计量 · GNSS 定位误差 < 3cm",
+    stats: [
+      { val: "< 3 cm", lbl: "强夯放样定位误差", color: "#38bdf8" },
+      { val: "毫秒级", lbl: "夯沉量与能级回传", color: "#34d399" },
+      { val: "0 次", lbl: "杜绝人工估算返工", color: "#a855f7" }
+    ]
+  },
+  tanpu: {
+    tag: "[INFRARED THERMAL & ELEVATION SENSOR · PAIXU ACTIVE]",
+    val: "动态找平",
+    unit: "高精协同",
+    lbl: "摊铺机红外测温与厚度传感器联动 · 杜绝超铺欠铺与温度离析裂纹",
+    pill: "摊铺厚度与速度受控 · 摊铺机与料车动态协同 · 质量全追溯",
+    stats: [
+      { val: "±5 mm", lbl: "摊铺平整厚度控制", color: "#38bdf8" },
+      { val: "实时", lbl: "摊铺温度离析预警", color: "#34d399" },
+      { val: "多机协同", lbl: "消除工序混乱交叉", color: "#a855f7" }
+    ]
+  },
+  diaoyun: {
+    tag: "[FLEET TELEMATICS & FUEL MONITORING · TIAOYUN ACTIVE]",
+    val: "2,393,841",
+    unit: "m³",
+    lbl: "南宁吴圩机场实测调配方量 · 设备终端+油耗/姿态传感器穿透",
+    pill: "自动识别怠速/运输/非法卸料 · 电子围栏告警 · 指挥中心语音喊话",
+    stats: [
+      { val: "-18.5%", lbl: "机械怠速燃油消耗", color: "#38bdf8" },
+      { val: "100%", lbl: "满载率/运载趟数统计", color: "#34d399" },
+      { val: "秒级", lbl: "围栏外异常告警闭环", color: "#a855f7" }
+    ]
+  }
+};
+
+window.switchLeituHudTab = function(tabKey) {
+  const d = leituHudData[tabKey];
+  if (!d) return;
+
+  document.querySelectorAll("[data-leitu-tab]").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-leitu-tab") === tabKey);
+  });
+
+  const tag = document.getElementById("leituHudTag");
+  if (tag) tag.textContent = d.tag;
+
+  const val = document.getElementById("leituHudVal");
+  if (val) {
+    val.innerHTML = `${d.val} <span id="leituHudUnit" style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">${d.unit}</span>`;
+  }
+
+  const lbl = document.getElementById("leituHudLbl");
+  if (lbl) lbl.textContent = d.lbl;
+
+  const pill = document.getElementById("leituHudPill");
+  if (pill) {
+    pill.innerHTML = `<span class="status-pulse" style="background: #34d399;"></span> ${d.pill}`;
+  }
+
+  const grid = document.getElementById("leituHudGrid");
+  if (grid) {
+    grid.innerHTML = d.stats.map(s => `
+      <div class="spatial-stat-card">
+        <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: ${s.color};">${s.val}</span>
+        <span class="spatial-stat-lbl">${s.lbl}</span>
+      </div>
+    `).join("");
+  }
+};
+
 function renderDynamicProductHero(slug, data) {
   const container = document.getElementById('productHeroContainer');
   if (!container) return;
@@ -1773,33 +1859,33 @@ function renderDynamicProductHero(slug, data) {
         </div>
         <div class="spatial-hud-box">
           <div class="lod-tabs-strip">
-            <button class="lod-tab-btn active" type="button">强夯精控</button>
-            <button class="lod-tab-btn" type="button">连续压实</button>
-            <button class="lod-tab-btn" type="button">智能摊铺</button>
-            <button class="lod-tab-btn" type="button">调运工效</button>
+            <button class="lod-tab-btn active" type="button" onclick="switchLeituHudTab('yashi')" data-leitu-tab="yashi">连续压实</button>
+            <button class="lod-tab-btn" type="button" onclick="switchLeituHudTab('qianghang')" data-leitu-tab="qianghang">强夯精控</button>
+            <button class="lod-tab-btn" type="button" onclick="switchLeituHudTab('tanpu')" data-leitu-tab="tanpu">智能摊铺</button>
+            <button class="lod-tab-btn" type="button" onclick="switchLeituHudTab('diaoyun')" data-leitu-tab="diaoyun">调运工效</button>
           </div>
           <div class="spatial-hero-metric-card" style="padding: 24px 28px 18px;">
-            <div class="hero-num-tag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 6px; letter-spacing: 0.08em;">
-              [RTK-GNSS DIFFERENTIAL TELEMETRY · LEITU ACTIVE]
+            <div class="hero-num-tag" id="leituHudTag" style="font-size: 0.6875rem; color: var(--cyan-400); margin-bottom: 6px; letter-spacing: 0.08em;">
+              [VIBRATION SENSOR TELEMETRY · NANNING AIRPORT ACTIVE]
             </div>
-            <div class="spatial-hero-val" style="font-size: 2.3rem; font-weight: 800; letter-spacing: 0;">386,400 <span style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">m³</span></div>
-            <div class="spatial-hero-lbl" style="font-size: 0.8125rem; color: #94a3b8; margin-top: 4px;">土石方智能计量 · 强夯/压实/摊铺全闭环监测</div>
-            <div class="spatial-sub-pill" style="margin-top: 14px; font-size: 0.75rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(56, 189, 248, 0.2);">
-              <span class="status-pulse" style="background: #34d399;"></span> 84 台机械在线 · 强夯定位 &lt; 3cm · 压实合格率 99.6%
+            <div class="spatial-hero-val" id="leituHudVal" style="font-size: 2.3rem; font-weight: 800; letter-spacing: 0;">7,171,374 <span id="leituHudUnit" style="font-size: 1.1rem; font-weight: 500; color: #94a3b8;">m³</span></div>
+            <div class="spatial-hero-lbl" id="leituHudLbl" style="font-size: 0.8125rem; color: #94a3b8; margin-top: 4px;">南宁吴圩机场实测填方总量（压实状态） · 挖方总量 6,589,649 m³</div>
+            <div class="spatial-sub-pill" id="leituHudPill" style="margin-top: 14px; font-size: 0.75rem; color: #cbd5e1; display: inline-flex; align-items: center; gap: 8px; background: rgba(56, 189, 248, 0.08); padding: 5px 12px; border-radius: 9999px; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <span class="status-pulse" style="background: #34d399;"></span> 广西南宁吴圩机场现场遥测 · 遍数等值线实时渲染 · 杜绝漏压超压
             </div>
           </div>
-          <div class="spatial-telemetry-grid">
+          <div class="spatial-telemetry-grid" id="leituHudGrid">
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0;">&lt; 3 cm</span>
-              <span class="spatial-stat-lbl">强夯放样误差</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">100%</span>
+              <span class="spatial-stat-lbl">碾压遍数自动计量</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">99.6%</span>
-              <span class="spatial-stat-lbl">连续压实合格率</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #34d399;">0 漏压</span>
+              <span class="spatial-stat-lbl">边坡边角精准覆盖</span>
             </div>
             <div class="spatial-stat-card">
-              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #38bdf8;">-18.5%</span>
-              <span class="spatial-stat-lbl">综合燃油消耗</span>
+              <span class="spatial-stat-val" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0; color: #a855f7;">动态预警</span>
+              <span class="spatial-stat-lbl">薄弱区域自检三检</span>
             </div>
           </div>
         </div>
